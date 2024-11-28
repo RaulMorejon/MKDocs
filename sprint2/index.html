@@ -40,15 +40,53 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                <li class="toctree-l1"><a class="reference internal" href="..">Inici</a>
                 </li>
               </ul>
-              <p class="caption"><span class="caption-text">Treballs</span></p>
+              <p class="caption"><span class="caption-text">Sprints</span></p>
               <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="../sprint1/">Sprint 1</a>
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Sprint 2</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#1-configuracio-inicial">1. Configuració inicial</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#afegir-i-configurar-la-maquina">Afegir i configurar la màquina</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#crear-i-gestionar-comptes-dusuari-locals">Crear i gestionar comptes d'usuari locals</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2-installacio-de-serveis-essencials">2. Instal·lació de Serveis Essencials</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#gestio-de-serveis">Gestió de Serveis</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#comprovar-processos-en-execucio">Comprovar Processos en Execució</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#optimitzar-lus-de-recursos">Optimitzar l'Ús de Recursos</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#administrar-serveis-actius-segons-les-necessitats-del-sistema">Administrar Serveis Actius Segons les Necessitats del Sistema</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3-usuaris-i-grups">3. Usuaris i Grups</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#definir-politiques-de-seguretat-per-a-contrasenyes-i-accessos">Definir polítiques de seguretat per a contrasenyes i accessos.</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#configuracions">Configuracions.</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#4-permisos">4. Permisos</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#permisos-normals">Permisos normals.</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#permisos-especials">Permisos especials.</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#permisos-acls">Permisos ACLs</a>
+    </li>
+        </ul>
+    </li>
     </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../sprint3/">Sprint 3</a>
@@ -57,7 +95,7 @@
                   </li>
               </ul>
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../permisos/">Polítiques d'ús i contacte ⚠️</a>
+                <li class="toctree-l1"><a class="reference internal" href="../permisos/">Polítiques d'ús i contacte</a>
                 </li>
               </ul>
       </div>
@@ -74,7 +112,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
-          <li class="breadcrumb-item">Treballs</li>
+          <li class="breadcrumb-item">Sprints</li>
       <li class="breadcrumb-item active">Sprint 2</li>
     <li class="wy-breadcrumbs-aside">
     </li>
@@ -84,7 +122,253 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="sprint-2">Sprint 2</h1>
+                <p><a name="ini"></a> </p>
+<h1 id="gestio-de-la-informacio-del-sistema-i-administracio">Gestió de la Informació del Sistema i Administració</h1>
+<hr />
+<h2 id="1-configuracio-inicial">1. Configuració inicial</h2>
+<p>Primer de tot, s'ha d'instal·lar Ubuntu Linux en una màquina virtual. Per fer la instal·lació, s'ha d'anar a la pàgina d'Ubuntu per descarregar l'arxiu ".ISO".<br><br>
+<span id="iso">
+Clica l'enllaç i espera que es faci la descàrrega automàticament d'<a href="https://ubuntu.com/download/desktop/thank-you?version=24.04.1&amp;architecture=amd64&amp;lts=true">Ubuntu Desktop 24.04.1 LTS</a></p>
+<p><img alt="Descarrega Ubuntu" src="../img/descarregaUbuntu.png" /></p>
+<p>Una vegada estigui la descàrrega, hem d'obrir un programa per crear màquines virtuals. En aquest cas s'utilitzarà VirtualBox.<br><br>
+<img alt="VirtualBox" src="../img/virtualBox.png" />
+<br><br></p>
+<h3 id="afegir-i-configurar-la-maquina">Afegir i configurar la màquina</h3>
+<p>En aquest apartat es començarà amb la creació d'una màquina virtual amb l'arxiu descarregat en l'apartat anterior, i es farà la configuració de l'entorn per posar-la en funcionament.<br><br>
+Passos a seguir:</p>
+<ul>
+<li>Obrim VirtualBox i busquem a la part superior el botó <strong>"Nova"</strong>.<br>
+  <img alt="Boto Nova" src="../img/boto_nova.png" />
+<br></li>
+<li>En la següent finestra s'ha de posar el nom de la màquina virtual, i en el camp <strong>"ISO image"</strong> s'ha de seleccionar l'<a href="#iso">ISO</a> descarregat al principi de l'article. Fem clic a <strong>Endavant</strong>.
+  <img alt="fase 1" src="../img/nomIso.png" />
+<br></li>
+<li>
+<p>Introduïm el nom d'usuari i la contrasenya, que compleixi amb els requisits que es demanen.
+  <br>
+  <img alt="Usuari i contrasenya" src="../img/usuariContra.png" /></p>
+</li>
+<li>
+<p>S'ha d'introduir la memòria RAM que es vol utilitzar i la quantitat de processos de la CPU que es vol utilitzar. I seguidament introduir la memòria d'emmagatzematge.
+  <img alt="memòria i cpu" src="../img/ram.png" />
+  <br><br>
+  <img alt="emmagatzematge" src="../img/enmagat.png" /></p>
+</li>
+</ul>
+<h3 id="crear-i-gestionar-comptes-dusuari-locals">Crear i gestionar comptes d'usuari locals</h3>
+<p>Passarem a veure la creació d'usuaris locals. Per crear-lo s'utilitzarà la comanda <code>adduser</code>:
+<img alt="Adduser" src="../img/adduserR.png" />
+Introduïm una <strong>S</strong> o premem <strong>enter</strong> per seguir amb la creació: 
+<img alt="Adduser" src="../img/adduserFinish.png" /></p>
+<hr />
+<h2 id="2-installacio-de-serveis-essencials">2. Instal·lació de Serveis Essencials</h2>
+<p>Sempre abans d'instal·lar qualsevol servei és bo assegurar-se que el sistema estigui actualitzat. Per aquest motiu es farà ús de la comanda <code>sudo apt update</code>:
+<img alt="update" src="../img/7.png" /></p>
+<p>I després fem <code>sudo apt upgrade</code>:
+<img alt="upgrade" src="../img/8.png" /></p>
+<h3 id="gestio-de-serveis">Gestió de Serveis</h3>
+<p>Un cop instal·lats els serveis, es poden gestionar amb la comanda <code>systemctl</code>. Aquesta comanda pot <strong>iniciar, parar o reiniciar</strong> serveis. 
+A continuació un exemple d'aquesta comanda amb el servei <strong>SSH</strong>: <br><br>
+<img alt="systemctl" src="../img/13.png" /><br><br>
+<img alt="systemctl" src="../img/14.png" /></p>
+<p>També podem editar el fitxer de configuració de <strong>SSH</strong>, obrint-lo amb la comanda <code>sudo nano /etc/ssh/sshd_config</code> per fer els següents canvis:</p>
+<ul>
+<li>Desactivar l'accés del root fent <code>PermitRootLogin no</code>:
+<img alt="ssh_config" src="../img/15.png" /> <br>
+<img alt="ssh_config" src="../img/16.png" />
+<br><br></li>
+<li>Per permetre l'accés per contrasenya, fem <code>PasswordAuthentication yes</code>:
+<img alt="ssh_config" src="../img/17.png" /></li>
+</ul>
+<h3 id="comprovar-processos-en-execucio">Comprovar Processos en Execució</h3>
+<p>A vegades cal veure els processos que s'estan executant, per aquest motiu podem accedir a diferents comandes com <code>top</code>, que ens mostra els processos que s'executen en temps real, o podem veure un instantània dels processos executats al realitzar la comanda <code>ps aux</code>, com podem veure a la captura: 
+<img alt="ps" src="../img/18.png" />
+També podem fer una cerca i filtrar el procés que volem buscar amb <code>grep</code>:
+<img alt="grep ps" src="../img/19.png" /></p>
+<p>Una comanda que és molt més útil que les anteriors és <code>htop</code>, que ens mostra tots els processos en execució en temps real, el seu ús de CPU i memòria. La instal·larem amb <code>sudo apt install htop</code> i l'executarem:
+<img alt="htop" src="../img/20.png" /></p>
+<h3 id="optimitzar-lus-de-recursos">Optimitzar l'Ús de Recursos</h3>
+<p>Es pot comprovar l'ús, en temps real, de la memòria i de la CPU utilitzant <code>vmstat 1</code>:
+<img alt="vmstat" src="../img/21.png" /></p>
+<p>Si es vol fer una optimització de l'espai quan l'equip està utilitzant un disc de memòria SSD, es pot utilitzar la comanda <code>sudo fstrim -v</code>.
+I per tenir una bona optimització del sistema i un correcte funcionament, es recomanable mantenir-lo actualitzat.</p>
+<ul>
+<li>Actualitzar amb <code>sudo apt update &amp;&amp; sudo apt upgrade</code>:
+<img alt="vmstat" src="../img/22.png" /></li>
+</ul>
+<h3 id="administrar-serveis-actius-segons-les-necessitats-del-sistema">Administrar Serveis Actius Segons les Necessitats del Sistema</h3>
+<p>Farem una identificació dels serveis actius, llavors, s'haurà d'utilitzar <code>systemctl</code>: 
+<img alt="systemctl" src="../img/23.png" /></p>
+<p>S'ha de revisar els serveis que s'estan executant i determinar si són necessaris. </p>
+<ul>
+<li>
+<p>Hem d'aturar els serveis innecessaris. Per aturar-lo s'ha d'utilitzar la comanda <code>sudo systemctl stop nom_del_servei</code>.</p>
+</li>
+<li>
+<p>Si un servei no és necessari en l'arrencada, és millor deshabilitar-lo per evitar que s'iniciï automàticament, amb la comanda <code>sudo systemctl disable nom_del_servei</code>.</p>
+</li>
+<li>
+<p>Si es necessita un servei per a una tasca específica, es pot habilitar temporalment, i s'iniciarà automàticament en l'arrencada. Es farà amb la comanda <code>sudo systemctl enable nom_del_servei</code>.</p>
+</li>
+</ul>
+<hr />
+<h2 id="3-usuaris-i-grups">3. Usuaris i Grups</h2>
+<ul>
+<li>
+<p>Per <strong>revisar</strong> la llista d'usuaris creats al sistema anirem al fitxer <code>/etc/passwd</code>:
+<img alt="Comprovar Usuaris" src="../img/comprovarUs.png" />
+<br><br></p>
+</li>
+<li>
+<p>Per <strong>eliminar</strong> un usuari de qualsevol grup, només caldrà fer ús de la comanda <code>deluser nom_usuari nom_grup</code>: 
+<img alt="deluser" src="../img/33.png" /><br><br></p>
+</li>
+<li>
+<p>En aquest punt farem la <strong>creació d'un grup</strong>. Per realitzar aquesta acció s'ha d'utilitzar la comanda <code>sudo groupadd nom_grup</code>, i després s'ha de fer una comprovació d'aquest grup amb la següent comanda: <code>getent group | grep nom_grup</code>
+<img alt="Crear i comprovar grup" src="../img/crearGrup.png" /><br><br></p>
+</li>
+<li>
+<p>Seguidament s'ha d'<strong>afegir un usuari</strong> al grup creat o a un altre grup ja existent amb la comanda <code>sudo usermod -aG nom_grup nom_usuari</code>, aquesta instrucció no retornarà cap missatge. Després es farà una comprovació dels grups als quals pertany l'usuari amb: <code>groups nom_usuari</code>
+<img alt="Afegir usuari al grup" src="../img/afegirUsuariG.png" /> <br><br></p>
+</li>
+<li>
+<p>També existeix l'opció de <strong>crear un usuari dins d'un grup</strong> amb la comanda <code>adduser nom_usuari nom_grup</code>, així seguidament podem comprovar que ara al grup <code>sudo</code> tenim dos usuaris:
+<img alt="grup" src="../img/32.png" /> <br><br>
+La primera part de la línia és el nom del grup, després mostra si hi ha una contrasenya associada al grup, que normalment si és un <code>X</code> vol dir que no s'utilitza contrasenya.<br> Seguidament va amb el número únic assignat al grup, i finalment una llista d'usuaris que són membres del grup.<br><br></p>
+</li>
+<li>
+<p>Tenim l'opció de <strong>canviar la contrasenya</strong> de l'usuari amb la comanda <code>passwd nom_usuari</code>, d'aquesta manera ens demanarà una de nova, sempre mantenint la privacitat de les dades de l'usuari:<br />
+<img alt="contra" src="../img/34.png" /><br><br></p>
+</li>
+<li>
+<p>Si accedim a l'arxiu <code>/etc/passwd</code>, podrem trobar l'informació bàsica sobre el compte dels usuaris. En una línia podem veure primer de tot el <strong>nom de l'usuari</strong> que va seguit de la contrasenya que està guardada a l'arxiu <code>/etc/shadow</code>, però en aquesta línia s'emprarà amb un <code>X</code> o <code>*</code>. Després va l'identificador únic de l'usuari junt amb l'identificador del grup al qual pertany (<code>:1002:1002:</code>). Finalment aniria qualsevol informació addicional de l'usuari junt amb el directori personal de l'usuari.
+<img alt="passwd" src="../img/35.png" /><br><br></p>
+</li>
+<li>
+<p>Tenim l'arxiu <code>/etc/shadow</code> que és on es troben les contrasenyes encriptades de cada usuari. La línia està formada pel nom de l'usuari seguit de <code>!</code> o <code>*</code> que vol dir que el compte de l'usuari no pot iniciar sessió en el sistema. <br>Després, la data en què la contrasenya s'ha canviat per última vegada, seguida dels dies que cal que l'usuari esperi per poder canviar la seva contrasenya.<br> I finalment mostra el número de dies per avisar a l'usuari que la seva contrasenya expirarà (<code>99999</code>), juntament amb el número de dies que es pot estar inactiu després d'haver-se expirat.
+<img alt="shadow" src="../img/36.png" /><br><br></p>
+</li>
+<li>
+<p>Ara, ens falta crear el sistema personal d'arxius a l'usuari, per això s'haurà de crear una carpeta amb la comanda <code>mkdir nom_usuari/carpeta</code>. Però ara el que passa és que aquest directori pertany en permisos a l'usuari <code>root</code>, llavors amb la següent comanda el que farem serà canviar el propietari i el grup propietari: <code>chown nom_usuari:nom_grup directori</code>
+<img alt="mkdir" src="../img/37.png" /><br><br></p>
+</li>
+<li>
+<p>Per bloquejar un usuari farem ús de la comanda <code>usermod -L nom_usuari</code>. Es pot veure que en l'arxiu <code>/etc/shadow</code> hi ha l'usuari, i seguidament el símbol <code>!</code>, això vol dir que està bloquejat.<br> I per desbloquejar-lo només caldrà executar la comanda <code>usermod -U nom_usuari</code>, i podrem veure a l'arxiu anterior que l'exclamació ha desaparegut, així que l'usuari torna a estar disponible.
+<img alt="usermod" src="../img/38.png" /><br><br></p>
+</li>
+<li>
+<p>Per eliminar un usuari podem utilitzar la comanda <code>deluser nom_usuari</code>, però el que farà serà eliminar l'usuari però no el directori personal d'aquest.<br> En cas de voler eliminar tota la informació i l'usuari de cop, el que s'utilitzarà serà la comanda <code>userdel -r nom_usuari</code>:
+<img alt="userdel" src="../img/39.png" /></p>
+</li>
+<li>
+<p>Per canviar el nom d'usuari utilitzarem <code>usermod -l nom_nou nom_usuari</code>, però quan fem aquest canvi no es canviarà el nom del directori personal. Per això haurem de fer <code>mv directori_antic/ directori_nou/</code>, d'aquesta manera tindrem l'usuari i directori canviats:
+<img alt="usermod_l" src="../img/40.png" />
+Però encara falta una cosa, i és que el grup al qual pertany aquest usuari encara no està actualitzat. Llavors, si mirem la informació de l'usuari amb <code>id nom_usuari</code>, podem veure que només s'ha canviat el <code>uid</code> que és el nom, però els grups encara no. Per canviar el nom del grup s'ha d'executar la comanda <code>groupmod -n nom_nou nom_grup</code>.
+<img alt="groupmod" src="../img/41.png" /></p>
+</li>
+</ul>
+<p><strong>Finalment ja hauríem canviat el nom de l'usuari correctament.</strong></p>
+<h3 id="definir-politiques-de-seguretat-per-a-contrasenyes-i-accessos">Definir polítiques de seguretat per a contrasenyes i accessos.</h3>
+<p>A continuació es farà la configuració de les polítiques de contrasenyes. </p>
+<p>El fitxer principal per gestionar les polítiques de les contrasenyes és <code>/etc/login.defs</code>. Aquí és on es poden definir els diversos paràmetres.</p>
+<ul>
+<li>S'ha d'obrir el fitxer amb la comanda <code>sudo nano /etc/login.defs</code>:
+<img alt="Comanda fitxer polítiques" src="../img/defs.png" />
+<img alt="Fitxer polítiques" src="../img/1.png" /></li>
+<li>Seguidament, s'ha de modificar la línia <code>PASS_MAX_DAYS</code> si es vol posar un número de dies en què la contrasenya serà vàlida. Igual que aquest camp, també hi ha d'altres. 
+<img alt="pass_max" src="../img/2.png" />
+<img alt="pass" src="../img/3.png" /></li>
+<li>També es pot modificar la qualitat de les contrasenyes, és a dir, la longitud que poden tenir. Per modificar la longitud mínima, primer s'haurà d'obrir el fitxer on es troben aquestes característiques amb la següent comanda: <code>sudo nano /etc/security/pwquality.conf</code>
+<img alt="security" src="../img/4.png" />
+<img alt="Fitxer configuració" src="../img/5.png" />
+Busquem on posa <code>minlen =</code>, i posem el número mínim de caràcters que pot tenir la contrasenya. Després fem <code>Ctrl + X</code>, <code>S</code>, <code>Enter</code>.<br>
+<img alt="minlen" src="../img/6.png" /></li>
+</ul>
+<h3 id="configuracions">Configuracions.</h3>
+<p>Per fer unes configuracions en l'inici de sesio s'<strong>Un Usuari</strong> de bash haurem d'accedir a diversos fitxers. Aquests fixers els trobarem dints del directori de cada usuari, i per veurels
+hem de fer us de la comanda <code>ls -la</code> per mostrar-los ja que estan ocults:
+<img alt="ls -la" src="../img/46.png" /><br><br>
+El <code>.bash_logout</code> executa ordres quan es tanca una sessió de Bash. <br>
+També tenim el <code>.bashrc</code> que configura l'entorn cada vegada que s'obre una nova terminal de Bash. <br>
+I finalment l'arxiu <code>.profile</code> que s'executa quan s'inicia una sessió de login configurant l'entorn global de l'usuari.<br> 
+<br>
+Si el que volem fer son unes configuracións com les anteriors però en tots el usuaris que es vagin creant, el que em de fer es modificar els anteriors arxius pero en el directori <code>/etc/skel</code>. I podem veure el seguent: 
+<img alt="skel" src="../img/47.png" /> <b><br><br>
+Farem les configuracións adients en els seguents tres arxius:</p>
+<ul>
+<li><code>.bash_logout</code>:
+<img alt=".log" src="../img/50.png" /></li>
+<li><code>.bashrc</code>:
+<img alt=".rc" src="../img/49.png" /></li>
+<li><code>.profile</code>:
+<img alt=".profile" src="../img/48.png" /></li>
+</ul>
+<hr />
+<h2 id="4-permisos">4. Permisos</h2>
+<h4 id="permisos-normals">Permisos normals.</h4>
+<p>El primer de tot es crear els 3 usuaris seguents:
+<img alt="usuaris" src="../img/51.png" /></p>
+<p>Els pemrisos es mostren de tres en tres, els 3 primers son els usuaris propietaris, els seguents 3 son els del grup propietari, i els 3 finals son el de <strong>other</strong> que es per altres usuaris. 
+<br> 
+Si creem un arxiu comenzara amb <code>-</code> i si creem un directori comenzara amb <code>d</code>.</p>
+<ul>
+<li>Lletres dels permisos: <strong>r</strong> (lectura), <strong>w</strong> (modificació), <strong>x</strong> (execucció)
+<img alt="lletres" src="../img/52.png" /></li>
+</ul>
+<p>Creem un grup anomenat <code>ddam</code> i hi afegim l'usuari <code>prova2</code>: </p>
+<p><img alt="grup" src="../img/53.png" /></p>
+<p>Creem una carpeta a <code>tmp</code> i un fitxer anomenat <code>hola</code>. Si mirem els permisos d'aquesta carpeta es pot veure que te els seguents permisos: </p>
+<ul>
+<li><strong>Usuari</strong>: Pemrmisos totals </li>
+<li><strong>Grup</strong>: Permisos totals</li>
+<li><strong>Altres</strong>: Permisos de lectura i execució però no de modificació</li>
+</ul>
+<p><img alt="tmp" src="../img/54.png" /></p>
+<p>L'ordre <code>chgrp</code> s'utilitza per canviar la propietat del grup d'un directori. Si s'utilitza amb l'opció <code>-R</code> l'ordre canvia la propietat de grup de manera recursiva, és a dir, no només per al fitxer o directori especificat, sinó també per a tots els fitxers i subdirectoris dins d'aquest.<br><br>
+Creem el directori <code>proves</code> i el fiquem al grup de <code>ddam</code>: </p>
+<p><img alt="chgrp" src="../img/55.png" /></p>
+<p>Ara pertany al grup de <code>ddam</code>: </p>
+<p><img alt="confirmació" src="../img/56.png" /></p>
+<p>Amb <code>chmod</code> canvie els permisos sent 7 el permiso total, 5 permis de lectura i execució, 0 sense permisos de cap tipus:<br>
+<img alt="chmod" src="../img/57.png" /></p>
+<p>També podem canviar permisos de la següent manera, <code>g+w</code> afegeix permiso de modifcacio al grup propietari i en <code>other</code> afegeix permisos de lectura:
+<img alt="gw" src="../img/58.png" /></p>
+<p>Si donem permisos de modificació i execució, es marcarà de color verd: 
+<img alt="verd" src="../img/59.png" /></p>
+<h3 id="permisos-especials">Permisos especials.</h3>
+<p>Podem donar diferents permisos a un directori o carpeta per a un usuari. Per a que cadascú pugui esborrar el que és seu per exemple, i no el dels altres. És fara us de <strong>Sticky</strong> <br></p>
+<ul>
+<li>Creem una carpeta <code>pelis</code> i u<code>fitxer</code>script.sh`:
+<img alt="pelis" src="../img/60.png" /><br></li>
+<li>Donem permisos d'execució a l'script: <br>
+<img alt="script" src="../img/61.png" /><br></li>
+<li>Afegim un <strong>svid (u+s)</strong> per fer que l'script sigui executat per diversos usuaris i canviara al color vermell: <br>
+<img alt="svid" src="../img/62.png" /><br></li>
+<li>El bit 4 el que vol dir és que quan s'executi el fitxer s'executara amb els permisos del propietari i no de l'usuari en concret:<br>
+<img alt="bit4" src="../img/63.png" /><br></li>
+<li>Si afegim <code>t</code> a la carpeta <code>peli</code> el que farà és que tots els usuaris puguin veure el contingut de la carpeta però no poden fer res més a part d'esborrar només el seu: <br>
+<img alt="t" src="../img/64.png" /><br></li>
+<li>Creem dos fitxers i veiem que des de diferents usuaris només els podem veure, però no podem eliminar el d'un altre usuari, només el que hem creat nosaltres mateixos:<br>
+<img alt="tprova" src="../img/65.png" /><br></li>
+</ul>
+<h3 id="permisos-acls">Permisos ACLs</h3>
+<p>Amb l'ordre <code>getfacl</code> podem veure els permisos dividits per grups i si hi ha algun permís especial aquí el podreu veure:<br><br>
+<img alt="getfacl" src="../img/66.png" /><br></p>
+<p>Prèviament hem creat l'usuari <code>proves3</code> i ho hem ficat al grup <code>ddam</code> <br />
+i l'hi afegim permisos especials amb <code>setfcal</code>, sense permisos en aquest cas, que té més prioritat que el permís de l'usuari que <strong>ja tenia</strong>. Per veure'ls de nou fem servir la comanda <code>getfacl</code> i a la segona línia surt aquest permís especial.<br>
+Si teniu permisos especials es mostra amb el <code>+</code> al final dels diversos permisos.</p>
+<pre><code>setfacl -m user:nom_usuari:--- fixer.txt
+setfacl -m group:nom_usuari:--- carpeta
+setfacl -b fitxer/carpeta
+</code></pre>
+<p><img alt="setfacl" src="../img/67.png" /><br></p>
+<p>Confirmem que l'usuari <code>prova3</code> no té permisos de cap tipus ja que no deixa ni entrar a la carpeta: </p>
+<p><img alt="prova3" src="../img/68.png" /><br></p>
+<ul>
+<li>Restablim els permisos especials:  </li>
+</ul>
+<p><img alt="restab" src="../img/69.png" /><br></p>
+<hr />
               
             </div>
           </div><footer>
