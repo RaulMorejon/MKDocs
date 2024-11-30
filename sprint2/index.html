@@ -87,6 +87,28 @@
     </li>
         </ul>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#5-particions">5. Particions</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#estructura-de-linformacio">Estructura de l'informació</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#fragmentacio-interna">Fragmentació interna</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#fragmentacio-externa">Fragmentació externa</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#estructura-fisica">Estructura Física</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#estructura-logica">Estructura Lògica</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#tipus-de-formateig">Tipus de formateig</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#que-es-un-sistema-de-fitxers">Què és un sistema de fitxers?</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#apuntadors-i-gestio-dels-fitxers">Apuntadors i gestió dels fitxers</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#implementar-copies-de-seguretat-automatiques">Implementar Còpies de Seguretat Automàtiques</a>
+    </li>
+        </ul>
+    </li>
     </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../sprint3/">Sprint 3</a>
@@ -369,6 +391,119 @@ setfacl -b fitxer/carpeta
 </ul>
 <p><img alt="restab" src="../img/69.png" /><br></p>
 <hr />
+<h2 id="5-particions">5. Particions</h2>
+<h3 id="estructura-de-linformacio">Estructura de l'informació</h3>
+<p>Es refereix a com es organitza i s'emmagatzema la informació dins d'un sistema d'emmagatzematge, com un disc dur o una memòria. Tenim dos conceptes: la <strong>fragmentació interna</strong> i la <strong>fragmentació externa</strong>:</p>
+<p><strong>Mida sector i mida bloc</strong></p>
+<ul>
+<li>
+<p><strong>Mida sector</strong>: El sector és la unitat més petita d'emmagatzematge en un disc o sistema d'arxius. És una porció del disc on es poden llegir o escriure dades. Normalment, els sectors tenen una mida de 512 bytes, tot i que també poden ser de 4 KB en discs més moderns.</p>
+</li>
+<li>
+<p><strong>Mida bloc</strong>: El bloc és una unitat d'emmagatzematge lògica utilitzada pel sistema d'arxius. Normalment, un bloc és més gran que un sector i la seva mida pot variar depenent del sistema d'arxius (per exemple, 4 KB, 8 KB, etc.). Els arxius es divideixen en blocs per al seu emmagatzematge.</p>
+</li>
+</ul>
+<h3 id="fragmentacio-interna">Fragmentació interna</h3>
+<p>La <strong>fragmentació interna</strong> es produeix quan un arxiu petit no omple completament el bloc d'emmagatzematge assignat. Per exemple, si un bloc és de 4 KB, però un arxiu només ocupa 1 KB, els 3 KB restants del bloc es queden desaprofitats, la qual cosa provoca un ús ineficient de l'espai.</p>
+<ul>
+<li><strong>Solució</strong>: Per evitar la fragmentació interna, es podria fer que els blocs fossin més petits, cosa que permetria aprofitar millor l'espai. Tanmateix, fer els blocs més petits també té inconvenients, ja que podria comportar una major quantitat de blocs que cal llegir i escriure, la qual cosa podria fer que el sistema fos més lent. A més, quan es suprimeix un arxiu, els blocs buits s'han de gestionar, la qual cosa pot disminuir l'eficiència general.</li>
+</ul>
+<h3 id="fragmentacio-externa">Fragmentació externa</h3>
+<p>La <strong>fragmentació externa</strong> succeeix quan un arxiu es divideix en diversos blocs dispersos per tot el sistema d'emmagatzematge, en lloc d'emmagatzemar-se de manera contigua. Això passa quan els arxius es guarden en blocs diferents sense un ordre específic, el que pot alentir l'accés a l'arxiu, ja que el sistema ha de buscar els blocs en diferents parts del disc.</p>
+<ul>
+<li><strong>Solució</strong>: La <strong>desfragmentació</strong> és la tècnica utilitzada per resoldre aquest problema. Consisteix a reorganitzar els blocs dels arxius de manera que s'emmagatzemin de forma contigua, millorant així la velocitat d'accés. Amb les eines de desfragmentació, es pot analitz</li>
+</ul>
+<h3 id="estructura-fisica">Estructura Física</h3>
+<ul>
+<li><strong>Mecànica</strong>: En discos durs (HDD), l'estructura física és mecànica, amb components mòbils com discs i braços d'accés per llegir i escriure dades.</li>
+<li><strong>Sòlida</strong>: En discos de memòria sòlida (SSD), l'estructura és electrònica, sense parts mòbils, utilitzant memòria flash per emmagatzemar dades, amb velocitats d'accés molt més ràpides.</li>
+</ul>
+<h3 id="estructura-logica">Estructura Lògica</h3>
+<ul>
+<li><strong>GPT (GUID Partition Table)</strong>: És un sistema modern per gestionar particions, amb suport per a discos de més de 2 TB i fins a 128 particions.</li>
+<li><strong>MBR (Master Boot Record)</strong>: És un sistema antic de 32 bits, amb limitacions de capacitat i nombre de particions (fins a 2 TB i 4 particions).</li>
+</ul>
+<p>Per veure quina estructura lògia tenim el que es fara sera executar la comanda <code>gdisk /dev/sda</code>:</p>
+<p><img alt="gdisk" src="../img/70.png" /> </p>
+<p>Per llistar els discs i particions, farem ús de l'anterior comanda <code>fdisk</code>. Podrem veure tots els sectors de tamany 512 bytes que es la unitat minima fisica on es guarden les dades.</p>
+<p><img alt="fdisk" src="../img/71.png" /> </p>
+<p>Seguidament observarem el tamany actual del Block que per defecte es de <code>4096 bytes</code>, es pot cambiar depenet de l'ús. Les dades es guarden en 8 sectors.</p>
+<p><img alt="block " src="../img/72.png" /> </p>
+<p>A continuació podem veure que un fixer ocupa mes en el sistma operatiu del que pesa el propi fixer ja que el <strong>Block</strong> te un tamany minim. Creem el fixer <code>hola</code> amb el seu contingut, amb <code>-b</code> veiem el tamany del propi documeny, i amb <code>-sh</code> veiem el que ocupa en el sistema: </p>
+<p><img alt="block " src="../img/73.png" /> </p>
+<p>Amb la comanda <code>df -T</code> podem veure l'unitat d'enmagatzematge i totes les parts que estan en us:</p>
+<p><img alt="block " src="../img/74.png" /> </p>
+<p>Per veure tots els dispositius connectats al teu sistema, incloent discs i particions, farem ús de la comanda <code>lsblk</code>:</p>
+<p><img alt="fdisk" src="../img/25.png" />
+<br><br>
+Primer de tot, per crear una nova partició, farem ús de <code>sudo fdisk /dev/sda</code>, sent <code>sda</code> l'identificador del teu disc: </p>
+<p><img alt="fdisk" src="../img/26.png" /></p>
+<p>Seguidament haurem d'escriure <code>n</code> i pressionar enter per crear la nova partició. El sistema preguntarà si es vol crear una partició <strong>primària (p)</strong> o <strong>estesa (e)</strong>. En aquest cas farem ús d'una partició primària.<br><br>
+Ara, especificarem el número de partició o podem utilitzar el número suggerit per defecte.<br><br>
+Donem enter per tenir el valor per defecte del primer sector. I després definim la mida de la partició en <strong>GB</strong>, per exemple <code>+20GB</code>, o bé podem pressionar enter per definir la partició amb tot l'espai disponible.<br><br>
+Per verificar la nova partició, s'haurà d'escriure <code>p</code> per llistar les particions i confirmar que s'ha creat correctament. Per guardar els canvis, escrivim <code>w</code> i pressionem <code>enter</code>, això escriurà la nova taula de particions i sortirà de <code>fdisk</code>. </p>
+<p><img alt="fdisk" src="../img/27.png" /></p>
+<ul>
+<li>Finalment, per crear un sistema d'arxius en la nova partició: <code>sudo mkfs.ext4 /dev/sda3</code>.</li>
+</ul>
+<p><img alt="fdisk" src="../img/28.png" /></p>
+<h3 id="tipus-de-formateig">Tipus de formateig</h3>
+<ol>
+<li>
+<p><strong>Format de alt nivell (ràpid)</strong>:</p>
+<ul>
+<li>Elimina el sistema de fitxers existent, però <strong>no borra els arxius</strong>.</li>
+<li>Crea una nova estructura del sistema de fitxers, però les dades poden ser recuperades.</li>
+</ul>
+</li>
+<li>
+<p><strong>Format normal</strong>:</p>
+<ul>
+<li>Elimina el sistema de fitxers i <strong>marca els sectors defectuosos</strong>.</li>
+<li>Els arxius desapareixen, però es poden recuperar fins que es sobreescriguin.</li>
+</ul>
+</li>
+<li>
+<p><strong>Format de baix nivell (lent)</strong>:</p>
+<ul>
+<li><strong>Borra tots els dades</strong> de manera exhaustiva, com si el disc fos nou.</li>
+<li>És el procés més lent i elimina tot el contingut del disc.</li>
+</ul>
+</li>
+</ol>
+<h3 id="que-es-un-sistema-de-fitxers">Què és un sistema de fitxers?</h3>
+<p>Un <strong>sistema de fitxers</strong> organitza i gestiona els fitxers en un dispositiu d'emmagatzematge (com un disc dur o SSD). Depèn de les particions del disc i defineix com es desar les dades, com s'hi accedeix i com es gestionen els noms i permisos dels fitxers.</p>
+<p><strong>Exemples comuns</strong>:
+- <code>ext4</code> (Linux)
+- <code>NTFS</code> (Windows)
+- <code>FAT32</code> (sistemes més antics)
+- <code>Btrfs</code>, <code>XFS</code> (per a tasques avançades)</p>
+<h3 id="apuntadors-i-gestio-dels-fitxers">Apuntadors i gestió dels fitxers</h3>
+<ul>
+<li>
+<p><strong>Inode</strong>: Cada fitxer té un <strong>inode</strong> que guarda la informació del fitxer (com permisos, mida i ubicació de les dades), però <strong>no el nom</strong>.</p>
+</li>
+<li>
+<p><strong>Directoris</strong>: Són taules que vinculen els <strong>noms dels fitxers</strong> amb <strong>inodes</strong> específics.</p>
+</li>
+<li>
+<p><strong>Apuntadors a blocs de dades</strong>: Els <strong>inodes</strong> contenen <strong>apuntadors</strong> als <strong>blocs de dades</strong> on es desar el contingut real del fitxer. Per a fitxers grans, s'utilitzen <strong>apuntadors dobles o triples</strong>.</p>
+</li>
+</ul>
+<h3 id="implementar-copies-de-seguretat-automatiques">Implementar Còpies de Seguretat Automàtiques</h3>
+<p>Les comandes que es poden utilitzar són les següents: </p>
+<ul>
+<li>
+<p><code>rsync</code>: Per crear còpies de seguretat. Les còpies es faran a un altre directori. <br>Per exemple, podem fer una còpia del directori <code>/home/raul2/prova/</code> al directori <code>/home/raul/prova2</code>, (la barra <code>/</code> indica que es copiaran només els continguts del directori). Llavors aquesta còpia la farem de la següent manera: <br><br>
+<img alt="fdisk" src="../img/29.png" /><br><br></p>
+</li>
+<li>
+<p><code>cron</code>: Per programar tasques automàticament. <br>Per exemple, si es vol fer una còpia de seguretat diària a les 2 AM, llavors editarem el <code>crontab</code>: 
+<br><br>
+<img alt="fdisk" src="../img/30.png" /><br><br>
+<img alt="fdisk" src="../img/31.png" /> </p>
+</li>
+</ul>
               
             </div>
           </div><footer>
