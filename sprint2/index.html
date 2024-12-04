@@ -57,7 +57,13 @@
     </li>
         </ul>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#2-installacio-de-serveis-essencials">2. Instal·lació de Serveis Essencials</a>
+    <li class="toctree-l2"><a class="reference internal" href="#2-procesos">2. Procesos</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#comandes-basiques-per-gestionar-els-processos">Comandes bàsiques per gestionar els processos:</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3-installacio-de-serveis-essencials">3. Instal·lació de Serveis Essencials</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#gestio-de-serveis">Gestió de Serveis</a>
     </li>
@@ -69,7 +75,7 @@
     </li>
         </ul>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#3-usuaris-i-grups">3. Usuaris i Grups</a>
+    <li class="toctree-l2"><a class="reference internal" href="#4-usuaris-i-grups">4. Usuaris i Grups</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#definir-politiques-de-seguretat-per-a-contrasenyes-i-accessos">Definir polítiques de seguretat per a contrasenyes i accessos.</a>
     </li>
@@ -77,7 +83,7 @@
     </li>
         </ul>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#4-permisos">4. Permisos</a>
+    <li class="toctree-l2"><a class="reference internal" href="#5-permisos">5. Permisos</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#permisos-normals">Permisos normals.</a>
     </li>
@@ -87,7 +93,7 @@
     </li>
         </ul>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#5-particions">5. Particions</a>
+    <li class="toctree-l2"><a class="reference internal" href="#6-particions">6. Particions</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#estructura-de-linformacio">Estructura de l'informació</a>
     </li>
@@ -159,31 +165,78 @@ Clica l'enllaç i espera que es faci la descàrrega automàticament d'<a href="h
 <p>En aquest apartat es començarà amb la creació d'una màquina virtual amb l'arxiu descarregat en l'apartat anterior, i es farà la configuració de l'entorn per posar-la en funcionament.<br><br>
 Passos a seguir:</p>
 <ul>
-<li>Obrim VirtualBox i busquem a la part superior el botó <strong>"Nova"</strong>.<br>
-  <img alt="Boto Nova" src="../img/boto_nova.png" />
-<br></li>
-<li>En la següent finestra s'ha de posar el nom de la màquina virtual, i en el camp <strong>"ISO image"</strong> s'ha de seleccionar l'<a href="#iso">ISO</a> descarregat al principi de l'article. Fem clic a <strong>Endavant</strong>.
-  <img alt="fase 1" src="../img/nomIso.png" />
-<br></li>
 <li>
-<p>Introduïm el nom d'usuari i la contrasenya, que compleixi amb els requisits que es demanen.
-  <br>
-  <img alt="Usuari i contrasenya" src="../img/usuariContra.png" /></p>
+<p>Obrim VirtualBox i busquem a la part superior el botó <strong>"Nova"</strong>.<br>
+  <img alt="Boto Nova" src="../img/boto_nova.png" /><br><br></p>
 </li>
 <li>
-<p>S'ha d'introduir la memòria RAM que es vol utilitzar i la quantitat de processos de la CPU que es vol utilitzar. I seguidament introduir la memòria d'emmagatzematge.
+<p>En la següent finestra s'ha de posar el nom de la màquina virtual, i en el camp <strong>"ISO image"</strong> s'ha de seleccionar l'<a href="#iso">ISO</a> descarregat al principi de l'article. Fem clic a <strong>Endavant</strong>.<br><br>
+  <img alt="fase 1" src="../img/nomIso.png" />
+<br><br></p>
+</li>
+<li>Introduïm el nom d'usuari i la contrasenya, que compleixi amb els requisits que es demanen.
+  <br><br>
+  <img alt="Usuari i contrasenya" src="../img/usuariContra.png" />
+  <br><br></li>
+<li>S'ha d'introduir la memòria RAM que es vol utilitzar i la quantitat de processos de la CPU que es vol utilitzar. I seguidament introduir la memòria d'emmagatzematge.<br><br>
   <img alt="memòria i cpu" src="../img/ram.png" />
   <br><br>
-  <img alt="emmagatzematge" src="../img/enmagat.png" /></p>
-</li>
+  <img alt="emmagatzematge" src="../img/enmagat.png" /></li>
 </ul>
 <h3 id="crear-i-gestionar-comptes-dusuari-locals">Crear i gestionar comptes d'usuari locals</h3>
-<p>Passarem a veure la creació d'usuaris locals. Per crear-lo s'utilitzarà la comanda <code>adduser</code>:
-<img alt="Adduser" src="../img/adduserR.png" />
-Introduïm una <strong>S</strong> o premem <strong>enter</strong> per seguir amb la creació: 
+<p>Passarem a veure la creació d'usuaris locals. Per crear-lo s'utilitzarà la comanda <code>adduser</code>:<br><br>
+<img alt="Adduser" src="../img/adduserR.png" /><br><br>
+Introduïm una <strong>S</strong> o premem <strong>enter</strong> per seguir amb la creació: <br><br>
 <img alt="Adduser" src="../img/adduserFinish.png" /></p>
 <hr />
-<h2 id="2-installacio-de-serveis-essencials">2. Instal·lació de Serveis Essencials</h2>
+<h2 id="2-procesos">2. Procesos</h2>
+<p>Els processos en Linux poden ser de dos tipus: en <strong>primer o segon</strong> pla. Els processos en <strong>primer pla</strong> interactuen amb l'usuari i bloquegen la terminal fins que finalitzen, mentre que els processos en <strong>segon pla</strong> poden continuar executant-se mentre l'usuari segueix utilitzant la terminal.
+Poden tindre una prioritat alta o baixa, depenent de la seva importància o de la configuració del sistema.</p>
+<p>Els processos poden estar en diversos estats:</p>
+<ul>
+<li>Running: El procés s'està executant.</li>
+<li>Sleeping: El procés està inactiu, esperant una acció extern.</li>
+<li>Stopped: El procés està aturat.</li>
+<li>Zombie: El procés ha acabat però encara surt a la taula de processos perquè el procés pare no ha llegit el seu estat de sortida.</li>
+</ul>
+<h3 id="comandes-basiques-per-gestionar-els-processos">Comandes bàsiques per gestionar els processos:</h3>
+<ul>
+<li><strong>ps</strong>: Mostra una llista de processos en execució. Per exemple amb <code>ps aux</code> mostra una llista completa de tots els processos en execució amb informació detallada<br><br>
+<img alt="ps_aux" src="../img/75.png" />
+<br><br></li>
+<li><strong>top</strong>: Mostra informació en temps real sobre els processos i l'ús de recursos. Primer mostrara els procesos més pesats.<br><br> 
+<img alt="top" src="../img/76.png" />
+<br><br></li>
+<li>
+<p><strong>kill</strong>: Permet enviar una senyal a un procés que es sol utilitzar per aturar-lo. Amb l'anterior comanda de <code>top</code> podem veure el <strong>PID</strong> del proces i llavors amb <code>kill PID</code> podem matar-lo: <br><br>
+<img alt="PID" src="../img/77.png" />
+<br><br>
+Utilitzem el <code>PID = 2463</code> i ens tancara el terminal del sistema:<br><br>
+<img alt="kill" src="../img/78.png" />
+<br><br></p>
+</li>
+<li>
+<p><strong>bg i fg</strong>: Aquests comandaments permeten moure un procés entre primer pla i segon pla.<br><br>
+    Per fer una prova creem un proces d'espera de <strong>1000 segons</strong>:<br><br>
+    <img alt="sleep" src="../img/79.png" />
+    <br><br>
+    Seguidament fem <code>CTRL + Z</code> per aturar-lo pero sense matar el proces:<br><br>
+    <img alt="ctrlz" src="../img/80.png" />
+    <br><br>
+        La comanda <code>bg</code> envia un procés aturat al segon pla. Llavors fem <code>bg sleep</code> per pasar el procés al segon  pla:  <br><br>
+        <img alt="bg" src="../img/81.png" />
+        <br><br>
+        La comanda <code>fg</code> porta un procés del segon pla al primer pla. Igual que avants fem <code>fg</code> però per pasar el procés al primer pla:<br><br>
+        <img alt="fg" src="../img/82.png" />
+        <br><br></p>
+</li>
+<li>
+<p><strong>pstree</strong>: Mostra els processos en forma d'arbre, mostrant les relacions entre processos. Per veure-ho fem <code>pstree</code> al nostre terminal: <br><br>
+<img alt="pstree" src="../img/83.png" /></p>
+</li>
+</ul>
+<hr />
+<h2 id="3-installacio-de-serveis-essencials">3. Instal·lació de Serveis Essencials</h2>
 <p>Sempre abans d'instal·lar qualsevol servei és bo assegurar-se que el sistema estigui actualitzat. Per aquest motiu es farà ús de la comanda <code>sudo apt update</code>:
 <img alt="update" src="../img/7.png" /></p>
 <p>I després fem <code>sudo apt upgrade</code>:
@@ -234,7 +287,7 @@ I per tenir una bona optimització del sistema i un correcte funcionament, es re
 </li>
 </ul>
 <hr />
-<h2 id="3-usuaris-i-grups">3. Usuaris i Grups</h2>
+<h2 id="4-usuaris-i-grups">4. Usuaris i Grups</h2>
 <ul>
 <li>
 <p>Per <strong>revisar</strong> la llista d'usuaris creats al sistema anirem al fitxer <code>/etc/passwd</code>:
@@ -326,7 +379,7 @@ Farem les configuracións adients en els seguents tres arxius:</p>
 <img alt=".profile" src="../img/48.png" /></li>
 </ul>
 <hr />
-<h2 id="4-permisos">4. Permisos</h2>
+<h2 id="5-permisos">5. Permisos</h2>
 <h4 id="permisos-normals">Permisos normals.</h4>
 <p>El primer de tot es crear els 3 usuaris seguents:
 <img alt="usuaris" src="../img/51.png" /></p>
@@ -391,7 +444,7 @@ setfacl -b fitxer/carpeta
 </ul>
 <p><img alt="restab" src="../img/69.png" /><br></p>
 <hr />
-<h2 id="5-particions">5. Particions</h2>
+<h2 id="6-particions">6. Particions</h2>
 <h3 id="estructura-de-linformacio">Estructura de l'informació</h3>
 <p>Es refereix a com es organitza i s'emmagatzema la informació dins d'un sistema d'emmagatzematge, com un disc dur o una memòria. Tenim dos conceptes: la <strong>fragmentació interna</strong> i la <strong>fragmentació externa</strong>:</p>
 <p><strong>Mida sector i mida bloc</strong></p>
