@@ -113,6 +113,20 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#implementar-copies-de-seguretat-automatiques">Implementar Còpies de Seguretat Automàtiques</a>
     </li>
+    <li class="toctree-l3"><a class="reference internal" href="#creacio-de-particions">Creació de particions</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#en-aquest-punt-farem-la-creacio-duna-particio">En aquest punt farem la Creació d'una partició:</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#muntatge-de-particions">Muntatge de particions</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#muntatge-temporal">Muntatge temporal</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#muntatge-definitiu">Muntatge definitiu</a>
+    </li>
+        </ul>
+    </li>
         </ul>
     </li>
     </ul>
@@ -557,6 +571,89 @@ Per verificar la nova partició, s'haurà d'escriure <code>p</code> per llistar 
 <img alt="fdisk" src="../img/31.png" /> </p>
 </li>
 </ul>
+<hr />
+<h3 id="creacio-de-particions">Creació de particions</h3>
+<p>Primer de tot hem de saber que <strong>EXT4</strong> és un sistema de fitxers utilitzat en Linux que millora la gestió de particions amb característiques com la seguretat de registres de canvis, el suport per a fitxers i particions més grans, i una millor organització per reduir la fragmentació.<br />
+També és més ràpid i compatible amb versions anteriors.<br />
+És fiable i adequat per a grans volums de dades.</p>
+<p>Primer de tot fem un llistat de totes les particions del disc disponibles en el sistema. Farem ús de la comanda <code>fdisk -l</code>. Buscarem una partició que tenim creada de 2GB.<br />
+Aquesta l'havíem creat a les configuracions de la màquina virtual. </p>
+<p><img alt="fdisk" src="../img/84.png" /></p>
+<p>Una vegada provat el disc i sabent el seu nom, entrarem dins d'ell amb <code>fdisk /dev/sdb</code>: </p>
+<p><img alt="fdisk_entrada" src="../img/85.png" /></p>
+<h4 id="en-aquest-punt-farem-la-creacio-duna-particio">En aquest punt farem la <strong>Creació d'una partició</strong>:</h4>
+<ul>
+<li>Per crear-la haurem d'introduir la lletra <code>n</code>, de <strong>new</strong>.  </li>
+<li>
+<p>Seguidament ens farà escollir entre una partició primària o una estesa, la diferència principal és que:</p>
+<ul>
+<li>La <strong>partició primària</strong> es pot utilitzar directament per emmagatzemar dades o un sistema operatiu.</li>
+<li>La <strong>partició estesa</strong> serveix per crear múltiples <strong>particions lògiques</strong> dins d'ella.</li>
+</ul>
+<p>En el sistema MBR, es poden tenir fins a 4 particions primàries, però només una partició estesa, que pot contenir diverses particions lògiques.<br />
+En aquest cas farem enter per escollir el valor predeterminat que serà la primària.</p>
+</li>
+<li>
+<p>En el nombre de particions igual farem ús del valor predeterminat que serà una partició.  </p>
+</li>
+<li>Arribem a la part on hem d'escollir la mida de la partició, el valor predeterminat és una mica més de 4 milions, llavors crearem mitja partició (2 milions).  </li>
+<li>I finalment introduïm <code>w</code> per guardar els canvis. </li>
+</ul>
+<p><img alt="creacio_part" src="../img/86.png" /></p>
+<p>Mirem que s'hagi creat amb èxit amb <code>fdisk -l</code> i veiem el disc <code>sdb</code> de 2GB i la partició <code>sdb1</code>:  </p>
+<p><img alt="part" src="../img/87.png" /></p>
+<p>Amb la comanda <code>mkfs.ext4 -b 2048 /dev/sdb1</code> el que estarem fent és especificar la mida del bloc quan es crea un sistema de fitxers <strong>EXT4</strong> en la partició. En aquest cas li estem introduint una mida de <strong>2048 bytes</strong> que seria útil per a arxius petits:  </p>
+<p><img alt="mida_bloc" src="../img/88.png" /></p>
+<p>Comprovem la mida del bloc fent un <code>grep</code> del bloc de la nostra partició i veiem <code>size = 2048</code>:  </p>
+<p><img alt="grep" src="../img/89.png" /></p>
+<h3 id="muntatge-de-particions">Muntatge de particions</h3>
+<p>El <strong>muntatge de particions</strong> és el procés mitjançant el qual el sistema operatiu associa una partició o dispositiu d'emmagatzematge a un directori del sistema de fitxers, permetent accedir-hi i gestionar els arxius. </p>
+<p>Per muntar una partició es fa servir la comanda <code>mount</code>, i per desmuntar-la s'utilitza <code>umount</code>. Muntar una partició és necessari abans de poder treballar amb els seus arxius al sistema.</p>
+<p>Tenim dues maneres de muntar una partició:</p>
+<ul>
+<li>De forma temporal, és a dir que quan l'equip es reinicia s'ha de tornar a muntar la partició.</li>
+<li>De forma definitiva, una vegada muntada la partició ja no es "perd" aquest muntatge ni quan l'equip es reinicia.</li>
+</ul>
+<h4 id="muntatge-temporal">Muntatge temporal</h4>
+<ul>
+<li>Primer de tot creem un directori el qual s'anomenarà <code>particio1</code>.</li>
+<li>Farem el muntatge de la partició dins del directori que hem creat amb la comanda <code>mount -t ext4 &lt;partició&gt; &lt;directori&gt;</code><br />
+  Algunes opcions de permisos que accepta aquesta comanda són les següents:<ul>
+<li><code>-o rw</code>: Muntatge en mode lectura-escriptura.</li>
+<li><code>-o ro</code>: Muntatge en mode només lectura.</li>
+<li><code>-o noatime</code>: No actualitza el temps d'accés als fitxers, millorant el rendiment.</li>
+<li><code>-o uid=&lt;id_usuari&gt;, gid=&lt;id_grup&gt;</code>: Assigna un usuari i grup específics als fitxers.</li>
+<li><code>-o noexec</code>: Impedeix l'execució de fitxers executables.</li>
+<li><code>-o umask=&lt;mascara&gt;</code>: Controla els permisos per defecte dels fitxers creats.</li>
+</ul>
+</li>
+</ul>
+<p>Aquestes opcions permeten personalitzar com es muntarà la partició segons les necessitats del sistema.</p>
+<ul>
+<li>Podem veure que una vegada muntada la partició, en el directori creat han aparegut coses i allà mateix creem un fitxer de <strong>prova</strong><br />
+<img alt="muntatge" src="../img/90.png" /></li>
+<li>Si la desmuntem amb la comanda <code>umount</code> tots els fitxers no es mostren, no s'han eliminat sinó que la partició no està muntada i no apareixeran fins que es torni a muntar:<br />
+<img alt="unmount" src="../img/91.png" /></li>
+<li><strong>Finalment</strong> per veure que aquest muntatge és temporal el que s'ha de fer és muntar la partició com ja s'ha explicat a dalt i reiniciar l'equip. Quan es torni a iniciar hem de fer un <code>ls</code> del directori <code>particio1</code> i veurem el directori buit perquè s'ha desmuntat la partició:<br />
+<img alt="particio" src="../img/92.png" /></li>
+</ul>
+<hr />
+<h4 id="muntatge-definitiu">Muntatge definitiu</h4>
+<p>Fem un <code>nano /etc/fstab</code>, que és un fitxer de configuració que conté informació sobre les particions i dispositius d'emmagatzematge, especificant com i on s'han de muntar automàticament durant l'arrencada del sistema. </p>
+<p><strong>Exemple d'una línia</strong>: <code>/dev/sdb1   /home....   ext4    rw    0   1</code></p>
+<ul>
+<li><code>/dev/sdb1</code>: Aquesta serà la partició que es vol muntar.</li>
+<li><code>/home...</code>: És el directori on es vol muntar el dispositiu.</li>
+<li><code>ext4</code>: És el tipus de sistema de fitxer.</li>
+<li><code>rw</code>: Seran els permisos que es poden donar, com escriptura, lectura o execució.</li>
+<li><code>1 o 0</code>: Aquest valor especifica en quin ordre el sistema de fitxers ha de ser verificat durant l'inici. El valor <code>1</code> indica que aquest sistema de fitxers ha de ser verificat primer. Si fos <code>0</code> vol dir que el sistema de fitxers <strong>NO</strong> es verifica durant l'arrencada.  </li>
+</ul>
+<p>Dins del fitxer introduïm la següent línia per al nostre cas i guardem:  </p>
+<p><img alt="fstab" src="../img/93.png" /></p>
+<p>Reiniciem el sistema i anem al directori <code>particio1</code> per comprovar que després del reinici la partició segueix muntada correctament, ja que podem veure el seu contingut:  </p>
+<p><img alt="def" src="../img/94.png" /></p>
+<p><strong>En aquest punt ja tindrem muntada la partició de forma definitiva.</strong>  </p>
+<hr />
               
             </div>
           </div><footer>
