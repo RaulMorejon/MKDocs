@@ -51,15 +51,19 @@
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#1-configuracio-inicial">1. Configuració inicial</a>
         <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#descarregar-ubuntu">Descarregar Ubuntu</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#crear-la-maquina-virtual-amb-virtualbox">Crear la màquina virtual amb VirtualBox</a>
+    </li>
     <li class="toctree-l3"><a class="reference internal" href="#afegir-i-configurar-la-maquina">Afegir i configurar la màquina</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#crear-i-gestionar-comptes-dusuari-locals">Crear i gestionar comptes d'usuari locals</a>
     </li>
         </ul>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#2-procesos">2. Procesos</a>
+    <li class="toctree-l2"><a class="reference internal" href="#2-processos">2. Processos</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#comandes-basiques-per-gestionar-els-processos">Comandes bàsiques per gestionar els processos:</a>
+    <li class="toctree-l3"><a class="reference internal" href="#comandes-basiques-per-gestionar-els-processos">Comandes bàsiques per gestionar els processos</a>
     </li>
         </ul>
     </li>
@@ -77,17 +81,29 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#4-usuaris-i-grups">4. Usuaris i Grups</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#definir-politiques-de-seguretat-per-a-contrasenyes-i-accessos">Definir polítiques de seguretat per a contrasenyes i accessos.</a>
+    <li class="toctree-l3"><a class="reference internal" href="#definir-politiques-de-seguretat-per-a-contrasenyes-i-accessos">Definir polítiques de seguretat per a contrasenyes i accessos</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#configuracions">Configuracions.</a>
+    <li class="toctree-l3"><a class="reference internal" href="#configuracions-de-linici-de-sessio">Configuracions de l'inici de sessió</a>
     </li>
         </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#5-permisos">5. Permisos</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#permisos-normals">Permisos normals.</a>
+    <li class="toctree-l3"><a class="reference internal" href="#permisos-normals">Permisos normals</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#permisos-en-arxius">Permisos en arxius</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#canviar-grup-amb-chgrp">Canviar grup amb chgrp</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#modificar-permisos-amb-chmod">Modificar permisos amb chmod</a>
+    </li>
+        </ul>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#permisos-especials">Permisos especials.</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#creacio-de-la-carpeta-i-el-fitxer">Creació de la carpeta i el fitxer</a>
+    </li>
+        </ul>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#permisos-acls">Permisos ACLs</a>
     </li>
@@ -96,6 +112,10 @@
     <li class="toctree-l2"><a class="reference internal" href="#6-particions">6. Particions</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#estructura-de-linformacio">Estructura de l'informació</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#mida-de-sector-i-mida-de-bloc">Mida de sector i mida de bloc</a>
+    </li>
+        </ul>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#fragmentacio-interna">Fragmentació interna</a>
     </li>
@@ -104,14 +124,22 @@
     <li class="toctree-l3"><a class="reference internal" href="#estructura-fisica">Estructura Física</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#estructura-logica">Estructura Lògica</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#tamany-del-bloc">Tamany del Bloc</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#tamany-del-fitxer-en-el-sistema">Tamany del Fitxer en el Sistema</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#visualitzacio-de-lus-despai">Visualització de l'Ús d'Espai</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#llistar-dispositius-connectats">Llistar Dispositius Connectats</a>
+    </li>
+        </ul>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#tipus-de-formateig">Tipus de formateig</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#que-es-un-sistema-de-fitxers">Què és un sistema de fitxers?</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#apuntadors-i-gestio-dels-fitxers">Apuntadors i gestió dels fitxers</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#implementar-copies-de-seguretat-automatiques">Implementar Còpies de Seguretat Automàtiques</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#creacio-de-particions">Creació de particions</a>
         <ul>
@@ -124,6 +152,42 @@
     <li class="toctree-l4"><a class="reference internal" href="#muntatge-temporal">Muntatge temporal</a>
     </li>
     <li class="toctree-l4"><a class="reference internal" href="#muntatge-definitiu">Muntatge definitiu</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#carpetes-compartides">Carpetes Compartides</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#proces-per-compartir-una-carpeta">Procés per compartir una carpeta:</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#7-copies-de-seguretat">7. Còpies de Seguretat</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#politiques-de-copies-de-seguretat">Polítiques de còpies de seguretat</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#completes">Completes</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#diferencials">Diferencials</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#incrementals">Incrementals</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#programes-amb-interficie">Programes amb interfície</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#deja-dup">Déjà Dup</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#comandes-cp-rsync-dd">Comandes: CP, RSYNC, DD</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#cp">CP</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#rsync">RSYNC</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#dd">DD</a>
     </li>
         </ul>
     </li>
@@ -164,226 +228,226 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <p><a name="ini"></a> </p>
-<h1 id="gestio-de-la-informacio-del-sistema-i-administracio">Gestió de la Informació del Sistema i Administració</h1>
+                <h1 id="gestio-de-la-informacio-del-sistema-i-administracio">Gestió de la Informació del Sistema i Administració</h1>
 <hr />
 <h2 id="1-configuracio-inicial">1. Configuració inicial</h2>
-<p>Primer de tot, s'ha d'instal·lar Ubuntu Linux en una màquina virtual. Per fer la instal·lació, s'ha d'anar a la pàgina d'Ubuntu per descarregar l'arxiu ".ISO".<br><br>
-<span id="iso">
-Clica l'enllaç i espera que es faci la descàrrega automàticament d'<a href="https://ubuntu.com/download/desktop/thank-you?version=24.04.1&amp;architecture=amd64&amp;lts=true">Ubuntu Desktop 24.04.1 LTS</a></p>
+<p>Primer de tot, s'ha d'instal·lar Ubuntu Linux en una màquina virtual. Per fer la instal·lació, s'ha d'anar a la pàgina oficial d'Ubuntu per descarregar l'arxiu <code>.ISO</code>. Aquest fitxer conté la imatge necessària per poder instal·lar Ubuntu en la màquina virtual.</p>
+<h3 id="descarregar-ubuntu">Descarregar Ubuntu</h3>
+<p>Per descarregar Ubuntu, clica l'enllaç i espera que es faci la descàrrega automàtica de <a href="https://ubuntu.com/download/desktop/thank-you?version=24.04.1&amp;architecture=amd64&amp;lts=true">Ubuntu Desktop 24.04.1 LTS</a>.</p>
 <p><img alt="Descarrega Ubuntu" src="../img/descarregaUbuntu.png" /></p>
-<p>Una vegada estigui la descàrrega, hem d'obrir un programa per crear màquines virtuals. En aquest cas s'utilitzarà VirtualBox.<br><br>
-<img alt="VirtualBox" src="../img/virtualBox.png" />
-<br><br></p>
+<p>Un cop finalitzada la descàrrega, tindràs el fitxer <code>.ISO</code> llest per ser utilitzat.</p>
+<h3 id="crear-la-maquina-virtual-amb-virtualbox">Crear la màquina virtual amb VirtualBox</h3>
+<p>Després de la descàrrega, cal obrir un programa per crear màquines virtuals. En aquest cas, s'utilitzarà <strong>VirtualBox</strong>.</p>
+<p><img alt="VirtualBox" src="../img/virtualBox.png" /></p>
+<p>Aquesta eina ens permetrà crear i gestionar la màquina virtual en què instal·larem Ubuntu. Un cop instal·lat VirtualBox al teu ordinador, pots començar a crear la màquina virtual seguint els passos necessaris.</p>
 <h3 id="afegir-i-configurar-la-maquina">Afegir i configurar la màquina</h3>
-<p>En aquest apartat es començarà amb la creació d'una màquina virtual amb l'arxiu descarregat en l'apartat anterior, i es farà la configuració de l'entorn per posar-la en funcionament.<br><br>
-Passos a seguir:</p>
+<p>En aquest apartat es començarà amb la creació d'una màquina virtual utilitzant l'arxiu <code>.ISO</code> descarregat en l'apartat anterior. També es farà la configuració de l'entorn necessari per posar la màquina en funcionament.</p>
+<p>Passos a seguir:</p>
 <ul>
-<li>
-<p>Obrim VirtualBox i busquem a la part superior el botó <strong>"Nova"</strong>.<br>
-  <img alt="Boto Nova" src="../img/boto_nova.png" /><br><br></p>
-</li>
-<li>
-<p>En la següent finestra s'ha de posar el nom de la màquina virtual, i en el camp <strong>"ISO image"</strong> s'ha de seleccionar l'<a href="#iso">ISO</a> descarregat al principi de l'article. Fem clic a <strong>Endavant</strong>.<br><br>
-  <img alt="fase 1" src="../img/nomIso.png" />
-<br><br></p>
-</li>
-<li>Introduïm el nom d'usuari i la contrasenya, que compleixi amb els requisits que es demanen.
-  <br><br>
-  <img alt="Usuari i contrasenya" src="../img/usuariContra.png" />
-  <br><br></li>
-<li>S'ha d'introduir la memòria RAM que es vol utilitzar i la quantitat de processos de la CPU que es vol utilitzar. I seguidament introduir la memòria d'emmagatzematge.<br><br>
-  <img alt="memòria i cpu" src="../img/ram.png" />
-  <br><br>
-  <img alt="emmagatzematge" src="../img/enmagat.png" /></li>
+<li>Obrim <strong>VirtualBox</strong> i busquem a la part superior el botó <strong>"Nova"</strong> per començar el procés de creació de la màquina virtual.</li>
 </ul>
+<p><img alt="Boto Nova" src="../img/boto_nova.png" /></p>
+<ul>
+<li>En la finestra següent, cal posar el nom de la màquina virtual. A la secció <strong>"ISO image"</strong>, seleccionarem <strong>ISO</strong> descarregat al principi de l'article per configurar la imatge d'instal·lació de la màquina virtual. Un cop seleccionat el fitxer, fem clic a <strong>Endavant</strong> per continuar.</li>
+</ul>
+<p><img alt="fase 1" src="../img/nomIso.png" /></p>
+<ul>
+<li>A continuació, cal introduir un nom d'usuari i una contrasenya que compleixi els requisits mínims de seguretat. Aquesta informació serà necessària per accedir al sistema operatiu un cop estigui instal·lat.</li>
+</ul>
+<p><img alt="Usuari i contrasenya" src="../img/usuariContra.png" /></p>
+<ul>
+<li>Ara s'ha de configurar la quantitat de memòria RAM que es vol assignar a la màquina virtual. També cal especificar la quantitat de processos de la CPU que es volen utilitzar. Finalment, cal determinar la mida del disc dur virtual per emmagatzemar els fitxers del sistema operatiu i altres dades.</li>
+</ul>
+<p><img alt="memòria i cpu" src="../img/ram.png" /></p>
+<p><img alt="emmagatzematge" src="../img/enmagat.png" /></p>
 <h3 id="crear-i-gestionar-comptes-dusuari-locals">Crear i gestionar comptes d'usuari locals</h3>
 <p>Passarem a veure la creació d'usuaris locals. Per crear-lo s'utilitzarà la comanda <code>adduser</code>:<br><br>
 <img alt="Adduser" src="../img/adduserR.png" /><br><br>
 Introduïm una <strong>S</strong> o premem <strong>enter</strong> per seguir amb la creació: <br><br>
 <img alt="Adduser" src="../img/adduserFinish.png" /></p>
 <hr />
-<h2 id="2-procesos">2. Procesos</h2>
-<p>Els processos en Linux poden ser de dos tipus: en <strong>primer o segon</strong> pla. Els processos en <strong>primer pla</strong> interactuen amb l'usuari i bloquegen la terminal fins que finalitzen, mentre que els processos en <strong>segon pla</strong> poden continuar executant-se mentre l'usuari segueix utilitzant la terminal.
-Poden tindre una prioritat alta o baixa, depenent de la seva importància o de la configuració del sistema.</p>
+<h2 id="2-processos">2. Processos</h2>
+<p>Els processos en Linux poden ser de dos tipus: en <strong>primer pla</strong> o en <strong>segon pla</strong>. Els processos en <strong>primer pla</strong> interactuen amb l'usuari i bloquegen la terminal fins que finalitzen, mentre que els processos en <strong>segon pla</strong> poden continuar executant-se mentre l'usuari segueix utilitzant la terminal. A més, els processos poden tenir una prioritat alta o baixa, depenent de la seva importància o de la configuració del sistema.</p>
 <p>Els processos poden estar en diversos estats:</p>
 <ul>
-<li>Running: El procés s'està executant.</li>
-<li>Sleeping: El procés està inactiu, esperant una acció extern.</li>
-<li>Stopped: El procés està aturat.</li>
-<li>Zombie: El procés ha acabat però encara surt a la taula de processos perquè el procés pare no ha llegit el seu estat de sortida.</li>
+<li><strong>Running</strong>: El procés s'està executant.</li>
+<li><strong>Sleeping</strong>: El procés està inactiu, esperant una acció externa.</li>
+<li><strong>Stopped</strong>: El procés està aturat.</li>
+<li><strong>Zombie</strong>: El procés ha acabat, però encara apareix a la taula de processos perquè el procés pare no ha llegit el seu estat de sortida.</li>
 </ul>
-<h3 id="comandes-basiques-per-gestionar-els-processos">Comandes bàsiques per gestionar els processos:</h3>
+<h3 id="comandes-basiques-per-gestionar-els-processos">Comandes bàsiques per gestionar els processos</h3>
+<p>A continuació, es mostren algunes de les comandes més utilitzades per gestionar els processos en Linux:</p>
 <ul>
-<li><strong>ps</strong>: Mostra una llista de processos en execució. Per exemple amb <code>ps aux</code> mostra una llista completa de tots els processos en execució amb informació detallada<br><br>
-<img alt="ps_aux" src="../img/75.png" />
-<br><br></li>
-<li><strong>top</strong>: Mostra informació en temps real sobre els processos i l'ús de recursos. Primer mostrara els procesos més pesats.<br><br> 
-<img alt="top" src="../img/76.png" />
-<br><br></li>
+<li><strong>ps</strong>: Mostra una llista de processos en execució. Per exemple, amb <code>ps aux</code> es mostra una llista completa de tots els processos en execució amb informació detallada.</li>
+</ul>
+<p><img alt="ps_aux" src="../img/75.png" /></p>
+<ul>
+<li><strong>top</strong>: Mostra informació en temps real sobre els processos i l'ús de recursos del sistema. Aquesta comanda mostra els processos més pesats en termes d'ús de recursos.</li>
+</ul>
+<p><img alt="top" src="../img/76.png" /></p>
+<ul>
+<li><strong>kill</strong>: Permet enviar una senyal a un procés, habitualment per aturar-lo. Per obtenir el <strong>PID</strong> (Process ID) del procés que vols aturar, primer pots utilitzar la comanda <code>top</code>. Un cop obtingut el PID, pots utilitzar <code>kill PID</code> per aturar el procés.</li>
+</ul>
+<p><img alt="PID" src="../img/77.png" /></p>
+<p>Per exemple, si utilitzem el <code>PID = 2463</code>, podem matar el procés amb la comanda següent, la qual tancarà el terminal del sistema.</p>
+<p><img alt="kill" src="../img/78.png" /></p>
+<ul>
+<li><strong>bg i fg</strong>: Aquests comandaments permeten moure un procés entre el primer pla i el segon pla.</li>
 <li>
-<p><strong>kill</strong>: Permet enviar una senyal a un procés que es sol utilitzar per aturar-lo. Amb l'anterior comanda de <code>top</code> podem veure el <strong>PID</strong> del proces i llavors amb <code>kill PID</code> podem matar-lo: <br><br>
-<img alt="PID" src="../img/77.png" />
-<br><br>
-Utilitzem el <code>PID = 2463</code> i ens tancara el terminal del sistema:<br><br>
-<img alt="kill" src="../img/78.png" />
-<br><br></p>
+<p>Per fer una prova, crearem un procés d'espera de <strong>1000 segons</strong>:</p>
+<p><img alt="sleep" src="../img/79.png" /></p>
 </li>
 <li>
-<p><strong>bg i fg</strong>: Aquests comandaments permeten moure un procés entre primer pla i segon pla.<br><br>
-    Per fer una prova creem un proces d'espera de <strong>1000 segons</strong>:<br><br>
-    <img alt="sleep" src="../img/79.png" />
-    <br><br>
-    Seguidament fem <code>CTRL + Z</code> per aturar-lo pero sense matar el proces:<br><br>
-    <img alt="ctrlz" src="../img/80.png" />
-    <br><br>
-        La comanda <code>bg</code> envia un procés aturat al segon pla. Llavors fem <code>bg sleep</code> per pasar el procés al segon  pla:  <br><br>
-        <img alt="bg" src="../img/81.png" />
-        <br><br>
-        La comanda <code>fg</code> porta un procés del segon pla al primer pla. Igual que avants fem <code>fg</code> però per pasar el procés al primer pla:<br><br>
-        <img alt="fg" src="../img/82.png" />
-        <br><br></p>
+<p>Seguidament, utilitzarem <code>CTRL + Z</code> per aturar-lo, però sense matar el procés:</p>
+<p><img alt="ctrlz" src="../img/80.png" /></p>
 </li>
 <li>
-<p><strong>pstree</strong>: Mostra els processos en forma d'arbre, mostrant les relacions entre processos. Per veure-ho fem <code>pstree</code> al nostre terminal: <br><br>
-<img alt="pstree" src="../img/83.png" /></p>
+<p>La comanda <code>bg</code> envia un procés aturat al segon pla. Llavors, utilitzem <code>bg sleep</code> per passar el procés al segon pla:</p>
+<p><img alt="bg" src="../img/81.png" /></p>
+</li>
+<li>
+<p>La comanda <code>fg</code> porta un procés del segon pla al primer pla. Per exemple, utilitzem <code>fg</code> per passar el procés creat abans al primer pla:</p>
+<p><img alt="fg" src="../img/82.png" /></p>
+</li>
+<li>
+<p><strong>pstree</strong>: Mostra els processos en forma d'arbre, mostrant les relacions entre processos. Per veure-ho, utilitzem la comanda <code>pstree</code> al terminal:</p>
 </li>
 </ul>
+<p><img alt="pstree" src="../img/83.png" /></p>
 <hr />
 <h2 id="3-installacio-de-serveis-essencials">3. Instal·lació de Serveis Essencials</h2>
-<p>Sempre abans d'instal·lar qualsevol servei és bo assegurar-se que el sistema estigui actualitzat. Per aquest motiu es farà ús de la comanda <code>sudo apt update</code>:
-<img alt="update" src="../img/7.png" /></p>
-<p>I després fem <code>sudo apt upgrade</code>:
-<img alt="upgrade" src="../img/8.png" /></p>
+<p>Abans d'instal·lar qualsevol servei, és recomanable assegurar-se que el sistema estigui actualitzat. Per això, es farà ús de la comanda <code>sudo apt update</code>:</p>
+<p><img alt="update" src="../img/7.png" /></p>
+<p>Després, es realitza la comanda <code>sudo apt upgrade</code>:</p>
+<p><img alt="upgrade" src="../img/8.png" /></p>
 <h3 id="gestio-de-serveis">Gestió de Serveis</h3>
-<p>Un cop instal·lats els serveis, es poden gestionar amb la comanda <code>systemctl</code>. Aquesta comanda pot <strong>iniciar, parar o reiniciar</strong> serveis. 
-A continuació un exemple d'aquesta comanda amb el servei <strong>SSH</strong>: <br><br>
-<img alt="systemctl" src="../img/13.png" /><br><br>
+<p>Un cop instal·lats els serveis, es poden gestionar amb la comanda <code>systemctl</code>. Aquesta comanda permet <strong>iniciar, parar o reiniciar</strong> serveis. A continuació es mostra un exemple d'aquesta comanda amb el servei <strong>SSH</strong>:</p>
+<p><img alt="systemctl" src="../img/13.png" />
 <img alt="systemctl" src="../img/14.png" /></p>
 <p>També podem editar el fitxer de configuració de <strong>SSH</strong>, obrint-lo amb la comanda <code>sudo nano /etc/ssh/sshd_config</code> per fer els següents canvis:</p>
 <ul>
-<li>Desactivar l'accés del root fent <code>PermitRootLogin no</code>:
-<img alt="ssh_config" src="../img/15.png" /> <br>
-<img alt="ssh_config" src="../img/16.png" />
-<br><br></li>
-<li>Per permetre l'accés per contrasenya, fem <code>PasswordAuthentication yes</code>:
-<img alt="ssh_config" src="../img/17.png" /></li>
+<li>Desactivar l'accés del root amb <code>PermitRootLogin no</code>:</li>
 </ul>
+<p><img alt="ssh_config" src="../img/15.png" />
+  <img alt="ssh_config" src="../img/16.png" /></p>
+<ul>
+<li>Permetre l'accés per contrasenya amb <code>PasswordAuthentication yes</code>:</li>
+</ul>
+<p><img alt="ssh_config" src="../img/17.png" /></p>
 <h3 id="comprovar-processos-en-execucio">Comprovar Processos en Execució</h3>
-<p>A vegades cal veure els processos que s'estan executant, per aquest motiu podem accedir a diferents comandes com <code>top</code>, que ens mostra els processos que s'executen en temps real, o podem veure un instantània dels processos executats al realitzar la comanda <code>ps aux</code>, com podem veure a la captura: 
-<img alt="ps" src="../img/18.png" />
-També podem fer una cerca i filtrar el procés que volem buscar amb <code>grep</code>:
-<img alt="grep ps" src="../img/19.png" /></p>
-<p>Una comanda que és molt més útil que les anteriors és <code>htop</code>, que ens mostra tots els processos en execució en temps real, el seu ús de CPU i memòria. La instal·larem amb <code>sudo apt install htop</code> i l'executarem:
-<img alt="htop" src="../img/20.png" /></p>
+<p>Per veure els processos en execució, podem utilitzar comandes com <code>top</code>, que ens mostra els processos en temps real, o podem obtenir una instantània dels processos amb <code>ps aux</code>, com es veu a la captura:</p>
+<p><img alt="ps" src="../img/18.png" /></p>
+<p>També podem cercar i filtrar un procés específic amb la comanda <code>grep</code>:</p>
+<p><img alt="grep ps" src="../img/19.png" /></p>
+<p>Una comanda més útil que les anteriors és <code>htop</code>, que mostra tots els processos en execució en temps real, el seu ús de CPU i memòria. La instal·larem amb <code>sudo apt install htop</code> i la podrem executar:</p>
+<p><img alt="htop" src="../img/20.png" /></p>
 <h3 id="optimitzar-lus-de-recursos">Optimitzar l'Ús de Recursos</h3>
-<p>Es pot comprovar l'ús, en temps real, de la memòria i de la CPU utilitzant <code>vmstat 1</code>:
-<img alt="vmstat" src="../img/21.png" /></p>
-<p>Si es vol fer una optimització de l'espai quan l'equip està utilitzant un disc de memòria SSD, es pot utilitzar la comanda <code>sudo fstrim -v</code>.
-I per tenir una bona optimització del sistema i un correcte funcionament, es recomanable mantenir-lo actualitzat.</p>
+<p>Per comprovar l'ús de la memòria i la CPU en temps real, podem utilitzar la comanda <code>vmstat 1</code>:</p>
+<p><img alt="vmstat" src="../img/21.png" /></p>
+<p>Per optimitzar l'espai quan l'equip utilitza un disc SSD, podem fer servir la comanda <code>sudo fstrim -v</code>. I per mantenir el sistema optimitzat, és recomanable mantenir-lo actualitzat.</p>
 <ul>
-<li>Actualitzar amb <code>sudo apt update &amp;&amp; sudo apt upgrade</code>:
-<img alt="vmstat" src="../img/22.png" /></li>
+<li>Actualitzar amb <code>sudo apt update &amp;&amp; sudo apt upgrade</code>:</li>
 </ul>
+<p><img alt="vmstat" src="../img/22.png" /></p>
 <h3 id="administrar-serveis-actius-segons-les-necessitats-del-sistema">Administrar Serveis Actius Segons les Necessitats del Sistema</h3>
-<p>Farem una identificació dels serveis actius, llavors, s'haurà d'utilitzar <code>systemctl</code>: 
-<img alt="systemctl" src="../img/23.png" /></p>
-<p>S'ha de revisar els serveis que s'estan executant i determinar si són necessaris. </p>
+<p>Per identificar els serveis actius, utilitzarem la comanda <code>systemctl</code>:</p>
+<p><img alt="systemctl" src="../img/23.png" /></p>
+<p>S'ha de revisar quins serveis s'estan executant i determinar si són necessaris. </p>
 <ul>
 <li>
-<p>Hem d'aturar els serveis innecessaris. Per aturar-lo s'ha d'utilitzar la comanda <code>sudo systemctl stop nom_del_servei</code>.</p>
+<p>Per aturar serveis innecessaris, utilitzarem la comanda <code>sudo systemctl stop nom_del_servei</code>.</p>
 </li>
 <li>
-<p>Si un servei no és necessari en l'arrencada, és millor deshabilitar-lo per evitar que s'iniciï automàticament, amb la comanda <code>sudo systemctl disable nom_del_servei</code>.</p>
+<p>Si un servei no és necessari a l'inici del sistema, és millor deshabilitar-lo amb <code>sudo systemctl disable nom_del_servei</code>.</p>
 </li>
 <li>
-<p>Si es necessita un servei per a una tasca específica, es pot habilitar temporalment, i s'iniciarà automàticament en l'arrencada. Es farà amb la comanda <code>sudo systemctl enable nom_del_servei</code>.</p>
+<p>Si es necessita un servei per a una tasca específica, es pot habilitar temporalment amb la comanda <code>sudo systemctl enable nom_del_servei</code>, de manera que s'iniciarà automàticament a l'arrencada.</p>
 </li>
 </ul>
 <hr />
 <h2 id="4-usuaris-i-grups">4. Usuaris i Grups</h2>
 <ul>
-<li>
-<p>Per <strong>revisar</strong> la llista d'usuaris creats al sistema anirem al fitxer <code>/etc/passwd</code>:
-<img alt="Comprovar Usuaris" src="../img/comprovarUs.png" />
-<br><br></p>
-</li>
-<li>
-<p>Per <strong>eliminar</strong> un usuari de qualsevol grup, només caldrà fer ús de la comanda <code>deluser nom_usuari nom_grup</code>: 
-<img alt="deluser" src="../img/33.png" /><br><br></p>
-</li>
-<li>
-<p>En aquest punt farem la <strong>creació d'un grup</strong>. Per realitzar aquesta acció s'ha d'utilitzar la comanda <code>sudo groupadd nom_grup</code>, i després s'ha de fer una comprovació d'aquest grup amb la següent comanda: <code>getent group | grep nom_grup</code>
-<img alt="Crear i comprovar grup" src="../img/crearGrup.png" /><br><br></p>
-</li>
-<li>
-<p>Seguidament s'ha d'<strong>afegir un usuari</strong> al grup creat o a un altre grup ja existent amb la comanda <code>sudo usermod -aG nom_grup nom_usuari</code>, aquesta instrucció no retornarà cap missatge. Després es farà una comprovació dels grups als quals pertany l'usuari amb: <code>groups nom_usuari</code>
-<img alt="Afegir usuari al grup" src="../img/afegirUsuariG.png" /> <br><br></p>
-</li>
-<li>
-<p>També existeix l'opció de <strong>crear un usuari dins d'un grup</strong> amb la comanda <code>adduser nom_usuari nom_grup</code>, així seguidament podem comprovar que ara al grup <code>sudo</code> tenim dos usuaris:
-<img alt="grup" src="../img/32.png" /> <br><br>
-La primera part de la línia és el nom del grup, després mostra si hi ha una contrasenya associada al grup, que normalment si és un <code>X</code> vol dir que no s'utilitza contrasenya.<br> Seguidament va amb el número únic assignat al grup, i finalment una llista d'usuaris que són membres del grup.<br><br></p>
-</li>
-<li>
-<p>Tenim l'opció de <strong>canviar la contrasenya</strong> de l'usuari amb la comanda <code>passwd nom_usuari</code>, d'aquesta manera ens demanarà una de nova, sempre mantenint la privacitat de les dades de l'usuari:<br />
-<img alt="contra" src="../img/34.png" /><br><br></p>
-</li>
-<li>
-<p>Si accedim a l'arxiu <code>/etc/passwd</code>, podrem trobar l'informació bàsica sobre el compte dels usuaris. En una línia podem veure primer de tot el <strong>nom de l'usuari</strong> que va seguit de la contrasenya que està guardada a l'arxiu <code>/etc/shadow</code>, però en aquesta línia s'emprarà amb un <code>X</code> o <code>*</code>. Després va l'identificador únic de l'usuari junt amb l'identificador del grup al qual pertany (<code>:1002:1002:</code>). Finalment aniria qualsevol informació addicional de l'usuari junt amb el directori personal de l'usuari.
-<img alt="passwd" src="../img/35.png" /><br><br></p>
-</li>
-<li>
-<p>Tenim l'arxiu <code>/etc/shadow</code> que és on es troben les contrasenyes encriptades de cada usuari. La línia està formada pel nom de l'usuari seguit de <code>!</code> o <code>*</code> que vol dir que el compte de l'usuari no pot iniciar sessió en el sistema. <br>Després, la data en què la contrasenya s'ha canviat per última vegada, seguida dels dies que cal que l'usuari esperi per poder canviar la seva contrasenya.<br> I finalment mostra el número de dies per avisar a l'usuari que la seva contrasenya expirarà (<code>99999</code>), juntament amb el número de dies que es pot estar inactiu després d'haver-se expirat.
-<img alt="shadow" src="../img/36.png" /><br><br></p>
-</li>
-<li>
-<p>Ara, ens falta crear el sistema personal d'arxius a l'usuari, per això s'haurà de crear una carpeta amb la comanda <code>mkdir nom_usuari/carpeta</code>. Però ara el que passa és que aquest directori pertany en permisos a l'usuari <code>root</code>, llavors amb la següent comanda el que farem serà canviar el propietari i el grup propietari: <code>chown nom_usuari:nom_grup directori</code>
-<img alt="mkdir" src="../img/37.png" /><br><br></p>
-</li>
-<li>
-<p>Per bloquejar un usuari farem ús de la comanda <code>usermod -L nom_usuari</code>. Es pot veure que en l'arxiu <code>/etc/shadow</code> hi ha l'usuari, i seguidament el símbol <code>!</code>, això vol dir que està bloquejat.<br> I per desbloquejar-lo només caldrà executar la comanda <code>usermod -U nom_usuari</code>, i podrem veure a l'arxiu anterior que l'exclamació ha desaparegut, així que l'usuari torna a estar disponible.
-<img alt="usermod" src="../img/38.png" /><br><br></p>
-</li>
-<li>
-<p>Per eliminar un usuari podem utilitzar la comanda <code>deluser nom_usuari</code>, però el que farà serà eliminar l'usuari però no el directori personal d'aquest.<br> En cas de voler eliminar tota la informació i l'usuari de cop, el que s'utilitzarà serà la comanda <code>userdel -r nom_usuari</code>:
-<img alt="userdel" src="../img/39.png" /></p>
-</li>
-<li>
-<p>Per canviar el nom d'usuari utilitzarem <code>usermod -l nom_nou nom_usuari</code>, però quan fem aquest canvi no es canviarà el nom del directori personal. Per això haurem de fer <code>mv directori_antic/ directori_nou/</code>, d'aquesta manera tindrem l'usuari i directori canviats:
-<img alt="usermod_l" src="../img/40.png" />
-Però encara falta una cosa, i és que el grup al qual pertany aquest usuari encara no està actualitzat. Llavors, si mirem la informació de l'usuari amb <code>id nom_usuari</code>, podem veure que només s'ha canviat el <code>uid</code> que és el nom, però els grups encara no. Per canviar el nom del grup s'ha d'executar la comanda <code>groupmod -n nom_nou nom_grup</code>.
-<img alt="groupmod" src="../img/41.png" /></p>
-</li>
+<li>Per <strong>revisar</strong> la llista d'usuaris creats al sistema, anirem al fitxer <code>/etc/passwd</code>:</li>
 </ul>
-<p><strong>Finalment ja hauríem canviat el nom de l'usuari correctament.</strong></p>
-<h3 id="definir-politiques-de-seguretat-per-a-contrasenyes-i-accessos">Definir polítiques de seguretat per a contrasenyes i accessos.</h3>
-<p>A continuació es farà la configuració de les polítiques de contrasenyes. </p>
-<p>El fitxer principal per gestionar les polítiques de les contrasenyes és <code>/etc/login.defs</code>. Aquí és on es poden definir els diversos paràmetres.</p>
+<p><img alt="Comprovar Usuaris" src="../img/comprovarUs.png" /></p>
 <ul>
-<li>S'ha d'obrir el fitxer amb la comanda <code>sudo nano /etc/login.defs</code>:
-<img alt="Comanda fitxer polítiques" src="../img/defs.png" />
-<img alt="Fitxer polítiques" src="../img/1.png" /></li>
-<li>Seguidament, s'ha de modificar la línia <code>PASS_MAX_DAYS</code> si es vol posar un número de dies en què la contrasenya serà vàlida. Igual que aquest camp, també hi ha d'altres. 
-<img alt="pass_max" src="../img/2.png" />
-<img alt="pass" src="../img/3.png" /></li>
-<li>També es pot modificar la qualitat de les contrasenyes, és a dir, la longitud que poden tenir. Per modificar la longitud mínima, primer s'haurà d'obrir el fitxer on es troben aquestes característiques amb la següent comanda: <code>sudo nano /etc/security/pwquality.conf</code>
-<img alt="security" src="../img/4.png" />
-<img alt="Fitxer configuració" src="../img/5.png" />
-Busquem on posa <code>minlen =</code>, i posem el número mínim de caràcters que pot tenir la contrasenya. Després fem <code>Ctrl + X</code>, <code>S</code>, <code>Enter</code>.<br>
-<img alt="minlen" src="../img/6.png" /></li>
+<li>Per <strong>eliminar</strong> un usuari de qualsevol grup, podem utilitzar la comanda <code>deluser nom_usuari nom_grup</code>:</li>
 </ul>
-<h3 id="configuracions">Configuracions.</h3>
-<p>Per fer unes configuracions en l'inici de sesio s'<strong>Un Usuari</strong> de bash haurem d'accedir a diversos fitxers. Aquests fixers els trobarem dints del directori de cada usuari, i per veurels
-hem de fer us de la comanda <code>ls -la</code> per mostrar-los ja que estan ocults:
-<img alt="ls -la" src="../img/46.png" /><br><br>
-El <code>.bash_logout</code> executa ordres quan es tanca una sessió de Bash. <br>
-També tenim el <code>.bashrc</code> que configura l'entorn cada vegada que s'obre una nova terminal de Bash. <br>
-I finalment l'arxiu <code>.profile</code> que s'executa quan s'inicia una sessió de login configurant l'entorn global de l'usuari.<br> 
-<br>
-Si el que volem fer son unes configuracións com les anteriors però en tots el usuaris que es vagin creant, el que em de fer es modificar els anteriors arxius pero en el directori <code>/etc/skel</code>. I podem veure el seguent: 
-<img alt="skel" src="../img/47.png" /> <b><br><br>
-Farem les configuracións adients en els seguents tres arxius:</p>
+<p><img alt="deluser" src="../img/33.png" /></p>
+<ul>
+<li>Per <strong>crear un grup</strong>, utilitzarem la comanda <code>sudo groupadd nom_grup</code>, i després comprovarem aquest grup amb la comanda <code>getent group | grep nom_grup</code>:</li>
+</ul>
+<p><img alt="Crear i comprovar grup" src="../img/crearGrup.png" /></p>
+<ul>
+<li>Per <strong>afegir un usuari</strong> a un grup creat o existent, utilitzarem la comanda <code>sudo usermod -aG nom_grup nom_usuari</code>. Aquesta comanda no retorna cap missatge. Després, farem una comprovació dels grups als quals pertany l'usuari amb <code>groups nom_usuari</code>:</li>
+</ul>
+<p><img alt="Afegir usuari al grup" src="../img/afegirUsuariG.png" /></p>
+<ul>
+<li>També podem <strong>crear un usuari dins d'un grup</strong> amb la comanda <code>adduser nom_usuari nom_grup</code>. Després, comprovarem que al grup <code>sudo</code> tenim dos usuaris:</li>
+</ul>
+<p><img alt="grup" src="../img/32.png" /></p>
+<p>La primera part de la línia és el nom del grup, seguida d'una "X" que indica que no s'utilitza contrasenya per al grup. Després ve l'identificador del grup i una llista d'usuaris membres del grup.</p>
+<ul>
+<li>Per <strong>canviar la contrasenya</strong> d'un usuari, utilitzarem la comanda <code>passwd nom_usuari</code>. Ens demanarà una nova contrasenya, mantenint la privacitat de les dades de l'usuari:</li>
+</ul>
+<p><img alt="contra" src="../img/34.png" /></p>
+<ul>
+<li>Al fitxer <code>/etc/passwd</code>, podem trobar informació bàsica sobre els comptes d'usuari, com el nom de l'usuari, l'identificador únic d'usuari (UID), i el directori personal de l'usuari:</li>
+</ul>
+<p><img alt="passwd" src="../img/35.png" /></p>
+<ul>
+<li>Al fitxer <code>/etc/shadow</code> es guarden les contrasenyes encriptades de cada usuari. La línia de cada usuari conté informació sobre quan es va canviar la contrasenya per última vegada, els dies d'espera per canviar la contrasenya, i altres paràmetres de seguretat:</li>
+</ul>
+<p><img alt="shadow" src="../img/36.png" /></p>
+<ul>
+<li>Per crear un sistema personal d'arxius per a un usuari, utilitzarem la comanda <code>mkdir nom_usuari/carpeta</code>. Però, per defecte, el directori serà propietat de l'usuari <code>root</code>. Per canviar el propietari i el grup, utilitzarem la comanda <code>chown nom_usuari:nom_grup directori</code>:</li>
+</ul>
+<p><img alt="mkdir" src="../img/37.png" /></p>
+<ul>
+<li>Per <strong>bloquejar un usuari</strong>, utilitzarem la comanda <code>usermod -L nom_usuari</code>. A l'arxiu <code>/etc/shadow</code>, l'usuari apareixerà amb un <code>!</code>, indicant que el compte està bloquejat. Per desbloquejar-lo, utilitzarem <code>usermod -U nom_usuari</code>:</li>
+</ul>
+<p><img alt="usermod" src="../img/38.png" /></p>
+<ul>
+<li>Per <strong>eliminar un usuari</strong>, utilitzarem la comanda <code>deluser nom_usuari</code>, però aquesta comanda no eliminarà el directori personal de l'usuari. Si volem eliminar tot, inclòs el directori personal, utilitzarem <code>userdel -r nom_usuari</code>:</li>
+</ul>
+<p><img alt="userdel" src="../img/39.png" /></p>
+<ul>
+<li>Per <strong>canviar el nom d'usuari</strong>, utilitzarem la comanda <code>usermod -l nom_nou nom_usuari</code>. Aquesta comanda no canvia el nom del directori personal. Per això, haurem de fer servir <code>mv directori_antic/ directori_nou/</code>:</li>
+</ul>
+<p><img alt="usermod_l" src="../img/40.png" /></p>
+<p>Però encara caldrà actualitzar el grup al qual pertany l'usuari. Per canviar el nom del grup, utilitzarem la comanda <code>groupmod -n nom_nou nom_grup</code>:</p>
+<p><img alt="groupmod" src="../img/41.png" /></p>
+<p><strong>Finalment, el nom de l'usuari i el grup hauran estat canviats correctament.</strong></p>
+<h3 id="definir-politiques-de-seguretat-per-a-contrasenyes-i-accessos">Definir polítiques de seguretat per a contrasenyes i accessos</h3>
+<p>Per gestionar les polítiques de contrasenyes, hem de modificar el fitxer <code>/etc/login.defs</code>:</p>
+<ul>
+<li>Obrim el fitxer amb <code>sudo nano /etc/login.defs</code>:</li>
+</ul>
+<p><img alt="Comanda fitxer polítiques" src="../img/defs.png" />
+  <img alt="Fitxer polítiques" src="../img/1.png" /></p>
+<ul>
+<li>Modifiquem la línia <code>PASS_MAX_DAYS</code> per establir la durada màxima de la contrasenya, i altres paràmetres si cal:</li>
+</ul>
+<p><img alt="pass_max" src="../img/2.png" />
+  <img alt="pass" src="../img/3.png" /></p>
+<ul>
+<li>També podem configurar la qualitat de les contrasenyes, com la longitud mínima. Per fer-ho, obrim el fitxer <code>/etc/security/pwquality.conf</code> amb <code>sudo nano /etc/security/pwquality.conf</code>:</li>
+</ul>
+<p><img alt="security" src="../img/4.png" />
+  <img alt="Fitxer configuració" src="../img/5.png" /></p>
+<p>Busquem la línia <code>minlen =</code> i establim el número mínim de caràcters per a la contrasenya:</p>
+<p><img alt="minlen" src="../img/6.png" /></p>
+<h3 id="configuracions-de-linici-de-sessio">Configuracions de l'inici de sessió</h3>
+<p>Per configurar els arxius de bash en l'inici de sessió d'un usuari, cal accedir a diversos fitxers en el directori de cada usuari. Aquests fitxers estan ocults, així que utilitzarem la comanda <code>ls -la</code> per veure'ls:</p>
+<p><img alt="ls -la" src="../img/46.png" /></p>
+<ul>
+<li>El fitxer <code>.bash_logout</code> executa ordres quan es tanca una sessió de Bash.</li>
+<li>El fitxer <code>.bashrc</code> configura l'entorn cada vegada que s'obre una nova terminal de Bash.</li>
+<li>El fitxer <code>.profile</code> s'executa quan s'inicia una sessió de login, configurant l'entorn global de l'usuari.</li>
+</ul>
+<p>Si volem aplicar aquestes configuracions a tots els usuaris que es creïn, hem de modificar aquests fitxers en el directori <code>/etc/skel</code>:</p>
+<p><img alt="skel" src="../img/47.png" /></p>
+<p>Farem les configuracions pertinents als següents fitxers</p>
 <ul>
 <li><code>.bash_logout</code>:
 <img alt=".log" src="../img/50.png" /></li>
@@ -394,51 +458,82 @@ Farem les configuracións adients en els seguents tres arxius:</p>
 </ul>
 <hr />
 <h2 id="5-permisos">5. Permisos</h2>
-<h4 id="permisos-normals">Permisos normals.</h4>
-<p>El primer de tot es crear els 3 usuaris seguents:
-<img alt="usuaris" src="../img/51.png" /></p>
-<p>Els pemrisos es mostren de tres en tres, els 3 primers son els usuaris propietaris, els seguents 3 son els del grup propietari, i els 3 finals son el de <strong>other</strong> que es per altres usuaris. 
-<br> 
-Si creem un arxiu comenzara amb <code>-</code> i si creem un directori comenzara amb <code>d</code>.</p>
+<h3 id="permisos-normals">Permisos normals</h3>
+<p>El primer que farem serà crear els tres usuaris següents:</p>
+<p><img alt="usuaris" src="../img/51.png" /></p>
+<p>Els permisos en Linux es divideixen en tres grups, que s'assignen de la següent manera:</p>
 <ul>
-<li>Lletres dels permisos: <strong>r</strong> (lectura), <strong>w</strong> (modificació), <strong>x</strong> (execucció)
-<img alt="lletres" src="../img/52.png" /></li>
+<li><strong>Propietari</strong>: Els tres primers permisos.</li>
+<li><strong>Grup propietari</strong>: Els tres permisos següents.</li>
+<li><strong>Altres</strong>: Els tres permisos finals.</li>
 </ul>
-<p>Creem un grup anomenat <code>ddam</code> i hi afegim l'usuari <code>prova2</code>: </p>
-<p><img alt="grup" src="../img/53.png" /></p>
-<p>Creem una carpeta a <code>tmp</code> i un fitxer anomenat <code>hola</code>. Si mirem els permisos d'aquesta carpeta es pot veure que te els seguents permisos: </p>
+<p>Quan creem un arxiu, aquest començarà amb <code>-</code>, mentre que si es crea un directori, començarà amb <code>d</code>.</p>
+<h4 id="permisos-en-arxius">Permisos en arxius</h4>
 <ul>
-<li><strong>Usuari</strong>: Pemrmisos totals </li>
-<li><strong>Grup</strong>: Permisos totals</li>
-<li><strong>Altres</strong>: Permisos de lectura i execució però no de modificació</li>
+<li><strong>Lletres dels permisos</strong>:<ul>
+<li><strong>r</strong>: Lectura</li>
+<li><strong>w</strong>: Escriptura (modificació)</li>
+<li><strong>x</strong>: Execució</li>
+</ul>
+</li>
+</ul>
+<p><img alt="lletres" src="../img/52.png" /></p>
+<p>Creem un grup anomenat <code>ddam</code> i afegim l'usuari <code>prova2</code>:</p>
+<p><img alt="grup" src="../img/53.png" /></p>
+<p>A continuació, creem una carpeta a <code>/tmp</code> i un fitxer anomenat <code>hola</code>. Si revisem els permisos d'aquesta carpeta, podem veure el següent:</p>
+<ul>
+<li><strong>Propietari</strong>: Permisos totals (lectura, escriptura i execució).</li>
+<li><strong>Grup</strong>: Permisos totals (lectura, escriptura i execució).</li>
+<li><strong>Altres</strong>: Només permisos de lectura i execució, sense permís d'escriptura.</li>
 </ul>
 <p><img alt="tmp" src="../img/54.png" /></p>
-<p>L'ordre <code>chgrp</code> s'utilitza per canviar la propietat del grup d'un directori. Si s'utilitza amb l'opció <code>-R</code> l'ordre canvia la propietat de grup de manera recursiva, és a dir, no només per al fitxer o directori especificat, sinó també per a tots els fitxers i subdirectoris dins d'aquest.<br><br>
-Creem el directori <code>proves</code> i el fiquem al grup de <code>ddam</code>: </p>
+<h4 id="canviar-grup-amb-chgrp">Canviar grup amb <code>chgrp</code></h4>
+<p>El comandament <code>chgrp</code> s'utilitza per canviar el grup d'un directori o fitxer. Si es fa servir amb l'opció <code>-R</code>, el canvi es realitza de manera recursiva, és a dir, no només sobre el fitxer o directori especificat, sinó també sobre tots els fitxers i subdirectoris dins d'ell.</p>
+<p>Creem el directori <code>proves</code> i l'assignem al grup <code>ddam</code>:</p>
 <p><img alt="chgrp" src="../img/55.png" /></p>
-<p>Ara pertany al grup de <code>ddam</code>: </p>
+<p>Ara, el directori pertany al grup <code>ddam</code>:</p>
 <p><img alt="confirmació" src="../img/56.png" /></p>
-<p>Amb <code>chmod</code> canvie els permisos sent 7 el permiso total, 5 permis de lectura i execució, 0 sense permisos de cap tipus:<br>
-<img alt="chmod" src="../img/57.png" /></p>
-<p>També podem canviar permisos de la següent manera, <code>g+w</code> afegeix permiso de modifcacio al grup propietari i en <code>other</code> afegeix permisos de lectura:
-<img alt="gw" src="../img/58.png" /></p>
-<p>Si donem permisos de modificació i execució, es marcarà de color verd: 
-<img alt="verd" src="../img/59.png" /></p>
-<h3 id="permisos-especials">Permisos especials.</h3>
-<p>Podem donar diferents permisos a un directori o carpeta per a un usuari. Per a que cadascú pugui esborrar el que és seu per exemple, i no el dels altres. És fara us de <strong>Sticky</strong> <br></p>
+<h4 id="modificar-permisos-amb-chmod">Modificar permisos amb <code>chmod</code></h4>
+<p>El comandament <code>chmod</code> s'utilitza per modificar els permisos dels fitxers i directoris. Els permisos es representen amb números:</p>
 <ul>
-<li>Creem una carpeta <code>pelis</code> i u<code>fitxer</code>script.sh`:
-<img alt="pelis" src="../img/60.png" /><br></li>
-<li>Donem permisos d'execució a l'script: <br>
-<img alt="script" src="../img/61.png" /><br></li>
-<li>Afegim un <strong>svid (u+s)</strong> per fer que l'script sigui executat per diversos usuaris i canviara al color vermell: <br>
-<img alt="svid" src="../img/62.png" /><br></li>
-<li>El bit 4 el que vol dir és que quan s'executi el fitxer s'executara amb els permisos del propietari i no de l'usuari en concret:<br>
-<img alt="bit4" src="../img/63.png" /><br></li>
-<li>Si afegim <code>t</code> a la carpeta <code>peli</code> el que farà és que tots els usuaris puguin veure el contingut de la carpeta però no poden fer res més a part d'esborrar només el seu: <br>
-<img alt="t" src="../img/64.png" /><br></li>
-<li>Creem dos fitxers i veiem que des de diferents usuaris només els podem veure, però no podem eliminar el d'un altre usuari, només el que hem creat nosaltres mateixos:<br>
-<img alt="tprova" src="../img/65.png" /><br></li>
+<li><strong>7</strong>: Permisos totals (lectura, escriptura, execució).</li>
+<li><strong>5</strong>: Permisos de lectura i execució.</li>
+<li><strong>0</strong>: Sense permisos.</li>
+</ul>
+<p>Exemple de com modificar els permisos d'un fitxer o directori:</p>
+<p><img alt="chmod" src="../img/57.png" /></p>
+<p>També podem afegir permisos als grups de la següent manera. Per exemple, <code>g+w</code> afegeix el permís d'escriptura al grup propietari, i <code>o+r</code> afegeix el permís de lectura als "altres" usuaris:</p>
+<p><img alt="gw" src="../img/58.png" /></p>
+<p>Quan s'assignen permisos de modificació i execució, els arxius o directoris es ressalten en color verd:</p>
+<p><img alt="verd" src="../img/59.png" /></p>
+<h3 id="permisos-especials">Permisos especials.</h3>
+<p>Podem assignar permisos diferents a un directori o carpeta per a un usuari. Per exemple, podem configurar-los perquè cadascú pugui esborrar només els fitxers que ha creat, però no els dels altres. Per aconseguir-ho, farem servir el <strong>Sticky Bit</strong>.</p>
+<h4 id="creacio-de-la-carpeta-i-el-fitxer">Creació de la carpeta i el fitxer</h4>
+<ul>
+<li>
+<p><strong>Creem una carpeta</strong> anomenada <code>pelis</code> i un fitxer anomenat <code>script.sh</code> dins d'aquesta carpeta:<br><br>
+<img alt="pelis" src="../img/60.png" /><br><br></p>
+</li>
+<li>
+<p><strong>Assignem permisos d'execució</strong> al fitxer <code>script.sh</code>, per tal que sigui executable pels usuaris que tinguin els permisos adequats:<br><br>
+<img alt="script" src="../img/61.png" /><br><br></p>
+</li>
+<li>
+<p>Afegim el permís <strong>setuid</strong> (u+s) a l'script. Aquest permís fa que l'script sigui executat per diversos usuaris, però amb els permisos del propietari del fitxer. Quan s'aplica aquest permís, el fitxer canviarà de color a vermell per indicar que el permís ha estat afegit:<br><br>
+<img alt="svid" src="../img/62.png" /><br><br></p>
+</li>
+<li>
+<p>El <strong>bit 4</strong> indica que quan s'executi el fitxer, s'executarà amb els permisos del propietari i no amb els del usuari que l'està executant. Això assegura que l'script s'executi amb els privilegis necessaris per dur a terme les accions que requereix:<br><br>
+<img alt="bit4" src="../img/63.png" /><br><br></p>
+</li>
+<li>
+<p><strong>Afegim el Sticky Bit</strong> (t) a la carpeta <code>pelis</code>. Aquest permís fa que tots els usuaris poden veure el contingut de la carpeta, però només podran eliminar els fitxers que han creat ells mateixos. Això evita que un usuari pugui esborrar fitxers creats per altres usuaris dins del mateix directori:<br><br>
+<img alt="t" src="../img/64.png" /><br><br></p>
+</li>
+<li>
+<p><strong>Creem dos fitxers</strong> dins de la carpeta <code>pelis</code> i comprovem el comportament amb diferents usuaris. Cada usuari només pot veure els fitxers, però no pot eliminar els fitxers creats per altres usuaris, només els que ha creat ell mateix:<br><br>
+<img alt="tprova" src="../img/65.png" /><br><br></p>
+</li>
 </ul>
 <h3 id="permisos-acls">Permisos ACLs</h3>
 <p>Amb l'ordre <code>getfacl</code> podem veure els permisos dividits per grups i si hi ha algun permís especial aquí el podreu veure:<br><br>
@@ -460,55 +555,68 @@ setfacl -b fitxer/carpeta
 <hr />
 <h2 id="6-particions">6. Particions</h2>
 <h3 id="estructura-de-linformacio">Estructura de l'informació</h3>
-<p>Es refereix a com es organitza i s'emmagatzema la informació dins d'un sistema d'emmagatzematge, com un disc dur o una memòria. Tenim dos conceptes: la <strong>fragmentació interna</strong> i la <strong>fragmentació externa</strong>:</p>
-<p><strong>Mida sector i mida bloc</strong></p>
+<p>La <strong>estructura de l'informació</strong> es refereix a com es distribueix i s'emmagatzema la informació dins d'un sistema d'emmagatzematge, com un disc dur o una memòria. En aquest context, hem de tenir en compte dos conceptes importants: la <strong>fragmentació interna</strong> i la <strong>fragmentació externa</strong>.</p>
+<h4 id="mida-de-sector-i-mida-de-bloc">Mida de sector i mida de bloc</h4>
 <ul>
 <li>
-<p><strong>Mida sector</strong>: El sector és la unitat més petita d'emmagatzematge en un disc o sistema d'arxius. És una porció del disc on es poden llegir o escriure dades. Normalment, els sectors tenen una mida de 512 bytes, tot i que també poden ser de 4 KB en discs més moderns.</p>
+<p><strong>Mida de sector</strong>: El sector és la unitat més petita d'emmagatzematge en un disc o sistema d'arxius. És una porció del disc on es poden llegir o escriure dades. Normalment, els sectors tenen una mida de 512 bytes, tot i que també poden ser de 4 KB en discs més moderns.</p>
 </li>
 <li>
-<p><strong>Mida bloc</strong>: El bloc és una unitat d'emmagatzematge lògica utilitzada pel sistema d'arxius. Normalment, un bloc és més gran que un sector i la seva mida pot variar depenent del sistema d'arxius (per exemple, 4 KB, 8 KB, etc.). Els arxius es divideixen en blocs per al seu emmagatzematge.</p>
+<p><strong>Mida de bloc</strong>: El bloc és una unitat d'emmagatzematge lògica utilitzada pel sistema d'arxius. Normalment, un bloc és més gran que un sector i la seva mida pot variar depenent del sistema d'arxius (per exemple, 4 KB, 8 KB, etc.). Els arxius es divideixen en blocs per al seu emmagatzematge.</p>
 </li>
 </ul>
 <h3 id="fragmentacio-interna">Fragmentació interna</h3>
-<p>La <strong>fragmentació interna</strong> es produeix quan un arxiu petit no omple completament el bloc d'emmagatzematge assignat. Per exemple, si un bloc és de 4 KB, però un arxiu només ocupa 1 KB, els 3 KB restants del bloc es queden desaprofitats, la qual cosa provoca un ús ineficient de l'espai.</p>
+<p>La <strong>fragmentació interna</strong> es produeix quan un arxiu petit no omple completament el bloc d'emmagatzematge assignat. Per exemple, si un bloc és de 4 KB però un arxiu només ocupa 1 KB, els 3 KB restants del bloc es queden desaprofitats, cosa que provoca un ús ineficient de l'espai.</p>
 <ul>
 <li><strong>Solució</strong>: Per evitar la fragmentació interna, es podria fer que els blocs fossin més petits, cosa que permetria aprofitar millor l'espai. Tanmateix, fer els blocs més petits també té inconvenients, ja que podria comportar una major quantitat de blocs que cal llegir i escriure, la qual cosa podria fer que el sistema fos més lent. A més, quan es suprimeix un arxiu, els blocs buits s'han de gestionar, la qual cosa pot disminuir l'eficiència general.</li>
 </ul>
 <h3 id="fragmentacio-externa">Fragmentació externa</h3>
-<p>La <strong>fragmentació externa</strong> succeeix quan un arxiu es divideix en diversos blocs dispersos per tot el sistema d'emmagatzematge, en lloc d'emmagatzemar-se de manera contigua. Això passa quan els arxius es guarden en blocs diferents sense un ordre específic, el que pot alentir l'accés a l'arxiu, ja que el sistema ha de buscar els blocs en diferents parts del disc.</p>
+<p>La <strong>fragmentació externa</strong> es produeix quan un arxiu es divideix en diversos blocs dispersos per tot el sistema d'emmagatzematge, en lloc d'emmagatzemar-se de manera contigua. Això passa quan els arxius es guarden en blocs diferents sense un ordre específic, el que pot alentir l'accés a l'arxiu, ja que el sistema ha de buscar els blocs en diferents parts del disc.</p>
 <ul>
-<li><strong>Solució</strong>: La <strong>desfragmentació</strong> és la tècnica utilitzada per resoldre aquest problema. Consisteix a reorganitzar els blocs dels arxius de manera que s'emmagatzemin de forma contigua, millorant així la velocitat d'accés. Amb les eines de desfragmentació, es pot analitz</li>
+<li><strong>Solució</strong>: La <strong>desfragmentació</strong> és la tècnica utilitzada per resoldre aquest problema. Consisteix a reorganitzar els blocs dels arxius de manera que s'emmagatzemin de forma contigua, millorant així la velocitat d'accés. Amb les eines de desfragmentació, es pot analitzar i reorganitzar el disc per minimitzar la fragmentació externa i millorar el rendiment general.</li>
 </ul>
 <h3 id="estructura-fisica">Estructura Física</h3>
 <ul>
-<li><strong>Mecànica</strong>: En discos durs (HDD), l'estructura física és mecànica, amb components mòbils com discs i braços d'accés per llegir i escriure dades.</li>
-<li><strong>Sòlida</strong>: En discos de memòria sòlida (SSD), l'estructura és electrònica, sense parts mòbils, utilitzant memòria flash per emmagatzemar dades, amb velocitats d'accés molt més ràpides.</li>
+<li>
+<p><strong>Mecànica</strong>: En discos durs tradicionals (HDD), l'estructura física és mecànica, amb components mòbils com discs magnètics i braços d'accés que es mouen per llegir i escriure dades. Els HDD solen ser més lents a causa d'aquestes parts mòbils.</p>
+</li>
+<li>
+<p><strong>Sòlida</strong>: En discos de memòria sòlida (SSD), l'estructura és electrònica, sense parts mòbils, utilitzant memòria flash per emmagatzemar dades. Els SSD tenen velocitats d'accés molt més ràpides que els HDD, ja que no depenen de components mecànics.</p>
+</li>
 </ul>
 <h3 id="estructura-logica">Estructura Lògica</h3>
 <ul>
-<li><strong>GPT (GUID Partition Table)</strong>: És un sistema modern per gestionar particions, amb suport per a discos de més de 2 TB i fins a 128 particions.</li>
-<li><strong>MBR (Master Boot Record)</strong>: És un sistema antic de 32 bits, amb limitacions de capacitat i nombre de particions (fins a 2 TB i 4 particions).</li>
+<li>
+<p><strong>GPT (GUID Partition Table)</strong>: És un sistema modern per gestionar particions, amb suport per a discos de més de 2 TB i fins a 128 particions. GPT és més fiable i flexible que MBR, i és àmpliament utilitzat en sistemes modernes.</p>
+</li>
+<li>
+<p><strong>MBR (Master Boot Record)</strong>: És un sistema antic de 32 bits, amb limitacions de capacitat i nombre de particions (fins a 2 TB i 4 particions). Tot i que encara es fa servir en alguns sistemes més antics, GPT és el sistema preferit en dispositius moderns.</p>
+</li>
 </ul>
 <p>Per veure quina estructura lògia tenim el que es fara sera executar la comanda <code>gdisk /dev/sda</code>:</p>
 <p><img alt="gdisk" src="../img/70.png" /> </p>
-<p>Per llistar els discs i particions, farem ús de l'anterior comanda <code>fdisk</code>. Podrem veure tots els sectors de tamany 512 bytes que es la unitat minima fisica on es guarden les dades.</p>
-<p><img alt="fdisk" src="../img/71.png" /> </p>
-<p>Seguidament observarem el tamany actual del Block que per defecte es de <code>4096 bytes</code>, es pot cambiar depenet de l'ús. Les dades es guarden en 8 sectors.</p>
-<p><img alt="block " src="../img/72.png" /> </p>
-<p>A continuació podem veure que un fixer ocupa mes en el sistma operatiu del que pesa el propi fixer ja que el <strong>Block</strong> te un tamany minim. Creem el fixer <code>hola</code> amb el seu contingut, amb <code>-b</code> veiem el tamany del propi documeny, i amb <code>-sh</code> veiem el que ocupa en el sistema: </p>
-<p><img alt="block " src="../img/73.png" /> </p>
-<p>Amb la comanda <code>df -T</code> podem veure l'unitat d'enmagatzematge i totes les parts que estan en us:</p>
-<p><img alt="block " src="../img/74.png" /> </p>
+<p>Per llistar els discs i particions, farem ús de la comanda <code>fdisk</code>. Podrem veure tots els sectors amb un tamany de <strong>512 bytes</strong>, que és la unitat mínima física on es guarden les dades.</p>
+<p><img alt="fdisk" src="../img/71.png" /></p>
+<h4 id="tamany-del-bloc">Tamany del Bloc</h4>
+<p>Seguidament, observarem el tamany actual del <strong>bloc</strong>, que per defecte és de <strong>4096 bytes</strong>. Aquest tamany es pot canviar depenent de l'ús. Les dades es guarden en <strong>8 sectors</strong>.</p>
+<p><img alt="block" src="../img/72.png" /></p>
+<h4 id="tamany-del-fitxer-en-el-sistema">Tamany del Fitxer en el Sistema</h4>
+<p>A continuació, podem veure que un fitxer ocupa més en el sistema operatiu del que pesa el propi fitxer, ja que el <strong>bloc</strong> té un tamany mínim assignat. Creem el fitxer <code>hola</code> amb el seu contingut, i amb les opcions <code>-b</code> veiem el tamany del propi document, mentre que amb <code>-sh</code> veiem el que ocupa en el sistema.</p>
+<p><img alt="block" src="../img/73.png" /></p>
+<h4 id="visualitzacio-de-lus-despai">Visualització de l'Ús d'Espai</h4>
+<p>Amb la comanda <code>df -T</code> podem veure l'unitat d'emmagatzematge i totes les parts que estan en ús:</p>
+<p><img alt="df -T" src="../img/74.png" /></p>
+<h4 id="llistar-dispositius-connectats">Llistar Dispositius Connectats</h4>
 <p>Per veure tots els dispositius connectats al teu sistema, incloent discs i particions, farem ús de la comanda <code>lsblk</code>:</p>
-<p><img alt="fdisk" src="../img/25.png" />
+<p><img alt="lsblk" src="../img/25.png" />
 <br><br>
 Primer de tot, per crear una nova partició, farem ús de <code>sudo fdisk /dev/sda</code>, sent <code>sda</code> l'identificador del teu disc: </p>
 <p><img alt="fdisk" src="../img/26.png" /></p>
-<p>Seguidament haurem d'escriure <code>n</code> i pressionar enter per crear la nova partició. El sistema preguntarà si es vol crear una partició <strong>primària (p)</strong> o <strong>estesa (e)</strong>. En aquest cas farem ús d'una partició primària.<br><br>
-Ara, especificarem el número de partició o podem utilitzar el número suggerit per defecte.<br><br>
-Donem enter per tenir el valor per defecte del primer sector. I després definim la mida de la partició en <strong>GB</strong>, per exemple <code>+20GB</code>, o bé podem pressionar enter per definir la partició amb tot l'espai disponible.<br><br>
-Per verificar la nova partició, s'haurà d'escriure <code>p</code> per llistar les particions i confirmar que s'ha creat correctament. Per guardar els canvis, escrivim <code>w</code> i pressionem <code>enter</code>, això escriurà la nova taula de particions i sortirà de <code>fdisk</code>. </p>
+<p>Seguidament, haurem d'escriure <code>n</code> i pressionar <strong>Enter</strong> per crear la nova partició. El sistema ens preguntarà si volem crear una partició <strong>primària (p)</strong> o <strong>estesa (e)</strong>. En aquest cas, seleccionarem una partició <strong>primària (p)</strong>.</p>
+<p>Ara, especificarem el número de partició, o podem utilitzar el número suggerit per defecte.</p>
+<p>Premem <strong>Enter</strong> per acceptar el valor per defecte del primer sector i, tot seguit, definirem la mida de la partició en <strong>GB</strong>, per exemple, <code>+20GB</code>. També podem pressionar <strong>Enter</strong> per assignar tota la capacitat disponible al disc.</p>
+<p>Per verificar la nova partició, haurem d'escriure <code>p</code> per llistar les particions i assegurar-nos que la nova partició s'ha creat correctament.</p>
+<p>Per guardar els canvis, escrivim <code>w</code> i pressionem <strong>Enter</strong>. Això escriurà la nova taula de particions i sortirà de <code>fdisk</code>.</p>
 <p><img alt="fdisk" src="../img/27.png" /></p>
 <ul>
 <li>Finalment, per crear un sistema d'arxius en la nova partició: <code>sudo mkfs.ext4 /dev/sda3</code>.</li>
@@ -520,105 +628,115 @@ Per verificar la nova partició, s'haurà d'escriure <code>p</code> per llistar 
 <p><strong>Format de alt nivell (ràpid)</strong>:</p>
 <ul>
 <li>Elimina el sistema de fitxers existent, però <strong>no borra els arxius</strong>.</li>
-<li>Crea una nova estructura del sistema de fitxers, però les dades poden ser recuperades.</li>
+<li>Crea una nova estructura del sistema de fitxers, però les dades poden ser recuperades mitjançant eines de recuperació.</li>
+<li>És el més ràpid i generalment utilitzat quan volem reutilitzar un dispositiu d'emmagatzematge sense perdre dades de manera permanent immediata.</li>
 </ul>
 </li>
 <li>
 <p><strong>Format normal</strong>:</p>
 <ul>
 <li>Elimina el sistema de fitxers i <strong>marca els sectors defectuosos</strong>.</li>
-<li>Els arxius desapareixen, però es poden recuperar fins que es sobreescriguin.</li>
+<li>Els arxius desapareixen, però encara poden ser recuperats fins que es sobreescriguin amb nous fitxers.</li>
+<li>Aquest tipus de format és útil quan el dispositiu pot tenir problemes de seguretat o corrupció i volem netejar la unitat.</li>
 </ul>
 </li>
 <li>
 <p><strong>Format de baix nivell (lent)</strong>:</p>
 <ul>
-<li><strong>Borra tots els dades</strong> de manera exhaustiva, com si el disc fos nou.</li>
-<li>És el procés més lent i elimina tot el contingut del disc.</li>
+<li><strong>Borra totes les dades</strong> de manera exhaustiva, incloent-hi l’estructura física del disc. El disc es restaura al seu estat inicial, com si fos nou.</li>
+<li>És el procés més lent i permanent, ja que les dades es perden de forma irreversible.</li>
+<li>Es recomana per a situacions on la seguretat és crucial, ja que assegura la destrucció de dades de manera completa.</li>
 </ul>
 </li>
 </ol>
+<hr />
 <h3 id="que-es-un-sistema-de-fitxers">Què és un sistema de fitxers?</h3>
-<p>Un <strong>sistema de fitxers</strong> organitza i gestiona els fitxers en un dispositiu d'emmagatzematge (com un disc dur o SSD). Depèn de les particions del disc i defineix com es desar les dades, com s'hi accedeix i com es gestionen els noms i permisos dels fitxers.</p>
-<p><strong>Exemples comuns</strong>:
-- <code>ext4</code> (Linux)
-- <code>NTFS</code> (Windows)
-- <code>FAT32</code> (sistemes més antics)
-- <code>Btrfs</code>, <code>XFS</code> (per a tasques avançades)</p>
+<p>Un <strong>sistema de fitxers</strong> és un conjunt de mecanismes que organitza, gestiona i emmagatzema fitxers en un dispositiu d'emmagatzematge com un disc dur, SSD o dispositius de memòria extraïble. Un sistema de fitxers defineix la manera en què es guarden les dades, com s'hi accedeix, i com es gestionen els noms i permisos dels fitxers.</p>
+<p>Aquests sistemes determinen com els arxius són organitzats en el disc, com són identificats, llegits, escrits, i gestionats, així com la manera en què es gestionen els permisos d'accés i la seguretat de les dades.</p>
+<p><strong>Exemples comuns de sistemes de fitxers</strong>:</p>
+<ul>
+<li><code>ext4</code>: Sistema de fitxers usat habitualment en distribucions de Linux, conegut per la seva estabilitat i eficiència.</li>
+<li><code>NTFS</code>: Sistema de fitxers propietari de Microsoft, utilitzat en la majoria dels sistemes Windows, amb suport per a arxius grans i seguretat avançada.</li>
+<li><code>FAT32</code>: Un sistema més antic, compatible amb molts dispositius i sistemes operatius, però amb limitacions, com la mida màxima d'arxiu de 4 GB.</li>
+<li><code>Btrfs</code>: Un sistema de fitxers de nova generació per a Linux, orientat a la gestió avançada de dades i a la integritat dels arxius.</li>
+<li><code>XFS</code>: Un sistema de fitxers altament escalable i de rendiment elevat, utilitzat principalment en entorns de servidor.</li>
+</ul>
 <h3 id="apuntadors-i-gestio-dels-fitxers">Apuntadors i gestió dels fitxers</h3>
+<ol>
+<li>
+<p><strong>Inode</strong>:</p>
 <ul>
-<li>
-<p><strong>Inode</strong>: Cada fitxer té un <strong>inode</strong> que guarda la informació del fitxer (com permisos, mida i ubicació de les dades), però <strong>no el nom</strong>.</p>
+<li>Cada fitxer en un sistema de fitxers té un <strong>inode</strong> associat. L'inode emmagatzema tota la informació del fitxer, com ara els permisos, la mida, les dates de creació i modificació, així com la ubicació física de les dades en el disc.</li>
+<li><strong>Important</strong>: L'inode <strong>no conté el nom</strong> del fitxer. El nom del fitxer es guarda en un directori que apunta a un inode específic.</li>
+</ul>
 </li>
 <li>
-<p><strong>Directoris</strong>: Són taules que vinculen els <strong>noms dels fitxers</strong> amb <strong>inodes</strong> específics.</p>
+<p><strong>Directoris</strong>:</p>
+<ul>
+<li>Els <strong>directoris</strong> són estructures de dades especials que actuen com a taules de mapeig. Vinculen els noms dels fitxers amb els seus respectius <strong>inodes</strong>.</li>
+<li>En lloc de contenir les dades reals dels fitxers, els directoris contenen enllaços (apuntadors) als <strong>inodes</strong> que representen cada fitxer. Això permet accedir al fitxer a través del seu nom.</li>
+</ul>
 </li>
 <li>
-<p><strong>Apuntadors a blocs de dades</strong>: Els <strong>inodes</strong> contenen <strong>apuntadors</strong> als <strong>blocs de dades</strong> on es desar el contingut real del fitxer. Per a fitxers grans, s'utilitzen <strong>apuntadors dobles o triples</strong>.</p>
+<p><strong>Apuntadors a blocs de dades</strong>:</p>
+<ul>
+<li>Els <strong>inodes</strong> contenen <strong>apuntadors</strong> que referencien els <strong>blocs de dades</strong> on es desa el contingut real del fitxer. Els blocs de dades són les unitats físiques d'emmagatzematge on es guarden les dades.</li>
+<li>Quan un fitxer és petit, pot ser emmagatzemat en un únic bloc. Tanmateix, per a fitxers més grans, es poden utilitzar <strong>apuntadors dobles o triples</strong>:<ul>
+<li><strong>Apuntadors simples</strong>: Apunten directament als blocs de dades.</li>
+<li><strong>Apuntadors dobles</strong>: Apunten a blocs que, al seu torn, contenen més apuntadors a blocs de dades.</li>
+<li><strong>Apuntadors triples</strong>: Apunten a blocs que contenen apuntadors dobles, oferint una capa addicional de referències per a fitxers molt grans.</li>
+</ul>
 </li>
 </ul>
-<h3 id="implementar-copies-de-seguretat-automatiques">Implementar Còpies de Seguretat Automàtiques</h3>
-<p>Les comandes que es poden utilitzar són les següents: </p>
-<ul>
-<li>
-<p><code>rsync</code>: Per crear còpies de seguretat. Les còpies es faran a un altre directori. <br>Per exemple, podem fer una còpia del directori <code>/home/raul2/prova/</code> al directori <code>/home/raul/prova2</code>, (la barra <code>/</code> indica que es copiaran només els continguts del directori). Llavors aquesta còpia la farem de la següent manera: <br><br>
-<img alt="fdisk" src="../img/29.png" /><br><br></p>
 </li>
-<li>
-<p><code>cron</code>: Per programar tasques automàticament. <br>Per exemple, si es vol fer una còpia de seguretat diària a les 2 AM, llavors editarem el <code>crontab</code>: 
-<br><br>
-<img alt="fdisk" src="../img/30.png" /><br><br>
-<img alt="fdisk" src="../img/31.png" /> </p>
-</li>
-</ul>
+</ol>
 <hr />
 <h3 id="creacio-de-particions">Creació de particions</h3>
-<p>Primer de tot hem de saber que <strong>EXT4</strong> és un sistema de fitxers utilitzat en Linux que millora la gestió de particions amb característiques com la seguretat de registres de canvis, el suport per a fitxers i particions més grans, i una millor organització per reduir la fragmentació.<br />
-També és més ràpid i compatible amb versions anteriors.<br />
-És fiable i adequat per a grans volums de dades.</p>
-<p>Primer de tot fem un llistat de totes les particions del disc disponibles en el sistema. Farem ús de la comanda <code>fdisk -l</code>. Buscarem una partició que tenim creada de 2GB.<br />
-Aquesta l'havíem creat a les configuracions de la màquina virtual. </p>
+<p>Primer de tot, cal saber que <strong>EXT4</strong> és un sistema de fitxers utilitzat principalment en Linux. Aquest sistema de fitxers millora la gestió de particions mitjançant diverses característiques importants com ara: <strong>seguretat de registres de canvis</strong>, que permet mantenir un registre dels canvis realitzats al sistema de fitxers, facilitant la recuperació en cas de fallades; <strong>suport per a fitxers i particions més grans</strong>, permetent gestionar volums de dades molt més grans que altres sistemes de fitxers com FAT32; <strong>millora de l'organització i reducció de la fragmentació</strong>, la qual cosa redueix la fragmentació i millora la velocitat d'accés als arxius; <strong>més ràpid i compatible amb versions anteriors</strong>, sent més eficient i mantenint compatibilitat amb versions antigues del sistema operatiu Linux; i <strong>fiabilitat i adequació per a grans volums de dades</strong>, ja que és un sistema robust i ideal per gestionar grans quantitats de dades. </p>
+<p>Per llistar totes les particions disponibles en el sistema, utilitzarem la comanda <code>fdisk -l</code>. Aquesta comanda mostrarà totes les particions creades en els discs del sistema. Haurem de buscar una partició que hem creat prèviament amb una mida de 2 GB.</p>
 <p><img alt="fdisk" src="../img/84.png" /></p>
 <p>Una vegada provat el disc i sabent el seu nom, entrarem dins d'ell amb <code>fdisk /dev/sdb</code>: </p>
 <p><img alt="fdisk_entrada" src="../img/85.png" /></p>
-<h4 id="en-aquest-punt-farem-la-creacio-duna-particio">En aquest punt farem la <strong>Creació d'una partició</strong>:</h4>
+<h5 id="en-aquest-punt-farem-la-creacio-duna-particio">En aquest punt farem la <strong>Creació d'una partició</strong>:</h5>
 <ul>
-<li>Per crear-la haurem d'introduir la lletra <code>n</code>, de <strong>new</strong>.  </li>
+<li>Per crear la partició, haurem d'introduir la lletra <code>n</code>, de <strong>new</strong>.</li>
 <li>
-<p>Seguidament ens farà escollir entre una partició primària o una estesa, la diferència principal és que:</p>
+<p>Seguidament, el sistema ens farà escollir entre una partició <strong>primària</strong> o <strong>estesa</strong>. La diferència principal és la següent:</p>
 <ul>
 <li>La <strong>partició primària</strong> es pot utilitzar directament per emmagatzemar dades o un sistema operatiu.</li>
 <li>La <strong>partició estesa</strong> serveix per crear múltiples <strong>particions lògiques</strong> dins d'ella.</li>
 </ul>
 <p>En el sistema MBR, es poden tenir fins a 4 particions primàries, però només una partició estesa, que pot contenir diverses particions lògiques.<br />
-En aquest cas farem enter per escollir el valor predeterminat que serà la primària.</p>
+En aquest cas, farem <strong>enter</strong> per escollir el valor predeterminat, que serà la partició primària.</p>
 </li>
 <li>
-<p>En el nombre de particions igual farem ús del valor predeterminat que serà una partició.  </p>
+<p>En el nombre de particions, farem també ús del valor predeterminat, que serà una sola partició.</p>
 </li>
-<li>Arribem a la part on hem d'escollir la mida de la partició, el valor predeterminat és una mica més de 4 milions, llavors crearem mitja partició (2 milions).  </li>
-<li>I finalment introduïm <code>w</code> per guardar els canvis. </li>
+<li>Arribem a la part on hem d'escollir la mida de la partició. El valor predeterminat és una mica més de 4 milions de sectors, així que crearem una partició de la meitat, és a dir, <strong>2 milions de sectors</strong>.</li>
+<li>Finalment, introduïm <code>w</code> per guardar els canvis.</li>
 </ul>
 <p><img alt="creacio_part" src="../img/86.png" /></p>
-<p>Mirem que s'hagi creat amb èxit amb <code>fdisk -l</code> i veiem el disc <code>sdb</code> de 2GB i la partició <code>sdb1</code>:  </p>
+<p>Per verificar que la partició s'ha creat correctament, utilitzem <code>fdisk -l</code> i veiem el disc <code>sdb</code> de 2GB i la partició <code>sdb1</code>:</p>
 <p><img alt="part" src="../img/87.png" /></p>
-<p>Amb la comanda <code>mkfs.ext4 -b 2048 /dev/sdb1</code> el que estarem fent és especificar la mida del bloc quan es crea un sistema de fitxers <strong>EXT4</strong> en la partició. En aquest cas li estem introduint una mida de <strong>2048 bytes</strong> que seria útil per a arxius petits:  </p>
+<p>Amb la comanda <code>mkfs.ext4 -b 2048 /dev/sdb1</code> el que estarem fent és especificar la mida del <strong>bloc</strong> quan es crea un sistema de fitxers <strong>EXT4</strong> en la partició. En aquest cas, li estem indicant una mida de <strong>2048 bytes</strong>, la qual és útil per a arxius petits perquè permet un ús més eficient de l'espai i redueix la fragmentació interna. No obstant això, per arxius grans, podria ser menys eficient en termes de rendiment, ja que es necessiten més operacions per llegir o escriure els arxius.</p>
 <p><img alt="mida_bloc" src="../img/88.png" /></p>
-<p>Comprovem la mida del bloc fent un <code>grep</code> del bloc de la nostra partició i veiem <code>size = 2048</code>:  </p>
+<p>Comprovem la mida del bloc fent un <code>grep</code> del bloc de la nostra partició i veiem <code>size = 2048</code>:</p>
 <p><img alt="grep" src="../img/89.png" /></p>
 <h3 id="muntatge-de-particions">Muntatge de particions</h3>
-<p>El <strong>muntatge de particions</strong> és el procés mitjançant el qual el sistema operatiu associa una partició o dispositiu d'emmagatzematge a un directori del sistema de fitxers, permetent accedir-hi i gestionar els arxius. </p>
+<p>El <strong>muntatge de particions</strong> és el procés mitjançant el qual el sistema operatiu associa una partició o dispositiu d'emmagatzematge a un directori del sistema de fitxers, permetent accedir-hi i gestionar els arxius.</p>
 <p>Per muntar una partició es fa servir la comanda <code>mount</code>, i per desmuntar-la s'utilitza <code>umount</code>. Muntar una partició és necessari abans de poder treballar amb els seus arxius al sistema.</p>
 <p>Tenim dues maneres de muntar una partició:</p>
 <ul>
-<li>De forma temporal, és a dir que quan l'equip es reinicia s'ha de tornar a muntar la partició.</li>
-<li>De forma definitiva, una vegada muntada la partició ja no es "perd" aquest muntatge ni quan l'equip es reinicia.</li>
+<li><strong>De forma temporal</strong>, és a dir, que quan l'equip es reinicia, s'ha de tornar a muntar la partició.</li>
+<li><strong>De forma definitiva</strong>, una vegada muntada la partició ja no es "perd" aquest muntatge ni quan l'equip es reinicia.</li>
 </ul>
 <h4 id="muntatge-temporal">Muntatge temporal</h4>
+<ol>
+<li>Primer de tot, creem un directori que s'anomenarà <code>particio1</code>.</li>
+<li>
+<p>Farem el muntatge de la partició dins del directori que hem creat amb la comanda <code>mount -t ext4 &lt;partició&gt; &lt;directori&gt;</code>.<br>
+   Algunes opcions de permisos que accepta aquesta comanda són les següents:</p>
 <ul>
-<li>Primer de tot creem un directori el qual s'anomenarà <code>particio1</code>.</li>
-<li>Farem el muntatge de la partició dins del directori que hem creat amb la comanda <code>mount -t ext4 &lt;partició&gt; &lt;directori&gt;</code><br />
-  Algunes opcions de permisos que accepta aquesta comanda són les següents:<ul>
 <li><code>-o rw</code>: Muntatge en mode lectura-escriptura.</li>
 <li><code>-o ro</code>: Muntatge en mode només lectura.</li>
 <li><code>-o noatime</code>: No actualitza el temps d'accés als fitxers, millorant el rendiment.</li>
@@ -626,33 +744,389 @@ En aquest cas farem enter per escollir el valor predeterminat que serà la prim�
 <li><code>-o noexec</code>: Impedeix l'execució de fitxers executables.</li>
 <li><code>-o umask=&lt;mascara&gt;</code>: Controla els permisos per defecte dels fitxers creats.</li>
 </ul>
-</li>
-</ul>
 <p>Aquestes opcions permeten personalitzar com es muntarà la partició segons les necessitats del sistema.</p>
-<ul>
-<li>Podem veure que una vegada muntada la partició, en el directori creat han aparegut coses i allà mateix creem un fitxer de <strong>prova</strong><br />
-<img alt="muntatge" src="../img/90.png" /></li>
-<li>Si la desmuntem amb la comanda <code>umount</code> tots els fitxers no es mostren, no s'han eliminat sinó que la partició no està muntada i no apareixeran fins que es torni a muntar:<br />
-<img alt="unmount" src="../img/91.png" /></li>
-<li><strong>Finalment</strong> per veure que aquest muntatge és temporal el que s'ha de fer és muntar la partició com ja s'ha explicat a dalt i reiniciar l'equip. Quan es torni a iniciar hem de fer un <code>ls</code> del directori <code>particio1</code> i veurem el directori buit perquè s'ha desmuntat la partició:<br />
-<img alt="particio" src="../img/92.png" /></li>
-</ul>
-<hr />
+</li>
+<li>
+<p>Podem veure que, una vegada muntada la partició, en el directori creat han aparegut fitxers, i allà mateix creem un fitxer de <strong>prova</strong>.<br><br>
+   <img alt="muntatge" src="../img/90.png" /><br><br></p>
+</li>
+<li>
+<p>Si la desmuntem amb la comanda <code>umount</code>, tots els fitxers no es mostren. No s'han eliminat, simplement la partició no està muntada i no apareixeran fins que es torni a muntar:<br><br>
+   <img alt="unmount" src="../img/91.png" /><br><br></p>
+</li>
+<li>
+<p><strong>Finalment</strong>, per veure que aquest muntatge és temporal, el que s'ha de fer és muntar la partició com ja s'ha explicat a dalt i reiniciar l'equip. Quan es torni a iniciar, hem de fer un <code>ls</code> del directori <code>particio1</code> i veurem el directori buit, ja que s'ha desmuntat la partició:<br><br>
+   <img alt="particio" src="../img/92.png" /><br><br></p>
+</li>
+</ol>
 <h4 id="muntatge-definitiu">Muntatge definitiu</h4>
-<p>Fem un <code>nano /etc/fstab</code>, que és un fitxer de configuració que conté informació sobre les particions i dispositius d'emmagatzematge, especificant com i on s'han de muntar automàticament durant l'arrencada del sistema. </p>
+<p>Per muntar la partició de forma definitiva, cal editar el fitxer de configuració <code>/etc/fstab</code>, que conté informació sobre les particions i dispositius d'emmagatzematge. Aquest fitxer especifica com i on s'han de muntar automàticament durant l'arrencada del sistema.</p>
+<ol>
+<li>
+<p>Fem un <code>nano /etc/fstab</code> per editar aquest fitxer.</p>
 <p><strong>Exemple d'una línia</strong>: <code>/dev/sdb1   /home....   ext4    rw    0   1</code></p>
 <ul>
 <li><code>/dev/sdb1</code>: Aquesta serà la partició que es vol muntar.</li>
-<li><code>/home...</code>: És el directori on es vol muntar el dispositiu.</li>
-<li><code>ext4</code>: És el tipus de sistema de fitxer.</li>
-<li><code>rw</code>: Seran els permisos que es poden donar, com escriptura, lectura o execució.</li>
-<li><code>1 o 0</code>: Aquest valor especifica en quin ordre el sistema de fitxers ha de ser verificat durant l'inici. El valor <code>1</code> indica que aquest sistema de fitxers ha de ser verificat primer. Si fos <code>0</code> vol dir que el sistema de fitxers <strong>NO</strong> es verifica durant l'arrencada.  </li>
+<li><code>/home....</code>: És el directori on es vol muntar el dispositiu.</li>
+<li><code>ext4</code>: És el tipus de sistema de fitxers.</li>
+<li><code>rw</code>: Indica els permisos que es poden atorgar, com escriptura, lectura o execució.</li>
+<li><code>1 o 0</code>: Aquest valor especifica en quin ordre el sistema de fitxers ha de ser verificat durant l'inici. El valor <code>1</code> indica que aquest sistema de fitxers ha de ser verificat primer. Si fos <code>0</code>, el sistema de fitxers <strong>NO</strong> es verifica durant l'arrencada.</li>
 </ul>
-<p>Dins del fitxer introduïm la següent línia per al nostre cas i guardem:  </p>
-<p><img alt="fstab" src="../img/93.png" /></p>
-<p>Reiniciem el sistema i anem al directori <code>particio1</code> per comprovar que després del reinici la partició segueix muntada correctament, ja que podem veure el seu contingut:  </p>
-<p><img alt="def" src="../img/94.png" /></p>
-<p><strong>En aquest punt ja tindrem muntada la partició de forma definitiva.</strong>  </p>
+</li>
+<li>
+<p>Dins del fitxer, afegim la següent línia per al nostre cas i la guardem:<br><br>
+<img alt="fstab" src="../img/93.png" /><br><br></p>
+</li>
+<li>
+<p>Reiniciem el sistema. Un cop reiniciat, anem al directori <code>particio1</code> per comprovar que la partició segueix muntada correctament, ja que podem veure el seu contingut:<br><br>
+<img alt="def" src="../img/94.png" /><br><br></p>
+</li>
+</ol>
+<p><strong>En aquest punt ja tindrem muntada la partició de forma definitiva.</strong></p>
+<hr />
+<h3 id="carpetes-compartides">Carpetes Compartides</h3>
+<p>Les carpetes compartides són directoris configurats perquè altres usuaris o dispositius de la xarxa hi puguin accedir, facilitant l'intercanvi de fitxers i la col·laboració.</p>
+<h4 id="proces-per-compartir-una-carpeta">Procés per compartir una carpeta:</h4>
+<ol>
+<li>
+<p>Primer de tot, s'ha de crear un disc en la màquina virtual que serà de 3 GB. En aquest cas, el disc es dirà <strong>sdc</strong>:<br><br>
+   <img alt="diskSdc" src="../img/100.png" /><br><br></p>
+</li>
+<li>
+<p>Seguidament, amb la comanda <code>fdisk /dev/sdc</code>, crearem la primera partició del disc afegit anteriorment:<br><br>
+   <img alt="creacio_part" src="../img/1000.png" /><br><br>
+   Disc amb la seva partició:<br><br>
+   <img alt="disc" src="../img/101.png" /><br><br></p>
+</li>
+</ol>
+<h5 id="ext4">EXT4</h5>
+<ol>
+<li>
+<p>Seguidament, s'haurà de formatejar la partició <strong>sdc1</strong> amb el sistema de fitxers <strong>ext4</strong>:
+   Comanda: <code>mkfs.ext4 /dev/sdc1</code><br><br>
+   <img alt="particioSdc" src="../img/1001.png" /><br><br></p>
+</li>
+<li>
+<p>Mirem la IP de la nostra màquina virtual i també del nostre ordinador físic (client) amb la comanda <code>ip a</code>.</p>
+<ul>
+<li><strong>IP de la màquina virtual</strong>: <code>192.168.201.204</code><br><br>
+<img alt="ipvirtual" src="../img/102.png" /><br><br></li>
+<li><strong>IP de l'ordinador físic (client)</strong>: <code>192.168.122.1</code><br><br>
+<img alt="ip" src="../img/103.png" /><br><br>
+   Veiem que estan connectades a la mateixa xarxa IP, així podrem fer la compartició de carpetes. En aquest punt comprovem que la màquina virtual té la xarxa establerta com a <strong>Adaptador pont</strong>.<br><br></li>
+</ul>
+</li>
+<li>
+<p>Seguidament, creem una carpeta al directori <code>/var</code> amb el nom de <strong>particio2</strong> i canviem els permisos d'aquesta carpeta a <code>chown nobody:nogroup</code>, que canvia el propietari d'un fitxer o directori a l'usuari <code>nobody</code> i al grup <code>nogroup</code>, utilitzats per recursos sense associació específica a usuaris o grups.<br><br>
+   <img alt="chown" src="../img/116.png" /><br><br></p>
+</li>
+<li>
+<p>Editarem l'arxiu <code>/etc/fstab</code> per canviar la direcció a <code>/var/particio2</code> per deixar muntada la partició:<br><br>
+   <img alt="fstab" src="../img/117.png" /><br><br></p>
+</li>
+<li>
+<p>Quan haguem editat el fitxer, farem un <code>reboot</code> de la màquina virtual per assegurar-nos que la partició quedi muntada correctament. <br><br></p>
+</li>
+<li>
+<p>Després, farem la instal·lació de <strong>Samba</strong> i <strong>Nautilus</strong>, tot i que finalment només farem ús de <strong>Samba</strong>:<br><br>
+   <img alt="update" src="../img/105.png" /><br><br>
+   <img alt="install_samba" src="../img/106.png" /><br><br></p>
+</li>
+<li>
+<p><strong>Samba</strong> és un conjunt de programes que permeten compartir arxius i recursos entre sistemes Linux i Windows.<br><br></p>
+</li>
+<li>
+<p>Ara farem la instal·lació de <strong>SMB Client</strong>, que és una eina de línia de comandes que permet accedir i gestionar recursos compartits en una xarxa mitjançant el protocol SMB.
+   Instal·lació de <code>smbclient</code>:
+   <img alt="smbclient" src="../img/109.png" /><br><br></p>
+</li>
+<li>
+<p>Canviarem els permisos per als usuaris de <strong>Samba</strong>:</p>
+<ul>
+<li>Donarem permís <code>1777</code>, que concedeix permisos de lectura, escriptura i execució per a tots els usuaris, amb la restricció que només el propietari dels fitxers pot eliminar-los.</li>
+<li>Afegirem al grup <code>sambashare</code> a l'usuari <code>root</code>, que serà qui pugui accedir a les carpetes configurades al fitxer <code>smb.conf</code>.<br><br>
+<img alt="permisos_samba" src="../img/110.png" /><br><br></li>
+</ul>
+</li>
+<li>
+<p>Creem un usuari de prova anomenat <code>gina</code>:<br><br>
+    <img alt="gina" src="../img/1004.png" /><br><br></p>
+</li>
+<li>
+<p>L'afegim al grup de <strong>Samba</strong>:<br><br>
+    <img alt="samba_grup" src="../img/112.png" /><br><br></p>
+</li>
+<li>
+<p>Ara li posem una contrasenya a l'usuari perquè pugui accedir al <strong>Samba</strong>. En aquest cas, la contrasenya serà <code>ginagina</code>:<br><br>
+    <img alt="contra1" src="../img/113.png" /><br><br>
+    <img alt="contra2" src="../img/114.png" /><br><br></p>
+</li>
+<li>
+<p>Un cop configurat l'usuari i els permisos, anirem al fitxer <code>/etc/samba/smb.conf</code>:<br><br>
+    <img alt="smb.conf" src="../img/118.png" /><br><br></p>
+</li>
+<li>
+<p>Dins del fitxer, afegirem les següents línies d'informació que a continuació s'explicaran:</p>
+<p><img alt="conf" src="../img/119.png" /><br><br></p>
+<p><strong>Explicació de cada línia afegida</strong>:</p>
+<ul>
+<li><code>path</code>: Defineix la ruta local on es troba el recurs compartit.</li>
+<li><code>browseable</code>: Controla si el recurs és visible a la xarxa.</li>
+<li><code>read only</code>: Permet només lectura si està configurat com a <code>yes</code>.</li>
+<li><code>writeable</code>: Habilita l'escriptura al recurs compartit si està configurat com a <code>yes</code>.</li>
+<li><code>guest ok</code>: Permet accés sense autenticació si està configurat com a <code>yes</code>.</li>
+<li><code>read list</code>: Especifica usuaris o grups amb accés de només lectura.</li>
+<li><code>write list</code>: Defineix usuaris o grups amb permisos d'escriptura.</li>
+<li><code>create mask</code>: Configura els permisos predeterminats per a fitxers nous.</li>
+<li><code>directory mask</code>: Estableix els permisos predeterminats per a directoris nous.</li>
+</ul>
+</li>
+<li>
+<p>Comprovem la IP de la nostra màquina virtual:<br><br>
+    <img alt="ip" src="../img/120.png" /><br><br></p>
+</li>
+<li>
+<p>Introduïm aquesta IP de la màquina virtual i ens dirigim a <code>Fitxers</code> del <strong>Client</strong>. A la barra lateral esquerra, a baix de tot, hi ha una secció on posa <code>Altres ubicacions</code>. Si hi fem clic, apareixerà un buscador a la part inferior i hem de posar la següent adreça:<br><br>
+    <img alt="ip_barra" src="../img/121.png" /><br><br></p>
+</li>
+<li>
+<p>Un cop fet tot això, el resultat serà que en el <strong>Client</strong> veurem la carpeta compartida que pertany a la <strong>Màquina Virtual</strong>:<br><br>
+    <img alt="client" src="../img/122.png" /><br><br></p>
+</li>
+</ol>
+<h5 id="ntfs">NTFS</h5>
+<p><strong>NTFS</strong> (New Technology File System) és un sistema de fitxers desenvolupat per Microsoft per a sistemes operatius Windows. Ofereix suport per a grans volums de dades, alta integritat i seguretat de les dades. Permet una ràpida cerca de fitxers, compressió de fitxers, i seguretat a nivell de fitxers. NTFS també gestiona permisos d'accés i encripta fitxers per protegir dades sensibles.</p>
+<ol>
+<li>
+<p>El primer pas serà afegir un nou disc de 3 GB. En aquest cas, serà el disc <code>sdf</code>.<br><br>
+   <img alt="disc_ntfs" src="../img/301.png" /><br><br></p>
+</li>
+<li>
+<p>Un cop afegit el nou disc a la màquina virtual, crearem una partició dins del disc anomenada <code>sdf1</code>:<br><br>
+   <img alt="partcicio_ntfs" src="../img/302.png" /><br><br>
+   Comprovació del disc amb la seva partició:<br><br>
+   <img alt="comprovacio_sdf" src="../img/303.png" /><br><br></p>
+</li>
+<li>
+<p>Seguidament, farem la instal·lació de <code>NTFS</code> amb la comanda <code>sudo apt install ntfs-3g</code>:<br><br>
+   <img alt="instalació" src="../img/304.png" /><br><br></p>
+</li>
+<li>
+<p>En cas de no tenir instal·lat <strong>Samba</strong>, l'instal·larem amb les següents comandes:<br><br>
+      <code>sudo apt-get update&lt;br&gt;
+      sudo apt-get install samba</code><br><br>
+En aquest cas, ja el tenim instal·lat de fer-lo servir abans:<br><br>
+<img alt="smb" src="../img/305.png" /><br><br></p>
+</li>
+<li>
+<p>Ara crearem una carpeta que volem compartir més endavant. Aquesta carpeta es dirà <code>ntfs_l_w</code>. La crearem dins del directori <code>/var</code>:<br><br>
+<img alt="creacio" src="../img/306.png" /><br><br></p>
+</li>
+<li>
+<p>Seguidament, donarem permisos al nou directori:<br><br>
+<img alt="permisos" src="../img/307.png" /><br><br></p>
+</li>
+</ol>
+<h6 id="muntar-la-particio">Muntar la partició</h6>
+<ol>
+<li>
+<p>Primer de tot, amb la següent comanda: <code>sudo mkfs.ntfs -f /dev/sdf1</code>, el que farem serà formatejar la partició amb el sistema de fitxers <strong>NTFS</strong>.<br><br>
+   <img alt="mon_ntfs" src="../img/2000.png" /><br><br></p>
+</li>
+<li>
+<p>Després, muntem la partició de manera temporal per comprovar que funciona correctament:<br><br>
+   <img alt="mon_ntfs" src="../img/montada_var.png" /><br><br></p>
+</li>
+<li>
+<p>Seguidament, creem un fitxer dins de la partició a <code>/var/ntfs_l_w</code> amb la comanda <code>nano nom_fitxer.txt</code>, que ens servirà per veure més fàcilment si la partició està muntada correctament.<br><br></p>
+</li>
+<li>
+<p>En aquest punt, ja muntarem la partició <code>sdf</code> de manera definitiva. Així que editarem el fitxer <code>/etc/fstab</code> amb el sistema de fitxers <strong>NTFS</strong>:<br><br>
+   <img alt="comprovacio_sdf" src="../img/comprovacio.png" /><br><br></p>
+</li>
+<li>
+<p>Quan haguem editat el fitxer, farem un <code>reboot</code> de la nostra màquina virtual per tal que la partició quedi muntada correctament. Després, comprovem que a la direcció on s'ha muntat trobem el fitxer creat anteriorment.<br><br>
+   <img alt="comprovacio_sdf" src="../img/ls.png" /><br><br></p>
+</li>
+<li>
+<p>Un cop configurats l'usuari i els permisos, entrarem al fitxer <code>/etc/samba/smb.conf</code>:<br><br>
+   <img alt="smb.conf" src="../img/118.png" /><br><br></p>
+</li>
+<li>
+<p>Dins del fitxer, afegirem la següent configuració:
+  <code>[ntfs_l_w] 
+    path = /var/ntfs_l_w
+    public = yes
+    writable = yes
+    browsable = yes
+    guest ok = yes
+    re  ad list = gina
+    write list = gina
+    create mask = 0744
+    directory mask = 0755</code><br><br>
+  <img alt="smb" src="../img/smb.png" /><br><br>
+Seguidament reiniciem samba amb <code>sudo systemctl restart smbd</code> i mirem el seu estat amb la comanda <code>sudo systemctl status smbd</code><br><br>
+<img alt="reiniciar" src="../img/reini_smb.png" /><br><br></p>
+</li>
+</ol>
+<h6 id="accedir">Accedir</h6>
+<p>Comprovem que els dos dispositius (amb <strong>Linux</strong> i <strong>Windows</strong>) estiguin connectats a la mateixa xarxa.</p>
+<ul>
+<li>
+<p><strong>IP de la màquina amb Linux</strong>:<br><br><br />
+<img alt="ip" src="../img/ip.png" /><br><br>  </p>
+</li>
+<li>
+<p><strong>IP del Windows</strong>:<br><br>  <br />
+<img alt="ip" src="../img/ipwin.jpg" /><br><br>  </p>
+</li>
+</ul>
+<p>Finalment, hem d'anar a la nostra màquina amb <strong>Windows</strong> i accedir a l'apartat <code>Este equipo</code>. A dalt al buscador, hem d'introduir la direcció IP seguida del nom de la carpeta, com es mostra a continuació:</p>
+<p><img alt="ipewin" src="../img/ipenwin.jpg" /></p>
+<p>I finalment, accedirem a la carpeta que havíem compartit des de la nostra màquina Linux, veient el fitxer creat anteriorment.</p>
+<p><img alt="res" src="../img/res.jpg" /></p>
+<hr />
+<h2 id="7-copies-de-seguretat">7. Còpies de Seguretat</h2>
+<p>Una còpia de seguretat és una duplicació dels fitxers o dades importants d’un sistema, amb l'objectiu de protegir-los davant pèrdues, errors humans, fallades de maquinari o ciberatacs.</p>
+<p>La còpia ha d’estar en <strong>almenys dos suports diferents</strong> per evitar pèrdues si un suport falla, per exemple en dos discs.  </p>
+<p>Un RAID combina diverses unitats d'emmagatzematge per augmentar la fiabilitat, el rendiment i la capacitat d'emmagatzematge, proporcionant redundància contra fallades d'unitats i millorant la velocitat d'accés a les dades.  </p>
+<h3 id="politiques-de-copies-de-seguretat"><strong>Polítiques de còpies de seguretat</strong></h3>
+<p>Les polítiques estableixen com es realitzaran les còpies per garantir la seguretat i eficiència. Les tres tècniques més comuns són:</p>
+<ul>
+<li>
+<h4 id="completes">Completes</h4>
+Una còpia de seguretat <strong>Completa</strong> crea una còpia de tots els fitxers i dades seleccionades. Es sol utilitzar per còpies setmanals o mensuals.  <ul>
+<li><strong>Avantatges</strong>: Conté totes les dades en un sol conjunt i és més senzilla i ràpida de restaurar, ja que només es necessita la darrera còpia completa.  </li>
+<li><strong>Desavantatges</strong>: És lenta de fer, ja que requereix més temps i espai d'emmagatzematge.  </li>
+</ul>
+</li>
+<li>
+<h4 id="diferencials">Diferencials</h4>
+<p>Una còpia <strong>Diferencial</strong> crea una còpia dels canvis efectuats des de l'última còpia completa realitzada. Es sol utilitzar per còpies intermitents, diàries o cada pocs dies.  </p>
+<ul>
+<li><strong>Avantatges</strong>: Més ràpida i lleugera que una còpia completa, i per restaurar, només cal la darrera còpia completa i l'última còpia diferencial.  </li>
+<li><strong>Desavantatges</strong>: Amb el temps, pot augmentar de mida, ja que inclou tots els canvis acumulats des de l'última còpia completa.  </li>
+</ul>
+</li>
+<li>
+<h4 id="incrementals">Incrementals</h4>
+<p>Una còpia <strong>Incremental</strong> crea una còpia dels canvis realitzats des de l’última còpia (sigui completa o incremental). El seu ús és per còpies freqüents en entorns on el temps d'execució és crític.   </p>
+<ul>
+<li><strong>Avantatges</strong>: És la tècnica més ràpida i requereix menys espai.  </li>
+<li><strong>Desavantatges</strong>: La restauració és més lenta i complexa, ja que cal l'última còpia completa i totes les còpies incrementals prèvies. En cas que una còpia incremental es perdi o es corrompi, pot afectar la restauració.  </li>
+</ul>
+</li>
+</ul>
+<h5 id="resum-de-comparativa">Resum de comparativa</h5>
+<table>
+<thead>
+<tr>
+<th><strong>Tipus</strong></th>
+<th><strong>Velocitat de còpia</strong></th>
+<th><strong>Espai requerit</strong></th>
+<th><strong>Facilitat de restauració</strong></th>
+<th><strong>Requisits per restaurar</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Completa</strong></td>
+<td>Lenta</td>
+<td>Alt</td>
+<td>Alta</td>
+<td>Només la darrera còpia completa</td>
+</tr>
+<tr>
+<td><strong>Diferencial</strong></td>
+<td>Moderada</td>
+<td>Moderat</td>
+<td>Mitjana</td>
+<td>Completa + darrera diferencial</td>
+</tr>
+<tr>
+<td><strong>Incremental</strong></td>
+<td>Ràpida</td>
+<td>Baix</td>
+<td>Baixa</td>
+<td>Completa + totes les incrementals prèvies</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="programes-amb-interficie">Programes amb interfície</h3>
+<p>Utilitzarem el programa de còpies amb interfície gràfica <strong>Déjà Dup</strong> </p>
+<h4 id="deja-dup">Déjà Dup</h4>
+<p>Primer de tot el descarregarem amb les seguents comandes:</p>
+<p><code>sudo apt update 
+ sudo apt install deja-dup</code></p>
+<h5 id="comprovacio-de-la-installacio">Comprovació de la instal·lació</h5>
+<p><img alt="install_deja" src="../img/deja.png" /></p>
+<p>L'aplicació <strong>"Respaldos"</strong> que es veu al sistema Linux és una interfície gràfica per a <strong>Deja Dup</strong>, que és una eina de còpia de seguretat per a sistemes GNOME.</p>
+<p><img alt="interf_deja" src="../img/interficie_deja.png" /></p>
+<h5 id="copies">Copies</h5>
+<p>En iniciar el programa, primer de tot hem de crear la primera còpia, que serà una còpia completa de tot allò que es vulgui guardar. Per això, seleccionarem la primera opció: <code>Cree su primer respaldo</code>.</p>
+<p>Ens demanarà que indiquem quines carpetes volem afegir a la còpia de seguretat i quines volen ser ignorades, com podria ser la de la brossa:</p>
+<p><img alt="primera_completa" src="../img/aCopiar.png" /></p>
+<p>En la següent finestra, haurem de triar on volem guardar la còpia, que pot ser un disc extern, un servidor de xarxa o un servei en núvol com Google Drive. En aquest cas, es guardarà en una carpeta local:</p>
+<p><img alt="ubicació" src="../img/ubicacion_completa.png" /></p>
+<p>L'últim pas abans de fer la còpia serà afegir una contrasenya per poder restaurar els arxius:</p>
+<p><img alt="contra_com" src="../img/contra.png" /></p>
+<p><strong>Déjà Dup</strong> realitza còpies de seguretat <strong>automàtiques</strong> utilitzant còpies <strong>completes</strong>, <strong>diferencials</strong> i <strong>incrementals</strong> sense necessitat d'intervenció manual. Quan es fa la primera còpia, Déjà Dup realitza una còpia <strong>completa</strong> de tots els fitxers seleccionats. A partir de la segona còpia, el programa fa còpies <strong>incrementals</strong>, copiant només els fitxers que han canviat des de l'última còpia, ja sigui completa o incremental. Quan es fa una còpia <strong>diferencial</strong>, Déjà Dup copia els fitxers modificats des de la darrera còpia <strong>completa</strong>, ignorant les còpies incrementals. Aquest sistema automàtic permet optimitzar l'espai, ja que només es copien els canvis, sense necessitat que l'usuari configuri manualment el tipus de còpia.</p>
+<p>També podrem triar cada quant volem que es realitzi la còpia de seguretat, en cas que les tinguem automatitzades.</p>
+<p><img alt="copia_freq" src="../img/frequencia.png" /></p>
+<h5 id="restaurar">Restaurar</h5>
+<p>Per poder fer una restauració de les còpies de seguretat, el que hem de fer és anar a l'apartat <strong>Restaurar</strong> del menú superior de l'aplicació.</p>
+<p><img alt="restaurar_copia" src="../img/restaurar.png" /></p>
+<p>Seguidament, hem de seleccionar les carpetes/arxius que volem restaurar i, una vegada seleccionats, donarem clic al botó de <strong>Restaurar</strong>.</p>
+<p><img alt="seleccionar" src="../img/seleccionar.png" /></p>
+<p>Escollirem on volem fer la restauració, en la ubicació original o en una altra ubicació. I ja estaria feta; tindríem de nou tot el contingut de manera correcta.</p>
+<p><img alt="ubicació_rest" src="../img/ubi_rest.png" /></p>
+<hr />
+<h3 id="comandes-cp-rsync-dd">Comandes: CP, RSYNC, DD</h3>
+<p>Per fer les còpies de seguretat, el primer que es farà serà crear dos discos a la màquina virtual que siguin de <strong>1GB</strong> cadascun. En el nostre cas, tenim els discos <code>sdd</code> i <code>sde</code>:</p>
+<p><img alt="discos" src="../img/200.png" /></p>
+<p>El que hem de fer seguidament és crear una partició per a cada disc del tamany corresponent i, finalment, formatejar les particions amb el sistema de fitxers <code>ext4</code>:</p>
+<ul>
+<li>Particions creades:<br><br>
+<img alt="particions" src="../img/202.png" />
+<br></li>
+<li>Formateig de <code>sdd1</code>:<br><br>
+<img alt="sdd1" src="../img/201.png" />
+<br></li>
+<li>Formateig de <code>sde1</code><br><br>
+<img alt="sde1" src="../img/203.png" /></li>
+</ul>
+<p>Un cop tenim les dues particions, anem a <code>/var</code> i creem una carpeta anomenada <code>copia_dades</code>, que serà on rebrem els fitxers de la còpia. 
+També muntarem la partició <code>sdd1</code> al directori d'aquesta carpeta que acabem de crear:</p>
+<p><img alt="copia_dades" src="../img/204.png" /></p>
+<p>Ara anirem a <code>Documentos</code> i allí crearem un fitxer de prova i una carpeta com podem veure a continuació:</p>
+<p><img alt="Doc" src="../img/205.png" /></p>
+<h4 id="cp">CP</h4>
+<p>En aquest punt, amb <strong>CP</strong>, farem servir la comanda <code>sudo cp -R /directori_que_volem_copiar /directori_on_copiar</code>. Però en l'exemple ens faltava crear la carpeta <code>raul</code> dins de la carpeta <code>copia_dades</code>. </p>
+<p>Així que creem aquesta carpeta i després fem servir la comanda per fer la còpia:</p>
+<p><img alt="cp" src="../img/206.png" /></p>
+<p>En aquest moment ja tenim una còpia realitzada amb èxit i de manera correcta. Però si ara creem un fitxer nou i eliminem el que tenim anomenat <code>adeu</code>, el que veurem és que, al fer de nou la còpia, no s'actualitza. </p>
+<p>El que passa és que amb <strong>CP</strong> es fa una còpia i, en cas que es canviï alguna cosa, només afegirà el que és nou, però mai eliminarà res en el moment de fer la còpia, així que la carpeta on s'ha fet la còpia quedarà desactualitzada:</p>
+<p><img alt="cp2" src="../img/207.png" /></p>
+<h4 id="rsync">RSYNC</h4>
+<p>Ara provem amb la comanda de còpia <strong>RSYNC</strong>, i el que podem apreciar és que s'està eliminant al directori final l'arxiu que havíem eliminat de la carpeta origen, quedant així actualitzada la còpia final:</p>
+<p><img alt="rsync" src="../img/208.png" /></p>
+<p>Amb <strong>RSYNC</strong> aconseguim que es faci una còpia de manera intel·ligent, ja que només es copiaran les modificacions. També es pot fer entre màquines remotes via <code>SSH</code>.</p>
+<p>La comanda de <strong>RSYNC</strong> pot portar els següents atributs:</p>
+<ul>
+<li><code>-a</code> per mantenir els permisos</li>
+<li><code>-v</code> per obtenir informació dels processos</li>
+<li><code>--delete</code> per eliminar els canvis que no hi ha</li>
+</ul>
+<h4 id="dd">DD</h4>
+<p>Amb <strong>DD</strong> farem una còpia de seguretat, però en aquest cas serà entre particions, entre la partició <code>sdd</code> i <code>sde</code>.</p>
+<p>Aquesta comanda no està dissenyada per fer còpies de fitxers comuns, sinó que treballa a nivell de bloc, clonant discs o particions, incloent estructures de metadades.<br />
+També es pot utilitzar per sobrescriure de manera segura dispositius abans de fer un formateig. Cal fer servir <strong>DD</strong> amb precaució per evitar la pèrdua irreparable de dades.</p>
+<p>La comanda <code>sudo dd if=/dev/sdd1 of=/dev/sde1 ...</code> ens diu que es farà una còpia de seguretat des de la partició <code>sdd1</code> cap a la <code>sde1</code>.<br />
+Comprovem que els <em>hash</em> siguin iguals en les dues particions per confirmar que la còpia s'ha realitzat amb èxit.</p>
+<p><img alt="dd" src="../img/210.png" /></p>
+<p>I en cas que vulguem borrar una partició de manera segura abans de formatejar-la, el que farem serà sobreescriure la partició amb ceros per borrar el seu contingut:</p>
+<p><img alt="ddcero" src="../img/211.png" /></p>
 <hr />
               
             </div>
