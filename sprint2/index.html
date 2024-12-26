@@ -292,22 +292,26 @@ Introduïm una <strong>S</strong> o premem <strong>enter</strong> per seguir amb
 <p>Per exemple, si utilitzem el <code>PID = 2463</code>, podem matar el procés amb la comanda següent, la qual tancarà el terminal del sistema.</p>
 <p><img alt="kill" src="../img/78.png" /></p>
 <ul>
-<li><strong>bg i fg</strong>: Aquests comandaments permeten moure un procés entre el primer pla i el segon pla.</li>
 <li>
-<p>Per fer una prova, crearem un procés d'espera de <strong>1000 segons</strong>:</p>
-<p><img alt="sleep" src="../img/79.png" /></p>
+<p><strong>bg i fg</strong>: Aquests comandaments permeten moure un procés entre el primer pla i el segon pla.</p>
+<ul>
+<li>
+<p>Per fer una prova, crearem un procés d'espera de <strong>1000 segons</strong>:<br><br>
+<img alt="sleep" src="../img/79.png" /><br><br></p>
 </li>
 <li>
-<p>Seguidament, utilitzarem <code>CTRL + Z</code> per aturar-lo, però sense matar el procés:</p>
-<p><img alt="ctrlz" src="../img/80.png" /></p>
+<p>Seguidament, utilitzarem <code>CTRL + Z</code> per aturar-lo, però sense matar el procés:<br><br>
+<img alt="ctrlz" src="../img/80.png" /><br><br></p>
 </li>
 <li>
-<p>La comanda <code>bg</code> envia un procés aturat al segon pla. Llavors, utilitzem <code>bg sleep</code> per passar el procés al segon pla:</p>
-<p><img alt="bg" src="../img/81.png" /></p>
+<p>La comanda <code>bg</code> envia un procés aturat al segon pla. Llavors, utilitzem <code>bg sleep</code> per passar el procés al segon pla:<br><br>
+<img alt="bg" src="../img/81.png" /><br><br></p>
 </li>
 <li>
-<p>La comanda <code>fg</code> porta un procés del segon pla al primer pla. Per exemple, utilitzem <code>fg</code> per passar el procés creat abans al primer pla:</p>
-<p><img alt="fg" src="../img/82.png" /></p>
+<p>La comanda <code>fg</code> porta un procés del segon pla al primer pla. Per exemple, utilitzem <code>fg</code> per passar el procés creat abans al primer pla:<br><br>
+<img alt="fg" src="../img/82.png" /><br><br></p>
+</li>
+</ul>
 </li>
 <li>
 <p><strong>pstree</strong>: Mostra els processos en forma d'arbre, mostrant les relacions entre processos. Per veure-ho, utilitzem la comanda <code>pstree</code> al terminal:</p>
@@ -322,13 +326,13 @@ Introduïm una <strong>S</strong> o premem <strong>enter</strong> per seguir amb
 <p><img alt="upgrade" src="../img/8.png" /></p>
 <h3 id="gestio-de-serveis">Gestió de Serveis</h3>
 <p>Un cop instal·lats els serveis, es poden gestionar amb la comanda <code>systemctl</code>. Aquesta comanda permet <strong>iniciar, parar o reiniciar</strong> serveis. A continuació es mostra un exemple d'aquesta comanda amb el servei <strong>SSH</strong>:</p>
-<p><img alt="systemctl" src="../img/13.png" />
+<p><img alt="systemctl" src="../img/13.png" /><br><br>
 <img alt="systemctl" src="../img/14.png" /></p>
 <p>També podem editar el fitxer de configuració de <strong>SSH</strong>, obrint-lo amb la comanda <code>sudo nano /etc/ssh/sshd_config</code> per fer els següents canvis:</p>
 <ul>
 <li>Desactivar l'accés del root amb <code>PermitRootLogin no</code>:</li>
 </ul>
-<p><img alt="ssh_config" src="../img/15.png" />
+<p><img alt="ssh_config" src="../img/15.png" /><br><br>
   <img alt="ssh_config" src="../img/16.png" /></p>
 <ul>
 <li>Permetre l'accés per contrasenya amb <code>PasswordAuthentication yes</code>:</li>
@@ -423,17 +427,17 @@ Introduïm una <strong>S</strong> o premem <strong>enter</strong> per seguir amb
 <ul>
 <li>Obrim el fitxer amb <code>sudo nano /etc/login.defs</code>:</li>
 </ul>
-<p><img alt="Comanda fitxer polítiques" src="../img/defs.png" />
+<p><img alt="Comanda fitxer polítiques" src="../img/defs.png" /><br><br>
   <img alt="Fitxer polítiques" src="../img/1.png" /></p>
 <ul>
 <li>Modifiquem la línia <code>PASS_MAX_DAYS</code> per establir la durada màxima de la contrasenya, i altres paràmetres si cal:</li>
 </ul>
-<p><img alt="pass_max" src="../img/2.png" />
+<p><img alt="pass_max" src="../img/2.png" /><br><br>
   <img alt="pass" src="../img/3.png" /></p>
 <ul>
 <li>També podem configurar la qualitat de les contrasenyes, com la longitud mínima. Per fer-ho, obrim el fitxer <code>/etc/security/pwquality.conf</code> amb <code>sudo nano /etc/security/pwquality.conf</code>:</li>
 </ul>
-<p><img alt="security" src="../img/4.png" />
+<p><img alt="security" src="../img/4.png" /><br><br>
   <img alt="Fitxer configuració" src="../img/5.png" /></p>
 <p>Busquem la línia <code>minlen =</code> i establim el número mínim de caràcters per a la contrasenya:</p>
 <p><img alt="minlen" src="../img/6.png" /></p>
@@ -837,7 +841,7 @@ En aquest cas, farem <strong>enter</strong> per escollir el valor predeterminat,
 </li>
 <li>
 <p>Ara farem la instal·lació de <strong>SMB Client</strong>, que és una eina de línia de comandes que permet accedir i gestionar recursos compartits en una xarxa mitjançant el protocol SMB.
-   Instal·lació de <code>smbclient</code>:
+   Instal·lació de <code>smbclient</code>:<br><br>
    <img alt="smbclient" src="../img/109.png" /><br><br></p>
 </li>
 <li>
