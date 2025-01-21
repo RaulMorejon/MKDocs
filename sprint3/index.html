@@ -50,6 +50,46 @@
                   <li class="toctree-l1"><a class="reference internal" href="../sprint2/">Sprint 2</a>
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Sprint 3</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#1-installacio-del-domini-ldap">1. Instal·lació del domini LDAP</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#installacio-de-slapd">Instal·lació de Slapd</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#configuracio-de-slapd">Configuració de Slapd</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#configuracio-dels-fitxers-ldif">Configuració dels fitxers .ldif</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#fitxer-uoldif">Fitxer uo.ldif</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#fitxer-grupldif">Fitxer grup.ldif</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#fitxer-usuldif">Fitxer usu.ldif</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2-unir-equips-al-domini">2. Unir equips al domini</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#installacio-de-nscd">Instal·lació de nscd</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#installacio-de-libnss-ldap">Instal·lació de libnss-ldap</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#installacio-de-libpam-ldap">Instal·lació de libpam-ldap</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#configuracio-etcnsswitchconf">Configuració /etc/nsswitch.conf</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#configuracio-etcpamdcommon-password">Configuració /etc/pam.d/common-password</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#configuracio-etcpamdcommon-session">Configuració /etc/pam.d/common-session</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#configuracio-de-50-ubuntuconf">Configuració de 50-ubuntu.conf</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#connexio-amb-un-usuari-de-lequip">Connexió amb un usuari de l'equip</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../sprint4/">Sprint 4</a>
                   </li>
@@ -82,7 +122,201 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                
+                <h1 id="gestio-de-dominis-i-accessos">Gestió de Dominis i Accessos</h1>
+<p>La <strong>Gestió de Dominis i Accessos</strong> és el procés d’administrar els permisos i els drets d'accés dels usuaris a recursos i sistemes dins d’un domini, assegurant la seguretat i el control de la informació. Inclou la creació, modificació i eliminació d’usuaris, així com la definició de polítiques d'autorització.</p>
+<p>També hem de saber que una <strong>Unitat Organitzativa (UO)</strong> és una estructura lògica per organitzar i gestionar usuaris, grups, recursos i permisos, sovint vinculada a dominis o serveis com LDAP. Aquesta agrupació facilita l'administració centralitzada i el control d'accés en entorns corporatius. </p>
+<h2 id="1-installacio-del-domini-ldap">1. Instal·lació del domini LDAP</h2>
+<p>Primer de tot, el que caldran seran dues màquines virtuals amb <strong>Ubuntu Desktop</strong>. Una s'encarregarà de ser el <strong>servidor</strong> i l'altra actuarà com a <strong>client</strong>. </p>
+<p>Una vegada tenim les dues màquines, configurem la xarxa de cada una en <strong>Xarxa NAT</strong>.</p>
+<p><img alt="xarxa nat" src="../img/3-2.png" /></p>
+<p>Per començar, anirem a la màquina virtual que farà com a <strong>Servidor</strong>, i mirarem la seva <strong>IP</strong> amb <code>ip a</code>: </p>
+<p><img alt="ip a" src="../img/3-1.png" /></p>
+<p>La nostra <strong>IP</strong> en aquest cas serà <code>10.0.2.15</code> en el <strong>Servidor</strong>. A continuació, configurem la xarxa del nostre sistema de la següent manera: </p>
+<p><img alt="xarxa" src="../img/3-3.png" /></p>
+<p>Per comprovar la connexió, utilitzem la comanda <code>ping</code> amb el <strong>DNS</strong> que és <code>8.8.8.8</code>:</p>
+<p><img alt="ping dns" src="../img/3-1.png" /></p>
+<p>Després de tot, anem al fitxer <code>/etc/hosts</code> on introduirem la nostra <strong>IP</strong> d'abans seguida del nostre <strong>host name</strong> i <strong>domini</strong> de la següent manera: </p>
+<p><img alt="/etc/hosts" src="../img/3-5.png" /></p>
+<ul>
+<li>
+<h4 id="installacio-de-slapd">Instal·lació de Slapd</h4>
+<p>Fem ús de <code>apt install slapd ldap-utils</code> per instal·lar el paquet i primerament ens portarà a la següent finestra:  </p>
+<p><img alt="slapd 1" src="../img/3-6.png" /></p>
+<p>En aquesta finestra hem d'introduir la contrasenya que ens permet entrar a <strong>slapd</strong> com a administrador. 
+Li donem a <strong>Aceptar</strong> i en la següent finestra que ens surt confirmem la contrasenya introduïda: </p>
+<p><img alt="slapd 2" src="../img/3-7.png" /></p>
+<p>Un altre cop donem a <strong>Aceptar</strong> i finalment, si tot va bé, tindrem la instal·lació finalitzada amb èxit.  </p>
+<p><img alt="slapd 3" src="../img/3-8.png" /></p>
+</li>
+</ul>
+<p>Un cop fet el pas anterior, executem la comanda <code>slapcat</code> i ens mostrarà una sèrie d'informació que és tota aquella referent a <strong>LDAP</strong>, que s'utilitza per accedir i gestionar informació en serveis de directoris, com usuaris i recursos dins d'una xarxa.</p>
+<p><img alt="comanda slapd" src="../img/3-9.png" /></p>
+<p>Seguidament, hem de tenir una sèrie d'arxius que hem descarregat amb antelació. En aquest cas els tenim ja en un comprimit <strong>ZIP</strong> a la carpeta <strong>Descargas</strong>, així que anem i el descomprimim al directori de la següent manera:</p>
+<p><img alt="unzip" src="../img/3-11.png" /></p>
+<p>Obtenim cinc fitxers dels quals un és el <strong>fitxer base</strong>, que en LDAP conté la configuració inicial d’un domini o directori. Es fa servir per inicialitzar la base de dades LDAP abans d'afegir-hi més dades. Es pot fer pel <strong>fitxer base</strong> o, com veurem a continuació, per comandes.</p>
+<ul>
+<li>
+<h4 id="configuracio-de-slapd">Configuració de Slapd</h4>
+<p>Ara configurem el servei <strong>LDAP</strong> amb la comanda <code>dpkg-reconfigure slapd</code>: </p>
+<p><img alt="dpkg" src="../img/3-12.png" /></p>
+<p>Primer de tot s'obrirà una finestra on hem de seleccionar l'opció de <strong>NO</strong> per continuar amb la configuració.</p>
+<p><img alt="dpkg 1" src="../img/3-13.png" /></p>
+<p>Seguidament hem d'introduir el nom que havíem posat del nostre <strong>host</strong> amb el <strong>domini</strong> del <strong>DNS</strong>, en aquest cas serà <code>raul.cat</code>, i donem a <strong>Aceptar</strong>.</p>
+<p><img alt="dpkg 2" src="../img/3-14.png" /></p>
+<p>En una altra finestra ens demanen el <strong>Nom de l'organització</strong> que estem creant, i en aquest cas serà igual que abans: <code>raul.cat</code>: </p>
+<p><img alt="dpkg 3" src="../img/3-15.png" /></p>
+<p>En la següent finestra que ens sortirà ens demanaran la contrasenya de l'administrador per accedir al directori <strong>LDAP</strong>: </p>
+<p><img alt="dpkg 4" src="../img/3-16.png" /></p>
+<p>Confirmació de la contrasenya:</p>
+<p><img alt="dpkg 5" src="../img/3-17.png" /></p>
+<p>En la nova finestra que sortirà a continuació hem de donar a l'opció de <strong>SI</strong>:</p>
+<p><img alt="dpkg 6" src="../img/3-18.png" /></p>
+<p>I finalment, en l'última finestra hem de seleccionar l'opció de <strong>SI</strong>: </p>
+<p><img alt="dpkg 7" src="../img/3-19.png" /></p>
+<p>I ja tindríem creat el directori de <strong>LDAP</strong> amb totes les configuracions.</p>
+<p><img alt="dpkg 8" src="../img/3-20.png" /></p>
+</li>
+</ul>
+<p>Ara tornem a utilitzar la comanda <code>slapcat</code> i veiem que respecte al d'abans ara s'han actualitzat els noms de l'organització i el domini.</p>
+<p><img alt="slapcat nou" src="../img/3-21.png" /></p>
+<p>Breument, la informació vol dir el següent:</p>
+<ol>
+<li><strong><code>dn: dc=hostname,dc=domini</code></strong>: Identificador únic de l'entrada LDAP.</li>
+<li><strong><code>objectClass: top</code></strong>: Classe d'objecte bàsica per a totes les entrades.</li>
+<li><strong><code>objectClass: domain</code></strong>: Indica que l'entrada és un domini LDAP.</li>
+<li><strong><code>dc: exemple</code></strong>: Component del domini (<code>exemple</code>) dins de l'arbre LDAP.</li>
+</ol>
+<h4 id="configuracio-dels-fitxers-ldif">Configuració dels fitxers .ldif</h4>
+<p>En aquest moment anirem configurant els fitxers que havíem descarregat abans. Aquests fitxers es troben al directori <strong>Descargas</strong> i contenen la configuració inicial d’un domini o directori del <strong>LDAP</strong>.</p>
+<ul>
+<li>
+<h5 id="fitxer-uoldif">Fitxer uo.ldif</h5>
+<p>Aquest fitxer inclou una entrada per definir la UO <strong>(ou=Users)</strong> i una altra per cada usuari amb atributs. Això s'utilitza per gestionar estructures i comptes del servidor LDAP.</p>
+<ul>
+<li>En el apartat de <strong><code>dc</code></strong> posem el nom del <strong>host</strong>, i en <strong><code>dc</code></strong> posem el domini.</li>
+<li><strong><code>ou</code></strong> seria la <strong>Unitat Organitzativa</strong> </li>
+</ul>
+<p><img alt="uo.ldif" src="../img/3-22.png" /></p>
+</li>
+<li>
+<h5 id="fitxer-grupldif">Fitxer grup.ldif</h5>
+<p>El fitxer <strong>grup.ldif</strong> és un fitxer en format LDIF utilitzat per definir i gestionar grups dins d'un directori LDAP. Aquest fitxer pot contenir les definicions de grups, incloent-hi els seus noms, membres i altres atributs relacionats.</p>
+<ul>
+<li><strong><code>PosixAccount</code></strong> representa comptes d'usuari i es fa servir per a la informació d'usuaris individuals.</li>
+<li><strong><code>PosixGroup</code></strong> representa grups d'usuaris, amb atributs com <code>cn</code>, <code>gidNumber</code> i <code>memberUid</code> per definir els membres del grup. S'utilitza per agrupar usuaris en un mateix grup.
+Els usuaris poden estar associats a un grup a través del <strong><code>gidNumber</code></strong> i els membres de cada grup es llisten amb <strong><code>memberUid</code></strong>.</li>
+</ul>
+<p>Igual que en el fitxer anterior, posarem el nostre <strong>host</strong> corresponent i el domini. També posarem el nom del <strong><code>memberUid</code></strong> que serà <code>alu1</code>: </p>
+<p><img alt="grup.ldif" src="../img/3-23.png" /></p>
+</li>
+<li>
+<h5 id="fitxer-usuldif">Fitxer usu.ldif</h5>
+<p>Finalment, editarem el fitxer <strong>usu.ldif</strong> que s'utilitza per definir un compte d'usuari en un directori LDAP, incloent-hi atributs com <code>uid</code>, <code>homeDirectory</code>, <code>userPassword</code> i altres informació relacionada amb el compte.</p>
+<p>El que s'ha de canviar és el <strong>host</strong> i el <strong>domini</strong> pel nostre. I si es vol, es pot canviar la contrasenya en <code>userPassword</code>: </p>
+<p><img alt="usu.ldif" src="../img/3-24.png" /></p>
+</li>
+</ul>
+<p>Una vegada hem editat tots els fitxers anteriors, hem d'executar la comanda <code>ldapadd -c -x -D "cn=admin,dc=raul,dc=cat" -W -f uo.ldif</code></p>
+<p>S'utilitza per afegir entrades a un directori LDAP i es divideix en les següents parts:</p>
+<ul>
+<li><strong><code>ldapadd</code></strong>: És l'eina per afegir entrades al directori LDAP.</li>
+<li><strong><code>-c</code></strong>: Manté les sortides d'errors en pantalla, mostrant més informació de la comanda.</li>
+<li><strong><code>-x</code></strong>: Utilitza un mode simplificat de connexió sense autenticació de seguretat. </li>
+<li><strong><code>-D "cn=admin,dc=raul,dc=cat"</code></strong>: Especifica el DN de l'usuari que s'autentica, en aquest cas, un usuari admin.</li>
+<li><strong><code>-W</code></strong>: Demana la contrasenya per a l'usuari <code>cn=admin</code>.</li>
+<li><strong><code>-f uo.ldif</code></strong>: Indica el fitxer que conté les dades a afegir al directori.</li>
+</ul>
+<p><img alt="ldapadd" src="../img/3-25.png" /></p>
+<p>I després d'utilitzar la comanda anterior s'afegeix totes les dades al directori.</p>
+<p>Seguidament fem el mateix per als altres dos fitxers:</p>
+<p><img alt="ldapadd" src="../img/3-26.png" /></p>
+<p>Ara sí, ja tindríem tota la informació agregada tant d'usuaris, grups com l'estructura.</p>
+<p>Finalment fem ús de la comanda <code>slapcat</code> per veure que les entrades de la base de dades del directori han canviat, i s'ha afegit la informació corresponent als fitxers anteriors.</p>
+<p><img alt="slapcat actualitzat" src="../img/3-27.png" /></p>
+<hr />
+<h2 id="2-unir-equips-al-domini">2. Unir equips al domini</h2>
+<p>En aquest punt hem d'anar a una altra màquina virtual sense tancar la que tenim que fa com a <strong>server</strong>. Obrim la màquina virtual que actua com a <strong>client</strong> i mirem la seva <strong>IP</strong> amb <code>ip a</code>.</p>
+<p>Seguidament comprovem que tenim connexió amb el <strong>Server</strong> fent un <code>ping 10.0.2.15</code>, que és la <strong>IP</strong> del server. Podem veure que sí tenim connexió.</p>
+<p><img alt="ipaclient" src="../img/3-28.png" /></p>
+<h4 id="installacio-de-nscd">Instal·lació de nscd</h4>
+<p>Fem la instal·lació del paquet <code>nscd</code> que emmagatzema en memòria les consultes a serveis de noms per millorar el rendiment i reduir la càrrega del sistema.</p>
+<p><img alt="nscd" src="../img/3-29.png" /></p>
+<h4 id="installacio-de-libnss-ldap">Instal·lació de libnss-ldap</h4>
+<p>També hem de fer la instal·lació de <code>libnss-ldap</code> que permet la integració de serveis LDAP amb el sistema de noms de serveis, permetent que els usuaris i grups siguin gestionats a través d'un servidor LDAP.</p>
+<p><img alt="libnss-lap" src="../img/3-30.png" /></p>
+<p>Quan li donem a <code>S</code> per seguir amb la instal·lació, ens sortirà una sèrie de finestres per configurar.</p>
+<ul>
+<li>
+<p>En la primera finestra ens trobem que hem d'introduir la <strong>IP</strong> del server de la següent manera:</p>
+<p><img alt="libnss 1" src="../img/3-31.png" /></p>
+</li>
+<li>
+<p>En la següent finestra hem de canviar la configuració de l'autor i posar el nostre <strong>hostname</strong> seguit de nou del <strong>domini</strong> de la següent manera:</p>
+<p><img alt="libnss 2" src="../img/3-32.png" /></p>
+</li>
+<li>
+<p>En una nova finestra seleccionem la versió de <strong>LDAP</strong> més recent, en aquest cas la que ve seleccionada per defecte, que és la <strong>3</strong>:</p>
+<p><img alt="libnss 3" src="../img/3-33.png" /></p>
+</li>
+<li>
+<p>I en la següent finestra seleccionem l'opció de <strong>SI</strong>:</p>
+<p><img alt="libnss 4" src="../img/3-34.png" /></p>
+</li>
+<li>
+<p>Seleccionem l'opció de <strong>NO</strong> per no requerir un inici de sessió per la base de dades de <strong>LDAP</strong>:</p>
+<p><img alt="libnss 5" src="../img/3-35.png" /></p>
+</li>
+<li>
+<p>En la següent finestra hem de posar les dades de <strong>host</strong> i <strong>domini</strong> per al <strong>Admin</strong>:</p>
+<p><img alt="libnss 6" src="../img/3-36.png" /></p>
+</li>
+<li>
+<p>Finalment hem d'introduir la contrasenya del <strong>LDAP</strong>:</p>
+<p><img alt="libnss 7" src="../img/3-37.png" /></p>
+</li>
+</ul>
+<p>I després de tots els passos ja tindríem feta tota la configuració de <code>libnss-ldap</code>.</p>
+<p>En cas que en <strong>algun moment</strong> vulguem reconfigurar els passos anteriors, el que farem serà executar la comanda <code>dpkg-reconfigure ldap-auth-config</code> i tornarem a la primera finestra d'aquesta configuració:</p>
+<p><img alt="reconfigurar" src="../img/3-39.png" /></p>
+<h4 id="installacio-de-libpam-ldap">Instal·lació de libpam-ldap</h4>
+<p>Fem la instal·lació de <code>libpam-ldap</code>, que és una biblioteca que permet autenticar usuaris mitjançant un servidor LDAP, en lloc de fer-ho amb fitxers locals. </p>
+<p>S'integra amb el sistema PAM per gestionar l'accés als recursos del sistema de manera centralitzada. Així, els usuaris poden accedir a diversos sistemes amb una sola identitat gestionada a LDAP.</p>
+<p><img alt="libpam-ldap" src="../img/3-38.png" /></p>
+<h4 id="configuracio-etcnsswitchconf">Configuració <code>/etc/nsswitch.conf</code></h4>
+<p>Anirem al fitxer de configuració <code>/etc/nsswitch.conf</code>, que configura l'ordre en què el sistema cerca fonts d'informació per resoldre serveis com usuaris, grups, noms d'amfitrió, etc.
+En aquest cas, mirar primer els usuaris creats.</p>
+<p>En aquest fitxer hem d'agregar <code>compat files</code> en els atributs de <code>passwd</code>, <code>group</code> i <code>gshadow</code>:</p>
+<p><img alt="nsswitch.conf" src="../img/3-40.png" /></p>
+<h4 id="configuracio-etcpamdcommon-password">Configuració <code>/etc/pam.d/common-password</code></h4>
+<p>Anem al fitxer <code>/etc/pam.d/common-password</code>, que és un fitxer de configuració que defineix les polítiques i els mòduls relacionats amb la gestió de contrasenyes per als sistemes que utilitzen PAM.</p>
+<p>Mirem que tinguem posat l'<code>use_authtok</code>; en versions anteriors no ve posat així que l'hauríem d'agregar:</p>
+<p><img alt="common-password" src="../img/3-41.png" /></p>
+<h4 id="configuracio-etcpamdcommon-session">Configuració <code>/etc/pam.d/common-session</code></h4>
+<p>Ara haurem d'agregar una línia al fitxer <code>/etc/pam.d/common-session</code>, que és un fitxer que forma part de la configuració de PAM. Serveix per definir regles comunes que gestionen l'inici i el tancament de les sessions d'usuari.</p>
+<p>Afegim la línia <code>session optional pam_mkhomedir.so skel=/etc/skel unmask=077</code> que crea automàticament el directori personal d'un usuari quan inicia sessió per primera vegada, si aquest no existeix.</p>
+<ul>
+<li><strong><code>pam_mkhomedir.so</code></strong>: Mòdul que crea directoris personals.</li>
+<li><strong><code>skel=/etc/skel</code></strong>: Indica que els fitxers i directoris de <code>/etc/skel</code> s'utilitzen com a plantilla per inicialitzar el directori personal.</li>
+<li><strong><code>umask=077</code></strong>: Estableix permisos restrictius per defecte (només l'usuari té accés complet al seu directori personal).</li>
+<li>És opcional i només s'executa si el servei ho permet.</li>
+</ul>
+<p><img alt="common-session" src="../img/3-42.png" /></p>
+<h4 id="configuracio-de-50-ubuntuconf">Configuració de <code>50-ubuntu.conf</code></h4>
+<p>Anem al fitxer <code>/usr/share/lightdm/lightdm.conf.d/50-ubuntu.conf</code>, que configura <strong>LightDM</strong> a Ubuntu, definint opcions predeterminades com el greeter i la sessió d'escriptori. Sent <strong>greeter</strong> la interfície gràfica que mostra el gestor d'inici de sessió per permetre als usuaris introduir les seves credencials i iniciar sessió al sistema.</p>
+<p>Dins del fitxer afegim la línia <code>greeter-show-manual-login=true</code>, que habilita l'opció per introduir manualment el nom d'usuari i la contrasenya a la pantalla d'inici de sessió.</p>
+<p><img alt="manual log" src="../img/3-43.png" /></p>
+<h4 id="connexio-amb-un-usuari-de-lequip">Connexió amb un usuari de l'equip</h4>
+<p>Finalment farem una cerca al fitxer <code>passwd</code> de l'usuari <code>alu1</code> creat durant tot aquest procés. Si el veiem, és que els passos anteriors han anat bé.</p>
+<p><img alt="alt text" src="../img/3-44.png" /></p>
+<p>I podem connectar-nos correctament amb l'usuari creat:</p>
+<p><img alt="alt text" src="../img/3-45.png" /></p>
+<p>Seguidament el que farem serà fer un <code>reboot</code> de la màquina i introduirem el nom de l'usuari i la seva contrasenya.</p>
+<p>Usuari <code>alu1</code>:</p>
+<p><img alt="alt text" src="../img/3-46.png" /></p>
+<p>Contrasenya <code>alu1</code>:</p>
+<p><img alt="alt text" src="../img/3-47.png" /></p>
+<p><em>Home</em> de l'usuari:</p>
+<p><img alt="alt text" src="../img/3-48.png" /></p>
               
             </div>
           </div><footer>

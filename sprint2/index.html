@@ -193,6 +193,30 @@
     </li>
         </ul>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#8-automatitzacio">8. Automatització</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#introduccio">Introducció</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#diferencies-entre-cron-i-anacron">Diferències entre Cron i Anacron</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#cron-en-detall">Cron en detall</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#anacron-en-detall">Anacron en detall</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#part-practica">Part Pràctica</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#creacio-i-execucio-dun-script">Creació i Execució d'un Script</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#automatitzacio-amb-cron">Automatització amb Cron</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#automatitzacio-amb-anacron">Automatització amb Anacron</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
     </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../sprint3/">Sprint 3</a>
@@ -1132,6 +1156,123 @@ Comprovem que els <em>hash</em> siguin iguals en les dues particions per confirm
 <p>I en cas que vulguem borrar una partició de manera segura abans de formatejar-la, el que farem serà sobreescriure la partició amb ceros per borrar el seu contingut:</p>
 <p><img alt="ddcero" src="../img/211.png" /></p>
 <hr />
+<h2 id="8-automatitzacio">8. Automatització</h2>
+<h3 id="introduccio">Introducció</h3>
+<p>En els sistemes operatius amb Linux, l’automatització de tasques és essencial per garantir el manteniment del sistema i l'execució d'accions repetitives. Dues eines destacades per aquest propòsit són <strong>Cron</strong> i <strong>Anacron</strong>, que permeten programar l'execució de processos i scripts de manera automàtica.<br>
+Encara que comparteixen la mateixa finalitat, tenen característiques diferents que les fan adequades per a tasques específics.</p>
+<p>A continuació es mostra les diferències entre <strong>Cron</strong> i <strong>Anacron</strong>:</p>
+<h4 id="diferencies-entre-cron-i-anacron">Diferències entre Cron i Anacron</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Característica</strong></th>
+<th><strong>Cron</strong></th>
+<th><strong>Anacron</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Funció principal</strong></td>
+<td>Executar tasques programades a intervals regulars o a hores concretes.</td>
+<td>Garantir que les tasques pendents s'executin quan el sistema s'encén, encara que estigués apagat.</td>
+</tr>
+<tr>
+<td><strong>Requisit de sistema</strong></td>
+<td>Només funciona si l'ordinador està encès a l'hora programada.</td>
+<td>Executa tasques programades tan bon punt el sistema es posa en marxa si estaven pendents.</td>
+</tr>
+<tr>
+<td><strong>Usuaris típics</strong></td>
+<td>Tasques d’usuaris o administradors que necessiten precisió temporal.</td>
+<td>Tasques d’administradors per al manteniment general del sistema (nivell global).</td>
+</tr>
+<tr>
+<td><strong>Fitxers de configuració</strong></td>
+<td>- <code>/etc/crontab</code> per a tasques globals.<br>- <code>crontab -e</code> per a usuaris específics.</td>
+<td>- <code>/etc/anacrontab</code> per a configuració de tasques retardades.</td>
+</tr>
+<tr>
+<td><strong>Freqüència mínima</strong></td>
+<td>Minuts (es pot programar per executar-se cada minut).</td>
+<td>Dies (dissenyat per a tasques amb menys freqüència).</td>
+</tr>
+<tr>
+<td><strong>Flexibilitat amb apagat</strong></td>
+<td>No pot recuperar tasques perdudes si el sistema estava apagat en el moment previst.</td>
+<td>Pot detectar tasques no completades i executar-les quan el sistema es reinicia.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h4 id="cron-en-detall">Cron en detall</h4>
+<ul>
+<li><strong>Execució precisa</strong>: Utilitza un format d’hora i data molt concret (minut, hora, dia del mes, mes, dia de la setmana) per programar tasques. </li>
+<li><strong>Configuració</strong>: <ul>
+<li>Fitxer global: <code>/etc/crontab</code>.</li>
+<li>Per a usuaris específics: <code>crontab -e</code> (modifica el crontab de l’usuari que executa la comanda).</li>
+</ul>
+</li>
+<li><strong>Ubicació dels scripts</strong>: <ul>
+<li><code>cron.hourly</code>, <code>cron.daily</code>, <code>cron.weekly</code>, <code>cron.monthly</code> són carpetes dins <code>/etc/cron.*</code> on es poden posar scripts per executar-se a intervals regulars.</li>
+</ul>
+</li>
+</ul>
+<h4 id="anacron-en-detall">Anacron en detall</h4>
+<ul>
+<li><strong>Execució flexible</strong>: Ideal per tasques que no necessiten precisió però han de garantir-se (com actualitzacions del sistema o còpies de seguretat).</li>
+<li><strong>Configuració</strong>: Utilitza el fitxer <code>/etc/anacrontab</code> per definir les tasques.<ul>
+<li>Cada tasca especifica:<ol>
+<li><strong>Període de temps</strong> (en dies).</li>
+<li><strong>Nom de la tasca</strong>.</li>
+<li><strong>Comanda</strong> per executar.</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><strong>Dissenyat per sistemes que no estan sempre encesos</strong>: Assegura l'execució fins i tot en portàtils o sistemes que s’apaguen amb freqüència.</li>
+</ul>
+<p><br> 
+<strong>Cron</strong> és perfecte per tasques amb un horari exacte en sistemes que estan sempre operatius.
+I <strong>Anacron</strong> és ideal per a tasques que no corren presa però han de ser executades en algun moment, independentment de si el sistema estava apagat.</p>
+<h3 id="part-practica">Part Pràctica</h3>
+<p>En aquest apartat es posarà en pràctica el <strong>Cron</strong> i l'<strong>Anacron</strong> per fer l'automatització de la compressió d'un directori i que sigui guardat a l'Escriptori.</p>
+<h5 id="creacio-i-execucio-dun-script">Creació i Execució d'un Script</h5>
+<p>Primer de tot s'ha de crear un script, en aquest cas <code>nano copia.sh</code>, on donarem l'ordre que un directori sigui comprimit i guardat en una ubicació específica. </p>
+<p>Dins del fitxer hem de posar la data, que estarà a la primera línia del codi, i guardarà el moment en què es fa ús del <strong>Script</strong>. Seguidament introduïm la comanda que comença amb <code>"/home/...gz"</code>, que és on es guardarà i amb el nom que tindrà la compressió, seguit del directori que es vol comprimir, <code>"/home/../Documentos"</code>.</p>
+<p><img alt="nano sh" src="../img/copia.png" /></p>
+<p>Una vegada configurat el fitxer, sortim i guardem. En aquest moment hem de canviar els permisos del fitxer <code>copia.sh</code> perquè tothom tingui permisos d'execució amb <code>chmod +x copia.sh</code>:</p>
+<p><img alt="permisos sh" src="../img/permisossh.png" /></p>
+<p>Ara ja es podria executar el <strong>Script</strong>, així que fem <code>./copia.sh</code> i observem el seu resultat:</p>
+<p><img alt="execució script" src="../img/shex.png" /></p>
+<p>Trobem que ha generat el comprimit i l'ha guardat a l'<strong>Escriptori</strong>. També podem veure que el nom del comprimit és el que li havíem posat, amb, a més, uns números que representen la data del moment de la creació. </p>
+<p><img alt="resultat compressió" src="../img/resultatsh.png" /></p>
+<h4 id="automatitzacio-amb-cron">Automatització amb Cron</h4>
+<p>Per fer una automatització amb <strong>Cron</strong> el primer que s'ha de fer és anar al fitxer <code>/etc/crontab</code> per afegir la nostra tasca de l'Script anterior.</p>
+<p>Afegirem una línia seguint l'ordre de dades establert. Primer de tot s'ha d'introduir <strong>Minut i Hora</strong> del moment que es vol que s'executi la tasca. Seguidament aniran el <strong>Dia i Mes</strong> de l'any i el número del dia de la setmana, sent <strong>Diumenge = 0</strong>. Finalment indiquem el nom de l'<strong>Usuari</strong> i on es troba l'<strong>Script</strong>. </p>
+<p><img alt="Crontab" src="../img/crontab.png" /></p>
+<p>Una vegada guardats els canvis, esperem que sigui l'hora en què es realitzarà la tasca per comprovar que s'obté el resultat esperat. I finalment obtenim el resultat, creant així el següent comprimit: </p>
+<p><img alt="Comprimit Cron" src="../img/compcron.png" /></p>
+<p>Ara tornem a modificar el <code>/etc/crontab</code> perquè es torni a executar l'Script, però ara tancant la màquina virtual i esperant un minut més de l'hora a què volem que s'executi l'<strong>Script</strong> per veure si es farà en tornar a iniciar la màquina virtual.</p>
+<p>Línia modificada: </p>
+<p><img alt="canvi hora" src="../img/canvih.png" /></p>
+<p>Una vegada iniciada la màquina virtual, esperem i veiem que no s'executa res ja que amb el <strong>Cron</strong> no s'executarà si la màquina ha estat apagada. Llavors hem de passar al següent mètode.</p>
+<h4 id="automatitzacio-amb-anacron">Automatització amb Anacron</h4>
+<p>Després de veure com s'automatitzava amb <strong>Cron</strong>, passem a veure les automatitzacions amb <strong>Anacron</strong>, que ens permetran fer tasques malgrat que l'ordinador hagi estat apagat, ja que les executarà un cop estigui encès.</p>
+<p>Si anem al fitxer <code>/etc/anacrontab</code>, podem veure en una línia que el que fa és executar el <code>cron.daily</code>, que és el <strong>Cron</strong> que s'executarà cada dia i s'executarà 5 minuts després d'encendre l'ordinador.</p>
+<p><img alt="anacron" src="../img/anacron.png" /></p>
+<p>Llavors, el que farem després de saber això serà anar al <code>/etc/crontab</code> i comentar la línia que vam afegir en la secció anterior. </p>
+<p><img alt="crontab comentat" src="../img/croncomen.png" /></p>
+<p>Ara hem de moure l'<strong>Script</strong> des del nostre <code>/home</code> fins al <code>cron.daily</code> de la següent manera i comprovar que està en aquest directori: </p>
+<p><img alt="moure sh" src="../img/moush.png" /></p>
+<p>Quan la movem al <code>cron.daily</code> l'hem de cambiar el nom a <code>copia</code>:</p>
+<p><img alt="cambiar nom" src="../img/mv.png" /></p>
+<p>D'aquesta manera, cada dia quan s'iniciï l'ordinador, s'executarà l'automatització quan passi el temps establert al fitxer del <strong>Anacron</strong>, solucionant així el problema que aportava el <strong>Cron</strong>.</p>
+<p>Finalment, per a aquesta prova hem modificat el temps en què s'executarà el <strong>Daily</strong> una vegada iniciat el sistema. En aquest cas, el baixem a 1 minut: </p>
+<p><img alt="reduir temps" src="../img/reduirt.png" /></p>
+<p>Ara reiniciem la màquina i després comprovem que al minut d'haver-se iniciat s'executa la tasca i apareix el comprimit a l'Escriptori. </p>
+<p>Per veure si l'automatització s'ha processat, el que hem de fer és fer una visualització del fitxer <code>cron.daily</code>. En cas que s'hagi executat, trobarem en números el moment exacte d'aquesta execució. </p>
+<p>Finalment es crea el nostre comprimit i al <code>cron.daily</code> veiem el moment de l'execució:</p>
+<p><img alt="resultat" src="../img/resana.png" /></p>
               
             </div>
           </div><footer>
