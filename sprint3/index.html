@@ -89,6 +89,50 @@
     </li>
         </ul>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3-gestio-domini-amb-comandes">3. Gestió Domini amb comandes</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#comanda-per-agregar">Comanda per Agregar</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#creacio-duna-nova-ou">Creació d'una nova OU</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#crear-un-nou-usuari-amb-dos-atributs-opcionals-per-a-la-classe-posixaccount">Crear un nou usuari amb dos atributs opcionals per a la classe posixAccount</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#crear-un-nou-grup-dintre-de-la-ou-groups-i-afegir-3-usuaris">Crear un nou grup dintre de la OU Groups i afegir 3 usuaris</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#comanda-per-buscar">Comanda per Buscar</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#quantes-ou-hi-ha-quants-usuaris-hi-ha-al-domini">Quantes OU hi ha? Quants usuaris hi ha al domini?</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#lusuari-kvaughan-en-quants-grups-el-trobem-com-a-uniquemember-i-quins-son">L’usuari kvaughan en quants grups el trobem com a uniqueMember i quins són?</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#quants-grups-hi-ha-dintre-de-la-uo-groups">Quants grups hi ha dintre de la uo Groups?</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#mostra-tots-els-usuaris-del-domini-on-el-seu-uidnumber-estigui-entre-1010-i-1030-inclosos">Mostra tots els usuaris del domini on el seu uidNumber estigui entre 1010 i 1030 (inclosos).</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#usuaris-on-el-seu-telefon-acabi-en-un-2-o-el-seu-cognom-en-una-n-quants">Usuaris on el seu telèfon acabi en un 2 o el seu cognom en una n. Quants?</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#comanda-per-modificar">Comanda per modificar</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#afegir-atribut-opcional-a-lusuari-pedro">Afegir atribut opcional a l’usuari Pedro</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#esborrar-latribut-roomnumber-i-homedirectory-de-lusuari-ejohnson">Esborrar l’atribut roomNumber i homeDirectory de l’usuari ejohnson</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#trau-de-la-uo-people-a-3-usuaris-i-afegeix-los-a-la-uo-dam">Trau de la UO People a 3 usuaris i afegeix-los a la UO DAM</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#esborra-la-uo-people">Esborra la UO People</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#modifica-el-uid-de-lusuari-hmiller-a-hamiller">Modifica el uid de l'usuari hmiller a hamiller</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#dun-sol-cop-a-lusuari-que-tu-vulguis-esborra-un-atribut-afegeix-ne-un-altre-i-modifica-un-tercer">D’un sol cop, a l’usuari que tu vulguis, esborra un atribut, afegeix-ne un altre i modifica un tercer.</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
     </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../sprint4/">Sprint 4</a>
@@ -124,54 +168,54 @@
               
                 <h1 id="gestio-de-dominis-i-accessos">Gestió de Dominis i Accessos</h1>
 <p>La <strong>Gestió de Dominis i Accessos</strong> és el procés d’administrar els permisos i els drets d'accés dels usuaris a recursos i sistemes dins d’un domini, assegurant la seguretat i el control de la informació. Inclou la creació, modificació i eliminació d’usuaris, així com la definició de polítiques d'autorització.</p>
-<p>També hem de saber que una <strong>Unitat Organitzativa (UO)</strong> és una estructura lògica per organitzar i gestionar usuaris, grups, recursos i permisos, sovint vinculada a dominis o serveis com LDAP. Aquesta agrupació facilita l'administració centralitzada i el control d'accés en entorns corporatius. </p>
+<p>També hem de saber que una <strong>Unitat Organitzativa (UO)</strong> és una estructura lògica per organitzar i gestionar usuaris, grups, recursos i permisos, sovint vinculada a dominis o serveis com LDAP. Aquesta agrupació facilita l'administració centralitzada i el control d'accés en entorns corporatius.</p>
 <h2 id="1-installacio-del-domini-ldap">1. Instal·lació del domini LDAP</h2>
-<p>Primer de tot, el que caldran seran dues màquines virtuals amb <strong>Ubuntu Desktop</strong>. Una s'encarregarà de ser el <strong>servidor</strong> i l'altra actuarà com a <strong>client</strong>. </p>
+<p>Primer de tot, el que caldran seran dues màquines virtuals amb <strong>Ubuntu Desktop</strong>. Una s'encarregarà de ser el <strong>servidor</strong> i l'altra actuarà com a <strong>client</strong>.</p>
 <p>Una vegada tenim les dues màquines, configurem la xarxa de cada una en <strong>Xarxa NAT</strong>.</p>
 <p><img alt="xarxa nat" src="../img/3-2.png" /></p>
-<p>Per començar, anirem a la màquina virtual que farà com a <strong>Servidor</strong>, i mirarem la seva <strong>IP</strong> amb <code>ip a</code>: </p>
+<p>Per començar, anirem a la màquina virtual que farà com a <strong>Servidor</strong>, i mirarem la seva <strong>IP</strong> amb <code>ip a</code>:</p>
 <p><img alt="ip a" src="../img/3-1.png" /></p>
-<p>La nostra <strong>IP</strong> en aquest cas serà <code>10.0.2.15</code> en el <strong>Servidor</strong>. A continuació, configurem la xarxa del nostre sistema de la següent manera: </p>
+<p>La nostra <strong>IP</strong> en aquest cas serà <code>10.0.2.15</code> en el <strong>Servidor</strong>. A continuació, configurem la xarxa del nostre sistema de la següent manera:</p>
 <p><img alt="xarxa" src="../img/3-3.png" /></p>
 <p>Per comprovar la connexió, utilitzem la comanda <code>ping</code> amb el <strong>DNS</strong> que és <code>8.8.8.8</code>:</p>
 <p><img alt="ping dns" src="../img/3-1.png" /></p>
-<p>Després de tot, anem al fitxer <code>/etc/hosts</code> on introduirem la nostra <strong>IP</strong> d'abans seguida del nostre <strong>host name</strong> i <strong>domini</strong> de la següent manera: </p>
+<p>Després de tot, anem al fitxer <code>/etc/hosts</code> on introduirem la nostra <strong>IP</strong> d'abans seguida del nostre <strong>host name</strong> i <strong>domini</strong> de la següent manera:</p>
 <p><img alt="/etc/hosts" src="../img/3-5.png" /></p>
 <ul>
 <li>
 <h4 id="installacio-de-slapd">Instal·lació de Slapd</h4>
-<p>Fem ús de <code>apt install slapd ldap-utils</code> per instal·lar el paquet i primerament ens portarà a la següent finestra:  </p>
+<p>Fem ús de <code>apt install slapd ldap-utils</code> per instal·lar el paquet i primerament ens portarà a la següent finestra:</p>
 <p><img alt="slapd 1" src="../img/3-6.png" /></p>
 <p>En aquesta finestra hem d'introduir la contrasenya que ens permet entrar a <strong>slapd</strong> com a administrador. 
-Li donem a <strong>Aceptar</strong> i en la següent finestra que ens surt confirmem la contrasenya introduïda: </p>
+Li donem a <strong>Acceptar</strong> i en la següent finestra que ens surt confirmem la contrasenya introduïda:</p>
 <p><img alt="slapd 2" src="../img/3-7.png" /></p>
-<p>Un altre cop donem a <strong>Aceptar</strong> i finalment, si tot va bé, tindrem la instal·lació finalitzada amb èxit.  </p>
+<p>Un altre cop donem a <strong>Acceptar</strong> i finalment, si tot va bé, tindrem la instal·lació finalitzada amb èxit.</p>
 <p><img alt="slapd 3" src="../img/3-8.png" /></p>
 </li>
 </ul>
 <p>Un cop fet el pas anterior, executem la comanda <code>slapcat</code> i ens mostrarà una sèrie d'informació que és tota aquella referent a <strong>LDAP</strong>, que s'utilitza per accedir i gestionar informació en serveis de directoris, com usuaris i recursos dins d'una xarxa.</p>
 <p><img alt="comanda slapd" src="../img/3-9.png" /></p>
-<p>Seguidament, hem de tenir una sèrie d'arxius que hem descarregat amb antelació. En aquest cas els tenim ja en un comprimit <strong>ZIP</strong> a la carpeta <strong>Descargas</strong>, així que anem i el descomprimim al directori de la següent manera:</p>
+<p>Seguidament, hem de tenir una sèrie d'arxius que hem descarregat amb antelació. En aquest cas els tenim ja en un comprimit <strong>ZIP</strong> a la carpeta <strong>Descàrregues</strong>, així que anem i el descomprimim al directori de la següent manera:</p>
 <p><img alt="unzip" src="../img/3-11.png" /></p>
 <p>Obtenim cinc fitxers dels quals un és el <strong>fitxer base</strong>, que en LDAP conté la configuració inicial d’un domini o directori. Es fa servir per inicialitzar la base de dades LDAP abans d'afegir-hi més dades. Es pot fer pel <strong>fitxer base</strong> o, com veurem a continuació, per comandes.</p>
 <ul>
 <li>
 <h4 id="configuracio-de-slapd">Configuració de Slapd</h4>
-<p>Ara configurem el servei <strong>LDAP</strong> amb la comanda <code>dpkg-reconfigure slapd</code>: </p>
+<p>Ara configurem el servei <strong>LDAP</strong> amb la comanda <code>dpkg-reconfigure slapd</code>:</p>
 <p><img alt="dpkg" src="../img/3-12.png" /></p>
 <p>Primer de tot s'obrirà una finestra on hem de seleccionar l'opció de <strong>NO</strong> per continuar amb la configuració.</p>
 <p><img alt="dpkg 1" src="../img/3-13.png" /></p>
-<p>Seguidament hem d'introduir el nom que havíem posat del nostre <strong>host</strong> amb el <strong>domini</strong> del <strong>DNS</strong>, en aquest cas serà <code>raul.cat</code>, i donem a <strong>Aceptar</strong>.</p>
+<p>Seguidament hem d'introduir el nom que havíem posat del nostre <strong>host</strong> amb el <strong>domini</strong> del <strong>DNS</strong>, en aquest cas serà <code>raul.cat</code>, i donem a <strong>Acceptar</strong>.</p>
 <p><img alt="dpkg 2" src="../img/3-14.png" /></p>
-<p>En una altra finestra ens demanen el <strong>Nom de l'organització</strong> que estem creant, i en aquest cas serà igual que abans: <code>raul.cat</code>: </p>
+<p>En una altra finestra ens demanen el <strong>Nom de l'organització</strong> que estem creant, i en aquest cas serà igual que abans: <code>raul.cat</code>:</p>
 <p><img alt="dpkg 3" src="../img/3-15.png" /></p>
-<p>En la següent finestra que ens sortirà ens demanaran la contrasenya de l'administrador per accedir al directori <strong>LDAP</strong>: </p>
+<p>En la següent finestra que ens sortirà ens demanaran la contrasenya de l'administrador per accedir al directori <strong>LDAP</strong>:</p>
 <p><img alt="dpkg 4" src="../img/3-16.png" /></p>
 <p>Confirmació de la contrasenya:</p>
 <p><img alt="dpkg 5" src="../img/3-17.png" /></p>
 <p>En la nova finestra que sortirà a continuació hem de donar a l'opció de <strong>SI</strong>:</p>
 <p><img alt="dpkg 6" src="../img/3-18.png" /></p>
-<p>I finalment, en l'última finestra hem de seleccionar l'opció de <strong>SI</strong>: </p>
+<p>I finalment, en l'última finestra hem de seleccionar l'opció de <strong>SI</strong>:</p>
 <p><img alt="dpkg 7" src="../img/3-19.png" /></p>
 <p>I ja tindríem creat el directori de <strong>LDAP</strong> amb totes les configuracions.</p>
 <p><img alt="dpkg 8" src="../img/3-20.png" /></p>
@@ -187,14 +231,14 @@ Li donem a <strong>Aceptar</strong> i en la següent finestra que ens surt confi
 <li><strong><code>dc: exemple</code></strong>: Component del domini (<code>exemple</code>) dins de l'arbre LDAP.</li>
 </ol>
 <h4 id="configuracio-dels-fitxers-ldif">Configuració dels fitxers .ldif</h4>
-<p>En aquest moment anirem configurant els fitxers que havíem descarregat abans. Aquests fitxers es troben al directori <strong>Descargas</strong> i contenen la configuració inicial d’un domini o directori del <strong>LDAP</strong>.</p>
+<p>En aquest moment anirem configurant els fitxers que havíem descarregat abans. Aquests fitxers es troben al directori <strong>Descàrregues</strong> i contenen la configuració inicial d’un domini o directori del <strong>LDAP</strong>.</p>
 <ul>
 <li>
 <h5 id="fitxer-uoldif">Fitxer uo.ldif</h5>
 <p>Aquest fitxer inclou una entrada per definir la UO <strong>(ou=Users)</strong> i una altra per cada usuari amb atributs. Això s'utilitza per gestionar estructures i comptes del servidor LDAP.</p>
 <ul>
 <li>En el apartat de <strong><code>dc</code></strong> posem el nom del <strong>host</strong>, i en <strong><code>dc</code></strong> posem el domini.</li>
-<li><strong><code>ou</code></strong> seria la <strong>Unitat Organitzativa</strong> </li>
+<li><strong><code>ou</code></strong> seria la <strong>Unitat Organitzativa</strong></li>
 </ul>
 <p><img alt="uo.ldif" src="../img/3-22.png" /></p>
 </li>
@@ -206,13 +250,13 @@ Li donem a <strong>Aceptar</strong> i en la següent finestra que ens surt confi
 <li><strong><code>PosixGroup</code></strong> representa grups d'usuaris, amb atributs com <code>cn</code>, <code>gidNumber</code> i <code>memberUid</code> per definir els membres del grup. S'utilitza per agrupar usuaris en un mateix grup.
 Els usuaris poden estar associats a un grup a través del <strong><code>gidNumber</code></strong> i els membres de cada grup es llisten amb <strong><code>memberUid</code></strong>.</li>
 </ul>
-<p>Igual que en el fitxer anterior, posarem el nostre <strong>host</strong> corresponent i el domini. També posarem el nom del <strong><code>memberUid</code></strong> que serà <code>alu1</code>: </p>
+<p>Igual que en el fitxer anterior, posarem el nostre <strong>host</strong> corresponent i el domini. També posarem el nom del <strong><code>memberUid</code></strong> que serà <code>alu1</code>:</p>
 <p><img alt="grup.ldif" src="../img/3-23.png" /></p>
 </li>
 <li>
 <h5 id="fitxer-usuldif">Fitxer usu.ldif</h5>
 <p>Finalment, editarem el fitxer <strong>usu.ldif</strong> que s'utilitza per definir un compte d'usuari en un directori LDAP, incloent-hi atributs com <code>uid</code>, <code>homeDirectory</code>, <code>userPassword</code> i altres informació relacionada amb el compte.</p>
-<p>El que s'ha de canviar és el <strong>host</strong> i el <strong>domini</strong> pel nostre. I si es vol, es pot canviar la contrasenya en <code>userPassword</code>: </p>
+<p>El que s'ha de canviar és el <strong>host</strong> i el <strong>domini</strong> pel nostre. I si es vol, es pot canviar la contrasenya en <code>userPassword</code>:</p>
 <p><img alt="usu.ldif" src="../img/3-24.png" /></p>
 </li>
 </ul>
@@ -221,7 +265,7 @@ Els usuaris poden estar associats a un grup a través del <strong><code>gidNumbe
 <ul>
 <li><strong><code>ldapadd</code></strong>: És l'eina per afegir entrades al directori LDAP.</li>
 <li><strong><code>-c</code></strong>: Manté les sortides d'errors en pantalla, mostrant més informació de la comanda.</li>
-<li><strong><code>-x</code></strong>: Utilitza un mode simplificat de connexió sense autenticació de seguretat. </li>
+<li><strong><code>-x</code></strong>: Utilitza un mode simplificat de connexió sense autenticació de seguretat.</li>
 <li><strong><code>-D "cn=admin,dc=raul,dc=cat"</code></strong>: Especifica el DN de l'usuari que s'autentica, en aquest cas, un usuari admin.</li>
 <li><strong><code>-W</code></strong>: Demana la contrasenya per a l'usuari <code>cn=admin</code>.</li>
 <li><strong><code>-f uo.ldif</code></strong>: Indica el fitxer que conté les dades a afegir al directori.</li>
@@ -293,12 +337,11 @@ En aquest cas, mirar primer els usuaris creats.</p>
 <p><img alt="common-password" src="../img/3-41.png" /></p>
 <h4 id="configuracio-etcpamdcommon-session">Configuració <code>/etc/pam.d/common-session</code></h4>
 <p>Ara haurem d'agregar una línia al fitxer <code>/etc/pam.d/common-session</code>, que és un fitxer que forma part de la configuració de PAM. Serveix per definir regles comunes que gestionen l'inici i el tancament de les sessions d'usuari.</p>
-<p>Afegim la línia <code>session optional pam_mkhomedir.so skel=/etc/skel unmask=077</code> que crea automàticament el directori personal d'un usuari quan inicia sessió per primera vegada, si aquest no existeix.</p>
+<p>Afegim la línia <code>session optional pam_mkhomedir.so skel=/etc/skel unmask=077</code> que crea automàticament el directori personal d'un usuari quan inicia sessió per primera vegada, si aquest no existeix, en el moment que aquest inicia sessió. Aquesta opció és <strong>opcional</strong> i només s'executa si el servei ho permet.</p>
 <ul>
 <li><strong><code>pam_mkhomedir.so</code></strong>: Mòdul que crea directoris personals.</li>
 <li><strong><code>skel=/etc/skel</code></strong>: Indica que els fitxers i directoris de <code>/etc/skel</code> s'utilitzen com a plantilla per inicialitzar el directori personal.</li>
 <li><strong><code>umask=077</code></strong>: Estableix permisos restrictius per defecte (només l'usuari té accés complet al seu directori personal).</li>
-<li>És opcional i només s'executa si el servei ho permet.</li>
 </ul>
 <p><img alt="common-session" src="../img/3-42.png" /></p>
 <h4 id="configuracio-de-50-ubuntuconf">Configuració de <code>50-ubuntu.conf</code></h4>
@@ -307,16 +350,286 @@ En aquest cas, mirar primer els usuaris creats.</p>
 <p><img alt="manual log" src="../img/3-43.png" /></p>
 <h4 id="connexio-amb-un-usuari-de-lequip">Connexió amb un usuari de l'equip</h4>
 <p>Finalment farem una cerca al fitxer <code>passwd</code> de l'usuari <code>alu1</code> creat durant tot aquest procés. Si el veiem, és que els passos anteriors han anat bé.</p>
-<p><img alt="alt text" src="../img/3-44.png" /></p>
+<p><img alt="passwd" src="../img/3-44.png" /></p>
 <p>I podem connectar-nos correctament amb l'usuari creat:</p>
-<p><img alt="alt text" src="../img/3-45.png" /></p>
+<p><img alt="connectar" src="../img/3-45.png" /></p>
 <p>Seguidament el que farem serà fer un <code>reboot</code> de la màquina i introduirem el nom de l'usuari i la seva contrasenya.</p>
 <p>Usuari <code>alu1</code>:</p>
-<p><img alt="alt text" src="../img/3-46.png" /></p>
+<p><img alt="Usuari" src="../img/3-46.png" /></p>
 <p>Contrasenya <code>alu1</code>:</p>
-<p><img alt="alt text" src="../img/3-47.png" /></p>
+<p><img alt="Contrasenya" src="../img/3-47.png" /></p>
 <p><em>Home</em> de l'usuari:</p>
-<p><img alt="alt text" src="../img/3-48.png" /></p>
+<p><img alt="Home" src="../img/3-48.png" /></p>
+<hr />
+<h2 id="3-gestio-domini-amb-comandes">3. Gestió Domini amb comandes</h2>
+<p>Primer de tot hem de fer ús de la comanda <code>dpkg-reconfigure slapd</code> al servidor per tal de deixar la base de dades buida i només amb el domini i l’usuari admin creat.</p>
+<p>Quan hàgim executat deixem tot com estava predeterminat però en les següents finestres seleccionem l'opció de <strong>SI</strong>:</p>
+<p><img alt="finestra1" src="../img/3-50.png" /></p>
+<p><img alt="finestra2" src="../img/3.51.png" /></p>
+<p>Seguidament hem de descarregar un arxiu <code>.ldif</code> i amb la comanda <code>ldapadd</code> haurem de carregar els <strong>usuaris, grups i uos</strong>.</p>
+<p><img alt="descarregar" src="../img/3-49.png" /></p>
+<p>Una vegada tenim l'arxiu descarregat hem d'accedir a ell per interfície gràfica, anem a l'esquina superior dreta i al menú desplegable anem a <strong>Buscar i Substituir</strong>.</p>
+<p><img alt="Buscar i Substituir" src="../img/3.52.png" /></p>
+<p>Dins reemplaçarem <code>dc=miquel,dc=com</code> per <code>dc=raul,dc=cat</code>, quan li donem a aplicar es reemplaçarà a tot el document:</p>
+<p><img alt="remplaçarem" src="../img/3.53.png" /></p>
+<h3 id="comanda-per-agregar">Comanda per Agregar</h3>
+<p>Després de tot hem de carregar-los al <strong>LDAP</strong>, llavors hem de posar la comanda <code>ldapadd -x -D "cn=admin,dc=raul,dc=cat" -W -f dades.ldif</code> que afegeix entrades al directori <strong>LDAP</strong>.
+La comanda anterior es divideix en: </p>
+<ol>
+<li><strong><code>ldapadd</code></strong>: Afegeix entrades al directori LDAP.  </li>
+<li><strong><code>-x</code></strong>: Utilitza autenticació simple.  </li>
+<li><strong><code>-D "cn=admin,dc=raul,dc=cat"</code></strong>: Especifica l'usuari (DN) que s'autenticarà.  </li>
+<li><strong><code>-W</code></strong>: Demana la contrasenya de l'usuari de manera interactiva.  </li>
+<li><strong><code>-f dades.ldif</code></strong>: Indica l'arxiu LDIF amb les dades a afegir.</li>
+</ol>
+<p>Llistat d'entrades afegides:</p>
+<p><img alt="agregar" src="../img/3.54.png" /></p>
+<h4 id="creacio-duna-nova-ou">Creació d'una nova OU</h4>
+<p>En aquest apartat farem la creació d'una nova <strong>OU</strong>, en aquest cas, anomenada <strong>Dam</strong>. Per crear-la anirem al fitxer i agregarem una nova de la següent manera fent-la com a <code>organizationalUnit</code>:</p>
+<p><img alt="creació ou" src="../img/3.56.png" /></p>
+<p>Guardem el fitxer i seguidament pugem els canvis al servidor <strong>LDAP</strong> amb <code>ldapadd</code>.</p>
+<p><img alt="add" src="../img/3.57.png" /></p>
+<p>I comprovem que estiguin els canvis:</p>
+<p><img alt="search" src="../img/3.58.png" /></p>
+<h4 id="crear-un-nou-usuari-amb-dos-atributs-opcionals-per-a-la-classe-posixaccount">Crear un nou usuari amb dos atributs opcionals per a la classe posixAccount</h4>
+<p>Crearem un nou usuari amb la següent informació:</p>
+<p><img alt="user" src="../img/3.61.png" /></p>
+<p>Els atributs <code>telephoneNumber, mail</code> són opcionals per a la classe <code>posixAccount</code>, els altres són obligatoris.</p>
+<p>El tornem a agregar a <strong>LDAP</strong>: </p>
+<p><img alt="add" src="../img/3.60.png" /></p>
+<h4 id="crear-un-nou-grup-dintre-de-la-ou-groups-i-afegir-3-usuaris">Crear un nou grup dintre de la OU Groups i afegir 3 usuaris</h4>
+<p>Per crear un nou grup anomenat <strong>nouGrup</strong> a la <code>ou=Groups</code> i afegir 3 usuaris a la vegada el que farem serà introduir la següent informació al nostre fitxer que es divideix en els següents components:</p>
+<ol>
+<li><strong><code>dn</code></strong>: Defineix el distingit nom del nou grup (cn=nouGrup dins de la OU Groups).</li>
+<li><strong><code>objectClass</code></strong>: Defineix els tipus d'objecte:</li>
+<li><strong><code>top</code></strong>: Classe bàsica.</li>
+<li><strong><code>groupOfNames</code></strong>: Classe per grups que contenen membres identificats per DN.</li>
+<li><strong><code>cn</code></strong>: Nom del grup, en aquest cas, nouGrup.</li>
+<li><strong><code>description</code></strong>: Descripció opcional del grup.</li>
+<li><strong><code>member</code></strong>: Llista d'usuaris (DN complet de cada usuari).</li>
+</ol>
+<p><img alt="grup nou" src="../img/3.67.png" /></p>
+<p>A continuació l'afeixim al <strong>LDAP</strong> amb <code>ldapadd</code>:</p>
+<p><img alt="add" src="../img/3.66.png" /></p>
+<p>I comprovem que s'hagi afegit correctament de la següent manera:</p>
+<p><img alt="search" src="../img/3.65.png" /></p>
+<h3 id="comanda-per-buscar">Comanda per Buscar</h3>
+<p>La comanda <code>ldapsearch -xLLL -b "dc=raul,dc=cat" dn</code> fa una consulta al directori <strong>LDAP</strong> per obtenir els <strong>DN</strong> de les entrades sota el domini especificat. 
+Parts de la comanda: </p>
+<ol>
+<li><strong><code>ldapsearch</code></strong>: Cerca informació al directori <strong>LDAP</strong>.  </li>
+<li><strong><code>-x</code></strong>: Usa autenticació simple.  </li>
+<li><strong><code>-LLL</code></strong>: Mostra la sortida sense informació extra (format net).  </li>
+<li><strong><code>-b "dc=raul,dc=cat"</code></strong>: Defineix la base de cerca dins del domini <code>raul.cat</code>.  </li>
+<li><strong><code>dn</code></strong>: Sol·licita només els <strong>DN</strong> de les entrades. </li>
+</ol>
+<p>Llistat de <strong>DN</strong> de cada entrada: </p>
+<p><img alt="fitxer-ldif" src="../img/3.55.png" /></p>
+<h4 id="quantes-ou-hi-ha-quants-usuaris-hi-ha-al-domini">Quantes <strong>OU</strong> hi ha? Quants <strong>usuaris</strong> hi ha al domini?</h4>
+<p>Per buscar la quantitat de <strong>OU</strong> que hi ha farem ús de la següent comanda que filtrarà per <strong>Unitat Organitzativa</strong>:</p>
+<p><code>ldapsearch -x -D "cn=admin,dc=raul,dc=cat" -W -b "dc=raul,dc=cat" "(objectClass=organizationalUnit)"</code>. </p>
+<p>El resultat és de 5 <strong>OU</strong>:</p>
+<p><img alt="ous" src="../img/3.68.png" /></p>
+<p>Per buscar la quantitat d'<strong>Usuaris</strong> que hi ha farem ús de la següent comanda que filtrarà per <strong>Persones</strong>:</p>
+<p><code>ldapsearch -x -D "cn=admin,dc=raul,dc=cat" -W -b "dc=raul,dc=cat" "(objectClass=person)"</code></p>
+<p>Resultat de 151 Usuaris:</p>
+<p><img alt="Usuaris" src="../img/3.69.png" /></p>
+<h4 id="lusuari-kvaughan-en-quants-grups-el-trobem-com-a-uniquemember-i-quins-son">L’usuari <strong>kvaughan</strong> en quants grups el trobem com a uniqueMember i quins són?</h4>
+<p>Per trobar-ho, podem fer una cerca dels grups on <strong>kvaughan</strong> aparegui com a membre únic <code>uniqueMember</code>. </p>
+<p>Amb la següent comanda treballarem a quants grups pertany, en aquest cas 1 (<code>numResponses: 1</code>): </p>
+<p><code>ldapsearch -x -D "cn=admin,dc=raul,dc=cat" -W -b "dc=raul,dc=cat" "(uniqueMember=cn=kvaughan,ou=People,dc=raul,dc=cat)" cn</code>  </p>
+<p><img alt="kvaughan" src="../img/3.70.png" /></p>
+<h4 id="quants-grups-hi-ha-dintre-de-la-uo-groups">Quants grups hi ha dintre de la uo Groups?</h4>
+<p>Per comptar el nombre de grups dins de la unitat organitzativa <strong>Groups</strong> vem usar la següent comanda. En aquest cas, tenim 6 grups:
+<code>ldapsearch -xLLL -b "ou=Groups,dc=raul,dc=cat" cn</code></p>
+<p><img alt="Groups" src="../img/3.71.png" /></p>
+<p>I per comptar-los afegim <code>...| grep -c "^cn"</code> per filtrar pel nom:</p>
+<p><img alt="resultat" src="../img/3.72.png" />
+<br><br></p>
+<h4 id="mostra-tots-els-usuaris-del-domini-on-el-seu-uidnumber-estigui-entre-1010-i-1030-inclosos">Mostra tots els usuaris del domini on el seu uidNumber estigui entre 1010 i 1030 (inclosos).</h4>
+<p>Per cercar usuaris amb un uidNumber dins del rang entre 1010 i 1030 hem de fer servir la següent comanda que filtra pel rang i mostra els <strong>dn</strong> de cada usuari inclòs:</p>
+<p><code>ldapsearch -xLLL -D "cn=admin,dc=raul,dc=cat" -W -b "dc=raul,dc=cat" "(&amp;(uidNumber&gt;=1010)(uidNumber&lt;=1030))" dn</code></p>
+<ul>
+<li><strong><code>(&amp;(uidNumber&gt;=1010)(uidNumber&lt;=1030))</code></strong>: Filtra els usuaris amb un <code>uidNumber</code> dins del rang especificat.</li>
+</ul>
+<p><img alt="uid Inclosos" src="../img/3.94.png" />
+<br><br></p>
+<h4 id="usuaris-on-el-seu-telefon-acabi-en-un-2-o-el-seu-cognom-en-una-n-quants">Usuaris on el seu telèfon acabi en un 2 o el seu cognom en una n. Quants?</h4>
+<p>Per buscar usuaris on el seu telèfon acabi en un 2 o el seu cognom en una n hem de fer servir la següent comanda:
+<code>ldapsearch -xLLL -D "cn=admin,dc=raul,dc=cat" -W -b "dc=raul,dc=cat" "(|(telephoneNumber=*2)(sn=*n))" telephoneNumber sn</code></p>
+<ol>
+<li><strong><code>(|(telephoneNumber=*2)(sn=*n))</code></strong>: Cerca usuaris on el <code>telephoneNumber=*2</code> (el número de telèfon acaba en 2).</li>
+<li><strong><code>sn=*n</code></strong>: El cognom acaba en una n.</li>
+<li>Filtra per <code>telephoneNumber</code> i <code>sn</code>.</li>
+</ol>
+<p><img alt="telefon y sn" src="../img/3.95.png" /></p>
+<p>Per comptar el número de resultats afegim el filtre: <code>| grep "^dn:" | wc -l</code> que filtra per les línies amb <strong>dn</strong> i les compta:</p>
+<p><img alt="resultat" src="../img/3.96.png" /></p>
+<p>El resultat és de 48 usuaris que coincideixen amb el filtre.
+<br><br></p>
+<h3 id="comanda-per-modificar">Comanda per modificar</h3>
+<p>La comanda amb l'estructura següent: <code>ldapmodify [opcions] -D "Distinguished Name" -W -f fitxer.ldif</code> serveix per modificar entrades en un directori <strong>LDAP</strong>, permetent afegir, canviar o eliminar atributs d'una entrada existent. 
+La comanda es divideix en:</p>
+<ol>
+<li><strong><code>ldapmodify</code></strong>: Comanda per modificar entrades al directori LDAP.</li>
+<li><strong><code>-D "dn"</code></strong>: Especifica l'usuari (DN) que s'autenticarà per realitzar les modificacions.</li>
+<li><strong><code>-W</code></strong>: Demana la contrasenya per a l'usuari especificat.</li>
+<li><strong><code>-f fitxer.ldif</code></strong>: Indica l'arxiu LDIF que conté les modificacions a aplicar.</li>
+<li><strong><code>-x</code></strong>: Usa autenticació simple (sense SASL).
+<br><br></li>
+</ol>
+<h4 id="afegir-atribut-opcional-a-lusuari-pedro">Afegir atribut opcional a l’usuari Pedro</h4>
+<p>Per afegir un nou atribut a l'usuari <strong>Pedro</strong>, el que hem de fer primer és afegir les següents línies al fitxer <strong>mk.ldif</strong> que seran les que modificaran l'usuari per afegir-los.</p>
+<p><img alt="ldif" src="../img/3.62.png" /></p>
+<p>L'agreguem al <strong>LDAP</strong> amb la comanda <code>ldapmodify -x -D "cn=admin,dc=raul,dc=cat" -W -f mk.ldif</code></p>
+<p><img alt="modify" src="../img/3.63.png" /></p>
+<p>Comprovem que s'ha afegit:</p>
+<p><img alt="search" src="../img/3.64.png" />
+<br><br></p>
+<h4 id="esborrar-latribut-roomnumber-i-homedirectory-de-lusuari-ejohnson">Esborrar l’atribut roomNumber i homeDirectory de l’usuari ejohnson</h4>
+<p>Primer de tot hem de comprovar l'estat inicial de l'usuari <strong>ejohnson</strong>. Per això ho mirarem amb la comanda:
+<code>ldapsearch -x -b "dc=raul,dc=cat" "(uid=ejohnson)"</code></p>
+<p><img alt="Estat inicial" src="../img/3.73.png" /></p>
+<p>Anteriorment podem veure que els atributs existeixen, així que si volem eliminar <code>roomNumber</code> i <code>homeDirectory</code> de l'usuari <code>ejohnson</code>, em d'introduir la següent entrada:  </p>
+<pre><code class="language-ldif">dn: uid=ejohnson,ou=People,dc=raul,dc=cat
+changetype: modify
+delete: roomNumber
+</code></pre>
+<p><img alt="Delete roomNumber" src="../img/3.74.png" /></p>
+<p>Explicació de l'entrada anterior:</p>
+<ol>
+<li><strong><code>dn</code></strong>: Identifica l'usuari (<code>cn=ejohnson</code>).</li>
+<li><strong><code>changetype: modify</code></strong>: Especifica que es tracta d'una modificació.</li>
+<li><strong><code>delete</code></strong>: Indica que volem esborrar l'atribut <code>roomNumber</code>. </li>
+</ol>
+<p>Per altra banda, tenim que no ens deixa eliminar directament l'atribut <code>homeDirectory</code> perquè <code>posixAccount</code> depèn d'ell. Llavors, passarem l'atribut a valor <em>NULL</em>, i això eliminarà l'atribut indirectament, amb la següent entrada:</p>
+<pre><code class="language-ldif">dn: uid=ejohnson,ou=People,dc=raul,dc=cat
+changetype: modify
+replace: homeDirectory
+homeDirectory: /dev/null
+</code></pre>
+<ol>
+<li><strong><code>replace: homeDirectory</code></strong>: Indica que volem reemplaçar el contingut de l'atribut <code>homeDirectory</code>.</li>
+<li><strong><code>homeDirectory: /dev/null</code></strong>: Indica que volem canviar a <em>NULL</em> el seu valor. </li>
+</ol>
+<p><img alt="homeDirectory null" src="../img/3.75.png" /></p>
+<p>Per introduir totes les entrades al <strong>LDIF</strong> hem d'executar la comanda <code>ldapmodify -x -D "cn=admin,dc=raul,dc=cat" -W -f mk.ldif</code> i farà totes les modificacions pertinents.</p>
+<p>Finalment, al executar tot l'anterior, farem una cerca a l'usuari <strong>ejohnson</strong> per tornar a veure tota la seva informació i saber si s'ha actualitzat correctament. Llavors, amb la comanda:
+<code>ldapsearch -x -b "dc=raul,dc=cat" "(uid=ejohnson)"</code>, podem veure el següent:</p>
+<p><strong>Estat final correctament:</strong></p>
+<p><img alt="Estat final" src="../img/3.76.png" />
+<br><br></p>
+<h4 id="trau-de-la-uo-people-a-3-usuaris-i-afegeix-los-a-la-uo-dam">Trau de la UO People a 3 usuaris i afegeix-los a la UO DAM</h4>
+<p>Primer de tot, comprovem que no hi ha cap usuari a la <strong>UO</strong> de <strong>DAM</strong> fent una cerca. La comanda cerca tots els usuaris amb <code>objectClass=posixAccount</code> dins de la <strong>UO</strong>:</p>
+<p><code>ldapsearch -xLLL -D "cn=admin,dc=raul,dc=cat" -W -b "ou=dam,dc=raul,dc=cat" "(objectClass=posixAccount)"</code></p>
+<p>També hem de mirar que existeix la <strong>Unitat Organitzativa</strong> de <strong>DAM</strong>, fent una simple cerca trobem que existeix:<br />
+<code>ldapsearch -xLLL -D "ou=dam,dc=raul,dc=cat"</code></p>
+<p><img alt="usuaris dam" src="../img/3.77.png" /></p>
+<p>Seguidament, hem de mirar els usuaris que tenim a <strong>People</strong> amb la següent comanda que ens retorna el <strong>dn</strong> de cada usuari:</p>
+<p><code>ldapsearch -xLLL -D "cn=admin,dc=raul,dc=cat" -W -b "ou=People,dc=raul,dc=cat" "(objectClass=posixAccount)" dn</code></p>
+<p><img alt="usuaris people" src="../img/3.78.png" /></p>
+<p>El que farem serà passar els tres primers usuaris de <strong>People</strong> a la <strong>UO</strong> de <strong>DAM</strong>. Llavors, hem d'introduir la següent entrada al fitxer <strong>ldif</strong>:</p>
+<p>On cada línia es divideix en els següents arguments:</p>
+<ol>
+<li><strong><code>dn:</code></strong> Especifica el DN actual de l'usuari a la unitat <code>ou=People</code>.</li>
+<li><strong><code>changetype:</code></strong> Indica que es vol modificar el DN (amb el tipus de canvi: <code>moddn</code>).</li>
+<li><strong><code>newrdn:</code></strong> Defineix el nou RDN, que en aquest cas no canvia.</li>
+<li><strong><code>deleteoldrdn:</code></strong> Esborra el RDN antic; valor <code>1</code> indica que sí.</li>
+<li><strong><code>newSuperior:</code></strong> Mou l'entrada a una nova ubicació: <code>ou=dam,dc=raul,dc=cat</code>.</li>
+</ol>
+<p>Entrada al <strong>ldif</strong>:</p>
+<pre><code class="language-ldif">dn: uid=abergin,ou=People,dc=raul,dc=cat
+changetype: moddn
+newrdn: uid=abergin
+deleteoldrdn: 1
+newSuperior: ou=dam,dc=raul,dc=cat
+
+dn: uid=achassin,ou=People,dc=raul,dc=cat
+changetype: moddn
+newrdn: uid=achassin
+deleteoldrdn: 1
+newSuperior: ou=dam,dc=raul,dc=cat
+
+dn: uid=ahall,ou=People,dc=raul,dc=cat
+changetype: moddn
+newrdn: uid=ahall
+deleteoldrdn: 1
+newSuperior: ou=dam,dc=raul,dc=cat
+</code></pre>
+<p><img alt="moure usr" src="../img/3.79.png" /></p>
+<p>Ara modificarem el <strong>LDAP</strong> amb la informació introduïda anteriorment amb la comanda <code>ldapmodify -x -D "cn=admin,dc=raul,dc=cat" -W -f mk.ldif</code>:</p>
+<p><img alt="modify" src="../img/3.80.png" /></p>
+<p>Finalment, anem a veure la <strong>UO</strong> de <strong>People</strong> i podem comprovar que ja no estan els primers tres usuaris que hi havia abans:</p>
+<p><img alt="people" src="../img/3.81.png" /></p>
+<p>I per últim, veiem que en la <strong>UO</strong> de <strong>DAM</strong> ja estan afegits els usuaris corresponents:</p>
+<p><img alt="dam agregat" src="../img/3.82.png" />
+<br><br></p>
+<h4 id="esborra-la-uo-people">Esborra la UO People</h4>
+<p>En aquest cas no borraré la meva <strong>UO People</strong> personalment, però seguidament hi haurà uns passos per explicar l'eliminació:</p>
+<ul>
+<li>Primer de tot, comprovem que la <strong>UO</strong> està completament buida fent una cerca amb la comanda <code>ldapsearch -xLLL -D "ou=People,dc=raul,dc=cat" dn</code>. Si no surt res, és que està buida. Si no està buida, hem d'introduir la següent entrada al fitxer <strong>ldif</strong> per eliminar un usuari i així fer-ho per cada usuari. Finalment, hem de fer <code>ldapmodify -x -D "cn=admin,dc=raul,dc=cat" -W -f mk.ldif</code>:</li>
+</ul>
+<pre><code class="language-ldif">dn: uid=usuari,ou=People,dc=raul,dc=cat
+changetype: delete
+</code></pre>
+<ul>
+<li>El segon pas sera elimar directament la <strong>UO</strong> amb la seguent entrada:    </li>
+</ul>
+<pre><code class="language-ldif">dn: ou=People,dc=raul,dc=cat
+changetype: delete
+</code></pre>
+<ul>
+<li>Finalment, comprovem que ja no estigui buscant-la amb <code>ldapsearch -xLLL -D "ou=People,dc=raul,dc=cat" dn</code>, i ja estaria eliminada.
+<br><br></li>
+</ul>
+<h4 id="modifica-el-uid-de-lusuari-hmiller-a-hamiller">Modifica el uid de l'usuari hmiller a hamiller</h4>
+<p>Abans de modificar res, primer de tot anem a comprovar el <strong>uid</strong> de l'usuari que se'ns demana amb la comanda <code>ldapsearch -xLLL -D "ou=People,dc=raul,dc=cat" "(uid=hmiller)"</code>, i trobem que sí existeix:</p>
+<p><img alt="hmiller" src="../img/3.83.png" /></p>
+<p>Seguidament, farem la modificació del <strong>uid</strong> amb la següent entrada al <strong>ldif</strong>:</p>
+<pre><code class="language-ldif">dn: uid=hmiller,ou=People,dc=raul,dc=cat
+changetype: moddn
+newrdn: uid=hamiller
+deleteoldrdn: 1
+</code></pre>
+<p>L'entrada es divideix en:</p>
+<ol>
+<li><strong><code>dn:</code></strong> Indica el DN de l'entrada a modificar (<code>uid=hmiller,ou=People,dc=raul,dc=cat</code>).</li>
+<li><strong><code>changetype: moddn</code></strong> Especifica que es vol canviar el <strong>DN</strong>.</li>
+<li><strong><code>newrdn:</code></strong> Defineix el nou RDN (<code>uid=hamiller</code>).</li>
+<li><strong><code>deleteoldrdn:</code></strong> Elimina l'antic RDN després de la modificació.</li>
+</ol>
+<p>Entrada:</p>
+<p><img alt="entrada" src="../img/3.84.png" /></p>
+<p>Fem la modificació al <strong>LDAP</strong> amb <code>ldapmodify -x -D "cn=admin,dc=raul,dc=cat" -W -f mk.ldif</code>:</p>
+<p><img alt="modify" src="../img/3.85.png" /></p>
+<p>I finalment, tornem a comprovar que el <strong>uid</strong> hagi estat canviat a <code>hamiller</code>, igual que abans, amb la comanda <code>ldapsearch -xLLL -D "ou=People,dc=raul,dc=cat" "(uid=hamiller)"</code>:</p>
+<p><img alt="hamiller" src="../img/3.86.png" />
+<br><br></p>
+<h4 id="dun-sol-cop-a-lusuari-que-tu-vulguis-esborra-un-atribut-afegeix-ne-un-altre-i-modifica-un-tercer">D’un sol cop, a l’usuari que tu vulguis, esborra un atribut, afegeix-ne un altre i modifica un tercer.</h4>
+<p>Si mirem a la <strong>UO</strong> de <strong>DAM</strong>, trobarem tres usuaris. En aquest cas, utilitzarem l'usuari <strong>ahall</strong>:</p>
+<p><img alt="dn ahall" src="../img/3.87.png" /></p>
+<p>Informació de l'usuari <strong>ahall</strong>: </p>
+<p><img alt="ahall" src="../img/3.88.png" /></p>
+<p>Amb aquest usuari, el que farem serà eliminar-li l'atribut <code>roomNumber</code>, afegir-ne un altre que serà <code>description</code>, i finalment substituir el <code>telephoneNumber</code>.
+Ho farem introduint la següent entrada de nou al <strong>LDIF</strong>:</p>
+<pre><code class="language-ldif">dn: uid=ahall,ou=Dam,dc=raul,dc=cat
+changetype: modify
+delete: roomNumber
+
+dn: uid=ahall,ou=Dam,dc=raul,dc=cat
+add: description
+description: Usuari ahall
+
+dn: uid=ahall,ou=Dam,dc=raul,dc=cat
+replace: telephoneNumber
+telephoneNumber: +2 234 234 234
+</code></pre>
+<p><img alt="ahall" src="../img/3.91.png" /></p>
+<p>Executem la comanda <code>ldapmodify -x -D "cn=admin,dc=raul,dc=cat" -W -f mk.ldif</code>:</p>
+<p><img alt="ldapmodify" src="../img/3.90.png" /></p>
+<p>Finalment, podem veure com el <code>roomNumber</code> s'ha eliminat, hem afegit la <code>description</code>, i finalment volíem reemplaçar el <code>telephoneNumber</code>, però s'ha afegit perquè no existia. Si hagués existit, s'hauria actualitzat correctament.</p>
+<p><img alt="resultat" src="../img/3.92.png" /></p>
+<hr />
               
             </div>
           </div><footer>
