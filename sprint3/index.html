@@ -133,6 +133,42 @@
     </li>
         </ul>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#4-entorns-grafics-apache-directory-studio">4. Entorns Gràfics (Apache Directory Studio)</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#installacio">Instal·lació</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#configuracio">Configuració</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#1-connexio-a-un-servidor-ldap">1. Connexió a un servidor LDAP</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#2-configuracio-de-la-cerca-a-ldap">2. Configuració de la cerca a LDAP</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#3-configuracio-de-preferencies-generals">3. Configuració de preferències generals</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#comprovar-que-larbre-de-directori-es-correcte">Comprovar que l'arbre de directori és correcte</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#crea-una-uo-un-grup-i-un-usuari">Crea una UO, un Grup i un Usuari</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#1-crear-una-unitat-organitzativa-ou">1. Crear una Unitat Organitzativa (OU)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#2-crear-un-grup">2. Crear un Grup</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#3-crear-un-usuari">3. Crear un Usuari</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#accedir-des-del-client-amb-aquest-usuari">Accedir des del client amb aquest usuari</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#1-configuracio-de-la-connexio">1. Configuració de la connexió</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#2-validar-usuari">2. Validar usuari</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
     </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../sprint4/">Sprint 4</a>
@@ -629,6 +665,288 @@ telephoneNumber: +2 234 234 234
 <p><img alt="ldapmodify" src="../img/3.90.png" /></p>
 <p>Finalment, podem veure com el <code>roomNumber</code> s'ha eliminat, hem afegit la <code>description</code>, i finalment volíem reemplaçar el <code>telephoneNumber</code>, però s'ha afegit perquè no existia. Si hagués existit, s'hauria actualitzat correctament.</p>
 <p><img alt="resultat" src="../img/3.92.png" /></p>
+<hr />
+<h2 id="4-entorns-grafics-apache-directory-studio">4. Entorns Gràfics (Apache Directory Studio)</h2>
+<h3 id="installacio">Instal·lació</h3>
+<p>Primer de tot, per fer la instal·lació hem d'anar a <code>https://directory.apache.org/studio/download/download.html</code> i descarregar el paquet de <strong>Apache Directory Studio</strong>.</p>
+<p>Pàgina de descàrrega:  </p>
+<p><img alt="web download" src="../img/3.99.png" /></p>
+<p>Seguidament, podem comprovar que tenim el paquet descarregat a les nostres descàrregues:  </p>
+<p><img alt="downloads" src="../img/3.100.png" /></p>
+<p>Fem l'extracció de la carpeta i accedim on ja podrem veure l'executable de l'aplicació gràfica:  </p>
+<p><img alt="extraer" src="../img/3.101.png" /></p>
+<p>Hem d'instal·lar Java (JDK) perquè funcioni <strong>Apache</strong>. Per a una versió 11, l'instal·larem amb la següent comanda:<br />
+<code>sudo apt install openjdk-11-jdk</code></p>
+<p><img alt="java" src="../img/3.102.png" /></p>
+<p>Finalment, executem l'aplicació:  </p>
+<p><img alt="execució" src="../img/3.103.png" /></p>
+<h3 id="configuracio">Configuració</h3>
+<h4 id="1-connexio-a-un-servidor-ldap"><strong>1. Connexió a un servidor LDAP</strong></h4>
+<p><strong>Afegir una connexió a un servidor LDAP</strong>  </p>
+<ol>
+<li>A la barra de menú, fem clic a <strong>Window</strong>, després a <strong>Open Perspective</strong> i <strong>Other...</strong>  </li>
+</ol>
+<p><img alt="perspective" src="../img/3.104.png" /></p>
+<ul>
+<li>Seleccionem <strong>LDAP</strong> i fem clic a <strong>Open</strong>.  </li>
+</ul>
+<p><img alt="open" src="../img/3.105.png" /></p>
+<ul>
+<li>Aquesta seria la perspectiva principal on podrem gestionar els nostres servidors LDAP i cercar entrades dins d'ells:  </li>
+</ul>
+<p><img alt="finestra" src="../img/3.106.png" /></p>
+<ol>
+<li>
+<p>Ara, al panell esquerre, busquem el panell <strong>Connection</strong>.  </p>
+</li>
+<li>
+<p>Si no es veu aquest panell, anem a <strong>Window</strong>, <strong>Show View</strong> i <strong>LDAP Connections</strong>.  </p>
+<p><img alt="Connection" src="../img/3.107.png" /></p>
+</li>
+<li>
+<p>Per afegir una nova connexió, fem clic a la icona <strong>New Connection</strong> (de color groc), anem al menú i seleccionem <strong>File</strong>, després <strong>New</strong> i <strong>LDAP Connection</strong>. Tindrem la següent finestra:  </p>
+</li>
+</ol>
+<p><img alt="New Connection" src="../img/3.108.png" /></p>
+<p><strong>Configuració de la connexió</strong>  </p>
+<ol>
+<li>
+<p><strong>Introduïm les dades de la connexió</strong>:  </p>
+</li>
+<li>
+<p><strong>Name</strong>: Un nom descriptiu per a la connexió (per exemple, "El meu servidor LDAP").</p>
+</li>
+<li><strong>Host</strong>: Adreça del servidor LDAP (per exemple, <code>localhost</code> si és la nostra màquina local).</li>
+<li><strong>Port</strong>: El port per defecte és <strong>389</strong> per connexions no segures o <strong>636</strong> per connexions segures.</li>
+<li><strong>Encryption</strong>: Si la connexió és segura, seleccionem <strong>LDAPS</strong> (això farà servir el port 636). Si no és segura, deixem l'opció per defecte a <strong>None</strong>.</li>
+</ol>
+<p><img alt="connexió" src="../img/3.109.png" /></p>
+<ol>
+<li>
+<p><strong>Configuració d'autenticació</strong>:  </p>
+</li>
+<li>
+<p>Configurem l'autenticació posant l'usuari administrador <code>dc=raul,dc=cat</code> i les seves dades.  </p>
+</li>
+<li>
+<p>Fem clic a <strong>OK</strong> per desar la configuració. I tindríem la següent connexió:  </p>
+</li>
+</ol>
+<p><img alt="perspective" src="../img/3.110.png" /></p>
+<h4 id="2-configuracio-de-la-cerca-a-ldap"><strong>2. Configuració de la cerca a LDAP</strong></h4>
+<p><strong>Realitzar una cerca</strong>  </p>
+<ol>
+<li>A la <strong>Vista del Navegador LDAP</strong>, seleccionem el servidor LDAP al qual ens hem connectat.  </li>
+<li>Al panell central, fem clic dret sobre el servidor i seleccionem <strong>New Search</strong>:  </li>
+</ol>
+<p><img alt="alt text" src="../img/3.111.png" /></p>
+<ol>
+<li>
+<p>A la finestra de cerca:  </p>
+</li>
+<li>
+<p><strong>Base DN</strong>: Defineix el punt de partida de la cerca (per exemple, <code>dc=raul,dc=cat</code>).</p>
+</li>
+<li><strong>Filter</strong>: Defineix un filtre de cerca (per exemple, <code>(uid=maria)</code> per cercar per l'atribut <code>uid</code>).  </li>
+</ol>
+<p>Fem clic a <strong>Search</strong> per executar la cerca:  </p>
+<p><img alt="alt text" src="../img/3.112.png" /></p>
+<p>Resultat de la cerca realitzada anteriorment:  </p>
+<p><img alt="alt text" src="../img/3.113.png" /></p>
+<h4 id="3-configuracio-de-preferencies-generals"><strong>3. Configuració de preferències generals</strong></h4>
+<p><strong>Canviar el tema visual</strong>  </p>
+<ol>
+<li>Anem a <strong>Window</strong>, <strong>Preferences</strong>, <strong>General</strong>, <strong>Appearance</strong> i <strong>Theme</strong>.  </li>
+<li>Seleccionem entre els temes disponibles, com el <strong>Dark Theme</strong> o el <strong>Light Theme</strong>.  </li>
+</ol>
+<p><img alt="alt text" src="../img/3.115.png" /></p>
+<p><strong>Canviar la font i la mida</strong>  </p>
+<ol>
+<li>A la mateixa secció de <strong>Appearance</strong>, podem configurar la mida de la font i el tipus de lletra que s'utilitzarà a les vistes de <strong>LDAP Browser</strong> i <strong>Schema Editor</strong>.  </li>
+<li>Seleccionem <strong>Font</strong> per canviar el tipus de font i <strong>Size</strong> per ajustar la mida de la font:  </li>
+</ol>
+<p><img alt="alt text" src="../img/3.116.png" /></p>
+<h3 id="comprovar-que-larbre-de-directori-es-correcte">Comprovar que l'arbre de directori és correcte</h3>
+<p><strong>1. Configuració de la vista de l'arbre de directoris</strong>  </p>
+<ul>
+<li>Naveguem per l'arbre per veure com estan organitzades les dades. La jerarquia de l'arbre hauria de tenir una estructura lògica.  </li>
+<li>Un cop configurat, podrem navegar fàcilment per l'arbre LDAP i veure els objectes i atributs.  </li>
+<li>Fem clic sobre qualsevol entrada per veure les seves propietats, afegir o eliminar atributs, i més:  </li>
+</ul>
+<p><img alt="alt text" src="../img/3.114.png" /></p>
+<p><strong>2. Validar els atributs de les entrades</strong>  </p>
+<ul>
+<li>Fem clic a una entrada del directori i revisem els atributs associats.  </li>
+<li>Per exemple, una entrada d'usuari com <code>uid=abergin</code> hauria de tenir atributs com <code>cn</code>, <code>sn</code>, <code>uid</code>, <code>userPassword</code>...  </li>
+<li>
+<p>Si un atribut important falta o no es correspon amb la informació esperada, això podria indicar un error en l'estructura de l'arbre.  </p>
+<p><img alt="alt text" src="../img/3.118.png" /></p>
+</li>
+</ul>
+<p><strong>3. Utilitzar el filtre de cerca per a validació ràpida</strong>  </p>
+<ul>
+<li>Podem utilitzar la funcionalitat de <strong>Quick Search</strong> dins d'Apache Directory Studio per filtrar entrades i veure si l'estructura es comporta correctament.  </li>
+<li>
+<p>També podem filtrar per <code>ou=Dam</code> per assegurar-nos que totes les entrades d'usuari estan a l'OU correcta.  </p>
+<p><img alt="alt text" src="../img/3.119.png" /></p>
+<p>Resultat de la cerca:  </p>
+<p><img alt="alt text" src="../img/3.120.png" /></p>
+</li>
+</ul>
+<h3 id="crea-una-uo-un-grup-i-un-usuari">Crea una UO, un Grup i un Usuari</h3>
+<h4 id="1-crear-una-unitat-organitzativa-ou"><strong>1. Crear una Unitat Organitzativa (OU)</strong></h4>
+<p>Les <strong>Unitats Organitzatives (OU)</strong> s'utilitzen per organitzar les dades en l'arbre LDAP. </p>
+<p><strong>Passos per crear una Unitat Organitzativa:</strong></p>
+<ol>
+<li>A la finestra de l'arbre de directori, naveguem fins al punt on volem crear la nova <strong>OU</strong>.</li>
+<li>
+<p>Fem clic dret sobre el directori on volem afegir la nova <strong>OU</strong> i seleccionem <strong>New Entry</strong>:</p>
+<p><img alt="alt text" src="../img/3.121.png" />  </p>
+</li>
+<li>
+<p>A la finestra que surt, seleccionem <strong>Organizational Unit</strong> i clicquem a <strong>Next</strong>:</p>
+<p><img alt="alt text" src="../img/3.122.png" /></p>
+</li>
+<li>
+<p>Omplim els camps:</p>
+<ul>
+<li>En <strong>Parent</strong> posem: <code>dc=raul,dc=cat</code> que os es creara.</li>
+<li>I en <strong>RDN</strong> fiquem <code>ou=sistemes</code></li>
+</ul>
+<p><img alt="alt text" src="../img/3.123.png" /></p>
+</li>
+<li>
+<p>Fem clic a <strong>Finish</strong> per crear la nova <strong>OU</strong>:</p>
+<p><img alt="alt text" src="../img/3.124.png" /></p>
+</li>
+</ol>
+<p>Ara hem creat una nova <strong>OU</strong> per a emmagatzemar usuaris dins del nostre servidor LDAP.</p>
+<p><img alt="alt text" src="../img/3.125.png" /></p>
+<h4 id="2-crear-un-grup"><strong>2. Crear un Grup</strong></h4>
+<p>Els <strong>grups</strong> s'utilitzen per organitzar els usuaris en el servidor LDAP. Els usuaris dins d'un grup poden tenir permisos comuns o ser tractats com una unitat.</p>
+<p><strong>Passos per crear un grup:</strong></p>
+<ol>
+<li>A la finestra de l'arbre de directori, seleccionem la <strong>OU</strong> on volem crear el grup (per exemple, <code>ou=sistemes,dc=raul,dc=cat</code>).</li>
+<li>Fem clic dret sobre l'OU i seleccionem <strong>New</strong>, <strong>Other</strong> i <strong>Entry</strong>.</li>
+<li>
+<p>A la finestra, seleccionem <strong>Group Of Names</strong> i cliquem <strong>Next</strong>.</p>
+<p><img alt="alt text" src="../img/3.126.png" /></p>
+</li>
+<li>
+<p>Omplem els camps necessaris:</p>
+<ul>
+<li>
+<p><strong>DN (Distinguished Name)</strong>: Per exemple, <code>cn=grup_admin,ou=sistemes,dc=example,dc=com</code>.</p>
+<p><img alt="alt text" src="../img/3.127.png" /></p>
+</li>
+<li>
+<p><strong>CN (Common Name)</strong>: Per exemple, <code>grup_admins</code>.</p>
+</li>
+<li><strong>Description</strong>: (Es opcional) Una breu descripció del grup, com "Grup amb permisos admin".</li>
+</ul>
+<p><img alt="alt text" src="../img/3.129.png" /></p>
+</li>
+<li>
+<p>Afegir membres al grup:</p>
+<ul>
+<li>
+<p>Si volem afegir membres seleccionem l'atribut <code>member</code> i afegim els <strong>DN</strong> dels usuaris que volem que formin part del grup (per exemple, <code>uid=admin,ou=usuaris,dc=example,dc=com</code>).</p>
+<p><img alt="alt text" src="../img/3.129.png" /></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Fem clic a <strong>Finish</strong> per crear el grup.</p>
+</li>
+</ol>
+<p>Ara ja tenim un grup creat al directori, amb els usuaris que seleccionem com a membres.</p>
+<p><img alt="alt text" src="../img/3.130.png" /></p>
+<h4 id="3-crear-un-usuari"><strong>3. Crear un Usuari</strong></h4>
+<p>Un cop tinguem la nostra <strong>OU</strong> i <strong>grup</strong> creats, podem afegir-hi un <strong>usuari</strong>. Un usuari en LDAP es defineix amb un conjunt d'atributs com <code>uid</code>, <code>cn</code>, <code>sn</code>, <code>userPassword</code>...</p>
+<p><strong>Passos per crear un usuari:</strong></p>
+<ol>
+<li>A la finestra de l'arbre de directori, seleccionem la <strong>OU</strong> que hem creat prèviament per a usuaris (per exemple, <code>ou=sistemes,dc=raul,dc=cat</code>).</li>
+<li>Fem clic dret sobre l'OU i seleccionem <strong>New</strong>, <strong>Other</strong> i <strong>Entry</strong>.</li>
+<li>A la finestra, seleccionem <strong>Person</strong> i cliquem <strong>Next</strong>.</li>
+</ol>
+<p><img alt="alt text" src="../img/3.135.png" /><br><br></p>
+<ol>
+<li>
+<p>Omplim els camps necessaris:</p>
+<ul>
+<li><strong>DN (Distinguished Name)</strong>: Per exemple, <code>uid=maria,ou=sistemes,dc=raul,dc=cat</code>.</li>
+<li><strong>UID (User ID)</strong>: Per exemple, <code>maria</code>:</li>
+</ul>
+<p><img alt="alt text" src="../img/3.136.png" /></p>
+<ul>
+<li><strong>CN (Common Name)</strong>: Per exemple, <code>Maria M</code>.</li>
+<li><strong>SN (Surname)</strong>: Per exemple, <code>Diaz</code>.</li>
+<li><strong>UserPassword</strong>: Assignem una contrasenya per a l'usuari.</li>
+</ul>
+<p><img alt="alt text" src="../img/3.137.png" /><br><br></p>
+</li>
+<li>
+<p>Si volem afegir l'usuari a un grup, afegim el <strong>DN del usuari</strong><br />
+   (per exemple, <code>uid=maria,ou=sistemes,dc=raul,dc=cat</code>) com a <strong>membre</strong> del grup.<br />
+   Fem clic a <strong>Finish</strong> per crear l'usuari amb tota l'informació:</p>
+</li>
+</ol>
+<p><img alt="alt text" src="../img/3.138.png" /><br><br></p>
+<h3 id="accedir-des-del-client-amb-aquest-usuari"><strong>Accedir des del client amb aquest usuari</strong></h3>
+<p>Per accedir des del client a un servidor LDAP amb un <strong>usuari</strong> creat, cal que utilitzem <strong>Apache Directory Studio</strong> o un altre client LDAP i configurem la connexió amb la informació adequada.</p>
+<h4 id="1-configuracio-de-la-connexio"><strong>1. Configuració de la connexió</strong></h4>
+<p>Necessitem configurar una connexió a un servidor LDAP per poder validar amb l'usuari:</p>
+<ol>
+<li>
+<p><strong>Crear una nova connexió LDAP</strong>:</p>
+<ul>
+<li>A la part esquerra a la finestra de <strong>LDAP Browser</strong>, fem clic a <strong>New Connection</strong> per crear una nova connexió.</li>
+</ul>
+</li>
+<li>
+<p><strong>Afegim els detalls de la connexió</strong>:</p>
+<ul>
+<li><strong>Servidor</strong>: Introduïm la <strong>IP o nom del servidor LDAP</strong> (per exemple, <strong><code>localhost</code></strong>). </li>
+<li><strong>Port</strong>: Per defecte, els servidors LDAP utilitzen el <strong>port 389</strong>.</li>
+</ul>
+<p><img alt="alt text" src="../img/3.139.png" /></p>
+</li>
+<li>
+<p><strong>Autenticació</strong>:</p>
+<ul>
+<li>En aquesta pantalla, podem especificar les nostres credencials d'autenticació.</li>
+<li>En el <strong>DN d'autenticació</strong> hem d'introduir el <strong>DN complet de l'usuari</strong> amb el qual volem autenticar-nos.<br />
+  Per exemple: <code>uid=maria,ou=sistemes,dc=raul,dc=cat</code></li>
+<li>A <strong>contrasenya</strong> introduïm la contrasenya que vam assignar a l'usuari quan el vam crear.<br />
+  En el nostre cas <strong>Contrasenya</strong>: <code>maria</code></li>
+</ul>
+<p><img alt="alt text" src="../img/3.140.png" /></p>
+</li>
+<li>
+<p><strong>Provem la connexió</strong>:</p>
+<ul>
+<li>Fem clic a <strong>Test Connection</strong> per comprovar si la connexió és correcta.<br />
+  Si tot està configurat correctament, hauríem de veure un missatge de <strong>"Connexió exitosa"</strong>.</li>
+</ul>
+<p><img alt="alt text" src="../img/3.141.png" /></p>
+</li>
+</ol>
+<h4 id="2-validar-usuari"><strong>2. Validar usuari</strong></h4>
+<p>Un cop configurada la connexió, podem intentar validar l'usuari i comprovar si podem realitzar operacions en el servidor LDAP.</p>
+<p><strong>Comprovar l'arbre de directori</strong>:</p>
+<ul>
+<li>
+<p>Si la connexió és correcta i la validació de l'usuari ha estat exitosa, podrem veure l'arbre de directori de l'LDAP des de <strong>Apache Directory Studio</strong>.</p>
+</li>
+<li>
+<p>Amb l'usuari <strong>admin</strong> amb permisos, sí que ens deixa modificar les dades de l'usuari:</p>
+<p><img alt="alt text" src="../img/3.142.png" /></p>
+</li>
+<li>
+<p>Però amb els permisos de <strong>maria</strong>, no ens deixa modificar-les ja que no és administradora:</p>
+<p><img alt="alt text" src="../img/3.143.png" /></p>
+</li>
+</ul>
 <hr />
               
             </div>
