@@ -169,6 +169,28 @@
     </li>
         </ul>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#5-servidor-nfs">5. Servidor NFS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#installacio-i-configuracio-servidors-ldap">Instal·lació i configuració servidors LDAP</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#installacio-i-configuracio-del-client-windows-11">Instal·lació i configuració del client Windows 11</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#compartir-carpeta-a-windows-11">Compartir carpeta a Windows 11</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#installacio-i-configuracio-del-client-a-ubuntu">Instal·lació i configuració del client a Ubuntu</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#perfils-mobils-a-ubuntu">Perfils mobils a Ubuntu</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#samba">SAMBA</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#nfs">NFS</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
     </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../sprint4/">Sprint 4</a>
@@ -739,7 +761,7 @@ telephoneNumber: +2 234 234 234
 <li>A la <strong>Vista del Navegador LDAP</strong>, seleccionem el servidor LDAP al qual ens hem connectat.  </li>
 <li>Al panell central, fem clic dret sobre el servidor i seleccionem <strong>New Search</strong>:  </li>
 </ol>
-<p><img alt="alt text" src="../img/3.111.png" /></p>
+<p><img alt="new search" src="../img/3.111.png" /></p>
 <ol>
 <li>
 <p>A la finestra de cerca:  </p>
@@ -750,22 +772,22 @@ telephoneNumber: +2 234 234 234
 <li><strong>Filter</strong>: Defineix un filtre de cerca (per exemple, <code>(uid=maria)</code> per cercar per l'atribut <code>uid</code>).  </li>
 </ol>
 <p>Fem clic a <strong>Search</strong> per executar la cerca:  </p>
-<p><img alt="alt text" src="../img/3.112.png" /></p>
+<p><img alt="search" src="../img/3.112.png" /></p>
 <p>Resultat de la cerca realitzada anteriorment:  </p>
-<p><img alt="alt text" src="../img/3.113.png" /></p>
+<p><img alt="cerca" src="../img/3.113.png" /></p>
 <h4 id="3-configuracio-de-preferencies-generals"><strong>3. Configuració de preferències generals</strong></h4>
 <p><strong>Canviar el tema visual</strong>  </p>
 <ol>
 <li>Anem a <strong>Window</strong>, <strong>Preferences</strong>, <strong>General</strong>, <strong>Appearance</strong> i <strong>Theme</strong>.  </li>
 <li>Seleccionem entre els temes disponibles, com el <strong>Dark Theme</strong> o el <strong>Light Theme</strong>.  </li>
 </ol>
-<p><img alt="alt text" src="../img/3.115.png" /></p>
+<p><img alt="temes" src="../img/3.115.png" /></p>
 <p><strong>Canviar la font i la mida</strong>  </p>
 <ol>
 <li>A la mateixa secció de <strong>Appearance</strong>, podem configurar la mida de la font i el tipus de lletra que s'utilitzarà a les vistes de <strong>LDAP Browser</strong> i <strong>Schema Editor</strong>.  </li>
 <li>Seleccionem <strong>Font</strong> per canviar el tipus de font i <strong>Size</strong> per ajustar la mida de la font:  </li>
 </ol>
-<p><img alt="alt text" src="../img/3.116.png" /></p>
+<p><img alt="font" src="../img/3.116.png" /></p>
 <h3 id="comprovar-que-larbre-de-directori-es-correcte">Comprovar que l'arbre de directori és correcte</h3>
 <p><strong>1. Configuració de la vista de l'arbre de directoris</strong>  </p>
 <ul>
@@ -773,14 +795,14 @@ telephoneNumber: +2 234 234 234
 <li>Un cop configurat, podrem navegar fàcilment per l'arbre LDAP i veure els objectes i atributs.  </li>
 <li>Fem clic sobre qualsevol entrada per veure les seves propietats, afegir o eliminar atributs, i més:  </li>
 </ul>
-<p><img alt="alt text" src="../img/3.114.png" /></p>
+<p><img alt="configuració" src="../img/3.114.png" /></p>
 <p><strong>2. Validar els atributs de les entrades</strong>  </p>
 <ul>
 <li>Fem clic a una entrada del directori i revisem els atributs associats.  </li>
 <li>Per exemple, una entrada d'usuari com <code>uid=abergin</code> hauria de tenir atributs com <code>cn</code>, <code>sn</code>, <code>uid</code>, <code>userPassword</code>...  </li>
 <li>
 <p>Si un atribut important falta o no es correspon amb la informació esperada, això podria indicar un error en l'estructura de l'arbre.  </p>
-<p><img alt="alt text" src="../img/3.118.png" /></p>
+<p><img alt="validar" src="../img/3.118.png" /></p>
 </li>
 </ul>
 <p><strong>3. Utilitzar el filtre de cerca per a validació ràpida</strong>  </p>
@@ -788,9 +810,9 @@ telephoneNumber: +2 234 234 234
 <li>Podem utilitzar la funcionalitat de <strong>Quick Search</strong> dins d'Apache Directory Studio per filtrar entrades i veure si l'estructura es comporta correctament.  </li>
 <li>
 <p>També podem filtrar per <code>ou=Dam</code> per assegurar-nos que totes les entrades d'usuari estan a l'OU correcta.  </p>
-<p><img alt="alt text" src="../img/3.119.png" /></p>
+<p><img alt="filtrar dam" src="../img/3.119.png" /></p>
 <p>Resultat de la cerca:  </p>
-<p><img alt="alt text" src="../img/3.120.png" /></p>
+<p><img alt="cerca" src="../img/3.120.png" /></p>
 </li>
 </ul>
 <h3 id="crea-una-uo-un-grup-i-un-usuari">Crea una UO, un Grup i un Usuari</h3>
@@ -801,11 +823,11 @@ telephoneNumber: +2 234 234 234
 <li>A la finestra de l'arbre de directori, naveguem fins al punt on volem crear la nova <strong>OU</strong>.</li>
 <li>
 <p>Fem clic dret sobre el directori on volem afegir la nova <strong>OU</strong> i seleccionem <strong>New Entry</strong>:</p>
-<p><img alt="alt text" src="../img/3.121.png" />  </p>
+<p><img alt="New Entry" src="../img/3.121.png" />  </p>
 </li>
 <li>
 <p>A la finestra que surt, seleccionem <strong>Organizational Unit</strong> i clicquem a <strong>Next</strong>:</p>
-<p><img alt="alt text" src="../img/3.122.png" /></p>
+<p><img alt="Organizational Unit" src="../img/3.122.png" /></p>
 </li>
 <li>
 <p>Omplim els camps:</p>
@@ -813,15 +835,15 @@ telephoneNumber: +2 234 234 234
 <li>En <strong>Parent</strong> posem: <code>dc=raul,dc=cat</code> que os es creara.</li>
 <li>I en <strong>RDN</strong> fiquem <code>ou=sistemes</code></li>
 </ul>
-<p><img alt="alt text" src="../img/3.123.png" /></p>
+<p><img alt="camps" src="../img/3.123.png" /></p>
 </li>
 <li>
 <p>Fem clic a <strong>Finish</strong> per crear la nova <strong>OU</strong>:</p>
-<p><img alt="alt text" src="../img/3.124.png" /></p>
+<p><img alt="ou crear" src="../img/3.124.png" /></p>
 </li>
 </ol>
 <p>Ara hem creat una nova <strong>OU</strong> per a emmagatzemar usuaris dins del nostre servidor LDAP.</p>
-<p><img alt="alt text" src="../img/3.125.png" /></p>
+<p><img alt="ou" src="../img/3.125.png" /></p>
 <h4 id="2-crear-un-grup"><strong>2. Crear un Grup</strong></h4>
 <p>Els <strong>grups</strong> s'utilitzen per organitzar els usuaris en el servidor LDAP. Els usuaris dins d'un grup poden tenir permisos comuns o ser tractats com una unitat.</p>
 <p><strong>Passos per crear un grup:</strong></p>
@@ -830,28 +852,28 @@ telephoneNumber: +2 234 234 234
 <li>Fem clic dret sobre l'OU i seleccionem <strong>New</strong>, <strong>Other</strong> i <strong>Entry</strong>.</li>
 <li>
 <p>A la finestra, seleccionem <strong>Group Of Names</strong> i cliquem <strong>Next</strong>.</p>
-<p><img alt="alt text" src="../img/3.126.png" /></p>
+<p><img alt="group of names" src="../img/3.126.png" /></p>
 </li>
 <li>
 <p>Omplem els camps necessaris:</p>
 <ul>
 <li>
 <p><strong>DN (Distinguished Name)</strong>: Per exemple, <code>cn=grup_admin,ou=sistemes,dc=example,dc=com</code>.</p>
-<p><img alt="alt text" src="../img/3.127.png" /></p>
+<p><img alt="dn" src="../img/3.127.png" /></p>
 </li>
 <li>
 <p><strong>CN (Common Name)</strong>: Per exemple, <code>grup_admins</code>.</p>
 </li>
 <li><strong>Description</strong>: (Es opcional) Una breu descripció del grup, com "Grup amb permisos admin".</li>
 </ul>
-<p><img alt="alt text" src="../img/3.129.png" /></p>
+<p><img alt="description" src="../img/3.129.png" /></p>
 </li>
 <li>
 <p>Afegir membres al grup:</p>
 <ul>
 <li>
 <p>Si volem afegir membres seleccionem l'atribut <code>member</code> i afegim els <strong>DN</strong> dels usuaris que volem que formin part del grup (per exemple, <code>uid=admin,ou=usuaris,dc=example,dc=com</code>).</p>
-<p><img alt="alt text" src="../img/3.129.png" /></p>
+<p><img alt="member" src="../img/3.129.png" /></p>
 </li>
 </ul>
 </li>
@@ -860,7 +882,7 @@ telephoneNumber: +2 234 234 234
 </li>
 </ol>
 <p>Ara ja tenim un grup creat al directori, amb els usuaris que seleccionem com a membres.</p>
-<p><img alt="alt text" src="../img/3.130.png" /></p>
+<p><img alt="grup" src="../img/3.130.png" /></p>
 <h4 id="3-crear-un-usuari"><strong>3. Crear un Usuari</strong></h4>
 <p>Un cop tinguem la nostra <strong>OU</strong> i <strong>grup</strong> creats, podem afegir-hi un <strong>usuari</strong>. Un usuari en LDAP es defineix amb un conjunt d'atributs com <code>uid</code>, <code>cn</code>, <code>sn</code>, <code>userPassword</code>...</p>
 <p><strong>Passos per crear un usuari:</strong></p>
@@ -869,7 +891,7 @@ telephoneNumber: +2 234 234 234
 <li>Fem clic dret sobre l'OU i seleccionem <strong>New</strong>, <strong>Other</strong> i <strong>Entry</strong>.</li>
 <li>A la finestra, seleccionem <strong>Person</strong> i cliquem <strong>Next</strong>.</li>
 </ol>
-<p><img alt="alt text" src="../img/3.135.png" /><br><br></p>
+<p><img alt="person" src="../img/3.135.png" /><br><br></p>
 <ol>
 <li>
 <p>Omplim els camps necessaris:</p>
@@ -877,13 +899,13 @@ telephoneNumber: +2 234 234 234
 <li><strong>DN (Distinguished Name)</strong>: Per exemple, <code>uid=maria,ou=sistemes,dc=raul,dc=cat</code>.</li>
 <li><strong>UID (User ID)</strong>: Per exemple, <code>maria</code>:</li>
 </ul>
-<p><img alt="alt text" src="../img/3.136.png" /></p>
+<p><img alt="nom maria" src="../img/3.136.png" /></p>
 <ul>
 <li><strong>CN (Common Name)</strong>: Per exemple, <code>Maria M</code>.</li>
 <li><strong>SN (Surname)</strong>: Per exemple, <code>Diaz</code>.</li>
 <li><strong>UserPassword</strong>: Assignem una contrasenya per a l'usuari.</li>
 </ul>
-<p><img alt="alt text" src="../img/3.137.png" /><br><br></p>
+<p><img alt="info" src="../img/3.137.png" /><br><br></p>
 </li>
 <li>
 <p>Si volem afegir l'usuari a un grup, afegim el <strong>DN del usuari</strong><br />
@@ -891,7 +913,7 @@ telephoneNumber: +2 234 234 234
    Fem clic a <strong>Finish</strong> per crear l'usuari amb tota l'informació:</p>
 </li>
 </ol>
-<p><img alt="alt text" src="../img/3.138.png" /><br><br></p>
+<p><img alt="usuari maria" src="../img/3.138.png" /><br><br></p>
 <h3 id="accedir-des-del-client-amb-aquest-usuari"><strong>Accedir des del client amb aquest usuari</strong></h3>
 <p>Per accedir des del client a un servidor LDAP amb un <strong>usuari</strong> creat, cal que utilitzem <strong>Apache Directory Studio</strong> o un altre client LDAP i configurem la connexió amb la informació adequada.</p>
 <h4 id="1-configuracio-de-la-connexio"><strong>1. Configuració de la connexió</strong></h4>
@@ -909,7 +931,7 @@ telephoneNumber: +2 234 234 234
 <li><strong>Servidor</strong>: Introduïm la <strong>IP o nom del servidor LDAP</strong> (per exemple, <strong><code>localhost</code></strong>). </li>
 <li><strong>Port</strong>: Per defecte, els servidors LDAP utilitzen el <strong>port 389</strong>.</li>
 </ul>
-<p><img alt="alt text" src="../img/3.139.png" /></p>
+<p><img alt="conexió" src="../img/3.139.png" /></p>
 </li>
 <li>
 <p><strong>Autenticació</strong>:</p>
@@ -920,7 +942,7 @@ telephoneNumber: +2 234 234 234
 <li>A <strong>contrasenya</strong> introduïm la contrasenya que vam assignar a l'usuari quan el vam crear.<br />
   En el nostre cas <strong>Contrasenya</strong>: <code>maria</code></li>
 </ul>
-<p><img alt="alt text" src="../img/3.140.png" /></p>
+<p><img alt="autentication" src="../img/3.140.png" /></p>
 </li>
 <li>
 <p><strong>Provem la connexió</strong>:</p>
@@ -928,7 +950,7 @@ telephoneNumber: +2 234 234 234
 <li>Fem clic a <strong>Test Connection</strong> per comprovar si la connexió és correcta.<br />
   Si tot està configurat correctament, hauríem de veure un missatge de <strong>"Connexió exitosa"</strong>.</li>
 </ul>
-<p><img alt="alt text" src="../img/3.141.png" /></p>
+<p><img alt="conexió" src="../img/3.141.png" /></p>
 </li>
 </ol>
 <h4 id="2-validar-usuari"><strong>2. Validar usuari</strong></h4>
@@ -940,14 +962,146 @@ telephoneNumber: +2 234 234 234
 </li>
 <li>
 <p>Amb l'usuari <strong>admin</strong> amb permisos, sí que ens deixa modificar les dades de l'usuari:</p>
-<p><img alt="alt text" src="../img/3.142.png" /></p>
+<p><img alt="admin" src="../img/3.142.png" /></p>
 </li>
 <li>
 <p>Però amb els permisos de <strong>maria</strong>, no ens deixa modificar-les ja que no és administradora:</p>
-<p><img alt="alt text" src="../img/3.143.png" /></p>
+<p><img alt="maria" src="../img/3.143.png" /></p>
 </li>
 </ul>
 <hr />
+<h2 id="5-servidor-nfs">5. Servidor NFS</h2>
+<p>Un servidor NFS i un servidor Samba serveixen per compartir recursos, però tenen diferències en l'autenticació.</p>
+<p>NFS autentica a nivell de màquina (host), però pot fer-ho també a nivell d'usuari, tot i que és més complex.</p>
+<p>Samba, en canvi, autentica a nivell d'usuari i és més flexible, permetent integrar-se amb sistemes com Active Directory, fet que el fa millor per a entorns amb usuaris diversos.</p>
+<h3 id="installacio-i-configuracio-servidors-ldap">Instal·lació i configuració servidors LDAP</h3>
+<p>Per començar amb la instal·lació, primer de tot hem de descarregar <strong>nfs-kernel-server</strong>, que és el paquet que permet configurar i gestionar un servidor NFS a Linux per compartir directoris a través de la xarxa.</p>
+<p><strong>Descarrega de nfs-kernel-server:</strong></p>
+<p><img alt="nfs-kernel-server" src="../img/3.144.png" /></p>
+<p>Una vegada instal·lat el paquet, hem de crear una carpeta anomenada <strong>compartida</strong>, que és la que utilitzarem per veure el seu contingut en diferents màquines.</p>
+<p>També hem de donar permisos de <code>chmod -R 777</code>, que són permisos de lectura, escriptura i execució a tots els usuaris per a tots els fitxers.</p>
+<p><strong>Creació de "compartida" i permisos:</strong></p>
+<p><img alt="comartida" src="../img/3.145.png" /></p>
+<p>Seguidament, hem de configurar la carpeta <strong>compartida</strong>. Per fer-ho, hem d'accedir al fitxer <code>/etc/exports</code> i afegir una última línia amb el següent contingut:</p>
+<p><code>/compartida *(rw,sync,no_subtree_check)</code>, es divideix en el següent:</p>
+<ul>
+<li><strong>/compartida</strong>: Directori a compartir.</li>
+<li><strong>*</strong>: Tots els clients poden accedir; si no, hauríem de posar la <strong>IP</strong>.</li>
+<li><strong>rw</strong>: Permet lectura i escriptura.</li>
+<li><strong>sync</strong>: Les operacions són sincronitzades.</li>
+<li><strong>no_subtree_check</strong>: No comprova la consistència dels subdirectoris.</li>
+</ul>
+<p><img alt="exports" src="../img/3.146.png" /></p>
+<p>Després d'haver guardat els canvis de l'anterior fitxer, hem de fer un <strong>Restart</strong> dels serveis <strong>NFS</strong>, sempre amb <code>systemctl restart nfs-kernel-server</code>:</p>
+<p><img alt="compartida" src="../img/3.147.png" /></p>
+<h3 id="installacio-i-configuracio-del-client-windows-11">Instal·lació i configuració del client Windows 11</h3>
+<p>Primer de tot, hem de configurar el <strong>NFS</strong> de <strong>Windows 11</strong>. Per fer-ho, s'ha d'anar a <strong>Panell de Control</strong> -&gt; <strong>Programes i característiques</strong>. Una vegada en aquesta finestra, hem d'anar a la part esquerra i entrar on indica <strong><em>Activar o Desactivar les característiques de Windows</em></strong>.</p>
+<p>Una vegada tenim la nova finestra oberta, hem de buscar i habilitar l'opció de <strong>Serveis per a NFS</strong>:</p>
+<p><strong>Habilitar l'opció:</strong></p>
+<p><img alt="nfs windows" src="../img/3.148.png" /></p>
+<p><strong>Opció habilitada:</strong></p>
+<p><img alt="nfs windows" src="../img/3.149.png" /></p>
+<h4 id="compartir-carpeta-a-windows-11">Compartir carpeta a Windows 11</h4>
+<p>Ara és el moment de fer la compartició des de <strong>Ubuntu</strong> cap al client de <strong>Windows 11</strong>.</p>
+<p>En primer lloc, comprovem la <strong>IP</strong> de la nostra màquina <strong>Ubuntu</strong>:</p>
+<p><img alt="ip a" src="../img/3.150.png" /></p>
+<pre><code>IP: 10.0.2.15
+</code></pre>
+<p>Seguidament, anem a l'<strong>Explorador d'arxius</strong> de Windows i hem de copiar la nostra direcció de la màquina <strong>Ubuntu</strong>, on és la carpeta compartida, seguit del nom de la carpeta (<strong>compartida</strong>).</p>
+<p>S'ha de fer de la següent manera: <code>\\10.0.2.15\compartida</code></p>
+<p><img alt="carpeta compartida Windows" src="img/3.X.png" /></p>
+<p>I ja tindríem la carpeta compartida visible en el nostre client de <strong>Windows 11</strong>.</p>
+<p>(Provar de crear un nou fitxer a Ubuntu i visualitzar-lo a Windows).</p>
+<h3 id="installacio-i-configuracio-del-client-a-ubuntu">Instal·lació i configuració del client a Ubuntu</h3>
+<p>Per començar, el primer que hem de fer és instal·lar el paquet <code>nfs-common rpcbind</code>, que 
+proporciona les eines necessàries per muntar i utilitzar sistemes de fitxers 
+<strong>NFS</strong>, i <strong>rpcbind</strong> gestiona les connexions <strong>RPC</strong> (Remote Procedure Calls) requerides per <strong>NFS</strong>.</p>
+<p><img alt="Instal·lació nfs-common" src="../img/3.151.png" /></p>
+<p>Seguidament, creem una carpeta anomenada <strong>nfs</strong> al directori <code>/home/raul</code>. Un cop creada, li donem permisos de lectura, escriptura i execució per a tots els usuaris (propietari, grup i altres) de manera recursiva.</p>
+<p><img alt="creacio carpeta" src="../img/3.153.png" /></p>
+<p>Un cop fets els passos anteriors, muntem el directori <code>/compartida</code> del servidor <strong>10.0.2.15</strong> a la carpeta <code>/home/raul/nfs</code>, permetent accedir als seus fitxers com si fossin locals.</p>
+<p><img alt="Muntatge" src="../img/3.154.png" /></p>
+<p>Després, entrem a la carpeta creada i creem un fitxer per després poder veure'l a <code>/compartida</code> i també ho fem a la inversa per veure que la compartició s'ha fet correctament:</p>
+<p><img alt="comprovació compartida" src="../img/3.155.png" /></p>
+<h3 id="perfils-mobils-a-ubuntu">Perfils mobils a Ubuntu</h3>
+<h4 id="samba"><strong>SAMBA</strong></h4>
+<p>A diferència de NFS, el servidor <strong>Samba</strong> permet l’autenticació a nivell d’usuari.<br />
+També permet compartir més recursos que no només carpetes, com ara impressores, i pot treballar conjuntament amb <strong>LDAP</strong> per utilitzar els usuaris per a la validació.<br />
+Admet clients tant de Linux com de Windows, i al servidor no s'hi pot connectar directament un equip o una xarxa, però es poden permetre convidats.  </p>
+<h5 id="servidor"><strong>Servidor:</strong></h5>
+<p>Primer de tot, ens connectarem a una màquina virtual que farà de <strong>Servidor</strong>.<br />
+Seguidament, el que farem serà instal·lar <strong>Samba</strong>, com es mostra a continuació:  </p>
+<p><img alt="instal·lar samba" src="../img/3.156.png" />  </p>
+<p>Un cop instal·lat, hem de tenir una carpeta creada a l'arrel que es digui <strong>perfils</strong>, amb permisos complets per a tots els usuaris i grups:  </p>
+<p><img alt="perfils" src="../img/3.157.png" />  </p>
+<p>En aquest punt, li hem de donar tots els permisos que necessitem per a la carpeta <strong>perfils</strong> dins la configuració de <strong>Samba</strong>.<br />
+Per fer-ho, hem d'anar al fitxer <code>/etc/samba/smb.conf</code> i, un cop dins, hem d'incloure les següents línies al final:  </p>
+<ul>
+<li><strong>[perfils]</strong>: Nom del recurs compartit.  </li>
+<li><strong>path = /perfils</strong>: Indica la ruta de la carpeta compartida.  </li>
+<li><strong>guest ok = yes</strong>: Permet l’accés sense autenticació.  </li>
+<li><strong>directory mask = 0755</strong>: Estableix permisos de lectura i execució per a tothom, però només escriptura pel propietari.  </li>
+<li><strong>create mask = 0644</strong>: Els fitxers nous tindran permisos de lectura per a tothom, però només escriptura pel propietari.  </li>
+<li><strong>browseable = yes</strong>: La carpeta compartida serà visible als clients.  </li>
+<li><strong>read list = @dam</strong>: Els usuaris del grup "dam" només poden llegir.  </li>
+<li><strong>write list = raulM</strong>: L'usuari "raulM" té permís d’escriptura.  </li>
+<li><strong>invalid users = enric</strong>: L'usuari "enric" no té accés a aquesta compartició.  </li>
+</ul>
+<p><img alt="conf" src="../img/3.172.png" />  </p>
+<p>A continuació, reiniciem els serveis de <strong>Samba</strong>:  </p>
+<p><img alt="restart" src="../img/3.159.png" />  </p>
+<p>Ara hem d’afegir els usuaris <strong>raulM</strong>, <strong>enric</strong> i <strong>walid</strong>. Els crearem, però no tindran cap <strong>home</strong> assignada.  </p>
+<p><img alt="usuaris" src="../img/3.160.png" />  </p>
+<p>Comprovació que tenim els usuaris agregats al sistema:  </p>
+<p><img alt="usuaris" src="../img/3.161.png" />  </p>
+<p>Seguidament, afegim aquests usuaris al grup <strong>dam</strong> i comprovem que s'hagin afegit correctament al grup de la següent manera:  </p>
+<p><img alt="dam" src="../img/3.162.png" />  </p>
+<p>Amb la comanda <code>smbpasswd -a</code>, afegim un nou usuari al sistema de <strong>Samba</strong>, així que ho farem amb cadascun dels que hem creat prèviament:  </p>
+<p><img alt="smbpasswd" src="../img/3.163.png" />  </p>
+<h5 id="client"><strong>Client:</strong></h5>
+<p>En aquest punt, ja tenim configurat el servidor, així que ens anem a una altra màquina virtual que actuarà com a <strong>Client</strong>.<br />
+En aquesta màquina, instal·larem el paquet <code>smbclient</code> de la següent manera:  </p>
+<p><img alt="smbclient" src="../img/3.164.png" />  </p>
+<p>I, un cop estigui instal·lat, anirem als fitxers del nostre sistema, anirem a <strong>Otras ubicaciones</strong>, i en la barra de baix ens connectarem al <strong>Servidor</strong> posant la <strong>IP</strong> del <strong>Server</strong> amb el nom de la carpeta, ho farem de la següent manera:  </p>
+<p><img alt="ip" src="../img/3.165.png" />  </p>
+<p>Quan entrem, ens sortirà l'opció per connectar-nos. Si ens connectem amb l'usuari <strong>raulM</strong>, veurem que ens deixa accedir perfectament:  </p>
+<p><img alt="raulM" src="../img/3.171.png" />  </p>
+<p>I, un cop dins, podem crear una carpeta, ja que tenim tots els permisos per fer-ho sense problema:  </p>
+<p><img alt="raulM" src="../img/3.170.png" />  </p>
+<p>Ara, si ens connectem amb l'usuari <strong>walid</strong>, ens hi deixarà entrar, però en el moment que vulguem crear una carpeta ens donarà un error, ja que aquest usuari no té permisos per crear res, només té permís per veure què hi ha:  </p>
+<p><img alt="walid" src="../img/3.167.png" />  </p>
+<p>I finalment, si ens connectem amb un usuari que no té permisos per accedir, el que passarà és que no podrà accedir de cap manera, tal com hauria de ser:  </p>
+<p><img alt="enric" src="../img/enric.png" />  </p>
+<h4 id="nfs"><strong>NFS</strong></h4>
+<p>NFS (<strong>Network File System</strong>) permet als usuaris accedir als seus fitxers des de qualsevol ordinador de la xarxa, ja que aquests s'emmagatzemen en un servidor 
+central. Això és útil perquè el directori <code>/home</code> de cada usuari no estigui en un sol equip, sinó disponible a qualsevol dispositiu de la xarxa. 
+D’aquesta manera, les dades es mantenen accessibles i segures sense dependre d’una sola màquina.</p>
+<p>Començarem per connectar-nos a la màquina virtual que farà de servidor i després a la que farà de client. </p>
+<h5 id="server"><strong>Server</strong></h5>
+<p>Una vegada estem al servidor, hem d'instal·lar un paquet amb la comanda <code>apt install nfs-kernel-server</code>:</p>
+<p><img alt="kernel-server" src="../img/168.png" />  </p>
+<p>Seguidament, hem d'anar a l'arrel i allí hem de crear la carpeta anomenada <strong>perfils</strong> i l'hi hem de donar permisos perquè tothom pugui accedir-hi. Després mirem que tingui tots els permisos correctament:</p>
+<p><img alt="perfils" src="../img/169.png" />  </p>
+<p>Una vegada tenim la carpeta configurada, hem d'anar al fitxer <code>/etc/exports</code> i hem d'afegir la següent línia perquè totes les direccions puguin accedir al directori <strong>/perfils</strong>:</p>
+<p><img alt="exports" src="../img/170.png" />  </p>
+<p>Restaurem els serveis de <code>nfs-kernel-server</code>:</p>
+<p><img alt="restart" src="../img/171.png" /> </p>
+<p>Ara és moment de crear el grup anomenat <strong>Dam</strong>, per fer-ho tenim el següent fitxer anomenat <strong>grup.ldif</strong>. Dins del fitxer hem d'afegir la informació del grup i de l'usuari <strong>alu54</strong>, que pertanyerà al grup.</p>
+<p>Informació del grup:</p>
+<p><img alt="grup" src="../img/172.png" /> </p>
+<p>Seguidament, amb el fitxer <strong>usu.ldif</strong>, afegim l'usuari <strong>alu54</strong> amb la seva contrasenya <strong>alu54</strong> i amb tota la seva informació, canviant el <strong>uidNumber</strong> a <strong>1101</strong>, ja que el <strong>1100</strong> és el del grup <strong>dam</strong>: </p>
+<p><img alt="usr" src="../img/173.png" /> </p>
+<p>Una vegada editada la informació dels fitxers, hem de carregar-la a l'<strong>ldap</strong> com es mostra a continuació:</p>
+<p><img alt="ldapadd" src="../img/174.png" /> </p>
+<h5 id="client_1"><strong>Client</strong></h5>
+<p>Una vegada configurat el servidor, anem a configurar la màquina virtual del client.
+En aquest, hem d'instal·lar el paquet <code>nfs-common rpcbind</code>, que, com es pot veure, en aquest cas ja està instal·lat a la seva versió més recent.</p>
+<p><img alt="rpcbind" src="../img/175.png" /> </p>
+<p>Ara creem una carpeta a l'arrel anomenada <strong>perfils</strong>, com es va fer en el servidor, però poden tenir noms diferents. Donem permisos a la carpeta i mirem que s'hagin afegit:</p>
+<p><img alt="perfils" src="../img/176.png" /> </p>
+<p>Finalment, al fitxer <code>/etc/fstab</code> hem d'afegir l'última línia, que serà la <strong>IP</strong> del servidor seguida del nom de la carpeta del servidor <strong>/perfils</strong>, i després la del client, que s'anomena igual (<strong>/perfils</strong>):</p>
+<p><img alt="fstab" src="../img/177.png" /> </p>
+<p>Una vegada tenim tots els canvis guardats, reiniciem la màquina del client i accedim amb l'usuari <strong>alu54</strong> i la seva contrasenya <strong>alu54</strong>. Hauríem de poder accedir correctament i, si afegim un fitxer a la carpeta compartida, s'ha de veure actualitzat al <strong>Server</strong>.</p>
               
             </div>
           </div><footer>
