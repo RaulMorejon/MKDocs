@@ -54,6 +54,18 @@
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Sprint 4</a>
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#1-monitoritzacio">1. MONITORITZACIÓ</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#apartat-addicional-monitoritzacio-remota-de-logs">📌 Apartat Addicional: Monitorització Remota de Logs</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#servidor-qui-envia-els-logs">Servidor (Qui envia els logs)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#client-qui-rep-els-logs">Client (Qui rep els logs)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#comparticio-dels-logs">Compartició dels logs</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#2-administracio-remota-team-viewer">2. ADMINISTRACIÓ REMOTA (TEAM VIEWER)</a>
     </li>
@@ -94,19 +106,19 @@
 <p>Aquest sprint se centra en la monitorització del sistema, la connexió remota i la gestió de llicències a Linux. La monitorització permet supervisar el rendiment i l'estat dels recursos del sistema, la connexió remota facilita l'administració segura dels servidors a distància, i el llicenciament garanteix el compliment de les polítiques d'ús i distribució del programari.</p>
 <h2 id="1-monitoritzacio">1. MONITORITZACIÓ</h2>
 <p>Els <strong>logs</strong> són registres del sistema i aplicacions que documenten esdeveniments, errors i activitats per a la monitorització i seguretat. Es gestionen seguint normes com la <strong>rotació, classificació per gravetat i retenció</strong>. <strong>journalctl</strong> permet consultar logs en <strong>systemd</strong>, amb opcions per veure registres en temps real o filtrar per servei. La seva utilitat principal és <strong>monitoritzar un servidor, detectar problemes i millorar la seguretat i rendiment</strong>.</p>
-<p>Primer de tot anem a <strong><code>/var/log</code></strong> on s'emmagatzema els <strong>logs del sistema i aplicacions</strong> a Linux. Conté registres com <strong><code>syslog</code> (esdeveniments), <code>auth.log</code> (autenticació), <code>kern.log</code> (nucli), <code>dmesg</code> (arrencada)</strong> i logs de servidors web. És clau per <strong>diagnosticar problemes i monitoritzar el sistema</strong>.</p>
-<p><img alt="alt text" src="../4.0.png" /></p>
-<p>Si accedim a <strong><code>logrotate.conf</code></strong> podem veure que es on es configura <strong>Logrotate</strong>, que gestiona la <strong>rotació, compressió i eliminació automàtica dels logs</strong>. Permet definir la <strong>freqüència</strong>, el <strong>nombre de logs a conservar</strong>, la <strong>compressió</strong> i accions abans/després de la rotació. Les configuracions específiques es troben a <code>/etc/logrotate.d/</code>**.</p>
-<p><img alt="alt text" src="../4.1.png" /></p>
-<p>Si anem a <strong><code>/var/log/ufw.log</code></strong> trobem que és sotmès a la <strong>rotació de logs</strong> per controlar l'espai en disc. <strong>Logrotate</strong> arxiva, comprimeix i gestiona els logs antics, mantenint-los organitzats sense saturar el sistema. La configuració es troba a <strong><code>/etc/logrotate.d/ufw</code></strong>.</p>
-<p><img alt="alt text" src="../4.2.png" /></p>
-<p>Si volem veure els registres dels esdeveniments em d'anar al <strong><code>syslog</code></strong> ja que és un sistema on es recopila l'informació del sistema, nucli, serveis i aplicacions. Els logs es poden veure a <strong><code>/var/log/syslog</code></strong> i es poden filtrar per cercar errors o advertències.</p>
-<p><img alt="alt text" src="../4.4.png" /></p>
-<p>En el <strong><code>syslog.conf</code></strong> tobem la configuració de <strong>syslog</strong>, on es defineixen les regles per gestionar els registres d'esdeveniments. Específica la <strong>prioritat dels missatges</strong> i la <strong>destinació</strong> on s'emmagatzemen, com a fitxers locals o serveis remots. Per aplicar canvis s'ha de reiniciar el servei <strong>rsyslog</strong>.</p>
-<p><img alt="alt text" src="../4.5.png" /></p>
-<p>També trobem el fitxer <strong><code>50-default.conf</code></strong> a <strong><code>/etc/logrotate.d/</code></strong> que configura la <strong>rotació de logs</strong> per a serveis del sistema. Defineix com es gestionen els logs, incloent la <strong>freqüència de rotació</strong>, la <strong>conservació dels logs antics</strong> i la <strong>compressió</strong>. </p>
+<p>Primer de tot, anem a <strong><code>/var/log</code></strong>, on s'emmagatzemen els <strong>logs del sistema i aplicacions</strong> a Linux. Conté registres com <strong><code>syslog</code></strong> (esdeveniments), <strong><code>auth.log</code></strong> (autenticació), <strong><code>kern.log</code></strong> (nucli), <strong><code>dmesg</code></strong> (arrencada) i logs de servidors web. És clau per <strong>diagnosticar problemes i monitoritzar el sistema</strong>.</p>
+<p><img alt="Visualització del directori /var/log" src="../4.0.png" /></p>
+<p>Si accedim a <strong><code>logrotate.conf</code></strong>, podem veure que és on es configura <strong>Logrotate</strong>, que gestiona la <strong>rotació, compressió i eliminació automàtica dels logs</strong>. Permet definir la <strong>freqüència</strong>, el <strong>nombre de logs a conservar</strong>, la <strong>compressió</strong> i accions abans/després de la rotació. Les configuracions específiques es troben a <strong><code>/etc/logrotate.d/</code></strong>.</p>
+<p><img alt="Configuració de Logrotate" src="../4.1.png" /></p>
+<p>Si anem a <strong><code>/var/log/ufw.log</code></strong>, trobem que és sotmès a la <strong>rotació de logs</strong> per controlar l'espai en disc. <strong>Logrotate</strong> arxiva, comprimeix i gestiona els logs antics, mantenint-los organitzats sense saturar el sistema. La configuració es troba a <strong><code>/etc/logrotate.d/ufw</code></strong>.</p>
+<p><img alt="Arxiu de rotació de ufw.log" src="../4.2.png" /></p>
+<p>Si volem veure els registres dels esdeveniments, hem d'anar al <strong><code>syslog</code></strong>, ja que és un sistema on es recopila l'informació del sistema, nucli, serveis i aplicacions. Els logs es poden veure a <strong><code>/var/log/syslog</code></strong> i es poden filtrar per cercar errors o advertències.</p>
+<p><img alt="Visualització de logs a syslog" src="../4.4.png" /></p>
+<p>En el <strong><code>syslog.conf</code></strong>, trobem la configuració de <strong>syslog</strong>, on es defineixen les regles per gestionar els registres d'esdeveniments. Especifica la <strong>prioritat dels missatges</strong> i la <strong>destinació</strong> on s'emmagatzemen, com a fitxers locals o serveis remots. Per aplicar canvis, s'ha de reiniciar el servei <strong>rsyslog</strong>.</p>
+<p><img alt="Configuració de syslog.conf" src="../4.5.png" /></p>
+<p>També trobem el fitxer <strong><code>50-default.conf</code></strong> a <strong><code>/etc/logrotate.d/</code></strong>, que configura la <strong>rotació de logs</strong> per a serveis del sistema. Defineix com es gestionen els logs, incloent la <strong>freqüència de rotació</strong>, la <strong>conservació dels logs antics</strong> i la <strong>compressió</strong>. </p>
 <p>Aquestes configuracions eviten que els registres d'aquests serveis específics es guardin en l'arxiu de logs especificat.</p>
-<p><img alt="alt text" src="../4.6.png" /></p>
+<p><img alt="Configuració de 50-default.conf" src="../4.6.png" /></p>
 <p>En aquest punt mantenim obert els logs actual pero veure els canvis a d'alt. Seguidament crearem el <strong>logs</strong></p>
 <p>Per crear un <strong>log</strong> utilitzarem la comanda <strong><code>logger -i -s -p</code></strong> que permet registrar missatges en els logs del sistema amb les següents opcions:</p>
 <ul>
@@ -114,17 +126,17 @@
 <li><strong><code>-s</code></strong>: Mostra el missatge també per <strong>pantalla</strong>.</li>
 <li><strong><code>-p</code></strong>: Defineix la <strong>prioritat</strong> del missatge (categoria i nivell de severitat).</li>
 </ul>
-<p>Exemple: <strong><code>logger -i -s -p mail.err "Missatge"</code></strong> registrarà el missatge amb prioritat <strong><code>mail.err</code></strong>, incloent el PID i mostrant-lo a la pantalla. I es pot veure que surt al <strong><code>/var/logs/syslog</code></strong></p>
-<p><img alt="alt text" src="../4.7.png" /></p>
+<p>Exemple: <strong><code>logger -i -s -p mail.err "Missatge"</code></strong> registrarà el missatge amb prioritat <strong><code>mail.err</code></strong>, incloent el PID i mostrant-lo a la pantalla. I es pot veure que surt al <strong><code>/var/log/syslog</code></strong></p>
+<p><img alt="Visualització del log a /var/log/syslog" src="../4.7.png" /></p>
 <p>La frase corregida seria:</p>
 <p>Si accedim als logs de <strong><code>mail.log</code></strong>, trobarem el log que acabem de crear amb el <strong>missatge</strong>, ja que estava definit que es redirigís a aquest fitxer de logs. </p>
-<p><img alt="alt text" src="../4.8.png" /></p>
-<p>També Si es posa <strong><code>mail.=alert</code></strong> al fitxer <strong><code>50-default.conf</code></strong>, només es registraran els missatges del servei de <strong>mail</strong> amb <strong>prioritat <code>alert</code></strong> o més alta, indicant situacions que requereixen atenció immediata. Els missatges de menor severitat seran ignorats. Igual amb la <strong>prioritat <code>crit</code></strong> que es redireccionaran al <code>/var/log/mail.log</code></p>
-<p><img alt="alt text" src="../4.9.png" /></p>
-<p>Per fer un exemple farem el mateix pero cambiarem per a que totes les <strong>prioritats amb <code>*.crit</code> més altes</strong> es redireccionin a <code>/var/log/raul.log</code></p>
-<p><img alt="alt text" src="../4.15.png" /></p>
-<p>Creem un log amb la <strong>prioritat <code>emerg</code></strong> i ara si anem al <code>/var/log/mail.log</code> veurem que no esta aquest log (mirant el seu PID), però si anem a <code>/var/log/raul.log</code> si el trobarem ja que es de prioritat mes alta.</p>
-<p><img alt="alt text" src="../4.16.png" /></p>
+<p><img alt="Log a mail.log" src="../4.8.png" /></p>
+<p>També, si es posa <strong><code>mail.=alert</code></strong> al fitxer <strong><code>50-default.conf</code></strong>, només es registraran els missatges del servei de <strong>mail</strong> amb <strong>prioritat <code>alert</code></strong> o més alta, indicant situacions que requereixen atenció immediata. Els missatges de menor severitat seran ignorats. Igualment, amb la <strong>prioritat <code>crit</code></strong>, els missatges es redireccionaran al <strong><code>/var/log/mail.log</code></strong>.</p>
+<p><img alt="Configuració de prioritat alert a 50-default.conf" src="../4.9.png" /></p>
+<p>Per fer un exemple, farem el mateix però canviant per a què totes les <strong>prioritats amb <code>*.crit</code> més altes</strong> es redireccionin a <strong><code>/var/log/raul.log</code></strong>.</p>
+<p><img alt="Configuració per redireccionar a raul.log" src="../4.15.png" /></p>
+<p>Creem un log amb la <strong>prioritat <code>emerg</code></strong> i ara, si anem al <strong><code>/var/log/mail.log</code></strong>, veurem que no està aquest log (mirant el seu PID), però si anem a <strong><code>/var/log/raul.log</code></strong>, sí que el trobarem, ja que és de prioritat més alta.</p>
+<p><img alt="Log amb prioritat emerg a raul.log" src="../4.16.png" /></p>
 <hr />
 <p>Per tindre-ho mes clar podem veure els nivells de prioritats en <strong>syslog</strong> es classifiquen en 8 nivells de severitat, de més baix a més alt:</p>
 <ol>
@@ -140,11 +152,52 @@
 <p>Els missatges amb una prioritat més alta inclouen també els de prioritats més baixes.</p>
 <hr />
 <p>Amb el <strong><code>journalctl</code></strong> podem visualitzar i gestionar els registres del sistema guardats pel sistema de registre <strong><code>systemd</code></strong>. Ens permet consultar els logs del sistema de manera eficient, filtrar per data, servei o nivell de severitat, i veure missatges d'error, advertències, entre d'altres.</p>
-<p>Per exemple podem filtrar per les <strong>prioritats <code>alert</code></strong>:</p>
-<p><img alt="alt text" src="../4.17.png" /></p>
-<p>I seguidament amb la comanda <strong><code>journalctl -u cron</code></strong> permet veure els registres del servei <strong><code>cron</code></strong> gestionats per <strong><code>systemd</code></strong>. El paràmetre <strong><code>-u</code></strong> indica que es volen mostrar els logs d'un <strong>servei específic</strong>. En aquest cas, es mostraran els missatges relacionats amb el servei de <strong>cron</strong>, que gestiona les tasques programades en el sistema:</p>
-<p><img alt="alt text" src="../4.18.png" /></p>
-<p><img alt="alt text" src="../4.19.png" /></p>
+<p>Per exemple, podem filtrar per les <strong>prioritats <code>alert</code></strong>:</p>
+<p><img alt="Visualització de logs amb prioritat alert" src="../4.17.png" /></p>
+<p>I seguidament, amb la comanda <strong><code>journalctl -u cron</code></strong>, podem veure els registres del servei <strong><code>cron</code></strong> gestionats per <strong><code>systemd</code></strong>. El paràmetre <strong><code>-u</code></strong> indica que es volen mostrar els logs d'un <strong>servei específic</strong>. En aquest cas, es mostraran els missatges relacionats amb el servei de <strong>cron</strong>, que gestiona les tasques programades en el sistema:</p>
+<p><img alt="Logs del servei cron" src="../4.18.png" /></p>
+<p><img alt="Visualització de logs del servei cron" src="../4.19.png" /></p>
+<h3 id="apartat-addicional-monitoritzacio-remota-de-logs">📌 Apartat Addicional: Monitorització Remota de Logs</h3>
+<p>Un <strong>apartat addicional</strong> que podem implementar és la possibilitat d'enviar els <strong>logs generats</strong> per una màquina a una <strong>carpeta compartida</strong> amb una altra màquina.  </p>
+<ul>
+<li><strong>Avantatge:</strong> Això permet una <strong>monitorització remota</strong> més eficient i centralitzada, facilitant la supervisió i anàlisi dels registres en temps real.  </li>
+</ul>
+<h4 id="servidor-qui-envia-els-logs">Servidor (Qui envia els <strong>logs</strong>)</h4>
+<p>Primer de tot, instal·larem <code>nfs-kernel-server</code>, ja que la compartició es farà a través de <strong>NFS</strong>.  </p>
+<p><img alt="Instal·lació del servidor NFS" src="../4.20.1-1.png" /></p>
+<p>Seguidament, anirem a l'arrel del nostre directori per crear una carpeta <em>(</em><em>logs</em><em>)</em> on guardarem tots els <strong>logs</strong> que ens interessen.  </p>
+<p>A més, assignarem permisos a la carpeta perquè, de moment, tothom hi tingui accés. <em>(Més endavant, es podrien restringir els permisos a un grup reduït de persones, com administradors...)</em>.  </p>
+<p><img alt="Creació i assignació de permisos a la carpeta logs" src="../4.20-1.png" /> </p>
+<p>En aquest punt, volem que la carpeta <strong><code>/logs</code></strong> sigui la carpeta compartida entre les màquines.<br />
+Per aquest motiu, anem a <strong><code>/etc/exports</code></strong> per introduir la següent línia:  </p>
+<p><img alt="Configuració de /etc/exports" src="../4.21-1.png" /> </p>
+<p>Un cop guardats els canvis, reiniciem els serveis per aplicar-los i assegurar-nos que la configuració s'ha efectuat correctament.  </p>
+<p><img alt="Reinici dels serveis NFS" src="../4.22-1.png" /> </p>
+<h4 id="client-qui-rep-els-logs">Client (Qui rep els <strong>logs</strong>)</h4>
+<p>A la màquina client, hem d'instal·lar <code>nfs-common</code> amb la següent comanda:  </p>
+<p><img alt="Instal·lació de nfs-common al client" src="../4.23-1.png" /> </p>
+<p>Creem una carpeta a l'arrel anomenada <strong><code>/muntatge</code></strong> i ens desplacem cap a ella.  </p>
+<p><img alt="Creació del directori /muntatge" src="../4.24-1.png" /> </p>
+<p>Muntem el directori <strong><code>/logs</code></strong> del servidor al directori <strong><code>/muntatge</code></strong> del client, indicant sempre la <strong>IP del servidor</strong>:  </p>
+<p><img alt="Muntatge del directori /logs" src="../4.25-1.png" /> </p>
+<h4 id="comparticio-dels-logs">Compartició dels logs</h4>
+<p>Un cop fets els passos anteriors, anem al <strong>Server</strong> i editem el fitxer <strong><code>50-default.conf</code></strong> per modificar la línia de <strong><code>mail.=alert</code></strong>, indicant que quan es generi aquest log, es guardi a <strong><code>/logs/nfs.log</code></strong>.  </p>
+<ul>
+<li><strong>Punt important:</strong> Com que el directori <strong><code>/logs</code></strong> és compartit amb el client a través del directori <strong><code>/muntatge</code></strong>, qualsevol log creat i desat a <strong><code>/logs</code></strong> serà també guardat a <strong><code>/muntatge</code></strong> i, per tant, visible al client.  </li>
+</ul>
+<p><img alt="Configuració del fitxer 50-default.conf" src="../4.26-1.png" /> </p>
+<p>A la part superior de la imatge, veiem el client accedint al directori <strong><code>/muntatge</code></strong>, mentre que a la part inferior hi ha el servidor.  </p>
+<p>En aquest punt, al servidor, creem una alerta de <strong><code>mail</code></strong> amb prioritat <strong><code>alert</code></strong> i un missatge.  </p>
+<p>Com podem observar, l'alerta no es reflecteix ni als logs actuals de la màquina ni al directori del client, ja que encara no s'ha enviat l'ordre de creació del log.  </p>
+<p><img alt="Creació d'un log d'alerta" src="../4.27-1.png" /> </p>
+<p>En aquest punt, acabem d'enviar la comanda per crear el <strong>log</strong>. Ara, el podem veure als <strong>logs</strong> de la nostra màquina i, si fem un <strong><code>ls -l</code></strong> al client, també hi serà visible.  </p>
+<p>Així, podem comprovar que el fitxer amb el log creat ha estat rebut correctament pel client.  </p>
+<p><img alt="Log creat visible al client" src="../4.28-1.png" /> </p>
+<p>Comprovació del fitxer <code>nfs.log</code> del client:</p>
+<p><img alt="Comprovació del fitxer nfs.log" src="../4.29-1.png" /> </p>
+<p>Una última comprovació consisteix a crear un <strong>log</strong> amb prioritat <strong><code>alert</code></strong> i verificar que arriba al client, però no es guarda al fitxer <strong><code>mail.log</code></strong> del servidor, ja que ha de ser enviat al directori compartit <strong><code>/logs</code></strong>.  </p>
+<p>Així, el <strong>log</strong> es desarà en el directori compartit i serà visible tant al servidor com al client, però no al fitxer <strong><code>mail.log</code></strong>.  </p>
+<p><img alt="Verificació de la creació del log en el directori compartit" src="../4.30-1.jpg" /></p>
 <h2 id="2-administracio-remota-team-viewer">2. ADMINISTRACIÓ REMOTA (TEAM VIEWER)</h2>
 <h2 id="3-llicenciament">3. LLICENCIAMENT</h2>
               
