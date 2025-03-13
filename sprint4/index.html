@@ -69,7 +69,27 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#2-administracio-remota-team-viewer">2. ADMINISTRACIÓ REMOTA (TEAM VIEWER)</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#3-llicenciament">3. LLICENCIAMENT</a>
+    <li class="toctree-l2"><a class="reference internal" href="#3-llicenciament">3. LLICÈNCIAMENT</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#que-son-les-llicencies">Què són les llicències?</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#tipus-de-llicencies">Tipus de llicències</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#llicencies-privatives">Llicències privatives</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#llicencies-foss">Llicències FOSS</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#altres-punts">Altres punts</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#com-implementar-una-llicencia-en-una-aplicacio">Com implementar una llicència en una aplicació?</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#exemple-duna-llicencia-eula">Exemple d'una llicència EULA</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
     </li>
     </ul>
                   </li>
@@ -223,7 +243,59 @@ Per aquest motiu, anem a <strong><code>/etc/exports</code></strong> per introdui
 <p><img alt="Log creat i emmagatzemat a /logs/nfs.log" src="../img/4.41-1.png" /></p>
 <p>També, amb <strong><code>journalctl -p alert</code></strong>, podem veure les prioritats <strong><code>alert</code></strong> que s'han executat anteriorment, i així podrem veure la que hem creat als passos anteriors.</p>
 <p><img alt="Visualitzant els logs amb prioritat alert amb journalctl" src="../img/4.42-1.png" /></p>
-<h2 id="3-llicenciament">3. LLICENCIAMENT</h2>
+<h2 id="3-llicenciament">3. LLICÈNCIAMENT</h2>
+<h3 id="que-son-les-llicencies">Què són les llicències?</h3>
+<p>Les llicències de programes són contractes legals que defineixen els drets i restriccions dels usuaris en l'ús del programari, establerts entre el creador (llicenciador) i l'usuari (llicenciatari).</p>
+<h3 id="tipus-de-llicencies">Tipus de llicències</h3>
+<h4 id="llicencies-privatives">Llicències privatives</h4>
+<ul>
+<li><strong>Model de negoci:</strong> Permeten comercialitzar el programari i obtenir beneficis.</li>
+<li><strong>Suport i garanties:</strong> Inclouen suport tècnic i garanties per als usuaris.</li>
+<li><strong>Limitacions:</strong> No permeten personalitzar el programari i depenen d'un únic proveïdor.</li>
+</ul>
+<h4 id="llicencies-foss">Llicències FOSS</h4>
+<ul>
+<li><strong>Filosofia:</strong> Promou la llibertat d'usar, modificar i compartir el programari.</li>
+<li><strong>Avantatges:</strong> Transparència, seguretat millorada i llibertat de personalització.</li>
+<li><strong>Desafiaments:</strong> Suport tècnic informal i possibles problemes de compatibilitat.</li>
+</ul>
+<h4 id="altres-punts">Altres punts</h4>
+<ul>
+<li><strong>Llicències duals:</strong> Ofereixen versions privatives i FOSS.</li>
+<li><strong>Consideracions ètiques:</strong> Elecció basada en valors sobre llibertat i col·laboració.</li>
+<li><strong>Drets d'autor:</strong> Les llicències FOSS també tenen drets d'autor amb restriccions específiques.</li>
+</ul>
+<h3 id="com-implementar-una-llicencia-en-una-aplicacio">Com implementar una llicència en una aplicació?</h3>
+<p>Crec que la millor llicencia per a un programari seriá la llicència <strong>EULA</strong> (Acord de Llicència d'Usuari Final) que és un contracte legal que defineix els drets i condicions d'ús del programari.</p>
+<ol>
+<li>
+<p><strong>Presentació durant la instal·lació:</strong></p>
+<ul>
+<li>L'<strong>EULA</strong> es presenta en el procés d'instal·lació i s'ha d'acceptar per continuar.</li>
+<li>Pot ser en format <strong>.txt</strong>, <strong>.rtf</strong>, <strong>PDF</strong> o <strong>HTML</strong>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Visualització dins de l'aplicació:</strong></p>
+<ul>
+<li>Es pot consultar des del menú <em>"Quant a" o "Ajuda"</em>.</li>
+<li>També pot estar disponible a la documentació en línia o a la primera execució.</li>
+</ul>
+</li>
+<li>
+<p><strong>Implementació tècnica:</strong></p>
+<ul>
+<li>Els desenvolupadors utilitzen codi per mostrar l'<strong>EULA</strong> i registrar l'acceptació.</li>
+<li>Es poden utilitzar fitxers de registre o enviar la informació a un servidor.</li>
+<li>L'<strong>EULA</strong> es pot firmar digitalment per evitar modificacions.</li>
+</ul>
+</li>
+</ol>
+<h4 id="exemple-duna-llicencia-eula">Exemple d'una llicència <strong>EULA</strong></h4>
+<p>Document informatiu que incorpora l'<strong>EULA</strong>: 
+<img alt="eula" src="../img/4.20.png" /></p>
+<p>Finestra d'instal·lació d'un programari, en aquest cas de <strong>TeamViewer</strong>, on es mostra el llicenciament corresponent, el qual cal acceptar sempre que es vulgui continuar amb la instal·lació.</p>
+<p><img alt="eula teamviewer" src="../img/4.21.png" /> </p>
               
             </div>
           </div><footer>
