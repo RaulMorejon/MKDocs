@@ -77,6 +77,8 @@
     </li>
         </ul>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3-gestor-darrancada">3. Gestor d'arrancada</a>
+    </li>
     </ul>
                   </li>
               </ul>
@@ -202,6 +204,63 @@ Després del reinici, ja tenim el <strong>Server</strong> operatiu.</p>
 <p><img alt="Mensaje de restauración completada." src="../img/5.30.png" /></p>
 <p>Podem veure que ja no tenim <strong>Google Chrome</strong> instal·lat.</p>
 <p><img alt="Google Chrome eliminado después de la restauración." src="../img/5.31.png" /></p>
+<h2 id="3-gestor-darrancada">3. Gestor d'arrancada</h2>
+<p>Primer de tot instal·larem <strong>Ubuntu 24</strong> a la partició que haviem creat en el apartat anterior.</p>
+<p>Es pot instal·lar dos sistemes operatius en un disc amb dues particions perquè cada sistema té el seu espai i sistema de fitxers independent. 
+Un gestor d'arrencada com <strong>GRUB</strong> permet triar quin sistema iniciar. 
+Així, els dos sistemes operatius poden existir sense interferir entre ells i sense causar problemes.</p>
+<p>Una vegada tenim la instal·lació de <strong>Windows</strong> feta de l'apartat anterior veiem que tenim les següents particions:</p>
+<p><img alt="particions" src="../img/5.42.png" /></p>
+<p>Següidament anem al <strong>Emmagatzematge</strong> en la configuració de la nostra maquina virtual i afegim una unitat optica amb la <strong>ISO</strong> de <strong>Ubuntu 24</strong>;</p>
+<p><img alt="ubunut iso" src="../img/5.44.png" /></p>
+<p>Si tornem de nou a iniciar la maquian virtual i accedim al <strong>Windows</strong> podrem veure que en el <strong>Administrador de discos</strong> tenim la <strong>ISO</strong> introduïda anteriorment:</p>
+<p><img alt="particio ubuntu" src="../img/5.45.png" /></p>
+<p>De nou, hem d'anar a la configuració de la maquina virtual i en <strong>Sistema</strong> ficar la unita <strong>Òptica</strong> en primer lloc en l'ordre d'arrancada per a que inicie amb <strong>Ubuntu</strong>.</p>
+<p><img alt="unitat optica" src="../img/5.46.png" /></p>
+<p>Una vegada iniciem la maquina virtual ens trobem amb el <strong>GRUB</strong> on donarem a instal·lar el sistema operatiu de <strong>Ubuntu</strong>:</p>
+<p><img alt="grub" src="../img/5.47.png" /></p>
+<p>Fem una instal·lació de manera normal, i en el moment que ens dona a escogir on instal·larlo donarem a personalitzar les particions manualment i seleccionarem aquella que teniem pervista per <strong>Ubuntu</strong>.</p>
+<p><img alt="particio" src="../img/5.48.png" /></p>
+<p>Després introduirem el tamany que volem que tingui i també que la particio s'utilitsi com <strong>EXT4</strong>, i finalment que el punt de muntatge sigui l'arrel:</p>
+<p><img alt="editar parició" src="../img/5.49.png" /></p>
+<p>Revisem i acceptem:</p>
+<p><img alt="revisar" src="../img/5.50.png" /></p>
+<p>I fianlment tenim feta la instal·lació de <strong>Ubuntu</strong> correctament:</p>
+<p><img alt="Instal·lació correcta" src="../img/5.51.png" /></p>
+<p>Ara, en aquest punt, quan inciem la maquina virtual ens trobem que s'inciara el <strong>GRUB</strong> i podrem seleccionar amb quin sistema operatiu inciar, així que seleccionarem d'inciar amb <strong>Windows</strong>:</p>
+<p><img alt="iniciar win" src="../img/5.53.png" /></p>
+<p>Ens surtira que hi ha un error ja que al fer la instal·lació de <strong>Ubuntu</strong> no troba la referencia a aques sistema. Llavors donema a <strong>Solucionar Problemas</strong>.</p>
+<p><img alt="solucionar problema" src="../img/5.54.png" /></p>
+<p>Després donem a <strong>Opciones avanzadas</strong>.</p>
+<p><img alt="avanzadas" src="../img/5.55.png" /></p>
+<p>I <strong>Simbolo del sistema</strong>.</p>
+<p><img alt="simbolo del sistema" src="../img/5.56.png" /></p>
+<p>Una vegada estem en l'administrador em d'executar les següents comandes:</p>
+<ul>
+<li><strong><code>diskpart</code></strong> que és una eina de línia d'ordres per gestionar discos, particions i volums a <strong>Windows</strong>.</li>
+<li><strong><code>list disk</code></strong> que mostra una llista dels discos disponibles al sistema.</li>
+</ul>
+<p><img alt="diskpart" src="../img/5.57.png" /></p>
+<ul>
+<li><strong><code>select disk 0</code></strong> per seleccionar el disc 0.</li>
+<li><strong><code>list partition</code></strong> per mostra una llista de les particions del disc.</li>
+</ul>
+<p><img alt="partition" src="../img/5.58.png" /></p>
+<ul>
+<li><strong><code>select partition 2</code></strong> per seleccionar la partició que volem activar.</li>
+<li><strong><code>active</code></strong> per activar la partició.</li>
+</ul>
+<p><img alt="active" src="../img/5.59.png" /></p>
+<p>I fianalment executem les seguents comandes que reparen l'arrencada de <strong>Windows</strong> corregint el <strong>MBR</strong>, el sector d'arrencada i reconstruint el <strong>BCD</strong>.</p>
+<pre><code>    c:
+    bootrec /fixmbr
+    bootrec /fixboot
+    bootrec /rebuildbcd
+    exit
+</code></pre>
+<p><img alt="mbr" src="../img/5.60.png" /></p>
+<p>Per finalitzar ja podriem entrar en <strong>Windows</strong> correctament, i podem veure que ja tenim les altres particións on aviem instal·lat <strong>Ubunutu</strong>:</p>
+<p><img alt="fin" src="../img/5.61.png" /></p>
               
             </div>
           </div><footer>
