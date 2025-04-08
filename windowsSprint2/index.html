@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Windows Sprint 2 - Raúl Morejón</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Windows Sprint 2";
+        var mkdocs_page_input_path = "windowsSprint2.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Raúl Morejón
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Inici</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Sprints</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../sprint1/">Sprint 1</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../sprint2/">Sprint 2</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../sprint3/">Sprint 3</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../sprint4/">Sprint 4</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../windowsSprint1/">Windows Sprint 1</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Windows Sprint 2</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#1-preparacio-del-sistema">1. Preparació del sistema</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#afegir-un-nou-disc-virtual-a-la-maquina-virtual">Afegir un Nou Disc Virtual a la Màquina Virtual</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#iniciar-windows-i-obrir-gestio-de-discs">Iniciar Windows i Obrir Gestió de Discs</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#inicialitzar-el-disc">Inicialitzar el Disc</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#crear-particions">Crear Particions</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#primera-particio">Primera partició</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#segona-particio">Segona partició</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#resum-del-disc-1-amb-les-seves-dues-particions">Resum del Disc 1 amb les seves dues particions</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#comprovar-amb-diskpart">Comprovar amb Diskpart</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2-usuaris">2. Usuaris</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#crear-dos-usuaris-locals-alumne1-i-alumne2">Crear dos usuaris locals: "alumne1" i "alumne2"</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#crear-lusuari-alumne1">Crear l'usuari "alumne1"</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#crear-lusuari-alumne2">Crear l'usuari "alumne2"</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#visio-dels-usuaris-creats">Visió dels usuaris creats</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#afegir-los-al-grup-limitats">Afegir-los al grup "Limitats"</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#creacio-del-grup">Creació del grup</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#afegir-els-usuaris-al-grup">Afegir els usuaris al grup</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3-script-de-copia-i-automatitzacio">3. Script de còpia i automatització</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#afegir-tercer-disc-virtual">Afegir tercer disc virtual</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#crear-carpeta-copiesusuaris-dins-de-backups">Crear carpeta CopiesUsuaris dins de Backups</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#crear-script-bat-de-copia">Crear script .bat de còpia</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#script">Script</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#assigna-lscript-a-alumne1-i-alumne2">Assigna l’script a alumne1 i alumne2</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#4-verificacio-de-quota">4. Verificació de quota</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#5-gestio-de-processos-i-serveis">5. Gestió de processos i serveis</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#llistar-processos-actius">Llistar processos actius</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#taula-de-processos-prescindibles">Taula de processos prescindibles</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#eliminar-processos-manualment">Eliminar processos manualment</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#automatitzar-ho-a-linici-de-sessio">Automatitzar-ho a l’inici de sessió</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#documentacio-de-mes">Documentació de més</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#6-gestio-de-permisos-acls">6. Gestió de permisos (ACLs)</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#que-son-les-acls">Què són les ACLs?</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#crear-carpeta">Crear carpeta</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#assignar-permisos-al-grup-limitats">Assignar permisos al grup "Limitats"</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#comprovar-amb-alumne1">Comprovar amb alumne1</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#aplicar-excepcio-per-alumne2">Aplicar excepció per alumne2</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#consultar-permisos-aplicats">Consultar permisos aplicats</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../permisos/">Polítiques d'ús i contacte</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Raúl Morejón</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Sprints</li>
+      <li class="breadcrumb-item active">Windows Sprint 2</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="gestio-de-la-informacio-del-sistema-i-administracio">Gestió de la Informació del Sistema i Administració</h1>
+<hr />
+<h2 id="1-preparacio-del-sistema">1. Preparació del sistema</h2>
+<h3 id="afegir-un-nou-disc-virtual-a-la-maquina-virtual">Afegir un Nou Disc Virtual a la Màquina Virtual</h3>
+<p>Primer de tot, obrim la <strong>VirtualBox</strong> i seleccionem la màquina a la qual volem afegir el disc. Seguidament, anem a les <strong>configuracions</strong>:</p>
+<p><img alt="alt text" src="../img/52.1.png" /></p>
+<p>Afegim un nou disc virtual donant-li al símbol del disc, després a "Crear". En la finestra, seleccionem un <strong>VHD (Virtual Hard Disk)</strong>.</p>
+<p><img alt="alt text" src="../img/52.2.png" /></p>
+<p>Donem a "Següent" i seleccionem la mida del disc virtual. Després, cliquem a <strong>Finalitzar</strong>.</p>
+<p><img alt="alt text" src="../img/52.3.png" /></p>
+<p>I finalment, el seleccionem per poder-lo tenir a la nostra màquina, com podem veure:</p>
+<p><img alt="alt text" src="../img/52.4.png" /></p>
+<hr />
+<h3 id="iniciar-windows-i-obrir-gestio-de-discs">Iniciar Windows i Obrir Gestió de Discs</h3>
+<p>Iniciem la màquina virtual amb <strong>Windows</strong>:</p>
+<p><img alt="alt text" src="../img/52.5.png" /></p>
+<p>Accedim a l'<strong>Administrador de discos</strong> buscant-lo a la barra de cerca:</p>
+<p><img alt="alt text" src="../img/52.6.png" /></p>
+<hr />
+<h3 id="inicialitzar-el-disc">Inicialitzar el Disc</h3>
+<p>Com hem pogut veure a la imatge que tornem a tenir a continuació, ens demana inicialitzar el disc 1.</p>
+<p><img alt="alt text" src="../img/52.6.png" /></p>
+<p>Seleccionarem l'estil de partició <strong>GPT</strong>, ja que és un estil per a sistemes més moderns i amb més optimització. A continuació, li donem a <strong>Aceptar</strong> per poder tenir el disc correctament com es veu:</p>
+<p><img alt="alt text" src="../img/52.7.png" /></p>
+<h3 id="crear-particions">Crear Particions</h3>
+<h4 id="primera-particio">Primera partició</h4>
+<p>En aquest punt farem la creació de les <strong>particions</strong>. Per fer-ho, fem clic dret sobre l'espai no assignat i seleccionem <strong>Nou volum simple</strong>.</p>
+<p><img alt="alt text" src="../img/52.8.png" /></p>
+<p>Una vegada dins, li donem a <strong>Següent</strong>, definim la mida que, en aquest cas, és la meitat.</p>
+<p>A continuació, seleccionem la lletra del disc, que serà la lletra <strong>A</strong> i a aquest disc l'anomenarem <strong>"Dades"</strong>. Finalment, escollim el sistema de fitxers <strong>NTFS</strong> i obtenim la següent configuració:</p>
+<p><img alt="alt text" src="../img/52.10.png" /></p>
+<h4 id="segona-particio">Segona partició</h4>
+<p>De la manera anterior, tornem a crear un <strong>Nou volum simple</strong> en l'espai no assignat. Li posem l'espai que queda i la lletra <strong>B</strong> amb el nom <strong>"Portable"</strong>.</p>
+<p>Finalment, escollim <strong>FAT32</strong> com a sistema de fitxers. I trobem les següents propietats:</p>
+<p><img alt="alt text" src="../img/52.11.png" /></p>
+<h4 id="resum-del-disc-1-amb-les-seves-dues-particions">Resum del <em>Disc 1</em> amb les seves dues <strong>particions</strong></h4>
+<p><img alt="alt text" src="../img/52.12.png" /></p>
+<hr />
+<h3 id="comprovar-amb-diskpart">Comprovar amb <em>Diskpart</em></h3>
+<p>En el cas que volem assignar lletres als volums de nou, hem de fer clic sobre cada volum i seleccionar <strong>Canviar la lletra i rutes d'accés de unitat...</strong>.</p>
+<p>Si volem comprovar la configuració amb Diskpart, obrim una finestra de <strong>Símbol del sistema</strong> com a administrador i escrivim <code>diskpart</code> i donem <strong>Enter</strong>, s'obrirà la següent finestra:</p>
+<p><img alt="alt text" src="../img/52.13.png" /></p>
+<p>A la línia de comandes escrivim <code>list disk</code> per veure els discs i després <code>list volume</code> per veure els volums amb les seves lletres assignades i verificar que els volums "Dades" i "Portable" tenen les lletres corresponents.</p>
+<p><img alt="alt text" src="../img/52.14.png" /></p>
+<h2 id="2-usuaris">2. Usuaris</h2>
+<h3 id="crear-dos-usuaris-locals-alumne1-i-alumne2">Crear dos usuaris locals: <em>"alumne1"</em> i <em>"alumne2"</em></h3>
+<p>A continuació crearem dos usuaris. Per fer-ho, pressionem <strong>Windows + R</strong>, escrivim <code>lusrmgr.msc</code> i donem <strong>Enter</strong>.</p>
+<p><img alt="alt text" src="../img/52.15.png" /></p>
+<p>Això obrirà la finestra de <strong>Usuaris i Grups Locals</strong>:</p>
+<p><img alt="alt text" src="../img/52.16.png" /></p>
+<h3 id="crear-lusuari-alumne1">Crear l'usuari <em>"alumne1"</em></h3>
+<p>Per crear-lo, anem a l'esquerra i seleccionem <strong>Usuaris</strong>. Seguidament, fem clic dret sobre la finestra central i seleccionem <strong>Usuari nou</strong>.</p>
+<p><img alt="alt text" src="../img/52.17.png" /></p>
+<p>Omplim els camps de la següent manera i donem a <strong>Crear</strong>:</p>
+<p><img alt="alt text" src="../img/52.18.png" /></p>
+<h3 id="crear-lusuari-alumne2">Crear l'usuari <em>"alumne2"</em></h3>
+<p>I tornem a repetir els mateixos passos que en el punt anterior, però creant un nou usuari amb el nom de <strong>alumne2</strong>.</p>
+<p><img alt="alt text" src="../img/52.19.png" /></p>
+<h3 id="visio-dels-usuaris-creats">Visió dels usuaris creats</h3>
+<p><img alt="alt text" src="../img/52.20.png" /></p>
+<hr />
+<h3 id="afegir-los-al-grup-limitats">Afegir-los al grup <em>"Limitats"</em></h3>
+<h4 id="creacio-del-grup">Creació del grup</h4>
+<p>Primer de tot, hem de crear el nou grup anomenat "Limitats".<br />
+Per fer-ho, hem d'anar a l'esquerra de la finestra de <strong>Usuaris i Grups Locals</strong>, i seleccionar <strong>Grups</strong>.</p>
+<p><img alt="alt text" src="../img/52.21.png" /></p>
+<p>Seguidament, fem clic dret en la finestra central i seleccionem <strong>Grup nou</strong>.</p>
+<p>Dins de la finestra, li donem el nom de <strong>Limitats</strong> al grup i passem al següent apartat per afegir usuaris:</p>
+<p><img alt="alt text" src="../img/52.22.png" /></p>
+<h4 id="afegir-els-usuaris-al-grup">Afegir els usuaris al grup</h4>
+<p>Una vegada estem creant el grup, anem a baix a <strong>Afegir</strong> per afegir usuaris.<br />
+Dins escrivim el nom dels dos usuaris de la següent manera:</p>
+<p><img alt="alt text" src="../img/52.23.png" /></p>
+<p>I una vegada escrits, donem a <strong>Aceptar</strong> i <strong>Crear</strong> per poder tenir el grup finalitzat com es pot veure:</p>
+<p><img alt="alt text" src="../img/52.24.png" /></p>
+<hr />
+<h2 id="3-script-de-copia-i-automatitzacio">3. Script de còpia i automatització</h2>
+<h3 id="afegir-tercer-disc-virtual">Afegir tercer disc virtual</h3>
+<p>En aquest punt, hem d'afegir un nou disc virtual a la màquina virtual.<br />
+Ho fem de la mateixa manera que en el apartat anterior.</p>
+<p>Serà un disc virtual de <strong>50GB</strong>:</p>
+<p><img alt="alt text" src="../img/52.25.png" /></p>
+<p>Iniciem Windows i obrim <strong>Windows + R</strong> i escrivim <code>diskmgmt.msc</code>.<br />
+Donem a inicialitzar el disc en <strong>GPT</strong>:</p>
+<p><img alt="alt text" src="../img/52.26.png" /></p>
+<p>Creem una partició i la formategem com <strong>NTFS</strong>. L'anomenem <strong>Backups</strong>, i li assignem la lletra <strong>Z</strong>:</p>
+<p><img alt="alt text" src="../img/52.27.png" /></p>
+<p>Disc <strong>Backups</strong>:</p>
+<p><img alt="alt text" src="../img/52.28.png" /></p>
+<h3 id="crear-carpeta-copiesusuaris-dins-de-backups">Crear carpeta <em>CopiesUsuaris</em> dins de Backups</h3>
+<p>Creem la carpeta <em>CopiesUsuaris</em> dins de <strong>Backups</strong> com es pot veure a continuació:</p>
+<p><img alt="alt text" src="../img/52.29.png" /></p>
+<h3 id="crear-script-bat-de-copia">Crear script <code>.bat</code> de còpia</h3>
+<p>A continuació, creem un <strong>script</strong> <code>.bat</code> que es dirà <code>copia_usuaris.bat</code> i contindrà la comanda següent:</p>
+<pre><code class="language-bat">@echo off
+xcopy &quot;C:\Users\%USERNAME%&quot; &quot;Z:\CopiesUsuaris\%USERNAME%&quot; /E /I /Y /H
+
+</code></pre>
+<p><strong>Es divideix en les següents parts:</strong></p>
+<ul>
+<li><code>@echo off</code>: Amaga les ordres mentre s’executen (fa que la finestra sigui més neta).</li>
+<li><code>%USERNAME%</code>: S’utilitza per agafar automàticament el nom de l’usuari actual.</li>
+<li><code>xcopy</code>: Ordre per copiar arxius i carpetes.</li>
+<li><code>/E</code>: Copia totes les subcarpetes, incloses les buides.</li>
+<li><code>/I</code>: Assumeix que el destí és una carpeta.</li>
+<li><code>/Y</code>: No demana confirmació per sobreescriure arxius.</li>
+<li><code>/H</code>: Inclou arxius ocults i de sistema.</li>
+</ul>
+<p><img alt="alt text" src="../img/52.36.png" /></p>
+<h3 id="script">Script</h3>
+<p>Primer de tot obrim <code>gpedit.msc</code> amb <strong>Windows + R</strong>:</p>
+<p><img alt="alt text" src="../img/52.31.png" /></p>
+<p>Accedim a <strong>Configuració d'usuari → Configuració de Windows → Scripts (Inici/tancament de sessió) → Inici de sessió</strong></p>
+<p><img alt="alt text" src="../img/52.32.png" /></p>
+<p>Donem a <strong>Iniciar sessió</strong> i, seguidament, en la finestra afegim l'<strong>script</strong> en l'opció que ens surt:</p>
+<p><img alt="alt text" src="../img/52.33.png" /></p>
+<p>Hi donem a <strong>Acceptar</strong> i <strong>Aplicar</strong>. </p>
+<h3 id="assigna-lscript-a-alumne1-i-alumne2">Assigna l’script a alumne1 i alumne2</h3>
+<p>Primer de tot, iniciem sessió a <strong>alumne1</strong> perquè es creïn les seves carpetes d'usuari:</p>
+<p><img alt="alt text" src="../img/52.34.png" /></p>
+<p>Fem el mateix amb <strong>alumne2</strong> i tenim tots els usuaris iniciats, encara que podem tancar sessió ja:</p>
+<p><img alt="alt text" src="../img/52.35.png" /></p>
+<p>Iniciem de nou la sessió de l'usuari <strong>alumne1</strong> després d'haver tancat sessió, fem el mateix amb l'altre usuari.</p>
+<p><img alt="alt text" src="../img/52.37.png" /></p>
+<p>Ara, una vegada iniciat el sistema amb un dels usuaris, s'hauria de crear una còpia de les seves carpetes a la de <strong>Backups</strong>, com podem veure a continuació:</p>
+<p><img alt="alt text" src="../img/52.39.png" /></p>
+<hr />
+<h2 id="4-verificacio-de-quota">4. Verificació de quota</h2>
+<p>Primer de tot, hem d'obrir el <strong>Administrador de discs</strong> i fer clic dret damunt de la partició <strong>Dades</strong> i anar a <strong>Propietats</strong>.</p>
+<p><img alt="alt text" src="../img/52.40.png" /></p>
+<p>Anem a la finestra <strong>Quota</strong> i habilitem l'administrador de quotes. Seguidament, limitem l'espai al mínim per fer les proves, perquè bloquegi.</p>
+<p><img alt="alt text" src="../img/52.41.png" /></p>
+<p>El que hem de fer és entrar a <strong>Valors de quota</strong> i aplicar-los a cada usuari, com es veu a continuació per a <strong>alumne1</strong>:</p>
+<p><img alt="alt text" src="../img/52.43.png" /></p>
+<p>I per a <strong>alumne2</strong>:</p>
+<p><img alt="alt text" src="../img/52.44.png" /></p>
+<p>Ara anem i omplim la carpeta amb més de <strong>10KB</strong>, llavors surt aquest missatge quan ja hem superat el límit especificat de <strong>quota</strong>.
+(Com es pot veure a la dreta, el fitxer pesava 7KB abans de guardar-lo, però després ja ha superat el límit)</p>
+<p><img alt="alt text" src="../img/52.45.png" /></p>
+<hr />
+<h2 id="5-gestio-de-processos-i-serveis">5. Gestió de processos i serveis</h2>
+<h3 id="llistar-processos-actius">Llistar processos actius</h3>
+<p>Per llistar els processos actius en <strong>Windows</strong> de manera que mostri una instància del moment en què s'executa la comanda, s'ha de fer ús de la comanda <code>tasklist &gt; C:\Users\%USERNAME%\processos_inici.txt</code>, d'aquesta manera enviem el llistat de processos a un fitxer:</p>
+<p><img alt="alt text" src="../img/52.47.png" /></p>
+<h3 id="taula-de-processos-prescindibles">Taula de processos prescindibles</h3>
+<p>Els següents processos son no essencials per al sistema/usuaris (<code>Teams.exe</code> no esta al sistema):</p>
+<pre><code class="language-text">| Nom del procés   | Memòria usada             | Justificació                        |
+|------------------|---------------------------|-------------------------------------|
+| OneDrive.exe     | 42.504 MB                 | No s'utilitza, carrega en segon pla |
+| SkypeApp.exe     | 97.969 MB                 | Inactiu i innecessari               |
+</code></pre>
+<p>Exemple del de <strong>SkipeApp.exe</strong>:</p>
+<p><img alt="alt text" src="../img/52.48.png" /></p>
+<h3 id="eliminar-processos-manualment">Eliminar processos manualment</h3>
+<p>Primer de tot farem una captura del procés de <code>OneDrive.exe</code> on podem veure que està en la llista de processos actuals:</p>
+<p><img alt="alt text" src="../img/52.49.png" /></p>
+<p>Seguidament, fem ús de la comanda <code>taskkill /IM OneDrive.exe /F</code> que finalitzarà el procés i, amb el <code>/F</code>, el finalitzarà de manera immediata sense cap confirmació (<strong>IMPORTANT</strong>: hem de fer-ho amb els permisos d'<strong>Administrador</strong> des de la <strong>CMD</strong>):</p>
+<p><img alt="alt text" src="../img/52.50.png" /></p>
+<p>Tornem a fer <code>tasklist</code> per comprovar que ja no tenim el procés. Ho podem fer amb una cerca exacta amb la següent comanda:</p>
+<p><img alt="alt text" src="../img/52.42.png" /></p>
+<p>I finalment veiem que el procés ha sigut tancat amb èxit. </p>
+<h3 id="automatitzar-ho-a-linici-de-sessio">Automatitzar-ho a l’inici de sessió</h3>
+<p>Afegeix aquestes línies al final de <code>copia_usuaris.bat</code> (He canviat el de <code>Teams.exe</code> per <code>SkypeApp.exe</code> ja que no tinc el primer):</p>
+<pre><code class="language-bash">taskkill /IM OneDrive.exe /F
+taskkill /IM SkypeApp.exe /F
+</code></pre>
+<p><img alt="alt text" src="../img/52.52.png" />
+Per tal que quan inicien sessió es tanquin els processos.</p>
+<p>Iniciem amb <strong>alumne2</strong> i fem una cerca dels processos. Podem veure que ja estan tancats i no els tenim:</p>
+<p><img alt="alt text" src="../img/52.53.png" /> </p>
+<h3 id="documentacio-de-mes">Documentació de més</h3>
+<p>En el cas que matem el procés <code>explorer.exe</code>, es tancaria l’escriptori de manera que tot es tornaria de negre.
+Però per solucionar-ho hauríem de fer ús de les següents comandes: <code>Ctrl+Shift+Esc -&gt; Arxiu -&gt; Executar nova tasca -&gt; explorer.exe</code></p>
+<p>Efectivament, si matem el procés es torna de color negre: </p>
+<p><img alt="alt text" src="../img/52.54.png" /> </p>
+<p>Anem a executar una nova tasca:</p>
+<p><img alt="alt text" src="../img/52.56.png" /> </p>
+<p>Escrivim <code>explorer.exe</code> i donem <strong>Acceptar</strong>:</p>
+<p><img alt="alt text" src="../img/52.55.png" /> </p>
+<p>I tornem a tenir el fons de l'escriptori de color com estava abans de tot:</p>
+<p><img alt="alt text" src="../img/52.57.png" /> </p>
+<p>Finalment, podem afegir que eliminar processos innecessaris és bo, ja que redueix l'ús de la <strong>RAM</strong> i la <strong>CPU</strong>. També millora bastant el rendiment, especialment en les màquines virtuals. </p>
+<p>Per aquest motiu, sempre hem de tenir optimitzat el nostre sistema i evitarem errors innecessaris.</p>
+<hr />
+<h2 id="6-gestio-de-permisos-acls">6. Gestió de permisos (ACLs)</h2>
+<h3 id="que-son-les-acls"><strong>Què són les ACLs?</strong></h3>
+<p>ACL (Access Control List) = llista detallada de permisos per fitxer/carpeta.</p>
+<p>Cada <strong>ACE</strong> (Access Control Entry) diu:
+- Quin usuari o grup afecta
+- Quins permisos té (lectura, execució, control total, etc.)
+- Si són <strong>heretats</strong> o <strong>directes</strong></p>
+<h3 id="crear-carpeta">Crear carpeta</h3>
+<p>Primer de tot, hem de crear una carpeta amb permisos d'administrador.
+Obrim la <strong>CMD</strong> com a administrador i creem la carpeta <code>A:\Projectes</code> en la partició <strong>Dades</strong> amb la comanda <code>mkdir A:\Projectes</code> (Per fer ús una mica de les comandes)</p>
+<p><img alt="alt text" src="../img/52.58.png" /></p>
+<h3 id="assignar-permisos-al-grup-limitats">Assignar permisos al grup "Limitats"</h3>
+<p>Fem els següents passos:</p>
+<ul>
+<li>Fem clic dret a la carpeta, després <strong>Propietats</strong>, <strong>Seguretat</strong> i <strong>Opcions avançades</strong></li>
+</ul>
+<p><img alt="alt text" src="../img/52.60.png" /></p>
+<ul>
+<li>Li donem a <strong>Canviar permisos</strong> i desactivem l'<strong>herència</strong>. Sobretot, li donem a la primera opció de conservació dels permisos:</li>
+</ul>
+<p><img alt="alt text" src="../img/52.61.png" /></p>
+<ul>
+<li>Eliminem el grup de <code>Users</code> seleccionant-lo i donant a <strong>Quitar</strong> i també als altres usuaris.</li>
+</ul>
+<p><img alt="alt text" src="../img/52.63.png" /></p>
+<ul>
+<li>I finalment, afegim el grup <strong>Limitats</strong> amb <strong>Control total</strong>, ho farem donant a <strong>Agregar</strong>. Seguidament, li donem a dalt on diu <strong>Seleccionar una entitat de seguretat</strong> i en la següent finestra escrivim el nom del grup i donem a <strong>Acceptar</strong>:</li>
+</ul>
+<p><img alt="alt text" src="../img/52.64.png" /></p>
+<p>I sobretot seleccionem <strong>Control total</strong> i sortim acceptant:</p>
+<p><img alt="alt text" src="../img/52.66.png" /></p>
+<h3 id="comprovar-amb-alumne1">Comprovar amb alumne1</h3>
+<p>Iniciem sessió amb <strong>alumne1</strong> i, a continuació, editem un fitxer a <code>A:\Projectes</code> i ha de funcionar correctament, com podem veure a la imatge, que no ens dóna cap error i el crea sense cap problema: </p>
+<p><img alt="alt text" src="../img/52.65.png" /></p>
+<h3 id="aplicar-excepcio-per-alumne2">Aplicar excepció per alumne2</h3>
+<p>Si intentem accedir a la carpeta amb <strong>alumne2</strong>, ens mostrarà un error de que no tenim permisos, ja que li hem tret els permisos que tenia amb <code>icacls "A:\Projectes" /grant:r alumne2:(R)</code></p>
+<p><img alt="alt text" src="../img/52.68.png" /></p>
+<p><img alt="alt text" src="../img/52.67.png" /></p>
+<h3 id="consultar-permisos-aplicats">Consultar permisos aplicats</h3>
+<p>Per consultar els permisos aplicats a la carpeta, fem ús de la comanda:</p>
+<pre><code class="language-cmd">icacls &quot;D:\Projectes&quot;
+</code></pre>
+<p><img alt="alt text" src="../img/52.69.png" /></p>
+<p>El que ens indica es que els grups <strong>"Administradors"</strong>, el compte <strong>"SYSTEM"</strong> i el grup <strong>"Limitats"</strong> tenen <strong>Control Total</strong> sobre la carpeta <strong>"A:\Projectes"</strong> i que aquesta configuració s'hereta als elements que conté.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../windowsSprint1/" class="btn btn-neutral float-left" title="Windows Sprint 1"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../permisos/" class="btn btn-neutral float-right" title="Polítiques d'ús i contacte">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../windowsSprint1/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../permisos/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
