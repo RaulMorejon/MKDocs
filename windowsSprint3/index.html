@@ -63,13 +63,13 @@
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#11-rols-del-servidor">1.1 Rols del servidor</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#12-caracteristiques">1.2 Caracteristiques</a>
+    <li class="toctree-l3"><a class="reference internal" href="#12-caracteristiques">1.2 Característiques</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#13-confirmacions">1.3 Confirmacions</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#14-finalitzar-instllacio">1.4 Finalitzar instl·lació</a>
+    <li class="toctree-l3"><a class="reference internal" href="#14-finalitzar-installacio">1.4 Finalitzar instal·lació</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#15-configuracio-de-implementacio">1.5 Configuració de implementació</a>
+    <li class="toctree-l3"><a class="reference internal" href="#15-configuracio-dimplementacio">1.5 Configuració d'implementació</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#16-opcions-del-controlador-de-domini">1.6 Opcions del controlador de domini</a>
     </li>
@@ -88,6 +88,24 @@
         </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#3-gestio-del-domini-ad">3. Gestió del Domini AD</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#31-crear-una-uo">3.1 Crear una UO</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#32-modificar-les-directives-de-la-politica-de-contrasenyes">3.2 Modificar les directives de la política de contrasenyes.</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#33-crear-dos-usuaris-dintre-de-cada-grup">3.3 Crear dos usuaris dintre de cada grup</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#34-validar-un-equip-client-al-domini">3.4 Validar un equip client al domini</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#35-fer-que-un-usuari-nomes-es-pugui-connectar-uns-dies-determinats">3.5 Fer que un usuari només es pugui connectar uns dies determinats</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#36-fer-que-un-usuari-del-domini-pugui-ser-administrador-dun-equip">3.6 Fer que un usuari del domini pugui ser administrador d’un equip</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#37-carpetes-dels-usuaris-que-es-connecten-al-domini">3.7 Carpetes dels usuaris que es connecten al domini</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#38-delegar-una-uo-a-un-usuari-administrador">3.8 Delegar una UO a un usuari administrador</a>
+    </li>
+        </ul>
     </li>
     </ul>
                   </li>
@@ -122,106 +140,217 @@
               
                 <h1 id="gestio-de-dominis-i-accessos-en-windows">Gestió de Dominis i Accessos en Windows</h1>
 <hr />
-<p>Primer de tot comencem aquest sprint amb la instal·lació de <strong>Windows Server 2022 amb interfície gràfica</strong> a partir de la <a href="https://go.microsoft.com/fwlink/p/?LinkID=2195280&amp;clcid=0x409&amp;culture=en-us&amp;country=US">ISO</a>.
-Una vegada tenim la instal·lació, el que em de fer es configurar per a que la <strong>IP</strong> sigui estatica, llavors ens anem a <strong>VirtualBox</strong> a <strong>Xarxa</strong> i fiquem <strong>Xarxa NAT</strong>:</p>
+<p>Primer de tot, comencem aquest sprint amb la instal·lació de <strong>Windows Server 2022 amb interfície gràfica</strong> a partir de la <a href="https://go.microsoft.com/fwlink/p/?LinkID=2195280&amp;clcid=0x409&amp;culture=en-us&amp;country=US">ISO</a>.
+Una vegada tenim la instal·lació, el que hem de fer és configurar perquè la <strong>IP</strong> sigui estàtica. Llavors, ens anem a <strong>VirtualBox</strong>, a <strong>Xarxa</strong>, i fiquem <strong>Xarxa NAT</strong>:</p>
 <p><img alt="alt text" src="../img/53.1.png" /></p>
+<hr />
 <h2 id="1-installacio-domini-ad">1. Instal·lació Domini AD</h2>
-<p>Una vegada iniciem la maquina virtual amb el <strong>servidor</strong> ens preguntara si volem que el nostre servidor pugui reconeixer altres dispositius de la xarxa, l'hi donem a <strong>SI</strong></p>
+<p>Una vegada iniciem la màquina virtual amb el <strong>servidor</strong>, ens preguntarà si volem que el nostre servidor pugui reconèixer altres dispositius de la xarxa. Li donem a <strong>Sí</strong>.</p>
 <p><img alt="alt text" src="../img/53.4.png" /></p>
-<p>En aquest punt començem amb l'instal·lació del Domini. Quan em iniciat ja ens surt l'<strong>Administrador del servidor</strong>, però en el cas que no surti anem al <strong>Inici de Windows</strong> i el busquem i iniciem com administrador.</p>
+<p>En aquest punt, comencem amb la instal·lació del Domini. Quan hem iniciat, ja ens surt l'<strong>Administrador del servidor</strong>, però en el cas que no surti, anem a l'<strong>Inici de Windows</strong>, el busquem i l'iniciem com a administrador.</p>
 <p><img alt="alt text" src="../img/53.5.png" /></p>
 <h3 id="11-rols-del-servidor">1.1 Rols del servidor</h3>
-<p>Dints de l'<strong>Adminstrador del servidor</strong> donem en <strong>Agregar roles y características</strong>, i l'hi donem a <strong>siguiente</strong>:</p>
+<p>Dins de l'<strong>Administrador del servidor</strong>, donem a <strong>Agregar roles y características</strong>, i li donem a <strong>Següent</strong>:</p>
 <p><img alt="alt text" src="../img/53.6.png" /></p>
-<p>I en la següent finestra que ens surt deixem la opció per defecte ja que estem fent la instal·lació de rols i caracteristiques, després l'hi donem a següent: </p>
+<p>I en la següent finestra que ens surt, deixem l'opció per defecte, ja que estem fent la instal·lació de rols i característiques. Després, li donem a <strong>Següent</strong>:</p>
 <p><img alt="alt text" src="../img/53.7.png" /></p>
-<p>De nou en la nova finestra deixem els valors per defecte ja que només ens sortira la opció del nostre servidor actual que tenim operatiu. I després fem <strong>següent</strong>:</p>
+<p>De nou, en la nova finestra deixem els valors per defecte, ja que només ens sortirà l'opció del nostre servidor actual que tenim operatiu. I després fem <strong>Següent</strong>:</p>
 <p><img alt="alt text" src="../img/53.8.png" /></p>
-<p>A la següent finestra haurem de triar els serveis que volem instal·lar. Activarem la casella de <strong>Servicios de dominio de Active Directory</strong>.</p>
+<p>A la següent finestra, haurem de triar els serveis que volem instal·lar. Activarem la casella de <strong>Servicios de dominio de Active Directory</strong>.</p>
 <p><img alt="alt text" src="../img/53.9.png" /></p>
-<p>L'hi donem a <strong>Agregar característica</strong></p>
+<p>Li donem a <strong>Agregar característica</strong>:</p>
 <p><img alt="alt text" src="../img/53.10.png" /></p>
 <p>I comprovem que tenim marcada la casella de <strong>Servicios de dominio de Active Directory</strong>.</p>
 <p><img alt="alt text" src="../img/53.11.png" /></p>
-<p>Una vegada tenim els rols releccionats donem <strong>siguinte</strong> i anem al apartar de <strong>Características</strong></p>
-<h3 id="12-caracteristiques">1.2 Caracteristiques</h3>
-<p>Comprovem que tenim instal·lat la caracteristica de <strong>Administración de directivas de grupo</strong>, que ve per defecte, però en cas de no tenirlo l'hi donem per instal·lar-lo.Seguidament donem a <strong>Siguiente</strong>:</p>
+<p>Una vegada tenim els rols seleccionats, donem a <strong>Següent</strong> i anem a l'apartat de <strong>Características</strong>.</p>
+<h3 id="12-caracteristiques">1.2 Característiques</h3>
+<p>Comprovem que tenim instal·lada la característica de <strong>Administración de directivas de grupo</strong>, que ve per defecte, però en cas de no tenir-la, li donem per instal·lar-la. Seguidament, donem a <strong>Següent</strong>:</p>
 <p><img alt="alt text" src="../img/53.12.png" /></p>
-<p>Ens sortira una finestra informativa i llavors després de llegir-la l'hi donem a <strong>Siguiente</strong>:</p>
+<p>Ens sortirà una finestra informativa i llavors, després de llegir-la, li donem a <strong>Següent</strong>:</p>
 <p><img alt="alt text" src="../img/53.13.png" /></p>
 <h3 id="13-confirmacions">1.3 Confirmacions</h3>
-<p>En la finestra de confirmació em de donar clic al apartat de <strong>Reiniciar automaticamente el sercidor en caso necesario</strong>, i següidament ens sortira una missatge informant que es pot reinciar sense notificació, llavors nome a <strong>SI</strong>.</p>
+<p>En la finestra de confirmació, hem de donar clic a l'apartat de <strong>Reiniciar automáticamente el servidor en caso necesario</strong>, i seguidament ens sortirà un missatge informant que es pot reiniciar sense notificació. Llavors, només a <strong>Sí</strong>.</p>
 <p><img alt="alt text" src="../img/53.14.png" /></p>
 <p>I podem veure el següent:</p>
 <p><img alt="alt text" src="../img/53.15.png" /></p>
-<h3 id="14-finalitzar-instllacio">1.4 Finalitzar instl·lació</h3>
-<p>Finalment l'hi donem a instal·lar i podrem veure una barra amb el progres i els resultats:</p>
+<h3 id="14-finalitzar-installacio">1.4 Finalitzar instal·lació</h3>
+<p>Finalment, li donem a instal·lar i podrem veure una barra amb el progrés i els resultats:</p>
 <p><img alt="alt text" src="../img/53.15.png" /></p>
-<p>Seguidament quan termini ens sortira una notificació i harem de fer clic on fica <strong>Promover este servidor a controlador de dominio</strong></p>
+<p>Seguidament, quan termini, ens sortirà una notificació i haurem de fer clic on fica <strong>Promover este servidor a controlador de dominio</strong>.</p>
 <p><img alt="alt text" src="../img/53.17.png" /></p>
-<h3 id="15-configuracio-de-implementacio">1.5 Configuració de implementació</h3>
-<p>En aquest punt em de triar el tipus d’instal·lació d’Active Directory, en aquest escogirem <strong>Agregar un nuevo bosque</strong> ja que es el nostre primer servidor <strong>AD</strong>. 
-Escribim el nom del domini, que l'hi posarem el següent:</p>
+<h3 id="15-configuracio-dimplementacio">1.5 Configuració d'implementació</h3>
+<p>En aquest punt, hem de triar el tipus d’instal·lació d’Active Directory. En aquest cas, escollirem <strong>Agregar un nuevo bosque</strong>, ja que és el nostre primer servidor <strong>AD</strong>.
+Escribim el nom del domini, que li posarem el següent:</p>
 <p><img alt="alt text" src="../img/53.18.png" /></p>
 <p>Passem a la següent finestra.</p>
 <h3 id="16-opcions-del-controlador-de-domini">1.6 Opcions del controlador de domini</h3>
-<p>Deixem totes les opcións que ens surten, i al final introduïrem una contrasenya segura per a la restauració del serveis:</p>
+<p>Deixem totes les opcions que ens surten, i al final introduirem una contrasenya segura per a la restauració dels serveis:</p>
 <p><img alt="alt text" src="../img/53.19.png" /></p>
-<p>Quand donem següent anirem a la finestra de <strong>Opcions de DNS</strong>, passem aquestra finestra i en <strong>Opcions adicionals</strong> tampoc cal tocar res.</p>
+<p>Quan donem a Següent, anirem a la finestra de <strong>Opcions de DNS</strong>. Passem aquesta finestra i en <strong>Opcions adicionals</strong> tampoc cal tocar res.</p>
 <h3 id="17-revisar-i-installar">1.7 Revisar i Instal·lar</h3>
-<p>Ens anem directe a revisar les opcions que em seleccionat i configurat anteriorment:</p>
+<p>Ens anem directe a revisar les opcions que hem seleccionat i configurat anteriorment:</p>
 <p><img alt="alt text" src="../img/53.20.png" /></p>
-<p>Finalment en el ultim apartat es fa una evaluació de les opcións i quan acabi l'hi donem a instal·lar:</p>
+<p>Finalment, en l'últim apartat es fa una avaluació de les opcions i, quan acabi, li donem a instal·lar:</p>
 <p><img alt="alt text" src="../img/53.21.png" /></p>
-<p>Després de la instal·lació es reiniciara, i ja iniciarem amb el nom:</p>
+<p>Després de la instal·lació, es reiniciarà, i ja iniciarem amb el nom:</p>
 <p><img alt="alt text" src="../img/53.23.png" /></p>
 <p><img alt="alt text" src="../img/53.24.png" /></p>
+<hr />
 <h2 id="2-unir-equips-al-domini">2. Unir equips al domini</h2>
-<p>Una vegada tenim tot a punt, unirem l'equip al domini. </p>
+<p>Una vegada tenim tot a punt, unirem l'equip al domini.</p>
 <h3 id="21-configuracio-server">2.1 Configuració Server</h3>
-<p>Llavors el que em de fer es en el <strong>servidor</strong> anar i desactivar el <strong>Fireware</strong> de totes les xarxes que surten, que en aquest punt ja em surten les 3. Desactivem <strong>Fireware</strong>:</p>
+<p>Llavors, el que hem de fer és, en el <strong>servidor</strong>, anar i desactivar el <strong>Firewall</strong> de totes les xarxes que surten, que en aquest punt ja em surten les 3. Desactivem el <strong>Firewall</strong>:</p>
 <p><img alt="alt text" src="../img/53.25.png" /></p>
-<p>Mirem la <strong>IP</strong> del nostre <strong>Server</strong> per poder unir l'equip posteriorment. Em de recordar l'<strong>IP</strong> i l'<strong>enllaç</strong>. </p>
+<p>Mirem la <strong>IP</strong> del nostre <strong>Server</strong> per poder unir l'equip posteriorment. Hem de recordar la <strong>IP</strong> i l'<strong>enllaç</strong>.</p>
 <p>En aquest cas:</p>
 <ul>
 <li>IPv4 -&gt; 10.0.2.14</li>
 <li>Enllaç -&gt; 10.0.2.1</li>
 </ul>
 <p><img alt="alt text" src="../img/53.26.png" /></p>
-<p>Configurem la <strong>IP</strong> fixa anant a <strong>Panel de control</strong>, en <strong>Redes e Internet</strong> i en la nostra conexió anem a propietats. En <strong>IPv4</strong> donem a <strong>Propiedades</strong>:</p>
+<p>Configurem la <strong>IP</strong> fixa anant a <strong>Panel de control</strong>, a <strong>Redes e Internet</strong> i, en la nostra connexió, anem a propietats. En <strong>IPv4</strong>, donem a <strong>Propiedades</strong>:</p>
 <p><img alt="alt text" src="../img/53.27.png" /></p>
-<p>Introduim els valors de <strong>IPv4, mascara i enllaç</strong> de la següent manera:</p>
+<p>Introduïm els valors de <strong>IPv4, màscara i enllaç</strong> de la següent manera:</p>
 <p><img alt="alt text" src="../img/53.28.png" /></p>
 <h3 id="22-configuracio-client">2.2 Configuració Client</h3>
-<p>Anem al <strong>Client</strong> que en aquest cas sera un <strong>Windows 10</strong> i igual que al <strong>Sever</strong> desactivem el <strong>Fireware</strong> de totes les xarxes, ja que evitem problemes per aquestos casos de prova:</p>
+<p>Anem al <strong>Client</strong>, que en aquest cas serà un <strong>Windows 10</strong>, i igual que al <strong>Server</strong>, desactivem el <strong>Firewall</strong> de totes les xarxes, ja que evitem problemes per a aquests casos de prova:</p>
 <p><img alt="alt text" src="../img/53.29.png" /></p>
-<p>Tornem a les nostres <strong>Conexions de Xarxa</strong> i en les propietats del <strong>DNS</strong> introduïm la <strong>IP</strong> que teniem del <strong>Servidor</strong> que en aques cas era <code>10.0.2.14</code></p>
+<p>Tornem a les nostres <strong>Connexions de Xarxa</strong> i, en les propietats del <strong>DNS</strong>, introduïm la <strong>IP</strong> que teníem del <strong>Servidor</strong>, que en aquest cas era <code>10.0.2.14</code>.</p>
 <p><img alt="alt text" src="../img/53.31.png" /></p>
 <h3 id="23-validar-usuari">2.3 Validar usuari</h3>
-<p>En aquest punt anema al <strong>Servidor</strong> i podem veure que ens surt el nostre domini si anem a <strong>Herramientas</strong> i <strong>Usuarios y equipos de AD</strong>:</p>
-<p><img alt="alt text" src="../img/53.32.png" /> </p>
-<p>Creem una nova <strong>UO</strong> donant boto dret al domini <code>raul.com</code>. Aqusta <strong>UO</strong> tindra el nom de <code>alumnes:</code></p>
+<p>En aquest punt, anem al <strong>Servidor</strong> i podem veure que ens surt el nostre domini si anem a <strong>Herramientas</strong> i <strong>Usuarios y equipos de AD</strong>:</p>
+<p><img alt="alt text" src="../img/53.32.png" /></p>
+<p>Creem una nova <strong>UO</strong> donant botó dret al domini <code>raul.com</code>. Aquesta <strong>UO</strong> tindrà el nom de <code>alumnes</code>:</p>
 <p><img alt="alt text" src="../img/53.33.png" /></p>
-<p>Seguidament donarem boto dret en la <strong>UO</strong> creada i donarem a crear un nou <strong>Usuari</strong> que ens servira per poder validarnos en el domini. Aques nou usuari tindra com a nom <code>alumne1</code> amb la seva contrasenya. </p>
+<p>Seguidament, donarem botó dret en la <strong>UO</strong> creada i donarem a crear un nou <strong>Usuari</strong> que ens servirà per poder validar-nos en el domini. Aquest nou usuari tindrà com a nom <code>alumne1</code> amb la seva contrasenya.</p>
 <p>Podem veure el resum de la creació de l'usuari:</p>
 <p><img alt="alt text" src="../img/53.34.png" /></p>
-<p>Visualització de l'usuari creat a dints la <strong>UO</strong>:</p>
+<p>Visualització de l'usuari creat a dins la <strong>UO</strong>:</p>
 <p><img alt="alt text" src="../img/53.35.png" /></p>
-<p>Ara anema al <strong>Client</strong> i en les propietats del sistema anema a cambiar el domini d'aquest equip <em>(Panel de Control -&gt; Sistema y seguridad -&gt; Sistema)</em>.
-Introduim el domini que en aques cas es <code>raul.com</code> i ens demanara l'usuari que volem unir i la seva contrasenya, la introduïm:</p>
+<p>Ara anem al <strong>Client</strong> i, en les propietats del sistema, anem a canviar el domini d'aquest equip <em>(Panel de Control -&gt; Sistema y seguridad -&gt; Sistema)</em>.
+Introduïm el domini que en aquest cas és <code>raul.com</code> i ens demanarà l'usuari que volem unir i la seva contrasenya. La introduïm:</p>
 <p><img alt="alt text" src="../img/53.36.png" /></p>
 <p>Dades de l'usuari que volem unir:</p>
 <p><img alt="alt text" src="../img/53.37.png" /></p>
-<p>Usuari unir correctament. Tocara reinciar el client, en cas de que no es faci automaticament:</p>
+<p>Usuari unit correctament. Caldrà reiniciar el client, en cas que no es faci automàticament:</p>
 <p><img alt="alt text" src="../img/53.38.png" /></p>
-<p>Si anem al <strong>Servidor</strong> ja podem veure com el client <code>raul-client</code> esta unit al domini:</p>
+<p>Si anem al <strong>Servidor</strong>, ja podem veure com el client <code>raul-client</code> està unit al domini:</p>
 <p><img alt="alt text" src="../img/53.39.png" /></p>
-<p>En el moment de que el <strong>Client</strong> s'inicie entrarem amb l'usuari <code>alumne1</code> amb les seves dades:</p>
+<p>En el moment en què el <strong>Client</strong> s'iniciï, entrarem amb l'usuari <code>alumne1</code> amb les seves dades:</p>
 <p><img alt="alt text" src="../img/53.40.png" /></p>
-<p>I Ja s'iniciara el seu sistema i finalment podem veure com <code>alumne1</code> estara dints del seu sistema que esta en aquest domini al qual l'hem afegit:</p>
+<p>I ja s'iniciarà el seu sistema i, finalment, podem veure com <code>alumne1</code> estarà dins del seu sistema que està en aquest domini al qual l'hem afegit:</p>
 <p><img alt="alt text" src="../img/53.41.png" /></p>
+<hr />
 <h2 id="3-gestio-del-domini-ad">3. Gestió del Domini AD</h2>
-<p>mirar mmet explicació exercicis i fer els exercicis que teniu d'usuaris i grups, documentar-ho tot. No oblideu proves. </p>
+<p>En aquest apartat ens dedicarem a gestionar el <strong>Domini de AD</strong>.</p>
+<h3 id="31-crear-una-uo">3.1 Crear una UO</h3>
+<p>Primer de tot, crearem una <strong>UO</strong> anomenada <code>recursos_humans</code> i dintre dos grups anomenats <code>alumnes</code> i <code>professors</code>.</p>
+<p>Per crear la <strong>UO</strong>, donem clic dret en el nostre <strong>Domini</strong> i donem a crear-la. Seguidament, introduïm el nom que serà <code>recursos_humans</code>:</p>
+<p><img alt="alt text" src="../img/53.42.png" /></p>
+<p>És moment de crear els dos grups. Ho fem donant clic dret a la <strong>UO</strong> i donant a l'opció de crear un grup. Els dos seran en àmbit de grup global.</p>
+<p>Creació del grup <code>alumnes</code>:</p>
+<p><img alt="alt text" src="../img/53.43.png" /></p>
+<p>Creació del grup <code>professors</code>:</p>
+<p><img alt="alt text" src="../img/53.44.png" /></p>
+<h3 id="32-modificar-les-directives-de-la-politica-de-contrasenyes">3.2 Modificar les directives de la política de contrasenyes.</h3>
+<p>Ara, per modificar les directives de la política de contrasenyes, hem d'anar on fica <strong>Herramientas</strong> a dalt de tot i donem a <strong>Administración de directivas de grupo</strong>.
+Despleguem el nostre domini i fem clic dret al <strong>Default Domain Policy</strong> i donem a editar:</p>
+<p><img alt="alt text" src="../img/53.45.png" /></p>
+<p>Donem a <strong>Editor de administración de directivas de grupo</strong>:</p>
+<p><img alt="alt text" src="../img/53.46.png" /></p>
+<p>Despleguem <strong>Directivas</strong> fins que trobem <strong>Directiva de contraseñas</strong>. Una vegada estem dins, podem configurar les característiques de les contrasenyes. En aquest cas, fiquem que mínim ha de tenir 14 caràcters.</p>
+<p><img alt="alt text" src="../img/53.47.png" /></p>
+<p>Sempre hem de fer un <code>gpupdate</code> per actualitzar les directives:</p>
+<p><img alt="alt text" src="../img/53.48.png" /></p>
+<p>I si ara intentem crear un usuari amb una contrasenya que no compleixi les característiques, ens donarà un error com el que podem veure a continuació:</p>
+<p><img alt="alt text" src="../img/53.49.png" /></p>
+<p>Podem veure que la configuració és correcta:</p>
+<p><img alt="alt text" src="../img/53.50.png" /></p>
+<h3 id="33-crear-dos-usuaris-dintre-de-cada-grup">3.3 Crear dos usuaris dintre de cada grup</h3>
+<p>Creem en cada grup dos usuaris.</p>
+<p>Per al grup <code>alumnes</code>, creem els usuaris <code>alumne1</code> i <code>alumne2</code>:</p>
+<p><img alt="alt text" src="../img/53.51.png" /></p>
+<p>Veient que complim amb les directives de les contrasenyes:</p>
+<p><img alt="alt text" src="../img/53.52.png" /></p>
+<p>I per al grup <code>professors</code>, creem els usuaris <code>professor1</code> i <code>professor2</code>:</p>
+<p><img alt="alt text" src="../img/53.53.png" /></p>
+<h3 id="34-validar-un-equip-client-al-domini">3.4 Validar un equip client al domini</h3>
+<p>Primer de tot, si volem validar un client al domini, el que hem de fer és, en aquest mateix client, desactivar-li el <strong>Firewall</strong> per evitar problemes en aquest entorn de proves:</p>
+<p><img alt="alt text" src="../img/53.54.png" /></p>
+<p>Canviem el nom del client per <code>client-alumne2</code>, guardem i reiniciem el client:</p>
+<p><img alt="alt text" src="../img/53.55.png" /></p>
+<p>Comprovem la direcció <strong>IP</strong> del <strong>Server</strong> (IPv4 -&gt; 10.0.2.16, Enllaç -&gt; 10.0.2.1):</p>
+<p><img alt="alt text" src="../img/53.56.png" /></p>
+<p>Anem a la nostra xarxa i canviem el <strong>DNS</strong> del client ficant de direcció la <strong>IP</strong> que tenim al <strong>Server</strong> per poder fer una connexió entre ells:</p>
+<p><img alt="alt text" src="../img/53.58.png" /></p>
+<p>I llavors, en el nostre equip, canviem el domini pel del <strong>Server</strong>. El domini serà <code>raul.com</code>:</p>
+<p><img alt="alt text" src="../img/53.57.png" /></p>
+<p>Ens demanarà les dades d'un usuari amb permisos per unir-se al domini. Les introduïm:</p>
+<p><img alt="alt text" src="../img/53.59.png" /></p>
+<p>I obtenim el missatge de confirmació que s'ha pogut unir correctament al domini. Una vegada confirmem, el client es tornarà a reiniciar.</p>
+<p><img alt="alt text" src="../img/53.60.png" /></p>
+<p>Una vegada s'ha reiniciat, iniciem sessió amb l'usuari del domini i veiem que ja ens deixa entrar sense cap problema:</p>
+<p><img alt="alt text" src="../img/53.61.png" /></p>
+<p>Comprovació que estem dins de la seva sessió:</p>
+<p><img alt="alt text" src="../img/53.62.png" /></p>
+<h3 id="35-fer-que-un-usuari-nomes-es-pugui-connectar-uns-dies-determinats">3.5 Fer que un usuari només es pugui connectar uns dies determinats</h3>
+<p>També podem fer que un usuari només es pugui connectar a la seva sessió uns dies o hores determinades. En aquest cas, farem que l'usuari <code>alumne2</code> es pugui connectar només els dies <strong>Dimecres</strong>.</p>
+<p>Per fer-ho, anirem al nostre usuari des de l'<strong>Active Directory</strong> i, fent doble clic, accedirem a les propietats. Entrem a <strong>Perfil</strong> i <strong>Hora de inicio de sesión</strong>.
+Una vegada estem dins, podem seleccionar qualsevol tram d'hores o dies als quals l'usuari es podrà connectar o no. El blau seran les hores que es pot connectar.
+(El dia de la prova és Dimarts, llavors no deixarà connectar-se).</p>
+<p><img alt="alt text" src="../img/53.63.png" /></p>
+<p>Una vegada hem donat a acceptar i hem guardat els canvis, ens anem al client que encara no havíem tancat la sessió i podem comprovar que segueix oberta i sense cap problema.
+Això passa perquè quan la sessió s'acaba no es desconnecta de sobte, sinó que quan surt de la sessió ja no podrà tornar a entrar.</p>
+<p>Mostra que simula quan està fora del temps però encara no tanquem la sessió:</p>
+<p><img alt="alt text" src="../img/53.64.png" /></p>
+<p>Ara sí, tanquem sessió i tornem a entrar, però com era d'esperar, trobem l'error que ja ha passat el temps en el qual es pot connectar:</p>
+<p><img alt="alt text" src="../img/53.65.png" /></p>
+<h3 id="36-fer-que-un-usuari-del-domini-pugui-ser-administrador-dun-equip">3.6 Fer que un usuari del domini pugui ser administrador d’un equip</h3>
+<p>Per fer que un usuari normal pugui ser administrador d'un equip local, el que s'ha de fer és anar a l'usuari al qual volem donar aquests permisos i donar-li dos clics.
+Seguidament, ens anem a la finestra <strong>Miembro de</strong> i li donem a <strong>Agregar</strong>.</p>
+<p>Escollim el grup al qual volem que pertanyi i donem a acceptar:</p>
+<p><img alt="alt text" src="../img/53.66.png" /></p>
+<p>Podem veure el resum del grup al qual pertany ara <code>alumne2</code>:</p>
+<p><img alt="alt text" src="../img/53.69.png" /></p>
+<p>En aquest cas per fer les comprovacions desde el client, el que he fet a sigut tratar de accedir a la part on podem afegir un domini al nostre equip. Com cal permissos d'administrador ens demana que iniciem amb un usuari amb permissos.
+Llavors introduïm els del <code>alumne2</code>:</p>
+<p><img alt="alt text" src="../img/53.68.png" /></p>
+<p>Ens deixa accedir i podem veure a continuació que estem dints de l'usuari corresponent i en la finestra que calien permisos de administrador:</p>
+<p><img alt="alt text" src="../img/53.71.png" /></p>
+<h3 id="37-carpetes-dels-usuaris-que-es-connecten-al-domini">3.7 Carpetes dels usuaris que es connecten al domini</h3>
+<p>Quan un usuari es connecta al domini ha de tenir la seva carpeta amb els seus arxius (tot emmagatzemat al servidor, no localment) disponible d’una forma fàcil o inclús transparent per a ell.<br />
+Hi ha diverses formes de fer-ho, cadascuna amb les seves avantatges i inconvenients.</p>
+<p>Una de les maneres que utilitzarem sera la de crear la carpeta de l’usuari al servidor i la compartim només per a l’usuari amb els permisos corresponents.
+Però hi ha més, com podria ser modificant la ruta de <strong>Documentos</strong> per a que apunti al <strong>Server</strong>.</p>
+<p>Altres maneres te els inconvenients de que hi ha una dependencia manual, ja que si l'usuari canvia d'equip, aquesta configuració s'ha de repetir.</p>
+<p>El primer de tot que harem sera crear una carpeta en la unitat del disc anomenada <strong>Usuaris</strong> i dints una de cada usuari com <strong>alumne2</strong>:</p>
+<p><img alt="alt text" src="../img/53.72.png" /></p>
+<p>Anem a les propietats de la carpeta i en <strong>Compartir</strong> afegim l'usuari <code>alumne2</code>, ho fem amb permisos de lectura i escritura:</p>
+<p><img alt="alt text" src="../img/53.73.png" /></p>
+<p>Quan acceptem ens retornara una direcció d'aqesta carpeta i ja estar compartida:</p>
+<p><img alt="alt text" src="../img/53.74.png" /></p>
+<p>Ara en la carpeta anema a la finestra <strong>Seguridad</strong> i afegim a l'usuri amb permisos totals:</p>
+<p><img alt="alt text" src="../img/53.75.png" /></p>
+<p>Després em d'anar als usuaris del <strong>AD</strong> i just en <code>alumne2</code> donem doble clic i accedim a <strong>Perfil</strong>. Dints d'aqui fiquem la ruta de la carpeta compartida i acceptem:</p>
+<p><img alt="alt text" src="../img/53.76.png" /></p>
+<p>I si accedim al <strong>Client</strong> podrem veure en la <strong>Red</strong> la carpeta que esta compartida desdes el <strong>Server</strong>:</p>
+<p><img alt="alt text" src="../img/53.77.png" /></p>
+<p>Ara si creem una carpeta dints desde el client també la podrem veure al <strong>Server</strong>: </p>
+<p><img alt="alt text" src="../img/53.78.png" /></p>
+<h3 id="38-delegar-una-uo-a-un-usuari-administrador">3.8 Delegar una UO a un usuari administrador</h3>
+<p>Per delegar una <strong>UO</strong> a un usuari administrador el que em de fer es donar clic dret a la <strong>UO</strong> de <code>recursos_humans</code> i donem a <strong><em>Todas las tareas</em></strong>
+i <strong><em>Delegar control</em></strong></p>
+<p><img alt="alt text" src="../img/53.79.png" /></p>
+<p>S'obrira un assistent de delegació i en aquest cas marquem que pugi crear, eliminar i administrar comptes de usuari:</p>
+<p><img alt="alt text" src="../img/53.81.png" /></p>
+<p>Donem a següent fins arribar al resum:</p>
+<p><img alt="alt text" src="../img/53.82.png" /></p>
+<p>Ara tanquem sesió del <strong>Server</strong> que teniem amb l'usuari de <strong>RAUL</strong> i accedim amb l'usuari <code>alumne2</code> que es al qual l'hi em delegat els permissos:</p>
+<p><img alt="alt text" src="../img/53.83.png" /></p>
+<p>Intentem eliminar un usruari i veiem com podem fer-lo sense problema:</p>
+<p><img alt="alt text" src="../img/53.84.png" /></p>
+<p>I finalment em pogut eliminar a l'usuari <code>professor2</code>:</p>
+<p><img alt="alt text" src="../img/53.85.png" /></p>
               
             </div>
           </div><footer>
