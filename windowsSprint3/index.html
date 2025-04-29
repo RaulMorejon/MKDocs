@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Windows Sprint 3 - Raúl Morejón</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Windows Sprint 3";
+        var mkdocs_page_input_path = "windowsSprint3.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Raúl Morejón
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Inici</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Sprints</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../sprint1/">Sprint 1</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../sprint2/">Sprint 2</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../sprint3/">Sprint 3</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../sprint4/">Sprint 4</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../windowsSprint1/">Windows Sprint 1</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../windowsSprint2/">Windows Sprint 2</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Windows Sprint 3</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#1-installacio-domini-ad">1. Instal·lació Domini AD</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#11-rols-del-servidor">1.1 Rols del servidor</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#12-caracteristiques">1.2 Caracteristiques</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#13-confirmacions">1.3 Confirmacions</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#14-finalitzar-instllacio">1.4 Finalitzar instl·lació</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#15-configuracio-de-implementacio">1.5 Configuració de implementació</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#16-opcions-del-controlador-de-domini">1.6 Opcions del controlador de domini</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#17-revisar-i-installar">1.7 Revisar i Instal·lar</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2-unir-equips-al-domini">2. Unir equips al domini</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#21-configuracio-server">2.1 Configuració Server</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#22-configuracio-client">2.2 Configuració Client</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#23-validar-usuari">2.3 Validar usuari</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3-gestio-del-domini-ad">3. Gestió del Domini AD</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../permisos/">Polítiques d'ús i contacte</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Raúl Morejón</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Sprints</li>
+      <li class="breadcrumb-item active">Windows Sprint 3</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="gestio-de-dominis-i-accessos-en-windows">Gestió de Dominis i Accessos en Windows</h1>
+<hr />
+<p>Primer de tot comencem aquest sprint amb la instal·lació de <strong>Windows Server 2022 amb interfície gràfica</strong> a partir de la <a href="https://go.microsoft.com/fwlink/p/?LinkID=2195280&amp;clcid=0x409&amp;culture=en-us&amp;country=US">ISO</a>.
+Una vegada tenim la instal·lació, el que em de fer es configurar per a que la <strong>IP</strong> sigui estatica, llavors ens anem a <strong>VirtualBox</strong> a <strong>Xarxa</strong> i fiquem <strong>Xarxa NAT</strong>:</p>
+<p><img alt="alt text" src="../img/53.1.png" /></p>
+<h2 id="1-installacio-domini-ad">1. Instal·lació Domini AD</h2>
+<p>Una vegada iniciem la maquina virtual amb el <strong>servidor</strong> ens preguntara si volem que el nostre servidor pugui reconeixer altres dispositius de la xarxa, l'hi donem a <strong>SI</strong></p>
+<p><img alt="alt text" src="../img/53.4.png" /></p>
+<p>En aquest punt començem amb l'instal·lació del Domini. Quan em iniciat ja ens surt l'<strong>Administrador del servidor</strong>, però en el cas que no surti anem al <strong>Inici de Windows</strong> i el busquem i iniciem com administrador.</p>
+<p><img alt="alt text" src="../img/53.5.png" /></p>
+<h3 id="11-rols-del-servidor">1.1 Rols del servidor</h3>
+<p>Dints de l'<strong>Adminstrador del servidor</strong> donem en <strong>Agregar roles y características</strong>, i l'hi donem a <strong>siguiente</strong>:</p>
+<p><img alt="alt text" src="../img/53.6.png" /></p>
+<p>I en la següent finestra que ens surt deixem la opció per defecte ja que estem fent la instal·lació de rols i caracteristiques, després l'hi donem a següent: </p>
+<p><img alt="alt text" src="../img/53.7.png" /></p>
+<p>De nou en la nova finestra deixem els valors per defecte ja que només ens sortira la opció del nostre servidor actual que tenim operatiu. I després fem <strong>següent</strong>:</p>
+<p><img alt="alt text" src="../img/53.8.png" /></p>
+<p>A la següent finestra haurem de triar els serveis que volem instal·lar. Activarem la casella de <strong>Servicios de dominio de Active Directory</strong>.</p>
+<p><img alt="alt text" src="../img/53.9.png" /></p>
+<p>L'hi donem a <strong>Agregar característica</strong></p>
+<p><img alt="alt text" src="../img/53.10.png" /></p>
+<p>I comprovem que tenim marcada la casella de <strong>Servicios de dominio de Active Directory</strong>.</p>
+<p><img alt="alt text" src="../img/53.11.png" /></p>
+<p>Una vegada tenim els rols releccionats donem <strong>siguinte</strong> i anem al apartar de <strong>Características</strong></p>
+<h3 id="12-caracteristiques">1.2 Caracteristiques</h3>
+<p>Comprovem que tenim instal·lat la caracteristica de <strong>Administración de directivas de grupo</strong>, que ve per defecte, però en cas de no tenirlo l'hi donem per instal·lar-lo.Seguidament donem a <strong>Siguiente</strong>:</p>
+<p><img alt="alt text" src="../img/53.12.png" /></p>
+<p>Ens sortira una finestra informativa i llavors després de llegir-la l'hi donem a <strong>Siguiente</strong>:</p>
+<p><img alt="alt text" src="../img/53.13.png" /></p>
+<h3 id="13-confirmacions">1.3 Confirmacions</h3>
+<p>En la finestra de confirmació em de donar clic al apartat de <strong>Reiniciar automaticamente el sercidor en caso necesario</strong>, i següidament ens sortira una missatge informant que es pot reinciar sense notificació, llavors nome a <strong>SI</strong>.</p>
+<p><img alt="alt text" src="../img/53.14.png" /></p>
+<p>I podem veure el següent:</p>
+<p><img alt="alt text" src="../img/53.15.png" /></p>
+<h3 id="14-finalitzar-instllacio">1.4 Finalitzar instl·lació</h3>
+<p>Finalment l'hi donem a instal·lar i podrem veure una barra amb el progres i els resultats:</p>
+<p><img alt="alt text" src="../img/53.15.png" /></p>
+<p>Seguidament quan termini ens sortira una notificació i harem de fer clic on fica <strong>Promover este servidor a controlador de dominio</strong></p>
+<p><img alt="alt text" src="../img/53.17.png" /></p>
+<h3 id="15-configuracio-de-implementacio">1.5 Configuració de implementació</h3>
+<p>En aquest punt em de triar el tipus d’instal·lació d’Active Directory, en aquest escogirem <strong>Agregar un nuevo bosque</strong> ja que es el nostre primer servidor <strong>AD</strong>. 
+Escribim el nom del domini, que l'hi posarem el següent:</p>
+<p><img alt="alt text" src="../img/53.18.png" /></p>
+<p>Passem a la següent finestra.</p>
+<h3 id="16-opcions-del-controlador-de-domini">1.6 Opcions del controlador de domini</h3>
+<p>Deixem totes les opcións que ens surten, i al final introduïrem una contrasenya segura per a la restauració del serveis:</p>
+<p><img alt="alt text" src="../img/53.19.png" /></p>
+<p>Quand donem següent anirem a la finestra de <strong>Opcions de DNS</strong>, passem aquestra finestra i en <strong>Opcions adicionals</strong> tampoc cal tocar res.</p>
+<h3 id="17-revisar-i-installar">1.7 Revisar i Instal·lar</h3>
+<p>Ens anem directe a revisar les opcions que em seleccionat i configurat anteriorment:</p>
+<p><img alt="alt text" src="../img/53.20.png" /></p>
+<p>Finalment en el ultim apartat es fa una evaluació de les opcións i quan acabi l'hi donem a instal·lar:</p>
+<p><img alt="alt text" src="../img/53.21.png" /></p>
+<p>Després de la instal·lació es reiniciara, i ja iniciarem amb el nom:</p>
+<p><img alt="alt text" src="../img/53.23.png" /></p>
+<p><img alt="alt text" src="../img/53.24.png" /></p>
+<h2 id="2-unir-equips-al-domini">2. Unir equips al domini</h2>
+<p>Una vegada tenim tot a punt, unirem l'equip al domini. </p>
+<h3 id="21-configuracio-server">2.1 Configuració Server</h3>
+<p>Llavors el que em de fer es en el <strong>servidor</strong> anar i desactivar el <strong>Fireware</strong> de totes les xarxes que surten, que en aquest punt ja em surten les 3. Desactivem <strong>Fireware</strong>:</p>
+<p><img alt="alt text" src="../img/53.25.png" /></p>
+<p>Mirem la <strong>IP</strong> del nostre <strong>Server</strong> per poder unir l'equip posteriorment. Em de recordar l'<strong>IP</strong> i l'<strong>enllaç</strong>. </p>
+<p>En aquest cas:</p>
+<ul>
+<li>IPv4 -&gt; 10.0.2.14</li>
+<li>Enllaç -&gt; 10.0.2.1</li>
+</ul>
+<p><img alt="alt text" src="../img/53.26.png" /></p>
+<p>Configurem la <strong>IP</strong> fixa anant a <strong>Panel de control</strong>, en <strong>Redes e Internet</strong> i en la nostra conexió anem a propietats. En <strong>IPv4</strong> donem a <strong>Propiedades</strong>:</p>
+<p><img alt="alt text" src="../img/53.27.png" /></p>
+<p>Introduim els valors de <strong>IPv4, mascara i enllaç</strong> de la següent manera:</p>
+<p><img alt="alt text" src="../img/53.28.png" /></p>
+<h3 id="22-configuracio-client">2.2 Configuració Client</h3>
+<p>Anem al <strong>Client</strong> que en aquest cas sera un <strong>Windows 10</strong> i igual que al <strong>Sever</strong> desactivem el <strong>Fireware</strong> de totes les xarxes, ja que evitem problemes per aquestos casos de prova:</p>
+<p><img alt="alt text" src="../img/53.29.png" /></p>
+<p>Tornem a les nostres <strong>Conexions de Xarxa</strong> i en les propietats del <strong>DNS</strong> introduïm la <strong>IP</strong> que teniem del <strong>Servidor</strong> que en aques cas era <code>10.0.2.14</code></p>
+<p><img alt="alt text" src="../img/53.31.png" /></p>
+<h3 id="23-validar-usuari">2.3 Validar usuari</h3>
+<p>En aquest punt anema al <strong>Servidor</strong> i podem veure que ens surt el nostre domini si anem a <strong>Herramientas</strong> i <strong>Usuarios y equipos de AD</strong>:</p>
+<p><img alt="alt text" src="../img/53.32.png" /> </p>
+<p>Creem una nova <strong>UO</strong> donant boto dret al domini <code>raul.com</code>. Aqusta <strong>UO</strong> tindra el nom de <code>alumnes:</code></p>
+<p><img alt="alt text" src="../img/53.33.png" /></p>
+<p>Seguidament donarem boto dret en la <strong>UO</strong> creada i donarem a crear un nou <strong>Usuari</strong> que ens servira per poder validarnos en el domini. Aques nou usuari tindra com a nom <code>alumne1</code> amb la seva contrasenya. </p>
+<p>Podem veure el resum de la creació de l'usuari:</p>
+<p><img alt="alt text" src="../img/53.34.png" /></p>
+<p>Visualització de l'usuari creat a dints la <strong>UO</strong>:</p>
+<p><img alt="alt text" src="../img/53.35.png" /></p>
+<p>Ara anema al <strong>Client</strong> i en les propietats del sistema anema a cambiar el domini d'aquest equip <em>(Panel de Control -&gt; Sistema y seguridad -&gt; Sistema)</em>.
+Introduim el domini que en aques cas es <code>raul.com</code> i ens demanara l'usuari que volem unir i la seva contrasenya, la introduïm:</p>
+<p><img alt="alt text" src="../img/53.36.png" /></p>
+<p>Dades de l'usuari que volem unir:</p>
+<p><img alt="alt text" src="../img/53.37.png" /></p>
+<p>Usuari unir correctament. Tocara reinciar el client, en cas de que no es faci automaticament:</p>
+<p><img alt="alt text" src="../img/53.38.png" /></p>
+<p>Si anem al <strong>Servidor</strong> ja podem veure com el client <code>raul-client</code> esta unit al domini:</p>
+<p><img alt="alt text" src="../img/53.39.png" /></p>
+<p>En el moment de que el <strong>Client</strong> s'inicie entrarem amb l'usuari <code>alumne1</code> amb les seves dades:</p>
+<p><img alt="alt text" src="../img/53.40.png" /></p>
+<p>I Ja s'iniciara el seu sistema i finalment podem veure com <code>alumne1</code> estara dints del seu sistema que esta en aquest domini al qual l'hem afegit:</p>
+<p><img alt="alt text" src="../img/53.41.png" /></p>
+<h2 id="3-gestio-del-domini-ad">3. Gestió del Domini AD</h2>
+<p>mirar mmet explicació exercicis i fer els exercicis que teniu d'usuaris i grups, documentar-ho tot. No oblideu proves. </p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../windowsSprint2/" class="btn btn-neutral float-left" title="Windows Sprint 2"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../permisos/" class="btn btn-neutral float-right" title="Polítiques d'ús i contacte">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../windowsSprint2/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../permisos/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
