@@ -107,6 +107,32 @@
     </li>
         </ul>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#4-gpos">4. GPOs</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#creacio-de-una-gpo">Creació de una GPO</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#afegir-directives-usuari">Afegir directives Usuari</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#restringir-panell-de-control-i-ficar-fondo">Restringir Panell de Control i Ficar Fondo</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#ocultar-apps-anclades-en-la-barra-de-tasques-i-bloquejar-lacces-a-microsoft-store">Ocultar apps anclades en la barra de tasques i bloquejar l'accés a Microsoft Store</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#mostrar-un-missatge-de-benvinguda-en-iniciar-sessio">Mostrar un missatge de benvinguda en iniciar sessió</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#bloquejar-lacces-a-wwwfacebookcom">Bloquejar l'accés a www.facebook.com</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#afegir-directrius-dequip">Afegir directrius d'equip</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#treure-el-permis-de-cortana">Treure el permís de Cortana</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#desactivar-laplicacio-de-store">Desactivar l'aplicació de Store</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
     </ul>
                   </li>
               </ul>
@@ -351,6 +377,107 @@ i <strong><em>Delegar control</em></strong></p>
 <p><img alt="alt text" src="../img/53.84.png" /></p>
 <p>I finalment em pogut eliminar a l'usuari <code>professor2</code>:</p>
 <p><img alt="alt text" src="../img/53.85.png" /></p>
+<h2 id="4-gpos">4. GPOs</h2>
+<p>Les <strong>GPOs (Group Policy Objects)</strong> de Windows són eines que permeten controlar la configuració d'usuaris i equips en una xarxa. S'utilitzen per aplicar polítiques de seguretat, 
+configurar l'entorn i gestionar permisos de forma centralitzada.</p>
+<p>A continuació afegirem diferents directives a una <strong>UO</strong>.</p>
+<p>Per poder crear una <em>GPO</em><em> en una </em><em>UO</em><em> el primer que hem de fer es anar a <code>"Herramientas" -&gt; "Usuarios y equipos de Active Directory"</code> i anar a una </em><em>UO</em><em> que tinguem creada. En aquest cas tenim la </em><em>UO</em>* utlitzada en apartats anteriors anomenada <code>recursos_humans</code>.</p>
+<p><img alt="alt text" src="../img/54.1.png" /></p>
+<p>Un aspecte molt important es tenir en compte que dints de la carpeta de la nostra <strong>UO</strong> em de tenir algun equip que tinguem validat. Aquest equips estan en la carpeta <code>Computers</code>, llavors agafem el equip validat que en aquest cas es el de <code>alumne2</code> i el fiquem dints de la carpeta de la <strong>UO</strong>. Sortira una adevertencia i li diem que si.</p>
+<p>Equip dins de la <strong>UO</strong>:</p>
+<p><img alt="alt text" src="../img/54.2.png" /></p>
+<h3 id="creacio-de-una-gpo">Creació de una GPO</h3>
+<p>Per poder crear una <strong>GPO</strong> anirem sobre la <strong>UO</strong> <code>recuros_humans</code> i donarem clic dret i donarem a <code>Crear un GPO en este dominio y vincularlo aquí...</code>.
+Ens sortira una finestra i hem de ficar el nom de la <strong>GPO</strong>, i un altre apartar per ficar una <strong>GPO</strong> d'inici si es que tenim una creada per a que els usuaris tinguim unes directives establertes en el seu inici.</p>
+<p>Finestra de la creació:</p>
+<p><img alt="alt text" src="../img/54.3.png" /></p>
+<p><img alt="alt text" src="../img/54.4.png" /></p>
+<p>Si mirem dints de la <strong>GPO</strong> donant clic, abaix podrem veure quines configuracións tenim tant per al equipo com per a l'usuari. En aquest punt encara no tenim res:</p>
+<p><img alt="alt text" src="../img/54.5.png" /></p>
+<p>Per poder afegi configuracións donarem clic dret sobre la <em>GPO</em>* donem a editar.</p>
+<h3 id="afegir-directives-usuari">Afegir directives Usuari</h3>
+<p>(Per comprovar al cliente, em de fer <code>gpupdate</code> en el <strong>Server</strong> i tancar sesió i entrar en el <strong>Client</strong> per poder veure els canvis)</p>
+<h4 id="restringir-panell-de-control-i-ficar-fondo">Restringir Panell de Control i Ficar Fondo</h4>
+<p>Per donar una restrinció al panell de control anirem a <code>Directives -&gt; Plantillas Admin... -&gt; Panel de Control -&gt; Prohibir el acceso...</code>:</p>
+<p><img alt="alt text" src="../img/54.6.png" /></p>
+<p>Donem doble clic i en la finestra que surt l'hi donem a <code>habilitar</code>, <strong>Aplicar i Aceptar</strong>:</p>
+<p><img alt="alt text" src="../img/54.7.png" /></p>
+<p>Aprofitarem en aquest apartat i també afegirem un fons de pantalla per a l'usuari. Anem a <code>Directives -&gt; Plantillas Admin... -&gt; Active Desktop -&gt; Active Desktop -&gt; Tapiz..</code>:</p>
+<p><img alt="alt text" src="../img/54.8.png" /></p>
+<p>Una vegada em entrat, el que em de tenir es una imatge descarregada en <code>.jpg</code>. La ficarem en la unitat <code>C:</code> en una carpeta <code>fondo</code> i aquesta carpeta la compartirem amb l'<code>alumne2</code>:</p>
+<p><img alt="alt text" src="../img/54.8.png" /></p>
+<p>Una vegada compartida, en les propietats de aquesta carperta on em guardat la imatge, copiem la direcció d'acces de xarxa:</p>
+<p><img alt="alt text" src="../img/54.10.png" /></p>
+<p>Aquesta direcció la copiarem en la directiva del fons de pantalla i l'aplicarem:</p>
+<p><img alt="alt text" src="../img/54.11.png" /></p>
+<p>Si anemn a <code>Administración de directivas de grupo</code> i donem sobre la <strong>GPO</strong> creada podrem veure aquestes directives que em afegit:</p>
+<p><img alt="alt text" src="../img/54.12.png" /></p>
+<p>Ara per poderles veure en el <strong>Client</strong>, anirem al terminal del <strong>Server</strong> i farem un <code>gpupdate</code> per actulitzar les directives:</p>
+<p><img alt="alt text" src="../img/54.13.png" /></p>
+<p>I en aquest moment tancarem la sessió del client i tornarem a entrar, i s'hauria de veure els canvis fets.
+Probem de entrar en <code>Panel de control</code> i ens retorna un error de que no podem accedir, llavors s'han aplicat correctament. I si ens fixem en el fons s'ha canviar per el que haviem possat que era una imatge negra per aixó que es veu aixi:</p>
+<p><img alt="alt text" src="../img/54.14.png" /></p>
+<h4 id="ocultar-apps-anclades-en-la-barra-de-tasques-i-bloquejar-lacces-a-microsoft-store">Ocultar apps anclades en la barra de tasques i bloquejar l'accés a Microsoft Store</h4>
+<p>Primer de tot per ocultar apps anclades en la barra de tasques anirem a la directica que es troba en <code>Configuración de usuario &gt; Plantillas administrativas &gt; Menú Inicio y barra de tareas</code> i es diu <code>Quitar programas anclados de la barra de tareas</code> i habilitem:</p>
+<p><img alt="alt text" src="../img/54.15.png" /></p>
+<p>I Per bloquejar l'accés a <strong>Microsoft Strore</strong> anirem a <code>Configuración de usuario &gt; Plantillas administrativas &gt; Componentes de Windows &gt; Tienda</code> i <code>Desactivar la aplicación Store</code> i habilitem:</p>
+<p><img alt="alt text" src="../img/54.15.png" /></p>
+<p>Fem <code>gpupdate</code> al <strong>CmD</strong> i comporvem al client. Com podem veure a continuació no podem accedir a la <strong>Store</strong>, ens surt un error. I també a la barra de tasques veiem que ja no tenim cap aplicació anclada:</p>
+<p><img alt="alt text" src="../img/54.17.png" /></p>
+<h4 id="mostrar-un-missatge-de-benvinguda-en-iniciar-sessio">Mostrar un missatge de benvinguda en iniciar sessió</h4>
+<p>Per configurar aquest missatge anirem a <code>Configuración del usuario &gt; Configuración de Windows &gt; Scripts &gt; Inciar sesión</code>. Seguidament anirem a crear un archiu anomenat <code>welcome.bat</code> on es trobara aquest script de benvolguda.</p>
+<p>Script:</p>
+<pre><code class="language-bash">@echo off
+echo.
+echo ============================================
+echo   WELCOME %USERNAME%                
+echo ============================================
+pause
+</code></pre>
+<p><img alt="alt text" src="../img/54.18.png" /></p>
+<p>Em de moure el fitxer a una carpeta que em de compartir a l'usuari per a que funcioni. </p>
+<p>Ara en la directiva l'hi donarem a afegir un fitxer que sera l'anterior:</p>
+<p><img alt="alt text" src="../img/54.120.png" /></p>
+<p>L'hi donem a aplicar i acceptar. Aquest script mostrarà un missatge en una finestra de consola (CMD) i després s'aturarà amb pause perquè l'usuari el pugui llegir. 
+Mirem els resultats al client després de fer un <code>gpupdate</code> al <strong>Server</strong>. 
+Al inicar ens sortira aquesta finestra:</p>
+<p><img alt="alt text" src="../img/54.21.png" /></p>
+<h4 id="bloquejar-lacces-a-wwwfacebookcom">Bloquejar l'accés a www.facebook.com</h4>
+<p>El que fareme sera rediriir <code>www.facebook.com</code> a <code>127.0.0.1</code>, impedint que el navegador trobi la pàgina.
+Per fero primer creem un <strong>Script</strong> amb el següent:</p>
+<pre><code class="language-bash">echo 127.0.0.1 www.facebook.com &gt;&gt; C:\Windows\System32\drivers\etc\hosts
+echo 127.0.0.1 facebook.com &gt;&gt; C:\Windows\System32\drivers\etc\hosts
+</code></pre>
+<p><img alt="alt text" src="../img/54.22.png" /></p>
+<p>Després en <strong>GPOs</strong> anem a <code>Configuración de Windows &gt; Scripts (inicio de sesion)</code> i agregem aquest script:</p>
+<p><img alt="alt text" src="../img/54.23.png" /></p>
+<p>Actulitzem directives i anem al cliente a veure el resultat:</p>
+<p><img alt="alt text" src="../img/54.24.png" /></p>
+<h3 id="afegir-directrius-dequip">Afegir directrius d'equip</h3>
+<p>Les directrius d'equip són configuracions administratives que permeten controlar el comportament del sistema operatiu i els seus components. S'apliquen a nivell de dispositiu i afecten tots els usuaris de l'equip.</p>
+<h4 id="treure-el-permis-de-cortana">Treure el permís de Cortana</h4>
+<p>En aquest apartat desactivarem els permisos per poder accedir a Cortana a nivell d’equip. Per fer-ho, anem a la següent ruta dins de les directrius al <strong>servidor</strong>:</p>
+<p><code>Plantilles administratives -&gt; Components de Windows -&gt; Cercar -&gt; Permetre l'ús de Cortana</code></p>
+<p><img alt="alt text" src="../img/54.27.png" /></p>
+<p>La desactivem a la finestra següent. Això vol dir que ja no podrem accedir-hi.</p>
+<p><img alt="alt text" src="../img/54.28.png" /></p>
+<p>Després, al mateix <strong>servidor</strong>, actualitzem les <strong>GPO</strong> amb <code>gpupdate</code>:</p>
+<p><img alt="alt text" src="../img/54.29.png" /></p>
+<p>Com podem veure, ja no surt <strong>Cortana</strong> a baix. Llavors, per assegurar-nos-en, podem anar a l’<strong>Editor del Registre</strong> i accedirem a la següent ubicació:</p>
+<p><code>HKEY_LOCAL_MACHINE -&gt; SOFTWARE -&gt; Policies -&gt; Microsoft -&gt; Windows -&gt; Windows Search</code></p>
+<p>Veurem el valor de <code>AllowCortana</code>, que és <code>0</code>; llavors vol dir que està deshabilitada. Si fos <code>1</code>, estaria habilitada. D’aquesta manera ens assegurem.</p>
+<p><img alt="alt text" src="../img/54.30.png" /></p>
+<h4 id="desactivar-laplicacio-de-store">Desactivar l'aplicació de Store</h4>
+<p>Ara, el que farem serà deshabilitar la <strong>Store</strong> de <strong>Windows</strong>, però a nivell d'equip. Llavors, per fer-ho, anirem com abans a les directrius dels equips i accedirem a la següent ruta:</p>
+<p><code>Configuració de l’equip -&gt; Plantilles administratives -&gt; Components de Windows -&gt; Botiga</code></p>
+<p>I en aquest apartat farem clic a <code>Desactivar l'aplicació de Store</code>.</p>
+<p><img alt="alt text" src="../img/54.31.png" /></p>
+<p>A la finestra que ens apareix, marquem <strong>Habilitada</strong> per tal que es desactivin els permisos d'accés. Cliquem a <strong>Aplicar</strong> i <strong>Acceptar</strong>:</p>
+<p><img alt="alt text" src="../img/54.32.png" /></p>
+<p>Com abans, executarem la comanda <code>gpupdate</code> per actualitzar les directrius als clients. Si no, no veurem els resultats:</p>
+<p><img alt="alt text" src="../img/54.33.png" /></p>
+<p>Un cop fet això, anirem al client i tancarem la sessió per tornar-hi a entrar. D’aquesta manera, s’actualitzaran les directrius al client en què estem treballant. Llavors intentem entrar a la <strong>Store de Windows</strong>, i veurem que no ens deixa accedir-hi perquè està bloquejada.</p>
+<p><img alt="alt text" src="../img/54.35.png" /></p>
               
             </div>
           </div><footer>
